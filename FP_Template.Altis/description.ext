@@ -1,0 +1,97 @@
+class Header
+{
+	gameType = Coop;
+	minPlayers = 1;
+	maxPlayers = 64;
+};
+disabledAI = 1;
+
+//////////////////////////////////////////// Respawn settings ////////////////////////////////////////////
+
+respawndelay = 4;
+respawnDialog = 1;
+respawn = "BASE";
+
+//////////////////////////////////////////// Mission name etc settings ////////////////////////////////////////////
+// Mission name (short)
+OnLoadName = "FP TEMPLATE 1.6";
+
+// Longer description
+onLoadMission="description.ext to change!";
+
+// custom load screen
+loadScreen = "fp_misc\img\fp_logo.paa";
+
+author="Cuel | 2015";
+
+//////////////////////////////////////////// Debriefing settings ////////////////////////////////////////////
+
+class CfgDebriefing
+{
+	class End1
+	{
+		title = "Mission Success";
+		description = "You have completed the mission.";
+		subtitle = "";
+		//pictureBackground = "";
+		picture = "flag_nato";
+		//pictureColor[] = {};
+	};	
+	class End2
+	{
+		title = "Mission Failure";
+		description = "You have failed the mission, better luck next time";
+		subtitle = "";
+		//pictureBackground = "";
+		picture = "loc_Church";
+		//pictureColor[] = {};
+	};
+};
+
+
+// Used to remove the timer that is always visible. Can be removed if not jip respawn manager is used
+respawnTemplates[] = {"FP_jrm_respawn"};
+class CfgRespawnTemplates
+{
+	// Class used in respawnTemplates entry
+	class FP_jrm_respawn
+	{
+		respawnDialog = 0; // MUST BE ZERO, hides the timer
+	};
+};
+
+//////////////////////////////////////////// DO NOT EDIT ////////////////////////////////////////////
+
+// Precompile all FP specific functions
+class CfgFunctions
+{
+	#include "src\fp_functions.hpp"
+};
+
+
+showCompass   = 1; 
+showGPS       = 1; 
+showMap       = 1; 
+showWatch     = 1; 
+enableItemsDropping = 0;
+onLoadIntroTime=false;
+onLoadMissionTime=false;
+enableDebugConsole = 1;
+allowFunctionsLog = 1;
+joinUnassigned = 1;
+
+corpseManagerMode = 2;
+corpseLimit = 16;
+corpseRemovalMinTime = 300; //seconds
+corpseRemovalMaxTime = 1200; //seconds
+
+wreckManagerMode = 1;
+wreckLimit = 10;
+wreckRemovalMinTime = 500; //seconds
+wreckRemovalMaxTime = 1200; //seconds
+
+#include "src\dialogs\common.hpp"
+#include "src\dialogs\data_download.hpp"
+#include "src\dialogs\gui_spectator.hpp"
+#include "src\spect\config.hpp"
+
