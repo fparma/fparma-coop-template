@@ -3,8 +3,8 @@ enableSaving [false,false];
 setGroupIconsVisible [true,false]; //Show only 2D
 enableCamShake true;
 setViewDistance 2000;
+setObjectViewDistance 2000;
 setTerrainGrid 25;
-
 
 // clients
 if (!isDedicated) then {

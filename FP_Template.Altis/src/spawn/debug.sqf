@@ -130,14 +130,50 @@ QS_fnc_iconDrawMap = compileFinal "
 	_textOffset = 'right';
 	{
 		_v = vehicle _x;
-		if ((side _v == playerSide) || {(captive _x)}) then {
+		_iconType = [_v] call QS_fnc_iconType;
+		_color = [_x] call QS_fnc_iconColor;	
+		_pos = getPosASL _v;		
+		_iconSize = [_v] call QS_fnc_iconSize;	
+		_dir = getDir _v;		
+		_text = [_v] call QS_fnc_iconText;
+				
+		if (_x == crew _v select 0 || {(_x in allUnitsUav)}) then {	
+			_this select 0 drawIcon [
+				_iconType,
+				_color,
+				_pos,
+				_iconSize,
+				_iconSize,
+				_dir,
+				_text,
+				_shadow,
+				_textSize,
+				_textFont,
+				_textOffset
+			]
+		};
+	} count (allUnits);	
+";
+
+//======================== DRAW GPS
+
+QS_fnc_iconDrawGPS = compileFinal "
+	private [""_v"",""_iconType"",""_color"",""_pos"",""_iconSize"",""_dir"",""_text"",""_shadow"",""_textSize"",""_textFont"",""_textOffset""];	
+	_text = """";
+	_shadow = 1;
+	_textSize = 0.05;
+	_textFont = 'puristaMedium';
+	_textOffset = 'right';
+	{
+		_v = vehicle _x;
+		
+		if ((_x distance player) < 300) then {
 			_iconType = [_v] call QS_fnc_iconType;
 			_color = [_x] call QS_fnc_iconColor;	
 			_pos = getPosASL _v;		
 			_iconSize = [_v] call QS_fnc_iconSize;	
-			_dir = getDir _v;		
-			_text = [_v] call QS_fnc_iconText;
-					
+			_dir = getDir _x;		
+				
 			if (_x == crew _v select 0 || {(_x in allUnitsUav)}) then {	
 				_this select 0 drawIcon [
 					_iconType,
@@ -152,45 +188,6 @@ QS_fnc_iconDrawMap = compileFinal "
 					_textFont,
 					_textOffset
 				]
-			};
-		};
-	} count (playableUnits + switchableUnits + allUnitsUav);	
-";
-
-//======================== DRAW GPS
-
-QS_fnc_iconDrawGPS = compileFinal "
-	private [""_v"",""_iconType"",""_color"",""_pos"",""_iconSize"",""_dir"",""_text"",""_shadow"",""_textSize"",""_textFont"",""_textOffset""];	
-	_text = """";
-	_shadow = 1;
-	_textSize = 0.05;
-	_textFont = 'puristaMedium';
-	_textOffset = 'right';
-	{
-		_v = vehicle _x;
-		if ((side _v == playerSide) || {(captive _x)}) then {
-			if ((_x distance player) < 300) then {
-				_iconType = [_v] call QS_fnc_iconType;
-				_color = [_x] call QS_fnc_iconColor;	
-				_pos = getPosASL _v;		
-				_iconSize = [_v] call QS_fnc_iconSize;	
-				_dir = getDir _x;		
-					
-				if (_x == crew _v select 0 || {(_x in allUnitsUav)}) then {	
-					_this select 0 drawIcon [
-						_iconType,
-						_color,
-						_pos,
-						_iconSize,
-						_iconSize,
-						_dir,
-						_text,
-						_shadow,
-						_textSize,
-						_textFont,
-						_textOffset
-					]
-				};
 			};
 		};
 	} count (playableUnits + switchableUnits + allUnitsUav);	

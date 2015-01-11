@@ -1,47 +1,41 @@
-#define addFunction(funcName) class funcName {headerType =-1;}
-
-version = 1.0;
+version = 1.1;
 createShortcuts = 1;
 class FP {
 	tag = "FP";
 	class loadout {
 		file = "src\gear";
-		addFunction(getKit);
+		class getKit;
 	};
 	class api {
 		file = "src\API";
-		addFunction(intelHQ);
-		addFunction(switchMove);
-		addFunction(addAction);
-		addFunction(removeAction);
-		addFunction(hint);
-		addFunction(getCurrentScript);
+		class intelHQ;
+		class switchMove;
+		class addAction;
+		class removeAction;
+		class hint;
+		class getCurrentScript;
 	};
 	class local {
 		file = "src\API\local";
-		addFunction(local_intelHQ);
-		addFunction(local_switchMove);
-		addFunction(local_addAction);
-		addFunction(local_hint);
-		addFunction(local_removeAction);
+		class local_intelHQ;
 	};
 	class spawn {
 		file = "src\spawn";
-		addFunction(getUnits);
-		addFunction(spawnGroup);
-		addFunction(UPS);
-		addFunction(spawnVehicle);
-		addFunction(spawnGroupWP);
-		addFunction(spawnHousePatrol);
-		addFunction(spawnDefense);
-		addFunction(spawnPatrol);
-		addFunction(spawnPara);
-		addFunction(spawnGarrison);
-		addFunction(dropPara);
+		class getUnits;
+		class spawnGroup;
+		class UPS;
+		class spawnVehicle;
+		class spawnGroupWP;
+		class spawnHousePatrol;
+		class spawnDefense;
+		class spawnPatrol;
+		class spawnPara;
+		class spawnGarrison;
+		class dropPara;
 	};
 	class GC {
 		file ="src\spawn\cleanup";
-		addFunction(addTrash);
+		class addTrash;
 	};
 };
 
@@ -50,16 +44,16 @@ class F {
 	class fspectator
 	{
 		file = "src\spect";
-		addFunction(CamInit);
-		addFunction(OnUnload);
-		addFunction(DrawTags);
-		addFunction(EventHandler);
-		addFunction(GetIcon);
-		addFunction(FreeCam);
-		addFunction(GetPlayers);
-		addFunction(ReloadModes);
-		addFunction(UpdateValues);
-		addFunction(HandleCamera);
-		addFunction(ToggleGUI);
+		class CamInit;
+		class OnUnload;
+		class DrawTags;
+		class EventHandler;
+		class GetIcon;
+		class FreeCam;
+		class GetPlayers;
+		class ReloadModes;
+		class UpdateValues;
+		class HandleCamera;
+		class ToggleGUI;
 	};
 };

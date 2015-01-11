@@ -1,10 +1,28 @@
-// Gives specific loadouts to units (template-like)
-// unit init example:
-// [this,"PLT"] call FP_fnc_getKit
-// uncomment next line if you do not want custom loadouts (or just remove init lines from in-game)
-// if (true) exitWith {};
+/*
+	Function: getKit
+	
+	Description: 
+		This function will give units a predefined kit.
+		Change the _GEAR variable to change side, loadout etc. 
+		As an example, if I wanted to give BLUFOR british loadouts I'd change _GEAR to 
+		_GEAR = "blufor\britbong_trixie";
+		Note that the "kit" must be an existing .SQF file inside the _GEAR path folder.
 
-// change gear here by changing the path. note the backslash \
+		The _defineItems.sqf inside the folders is used to define stuff that later can be referenced in the gear scripts.
+
+	Parameters:
+		_obj - Unit to apply loadout to [Object].
+		_kit - Name of SQF file inside the _GEAR path folder.
+
+	Examples: 
+	(begin example) 
+		(unit init)
+		[this, "ATASS"] call FP_fnc_getKit; // would apply the gear defined in ATASS.sqf inside "blufor\vanilla"
+	(end) 
+
+	Author: 
+	Cuel 2015-01-07
+*/
 
 _GEAR = "blufor\vanilla";
 
