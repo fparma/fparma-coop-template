@@ -30,9 +30,6 @@ if (!isDedicated) then {
 		// respawn with gear if using template gear
 		player addEventHandler ["Respawn",{
 			_this execVM "src\respawn.sqf";
-			// Time before the teleport flag (if available) can be used again, to prevent people from just teleporting after dying.
-			// The flag is for JiPs not deaths. 3 min default
-			FP_timeout = time + 180;
 		}];
 
 		// so player never joins "ENEMY" side.
@@ -57,10 +54,11 @@ if (!isDedicated) then {
 		sleep  0.3;
 		// lower weapon
 		player switchMove "amovpercmstpslowwrfldnon";
+
+		// assign team to group. not MP compatible?
 		if (leader group player == player) then {
 			_cnt  = count units group player;
 			if (_cnt <= 2 || {_cnt mod 2 != 0}) exitWith{};
-			_a = []; _b = [];
 			{_x assignTeam (if (_forEachIndex < _cnt/2) then {"BLUE"}else{"RED"})}foreach units group player;
 		};
 
