@@ -1,17 +1,24 @@
 /*
-///////////////////////////
-	ARMA 3 "artillery" script
-	Author: SSG Cuel
-	Created: 2014-01-13
-	Purpose: Sends artillery to target position
-	@param {Trigger} Trigger area to fire within. Shells will only land within the trigger 
-	@param {Number} Amount rounds / shells per barrage
-	@param {Number} Amount of barrages
-	@param {Number} Delay between barrage / travel time
-	Example:
-	0 = [trigger1,3,2,20] execVM "fp_scripts\artillery.sqf";
-///////////////////////////
+	Function: Artillery
+	
+	Description: 
+		Fires artillery within a trigger
+
+	Parameters:
+		_target - Trigger to fire within
+		_nrRounds - Amount of rounds per barrage [Default: 3]
+		_nrBarrages - Amount barrages [Default: 1]
+		_travelTime - Travel time for rounds to splash [Default: 20]
+
+	Examples: 
+	(begin example) 
+		0 = [thisTrigger, 2, 2, 15] execVM "fp_scripts\artillery.sqf"
+	(end) 
+
+	Author: 
+	Cuel 2015-01-07
 */
+
 if (!isServer) exitWith {};
 private ["_target","_nrRounds","_nrBarrages","_travelTime","_ammo","_spawnHeight","_pos","_exit","_tmppos"];
 

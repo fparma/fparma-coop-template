@@ -1,20 +1,30 @@
 /*
-///////////////////////////
-	ARMA 3 "data downloader" script
-	Author: T-800a
-	Edited by: Cuel 2013
-	Created: 2013-10-15
-	Purpose: Adds action to laptop and a nice little dialog when you use it. Takes about a minute to complete.
-	Takes an array: [LAPTOP_OBJECT,"STRING_INFO" or ["INFO","INFO2"]]
-	Example init:
-	0 = [this,["INFO1","INFO2"]] execVM "fp_scripts\laptop.sqf";
-	Returns : ID
-///////////////////////////
+	Function: Laptop
+	
+	Description: 
+		Adds action to laptop and a nice little dialog when you use it. Takes about a minute to complete. 
+		"Data downloader" script with a nice little GUI
+
+	Parameters:
+		_target - Laptop object
+		_info - String or Array with comma separated strings. Intel. Will also be recorded in diary.
+
+	Examples: 
+	(begin example) 
+		0 = [theLaptop,["Plenty of intel","Not suited for you"]] execVM "fp_scripts\laptop.sqf";
+	(end) 
+
+	Returns:
+		ID from addAction.
+
+	Author: 
+	T-800a. Edited by Cuel 2015-01-07
 */
 
+// abuse the fact that addAction calls with 3 parameters
 if (count _this in [1,2]) exitWith {
 	private ["_id","_laptop"];
-	// This runs from init (only one time)
+	// This runs from init (only do it one time!)
 	_laptop = [_this,0,objNull,[objNull]] call BIS_fnc_param;
 	if (isNull _laptop) exitWith {["LAPTOP.SQF: Laptop does not exist! (%1)",_laptop] call BIS_fnc_error };
 	_id = _laptop addAction ["<t color='#ff8a00'>\\ Download data //</t>", "fp_scripts\laptop.sqf",0, 9, false, true, "", "((_target getVariable ['fp_inUse',0]) != 1)"];
