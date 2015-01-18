@@ -1,7 +1,6 @@
 version = 1.1;
 createShortcuts = 1;
 class FP {
-	tag = "FP";
 	class loadout {
 		file = "src\gear";
 		class getKit;
