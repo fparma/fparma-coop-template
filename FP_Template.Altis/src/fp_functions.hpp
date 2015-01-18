@@ -14,6 +14,7 @@ class FP {
 		class removeAction;
 		class hint;
 		class getCurrentScript;
+		class addCuratorObject;
 	};
 	class local {
 		file = "src\API\local";
@@ -32,6 +33,7 @@ class FP {
 		class spawnPara;
 		class spawnGarrison;
 		class dropPara;
+		class spawnHeliExtraction;
 	};
 	class GC {
 		file ="src\spawn\cleanup";
