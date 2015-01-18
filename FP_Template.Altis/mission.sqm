@@ -6,10 +6,8 @@ class Mission
 		"A3_Characters_F_BLUFOR",
 		"a3_characters_f_beta",
 		"a3_map_altis",
-		"A3_Structures_F_Wrecks",
 		"A3_Static_F",
 		"a3_static_f_gamma",
-		"A3_Structures_F_Mil_BagBunker",
 		"A3_Boat_F_Boat_Transport_01",
 		"A3_Structures_F_Mil_Flags",
 		"A3_Armor_F_Panther",
@@ -1554,7 +1552,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=9;
+		items=4;
 		class Item0
 		{
 			position[]={11454.939,23.69454,11563.984};
@@ -1582,36 +1580,6 @@ class Mission
 			name="respawn_civilian";
 			type="b_hq";
 			colorName="ColorCIV";
-		};
-		class Item4
-		{
-			position[]={11968.105,9.0345526,10460.554};
-			name="hspawn";
-			type="Empty";
-		};
-		class Item5
-		{
-			position[]={11220.937,22.53838,11068.663};
-			name="hmove1";
-			type="Empty";
-		};
-		class Item6
-		{
-			position[]={11164.205,18.995598,11445.824};
-			name="hland";
-			type="Empty";
-		};
-		class Item7
-		{
-			position[]={11661.264,23.088686,11877.351};
-			name="hmove2";
-			type="Empty";
-		};
-		class Item8
-		{
-			position[]={10673.661,16.7418,12264.379};
-			name="hend";
-			type="Empty";
 		};
 	};
 };
