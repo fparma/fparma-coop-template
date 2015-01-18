@@ -12,10 +12,6 @@
 
 if (!isServer) exitWith {};
 
-#ifdef FP_spawn_dbg
-	#include "x_dbg.sqf"
-#endif
-
 private ["_team","_pos","_amount","_unitArray","_units","_special","_grp","_tmpunits","_specialUsed","_ldr","_type","_tmppos"];
 _team = [_this,0,"",[""]] call BIS_fnc_param;
 _pos = ([_this,1,""] call BIS_fnc_param) call CBA_fnc_getPos;
@@ -92,30 +88,8 @@ for "_y" from 1 to _amount - 1 do
 
 }forEach units _grp;
 
-{
-	_x addCuratorEditableObjects [units _grp, true];
-}forEach allCurators;
-
-if (_team == "RUSHUSOCP") then {
-	{
-		[_x] call FP_changeGearToWinter;
-	}foreach units _grp;
-};
+[units _grp] call FP_fnc_addCuratorObject;
 
 _grp setBehaviour "SAFE";
-
-/*
-{
-	_x setUnitAbility 0.2;
-	_x setskill ["aimingAccuracy",0.2];
-	_x setskill ["aimingShake",1];
-	_x setskill ["aimingSpeed",0.6];
-	_x setskill ["Endurance",0.8];
-	_x setskill ["spotDistance",0.5];
-	_x setskill ["spotTime",0.5];
-	_x setskill ["courage",0.6];
-	_x setskill ["reloadSpeed",1];
-} forEach units _grp;
-*/
 
 _grp

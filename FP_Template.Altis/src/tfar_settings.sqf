@@ -19,7 +19,7 @@ if (isServer) then {
     tf_freq_west = _settings;
     publicVariable "tf_freq_west";
      _settingsLR = false call TFAR_fnc_generateLrSettings;
-     _settingsLR set [2, ["41.1","42","43","44","45","46","47","48","49"]];
+     _settingsLR set [2, ["41.1","42.2","43.3","44.4","45.5","46.6","47.7","48.8","49.9"]];
      tf_freq_west_lr = _settingsLR;
      publicVariable "tf_freq_west_lr";
 
@@ -28,16 +28,16 @@ if (isServer) then {
     tf_freq_east = _settings;
     publicVariable "tf_freq_east";
      _settingsLR = false call TFAR_fnc_generateLrSettings;
-     _settingsLR set [2, ["41.1","42","43","44","45","46","47","48","49"]];
+     _settingsLR set [2, ["41.1","42.2","43.3","44.4","45.5","46.6","47.7","48.8","49.9"]];
      tf_freq_east_lr = _settingsLR;
      publicVariable "tf_freq_east_lr";
 
     _settings = false call TFAR_fnc_generateSwSettings;
-    _settings set [2, ["101","102","103","104","105","106","107","108","109"]];
+    _settingsLR set [2, ["41.1","42.2","43.3","44.4","45.5","46.6","47.7","48.8","49.9"]];
     tf_freq_guer = _settings;
     publicVariable "tf_freq_guer";
      _settingsLR = false call TFAR_fnc_generateLrSettings;
-     _settingsLR set [2, ["41.1","42","43","44","45","46","47","48","49"]];
+     _settingsLR set [2, ["41.1","42.2","43.3","44.4","45.5","46.6","47.7","48.8","49.9"]];
      tf_freq_guer_lr = _settingsLR;
      publicVariable "tf_freq_guer_lr";
 };

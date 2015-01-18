@@ -10,7 +10,7 @@ private ["_v", "_int", "_timer", "_snd", "_fl", "_sm", "_li", "_cl"];
 _v = _this select 0;
 if (isNil "_v") exitWith {};
 if (isNull _v) exitWith {};
-_int = _this select 1;
+_int = 3 max (_this select 1);
 _timer = time + (_this select 2);
 _pos = [getPos _v select 0, getPos _v select 1, 0];
 

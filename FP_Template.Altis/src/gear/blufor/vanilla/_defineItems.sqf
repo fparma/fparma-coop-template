@@ -27,8 +27,9 @@ _STANDARD_ROCKET2 = "Titan_AP";
 // Must be arrays
 _STANDARD_ATTACHMENTS = ["optic_Aco"];
 _LEADER_ATTACHMENTS =  ["acc_pointer_IR","optic_Arco"];
-_GL_SMOKES = ["1Rnd_SmokeOrange_Grenade_shell","1Rnd_SmokeRed_Grenade_shell","1Rnd_SmokeGreen_Grenade_shell"];
+_LEADER_ITEMS = ["ItemGPS", "AGM_MapTools"];
 
+_GL_SMOKES = ["1Rnd_SmokeOrange_Grenade_shell","1Rnd_SmokeRed_Grenade_shell","1Rnd_SmokeGreen_Grenade_shell"];
 _GL_HE = "1Rnd_HE_Grenade_shell";
 
 _STANDARD_PISTOL = "hgun_P07_F";
@@ -36,7 +37,6 @@ _STANDARD_PISTOL_MAG = "16Rnd_9x21_Mag";
 
 _GRENADE = "HandGrenade";
 _STANDARD_SMOKE = "SmokeShellGreen";
-_GPS = "ItemGPS";
 _CHEMLIGHT = "Chemlight_green";
 
 _LR_RADIO = ["tf_rt1523g","tf_mr3000","tf_anprc155", "tf_rt1523g"] select ([BLUFOR, OPFOR, independent, civilian] find side _unit);

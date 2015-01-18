@@ -2,22 +2,6 @@ if (!isMultiplayer) exitWith{};
 
 // Note: IF USING this, respawn type must be BASE.
 
-/* === PARAMETERS === */
-
-	/* If players can respawn, at all. true disables spectator */
-	FP_playerCanRespawn = true;
-
-	/* If players die, they can not reconnect and respawn  */
-	FP_savePlayerDeathsAndPreventRespawn = false;
-
-	/*Seconds before JIP will not be possible anymore */
-	FP_timeBeforeJIPNotPossible = -1; // -1 disabled
-
-	/* If JIP player should be teleported to his group, or if no group members, players on his side */
-	FP_JIPTeleport = false;
-
-/* === END PARAMETERS === */
-
 /* Clients */
 if (!isDedicated) then {
 	[] spawn {

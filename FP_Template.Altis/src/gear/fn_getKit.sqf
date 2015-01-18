@@ -12,7 +12,7 @@
 
 	Parameters:
 		_obj - Unit to apply loadout to [Object].
-		_kit - Name of SQF file inside the _GEAR path folder.
+		_kit - Name of SQF file inside the _GEAR path folder. [String]
 
 	Examples: 
 	(begin example) 

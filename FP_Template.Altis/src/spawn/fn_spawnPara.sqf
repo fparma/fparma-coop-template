@@ -40,9 +40,7 @@ _veh addEventHandler ["Killed",{[_this select 0] call FP_fnc_addTrash}];
 	_x addEventHandler ["Killed",{[_this select 0] call FP_fnc_addTrash}];
 }forEach (crew _veh);
 
-if (!isNil "FP_addCuratorObject") then {
-	_veh call FP_addCuratorObject;
-};
+_veh call FP_fnc_addCuratorObject;
 
 _veh addEventHandler ["handleDamage",{
 	_veh = _this select 0;

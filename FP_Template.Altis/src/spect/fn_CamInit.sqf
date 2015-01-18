@@ -64,7 +64,7 @@ _pos set [2,3];
 f_cam_fakecamera = "camera" camCreate _pos;
 f_cam_camera camSetTarget f_cam_fakecamera;
 if (isNil "_oldUnit") then {
-	_oldUnit = allUnits call BIS_fnc_selectRandom;
+	_oldUnit = ([] call CBA_fnc_players) call BIS_fnc_selectRandom;
 };
 f_cam_curTarget = _oldUnit;
 
@@ -105,7 +105,7 @@ f_cam_hideUI = false;
 f_cam_map_zoom = 0.5;
 f_cam_mode = 0;
 f_cam_toggleCamera = false;
-f_cam_playersOnly = false;
+f_cam_playersOnly = true;
 f_cam_toggleTags = false;
 f_cam_ads = false;
 f_cam_nvOn = false;

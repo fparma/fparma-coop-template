@@ -14,7 +14,7 @@ respawn = "BASE";
 
 //////////////////////////////////////////// Mission name etc settings ////////////////////////////////////////////
 // Mission name (short)
-OnLoadName = "FP TEMPLATE 1.6";
+OnLoadName = "FP TEMPLATE 1.7";
 
 // Longer description
 onLoadMission="description.ext to change!";

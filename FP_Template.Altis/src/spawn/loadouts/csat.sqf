@@ -31,7 +31,6 @@ _headgear = [
 ];
 
 _rifles = [
-	'trixie_xm8_carbine',
 	'hlc_rifle_ak12',
 	'hlc_rifle_ak12',
 	'hlc_rifle_ak12',
@@ -40,7 +39,6 @@ _rifles = [
 	'SMG_02_F',
 	'srifle_DMR_01_F',
 	'hlc_rifle_osw_GL',
-	'R3F_Famas_surb_DES',
 	'arifle_Katiba_C_F',
 	'hlc_rifle_osw_GL'
 ];

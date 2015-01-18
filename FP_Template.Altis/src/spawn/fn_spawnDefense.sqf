@@ -21,12 +21,11 @@
 if (!isServer) exitWith {};
 private ["_grp", "_position","_radius","_patrol"];
 _position = ([_this,1, "",[[], objNull, ""]] call BIS_fnc_param) call CBA_fnc_getPos;
-if (_area distance [0,0,0] < 5) exitWith  {["spawnDefense: Incorrect parameters (%1)",_this] call BIS_fnc_error};
+if (_position distance [0,0,0] < 5) exitWith  {["spawnDefense: Incorrect parameters (%1)",_this] call BIS_fnc_error};
 
 _group = _this call FP_fnc_spawnGroup;
 _radius = [_this,3,100,[0]] call BIS_fnc_param;
 _patrol = [_this,4,true,[true]] call BIS_fnc_param;
-//[_grp,_area,_radius,2,_patrol] call CBA_fnc_taskDefend;
 
 // patch for taskDefend, last parameter seems broken
 _group enableattack false;
@@ -100,3 +99,5 @@ if (_i < _count * 0.5) then {
 
 	[_group, _position, _radius, 5, "sad", "safe", "red", "limited"] call CBA_fnc_taskpatrol;
 };
+
+_group

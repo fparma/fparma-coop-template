@@ -91,10 +91,6 @@ for "_i" from 0 to (count units _group)-1 do {
 			_unit addMagazines ["1Rnd_HE_Grenade_shell",8];
 		};
 	
-		if (_weapon in ['R3F_Famas_surb_DES']) then {
-			_unit addPrimaryWeaponItem "R3F_FELIN_DES";
-		};
-		
 		if (_weapon in ['hlc_rifle_aek971']) then {
 			_unit addPrimaryWeaponItem "hlc_optic_kobra";
 		};

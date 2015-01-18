@@ -16,11 +16,11 @@ _unit addMagazines [_STANDARD_MAG_T, 2];
 _unit addBackPack "B_AssaultPack_rgr_LAT";
 clearMagazineCargoGlobal (unitBackpack _unit);
 (unitBackpack _unit) addMagazineCargoGlobal [_STANDARD_ROCKET1,1];
-(unitBackpack _unit) addMagazineCargoGlobal [_STANDARD_ROCKET2,1];
 _unit addWeapon _STANDARD_ROCKET_LAUNCHER;
+(unitBackpack _unit) addMagazineCargoGlobal [_STANDARD_ROCKET2,1];
+_unit addSecondaryWeaponItem "CUP_optic_MAAWS_Scope";
 
 _unit addMagazines [_STANDARD_PISTOL_MAG,2];
 _unit addWeapon _STANDARD_PISTOL;
-
 
 #include "_after.sqf";

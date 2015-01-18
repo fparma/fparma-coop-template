@@ -14,7 +14,10 @@ _unit addMagazines [_GL_HE,4];
 
 _unit addMagazines [_CHEMLIGHT, 2];
 {_unit addMagazine _x} forEach _GL_SMOKES;
-_unit linkItem _GPS;
+
+if ({!isNil "_x" && {_x != ""}} count _LEADER_ITEMS > 0) then {
+	{if (_x == "ItemGPS") then {_unit linkItem _x} else {_unit additem _x}} foreach _LEADER_ITEMS;
+};
 
 [_unit, _STANDARD_RIFLE_GL] call BIS_fnc_addWeapon;
 {if (_x != "") then {_unit addPrimaryWeaponItem _x};} forEach  _LEADER_ATTACHMENTS;

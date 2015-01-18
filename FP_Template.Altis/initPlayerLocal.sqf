@@ -1,0 +1,40 @@
+/*
+	Executed locally when player joins mission (includes both mission start and JIP). 
+	See: https://community.bistudio.com/wiki/Functions_Library_(Arma_3)#Initialization_Order
+		for details about when the script is exactly executed.
+
+	Parameters:
+		0 - Player object
+		1- Did player JiP
+*/
+
+private "_isJip";
+_isJip = _this select 1; // this can be used to check for JiPs
+
+// Get briefing
+[] call compile preProcessFileLineNumbers "briefing.sqf";
+
+// Respawn with correct gear if using template gear
+player addEventHandler ["Respawn",{
+	_this execVM "src\respawn.sqf";
+}];
+
+// Fix so player cant join ENEMY side, where all sides fires on him
+player addEventHandler ["HandleRating", {
+	_rating = _this select 1;
+	(abs _rating)
+}];
+
+// Delete grenades thrown in spawn
+player addEventHandler ["Fired",
+{
+	if (_this select 2 == "HandGrenadeMuzzle") then
+	{
+		if ((_this select 0) distance (markerPos (["respawn_west","respawn_east","respawn_guerrila","respawn_civilian"] select ([WEST,EAST,independent,civilian] find side player))) < 50) then
+		{
+			deleteVehicle (_this select 6);
+			titleText ["G IS FOR GRENADES", "PLAIN", 3];
+		};
+	};
+}];
+

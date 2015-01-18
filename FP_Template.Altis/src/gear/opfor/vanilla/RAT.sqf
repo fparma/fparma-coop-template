@@ -16,6 +16,7 @@ _unit addMagazines [_STANDARD_MAG_T,4];
 _unit addMagazines [_STANDARD_PISTOL_MAG,2];
 _unit addWeapon _STANDARD_PISTOL;
 
-_unit addWeapon "STI_M136";
+_unit addmagazine "rhs_m136_hedp_mag";
+_unit addWeapon "rhs_weap_M136_hedp";
 
 #include "_after.sqf";

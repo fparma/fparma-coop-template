@@ -24,4 +24,4 @@ _corpse spawn {
 };
 
 // Add new unit to zeus
-[_unit, "FP_addCuratorObject", false] call BIS_fnc_MP;
+[_unit, "FP_fnc_addCuratorObject", false] call BIS_fnc_MP;
