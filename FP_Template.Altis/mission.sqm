@@ -1185,7 +1185,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=35;
+		items=30;
 		class Item0
 		{
 			position[]={11450.604,23.74749,11559.417};
@@ -1550,66 +1550,6 @@ class Mission
 			skill=0;
 			init="0 = [this,""Eagle""] call compile preprocessFileLineNumbers ""src\vehgear.sqf""";
 			description="Armorered Vehicle Crew Gunner";
-		};
-		class Item30
-		{
-			position[]={11452.021,23.65885,11592.397};
-			azimut=213;
-			id=78;
-			side="EMPTY";
-			vehicle="Land_HelipadCircle_F";
-			leader=1;
-			skill=0.2;
-			text="kk3";
-			description="man";
-		};
-		class Item31
-		{
-			position[]={11443.852,23.71833,11582.922};
-			azimut=213;
-			id=79;
-			side="EMPTY";
-			vehicle="Land_HelipadEmpty_F";
-			leader=1;
-			skill=0.2;
-			text="kk2";
-			description="man";
-		};
-		class Item32
-		{
-			position[]={11464.469,23.580202,11590.373};
-			azimut=213;
-			id=80;
-			side="EMPTY";
-			vehicle="Land_HelipadCivil_F";
-			leader=1;
-			skill=0.2;
-			text="kk4";
-			description="man";
-		};
-		class Item33
-		{
-			position[]={11435.135,23.812035,11570.932};
-			azimut=213;
-			id=81;
-			side="EMPTY";
-			vehicle="Land_HelipadRescue_F";
-			leader=1;
-			skill=0.2;
-			text="kk1";
-			description="man";
-		};
-		class Item34
-		{
-			position[]={11427.521,23.865791,11558.114};
-			azimut=213;
-			id=82;
-			side="EMPTY";
-			vehicle="Land_HelipadSquare_F";
-			leader=1;
-			skill=0.2;
-			text="kk";
-			description="man";
 		};
 	};
 	class Markers
