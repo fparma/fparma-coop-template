@@ -10,8 +10,15 @@ _corpse = _this select 1;
 FP_timeout = time + 180;
 
 // Give gear back
-if (!isNil "FP_kit_type" && {FP_kit_type != ""}) then {
-		[_unit, FP_kit_type] call FP_fnc_getKit;
+_kit = _corpse getVariable ["FP_kit_type", ""];
+if (_kit == "") then {
+	if (!isNil "FP_kit_type" && {FP_kit_type != ""}) then {
+		_kit = FP_kit_type;
+	};	
+};
+
+if (_kit !== "") then {
+	[_unit, _kit] call FP_fnc_getKit;
 };
 
 _corpse spawn {
