@@ -1,6 +1,16 @@
-// special units have 5% chance to spawn per created unit (more units increase chance) and only ONCE per call to spawn.
-// leaders are the first two positions
+/*
+	Function: getUnits
+	
+	Description: 
+		Main definition for teams and units used in spawn scripts.
+		You can create your own team by adding a case.
+		The first two defines in _units should be "leaders" of a group
+		_specialUnits are stuff like AT, AR. They have a base 5% chance to spawn, increases with the amount in _units. Only once per call tho.
+		_airDropUnits is used for helicopter type for spawnPara.
 
+	Author: 
+	Cuel 2015-01-18
+*/
 
 private  ["_specialUnits","_units","_type","_airdropUnit"] ;
 _units = [];
@@ -56,7 +66,8 @@ switch (toUpper _type) do {
 	};
 	default {["fn_unitsArray: Tried to select non existing units: (%1)",_type] call BIS_fnc_error};
 };
-//return values
+
+// Return
 if (_air) exitWith {
 	if (_airdropUnit == "") then {["fn_getUnits: Team (%1) are missing an air drop heli.",_type] call BIS_fnc_error};
 	_airdropUnit

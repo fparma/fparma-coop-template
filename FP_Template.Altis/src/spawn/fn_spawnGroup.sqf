@@ -1,13 +1,24 @@
 /*
-///////////////////////////
-	ARMA 3 Group spawning script
-	Version: 0.1
-	Author: Cuel
-	Created: 2013-10-13
-	Purpose: Spawns a group at designated location with the specific amount. Takes an array format ["TEAM",position,amount (optional)]
-	Example: ["CSAT","myMarker",4] call FP_fnc_spawnGroup;
-	Returns: Created group
-///////////////////////////
+    Function: spawnGroup
+    
+    Description: 
+        Base script to spawn groups. Spawns a group at designated location with the specific amount.
+
+    Parameters:
+        _team - Team defined in getUnits [String]
+        _position - Position to spawn [Any]
+        _amount - Amount of units to spawn [Integer]
+
+    Examples: 
+    (begin example) 
+    		["CSAT","myMarker",4] call FP_fnc_spawnGroup;
+    (end) 
+
+    Returns:
+        Created group
+
+    Author: 
+    Cuel 2015-01-18
 */
 
 if (!isServer) exitWith {};
@@ -19,8 +30,9 @@ _amount = [_this,2,4,[0]] call BIS_fnc_param;
 _unitArray =  _team call FP_fnc_getUnits;
 _units = _unitArray select 0;
 _special = if (count _unitArray > 1) then {((_unitArray select 1)  call BIS_fnc_selectRandom)}else {""};
+
 if (typeName _special == typeName []) then {_special = _special call BIS_fnc_selectRandom};
-if ((count _units < 1) || count (_pos - [0]) == 0) exitWith {["fn_spawnGroup: Received incorrect team (%1) or spawn position (%2)",_team,_pos] call BIS_fnc_error};
+if ((count _units < 1) || count (_pos - [0]) == 0) exitWith {["Received incorrect team (%1) or spawn position (%2)",_team,_pos] call BIS_fnc_error};
 
 // manually try to find a safe spot to spawn
 for "_i" from 0 to 10 do {

@@ -1,24 +1,30 @@
 /*
-///////////////////////////
-	ARMA 3 Group defense script
-	Version: 0.1
-	Author: Cuel
-	Created: 2013-10-13
-	Purpose: Spawns a group at designated location with the specific amount.  Group will enter houses and static weapons
-	Takes an array format ["TEAM",position,amount,radius,patrol (boolean)] call FP_spawnDefense;
-	@param {String} - Team
-	@param {Location | String | Object} - Location to spawn the group at
-	@param {Int} - Amount of units
-	@param {int} - Radius to patrol
-	@param {Boolean} - Optional. Patrol the area or not. Default true
-	Example: ["CSAT","myDefenseMarker",6,200,true] call FP_fnc_spawnDefense;
-	@return {Group} -  Created group
-///////////////////////////
+	Function: spawnDefense
+	
+	Description: 
+		Spawns a group that will defend an area, mount statics, check buildings and optionally patrol around.
+
+	Parameters:
+		_team - Team defined in getUnits [String]
+		_position - Main position to spawn on and defend [Any]
+		_amount - Amount of units to spawn
+		_radius - (Optional) Maximum distance for unit to defend and search [Default: 100]
+		_patrol - (Optional) Group should patrol the area or not? [Default: true]
+
+	Examples: 
+	(begin example) 
+		["CSAT","myDefenseMarker", 6, 200, true] call FP_fnc_spawnDefense;
+	(end) 
+
+	Returns:
+		Created group
+
+	Author: 
+	Cuel 2015-01-18
 */
 
-// 
-// units man defenses and patrol area
 if (!isServer) exitWith {};
+
 private ["_grp", "_position","_radius","_patrol"];
 _position = ([_this,1, "",[[], objNull, ""]] call BIS_fnc_param) call CBA_fnc_getPos;
 if (_position distance [0,0,0] < 5) exitWith  {["spawnDefense: Incorrect parameters (%1)",_this] call BIS_fnc_error};
@@ -27,7 +33,7 @@ _group = _this call FP_fnc_spawnGroup;
 _radius = [_this,3,100,[0]] call BIS_fnc_param;
 _patrol = [_this,4,true,[true]] call BIS_fnc_param;
 
-// patch for taskDefend, last parameter seems broken
+// Patch for CBA taskDefend, last parameter seems broken
 _group enableattack false;
 
 private ["_count", "_list", "_list2", "_units", "_i"];

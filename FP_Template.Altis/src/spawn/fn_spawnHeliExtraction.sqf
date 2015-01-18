@@ -1,5 +1,5 @@
 /*
-	Function: fn_spawnHeliExtraction
+	Function: spawnHeliExtraction
 		Not AI compatible.
 		Spawns a helicopter that flies in, picks up units and lands somewhere to drop them off.
 		Then returns to spawnPos and gets deleted
@@ -29,7 +29,7 @@
 
 if (!isServer) exitWith {};
 
-#define isBadPos(X) (X distance [0,0,0] < 5 or surfaceIsWater X)
+#define isBadPos(X) (X isEqualTo [0,0,0] or surfaceIsWater X)
 
 _heliType = [_this, 0, "", [""]] call BIS_fnc_param;
 _spawnPos = (_this select 1) call CBA_fnc_getPos;

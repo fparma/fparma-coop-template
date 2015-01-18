@@ -1,17 +1,15 @@
 /*
-///////////////////////////
-	ARMA 3
-	Version: 0.1
-	Author: Cuel
-	Created: 2013-10-13
-	Purpose: Helper function to spawnPara.sqf. Do not use this on its own
-	Requires variables set from spawnPara on the vehicle.
-	@param {Object}- Group leader
-	@return {Group} - Ejected group.
-///////////////////////////
+	Function: dropPara
+	
+	Description: 
+		Helper function for spawnPara. Not to be used on its own.
+
+	Author: 
+	Cuel 2015-01-18
 */
 
 if (!isServer) exitWith {};
+
 private ["_leader","_veh","_info","_dropGrp","_spawnPos","_dropPos","_patrol","_finishWp"];
 _leader = [_this,0,objNull,[objNull]] call BIS_fnc_param;
 if (isNull _leader) exitWith {["fn_dropPara: Leader is null! (%1)",_this] call BIS_fnc_error};

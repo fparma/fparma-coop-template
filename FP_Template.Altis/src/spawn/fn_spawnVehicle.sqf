@@ -1,30 +1,41 @@
 /*
-///////////////////////////
-	ARMA 3 Vehicle spawn script
-	Version: 0.1
-	Author: Cuel
-	Created: 2013-10-13
-	Purpose: Spawns a vehicle at designated position. vehicle can patrol an area marker or follow waypoints, depending on format.
-	
-	Create vehicle + crew, exit and return the vehicle
-	["CLASS",spawnpos] call FP_fnc_spawnVehicle;
+    Function: spawnVehicle
+    
+    Description: 
+        Spawns a vehicle at designated position. vehicle can patrol an area marker or follow waypoints, depending on format.
 
-	Vehicle patrol area marker: 
-	["CLASS",spawnpos,"area"] call FP_fnc_spawnVehicle;
-	
-	Vehicle follows waypoint and does whatever behaviour on last waypoint:
-	["class",spawnpos,[array of markers or objects],behaviour] call FP_fnc_spawnVehicle;
-	
-	Optional behaviour refers to last waypoint.
-	Returns: Created vehicle
-///////////////////////////
+    Parameters:
+    	_class - Vehicle class to spawn
+    	_spawnpos - Position to spawn vehicle on
+    	_move - UPS marker to patrol OR an array of positions to follow as waypoints. Last position will be a seek and destroy waypoint.
+    	_behaviour - If using waypoints, what behaviour is assumed at last waypoint. [Default "SAD" (seek and destroy)]
+ 
+    Examples: 
+    (begin example) 
+    		//Create vehicle + crew, exit and return the vehicle
+		["CLASS",spawnpos] call FP_fnc_spawnVehicle;
+
+		// Vehicle patrol area marker: 
+		["CLASS",spawnpos,"area"] call FP_fnc_spawnVehicle;
+
+		// Vehicle follows waypoint and does whatever behaviour on last waypoint:
+		["class",spawnpos,[array of markers or objects],behaviour] call FP_fnc_spawnVehicle;
+    (end) 
+
+    Returns:
+        Created vehicle | objNull
+
+    Author: 
+    Cuel 2015-01-18
 */
+
 if (!isServer) exitWith {};
+
 private ["_veh","_class","_spawnpos","_mrk","_wps","_route","_exit","_behaviour"];
 _class = [_this,0,"",[""]] call BIS_fnc_param;
 _spawnpos = ([_this,1,""] call BIS_fnc_param) call CBA_fnc_getPos;
-if !(isClass  (configFile >> "cfgVehicles" >> _class)) exitWith {["FP_fnc_spawnVehicle: Vehicle class name does not exist (%1)",_class] call BIS_fnc_error};
-if (count (_spawnpos - [0]) == 0)  exitWith {["FP_fnc_spawnVehicle: Wrong spawn position given (%1)",_spawnpos] call BIS_fnc_error};
+if !(isClass  (configFile >> "cfgVehicles" >> _class)) exitWith {["Vehicle class name does not exist (%1)",_class] call BIS_fnc_error; objNull};
+if (count (_spawnpos - [0]) == 0)  exitWith {["Wrong spawn position given (%1)",_spawnpos] call BIS_fnc_error; objNull};
 
 _veh = createVehicle [_class,_spawnpos,[], 0, "CAN_COLLIDE"];
 
@@ -82,15 +93,15 @@ else
 	};
 };
 
-if (_exit) exitWith {{deleteVehicle _x} forEach crew _veh; deleteVehicle _veh; ["FP_fnc_spawnVehicle: Incorrect format of one or more waypoints! (%1)",_wps] call BIS_fnc_error;};
+if (_exit) exitWith {{deleteVehicle _x} forEach crew _veh; deleteVehicle _veh; ["Incorrect format of one or more waypoints! (%1)",_wps] call BIS_fnc_error; objNull};
 _veh addEventHandler ["Killed",{[_this select 0] call FP_fnc_addTrash}];
-if (count crew _veh < 1) then {["SpawnVehicle : WARNING! VEHICLE HAS NO CREW %1",_class] call BIS_fnc_error};
+
+if (count crew _veh < 1) then {["WARNING! VEHICLE HAS NO CREW %1",_class] call BIS_fnc_error};
+
 {
 	_x addEventHandler ["Killed",{[_this select 0] call FP_fnc_addTrash}];
 }forEach (crew _veh);
 
-{
-	_x addCuratorEditableObjects [[_veh], true];
-}forEach allCurators;
+_veh call FP_fnc_addCuratorObject;
 
 _veh

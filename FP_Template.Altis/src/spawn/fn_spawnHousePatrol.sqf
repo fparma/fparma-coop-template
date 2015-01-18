@@ -1,18 +1,29 @@
 /*
-///////////////////////////
-	ARMA 3 Group waypoint script
-	Version: 0.1
-	Author: Cuel
-	Created: 2013-10-13
-	Purpose: Spawns a group at designated location with the specific amount. Group patrols and search houses
-	Takes an array format ["TEAM",position,amount,radius] call FP_fnc_spawnHousePatrol;
-	Example: ["CSAT","myDefenseMarker",6,100] call FP_fnc_spawnHousePatrol;
-	Optional behaviour refers to last waypoint.
-	Returns: Created group
-///////////////////////////
+	Function: spawnHousePatrol
+	
+	Description: 
+		Spawns a group at designated location with the specific amount. Group patrols and search houses
+
+	Parameters:
+		_team - Team defined in getUnits [String]
+		_position - Spawn position
+		_amount - Amount of units to spawn
+		_radius - Radius to patrol and search buildings
+
+	Examples: 
+	(begin example) 
+ 		["CSAT","myDefenseMarker",6,100] call FP_fnc_spawnHousePatrol;
+	(end) 
+
+	Returns:
+		Created group
+
+	Author: 
+	Cuel 2015-01-18
 */
 
 if (!isServer) exitWith {};
+
 private ["_grp","_pos","_radius"];
 _grp = _this call FP_fnc_spawnGroup;
 _pos = ([_this,1,[0,0,0]] call BIS_fnc_param) call CBA_fnc_getPos;

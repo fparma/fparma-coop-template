@@ -1,25 +1,32 @@
 /*
-///////////////////////////
-	ARMA 3 Group garrison script
-	Version: 0.1
-	Author: Zenophon 
-	Edited by: Cuel
-	Created: 12 aug 2014
-	Purpose: Takes units and puts them inside buildings. If not enough positions, units not in houses will be put into own group and patrol
-	@param {String} - TEAM to spawn
-	@param {Location | String | Object} - Location to spawn the group at
-	@param {Integer} - Amount of units to spawn
-	@param {Integer} - Radius to search for buildings
-	-- OPTIONAL parameters -- 
-	@param {Boolean} Put units on roof (default false)
-	@param {Boolean} - Fill evenly (true to fill all buildings in radius evenly, false for one by one. default true)
-	@param {Boolean} - Lock units in place  (cant rotate) until enemies are within 50m (default true)
+    Function: spawnGarrison
+    
+    Description: 
+        Takes units and puts them inside buildings (garrison). If not enough positions, units not in houses will be put into their own group and patrol around
 
-	@return: {Array} - Every created unit
-	Example: 0 = ["AAFD", getPos player, 8, 150] call FP_fnc_spawnGarrison;
-///////////////////////////
+    Parameters:
+        _team - Team defined in getUnits [String]
+        _position - Main position to spawn and search for buildings [Any]
+        _amount - Amount of units to spawn [Integer]
+        _radius - (Optional) The radius around spawn position to search for buildings [Integer, default 150]
+        _putOnRoof - (Optional) Put units on rooftop if available [Boolean, default false]
+        _fillEvenly - (Optional) Fill all buildings in the area evenly (true), Otherwise fill buildings until no more positions, continue on to next (false) [Boolean, default true]
+        _lockUnits - (Optional) Lock units in place (cant rotate) until fired upon or enemies within 50m [Boolean, default true]
+
+    Examples: 
+    (begin example) 
+        ["AAFD", getPos player, 8] call FP_fnc_spawnGarrison;
+    (end) 
+
+    Returns:
+        Array of every created unit
+
+    Author: 
+    Cuel 2015-01-18
 */
+
 if (!isServer) exitWith {};
+
 private ["_grp","_buildingRadius","_putOnRoof","_fillEvenly","_lockUnits"];
 _grp = _this call FP_fnc_spawnGroup;
 _pos = ([_this,1] call BIS_fnc_param) call CBA_fnc_getPos;

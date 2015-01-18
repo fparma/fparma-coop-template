@@ -1,16 +1,29 @@
 /*
-///////////////////////////
-	ARMA 3 Group waypoint script
-	Version: 0.1
-	Author: Cuel
-	Created: 2013-10-13
-	Purpose: Spawns a group at designated location with the specific amount. Group follows WP's 
-	Takes an array format ["TEAM",position,amount,position or array of positions,behaviour (optional)] call FP_fnc_spawnGroupWP;
-	Example: ["CSAT","myDefenseMarker",6,["move1","move2],"SAD"] call FP_fnc_spawnGroupWP;
-	Optional behaviour refers to last waypoint.
-	Returns: Created group
-///////////////////////////
+	Function: spawnGroupWP
+	
+	Description: 
+		Spawns a group at designated location with the specific amount. Group will follow WPs (markers) and finally seek and destroy. 
+		Useful for counter attacks
+
+	Parameters:
+		_team - Team defined in getUnits [String]
+		_position - Spawn position
+		_amount - Amount of units to spawn
+		_wps - Position OR array of positions to follow. Last one is the "seek and destroy" position.
+		_behaviour - Behaviour for final position. [Optional, default "SAD" (seek and destroy)]
+
+	Examples: 
+	(begin example) 
+		["CSAT","myDefenseMarker",6,["move1","move2"],"SAD"] call FP_fnc_spawnGroupWP;
+	(end) 
+
+	Returns:
+		Created group
+
+	Author: 
+	Cuel 2015-01-18
 */
+
 if (!isServer) exitWith {};
 private ["_grp","_route","_wps","_behaviour","_exit","_tmp"];
 _grp = _this call FP_fnc_spawnGroup;

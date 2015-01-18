@@ -1,18 +1,27 @@
 /*
-///////////////////////////
-	ARMA 3 Group spawning script
-	Version: 0.1
-	Author: Cuel
-	Created: 2013-10-13
-	Purpose: Spawns a at specified location, fills it with units, heli goes to the drop point. The group ejects and the heli returns to the spawn pos.
-	@param {String} - TEAM
-	@param {Location|Object|Marker} - Spawning position of the helicopter
-	@param {Location|Object|Marker} - Position to drop
-	@param {Integer} - Amount of units to paradrop. Can not be more than available cargo positions.
-	@param {Location|Object|Marker} Optional. Should group patrol ? - what location
-	Example: ["CSAT",position player, position cursorTarget,8,"marker1"] call FP_fnc_spawnPara;
-	Returns: Created paratroop group
-///////////////////////////
+    Function: spawnPara
+    
+    Description: 
+        Spawns a flying helicopter at specified location, fills it with units, heli goes to the drop point. The group ejects and the heli returns to the spawn pos and is deleted.
+
+    Parameters:
+        	_team - Team defined in getUnits [String]
+        	_spawnPos - Spawning position of the helicopter [Any]
+		_dropPos - Position to drop units [Any]
+		_amount - Amount of units to paradrop. Can not be more than available cargo positions.
+		_patrol - (Optional) If defined, is assumed to be a position for the paradropped units to patrol
+
+
+    Examples: 
+    (begin example) 
+    		["CSAT",position player, "dropMarker", 8, "patrolMarker"] call FP_fnc_spawnPara;
+    (end) 
+
+    Returns:
+        Created group
+
+    Author: 
+    Cuel 2015-01-18
 */
 
 if (!isServer) exitWith {};
@@ -42,20 +51,10 @@ _veh addEventHandler ["Killed",{[_this select 0] call FP_fnc_addTrash}];
 
 _veh call FP_fnc_addCuratorObject;
 
-_veh addEventHandler ["handleDamage",{
-	_veh = _this select 0;
-	_damage = _this select 2;
-	_source = _this select 3;
-	if (!isPlayer _source) then {
-		_damage = ((damage _veh) +0.03);
-	};
-	_damage
-}];
-
 _grp = [_side,[5,5,0],_amount] call FP_fnc_spawnGroup;
 
 if (count units _grp > _veh emptyPositions "cargo") then {
-	["fn_spawnPara: Tried to fit more units (%1) than free slots in vehicle cargo (%2). Deleting a few units...",_amount,_veh emptyPositions "cargo"] call BIS_fnc_error;
+	["Tried to fit more units (%1) than free slots in vehicle cargo (%2). Deleting a few units...",_amount,_veh emptyPositions "cargo"] call BIS_fnc_error;
 	while {(count units _grp > _veh emptyPositions "cargo")} do {
 		deleteVehicle (units _grp select (count units _grp -1));
 	};
@@ -89,6 +88,7 @@ _veh setVariable ["fp_dropInfo",[_grp,_spawnPos,_dropPos,_patrol]];
 			_veh setDamage 1;
 		};
 	};
+	
 	{
 		removeBackpack  _x;
 		sleep 0.1; 
@@ -97,4 +97,5 @@ _veh setVariable ["fp_dropInfo",[_grp,_spawnPos,_dropPos,_patrol]];
 		_x moveInCargo _veh;
 	} forEach (units _grp);
 };
+
 _grp
