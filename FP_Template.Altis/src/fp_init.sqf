@@ -41,7 +41,7 @@ if (!isDedicated) then {
 
 		// Debug script for development. Create a unit named "debugger" and use him as player.
 		if (str player in ["debugger"]) then {
-			[] execVM "src\debug_man.sqf";
+			[] execVM "fp_scripts\debug_man.sqf";
 		};
 		
 		sleep  0.3;
