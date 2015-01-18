@@ -20,11 +20,6 @@ if (isClass(configFile>>"CfgPatches">>"task_force_radio")) then {
 // Clients
 if (!isDedicated) then {
 
-	// Debug script for development. Create a unit named "debugger" and use him as player.
-	if (str player in ["debugger"]) then {
-		[] execVM "src\debug_man.sqf";
-	};
-
 	// Hide all base markers
 	{ _x setMarkerAlphaLocal 0; } foreach ["respawn_west","respawn_east","respawn_guer","respawn_guerrila","respawn_civilian","area"];
 
@@ -43,6 +38,12 @@ if (!isDedicated) then {
 
 	[] spawn {
 		waitUntil {!isNull player};
+
+		// Debug script for development. Create a unit named "debugger" and use him as player.
+		if (str player in ["debugger"]) then {
+			[] execVM "src\debug_man.sqf";
+		};
+		
 		sleep  0.3;
 		// Lower weapon after mission start
 		player switchMove "amovpercmstpslowwrfldnon";
