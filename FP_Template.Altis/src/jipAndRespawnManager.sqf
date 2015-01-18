@@ -132,7 +132,7 @@ addMissionEventHandler ["HandleDisconnect", {
 	if (!FP_savePlayerDeathsAndPreventRespawn) exitWith{false};
 	_unit = _this select 0;
 	_uid = [_this, 2, "", [""]] call BIS_fnc_param;
-	if (_uid == "") exitWith {};
+	if (_uid == "") exitWith {false};
 	if (_unit getVariable ["AGM_Unconscious",false]) then {
 		if (!_uid in FP_jrm_deadPlayers) then {
 			FP_jrm_deadPlayers pushBack _uid;
