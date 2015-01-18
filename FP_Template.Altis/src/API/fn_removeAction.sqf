@@ -1,5 +1,5 @@
 /*
-	Function: removeAction
+	Function: FP_fnc_removeAction
 	
 	Description: 
 		Removes an action from target globally. Only call this function from ONE client or the server.

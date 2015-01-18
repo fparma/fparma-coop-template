@@ -1,5 +1,5 @@
 /*
-	Function: dropPara
+	Function: FP_fnc_dropPara
 	
 	Description: 
 		Helper function for spawnPara. Not to be used on its own.

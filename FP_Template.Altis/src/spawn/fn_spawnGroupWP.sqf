@@ -1,5 +1,5 @@
 /*
-	Function: spawnGroupWP
+	Function: FP_fnc_spawnGroupWP
 	
 	Description: 
 		Spawns a group at designated location with the specific amount. Group will follow WPs (markers) and finally seek and destroy. 

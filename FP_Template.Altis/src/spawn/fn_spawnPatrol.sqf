@@ -1,5 +1,5 @@
 /*
-    Function: spawnPatrol
+    Function: FP_fnc_spawnPatrol
     
     Description: 
         Spawns a group at designated location with the specific amount. Group patrols using UPS. 

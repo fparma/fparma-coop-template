@@ -1,11 +1,17 @@
 /*
-	Function: getUnits
+	Function: FP_fnc_getUnits
 	
 	Description: 
 		Main definition for teams and units used in spawn scripts.
+
 		You can create your own team by adding a case.
+
+	Notes:
+
 		The first two defines in _units should be "leaders" of a group
+
 		_specialUnits are stuff like AT, AR. They have a base 5% chance to spawn, increases with the amount in _units. Only once per call tho.
+
 		_airDropUnits is used for helicopter type for spawnPara.
 
 	Author: 

@@ -1,5 +1,5 @@
 /*
-    Function: spawnVehicle
+    Function: FP_fnc_spawnVehicle
     
     Description: 
         Spawns a vehicle at designated position. vehicle can patrol an area marker or follow waypoints, depending on format.

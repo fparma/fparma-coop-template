@@ -1,4 +1,7 @@
 /*
+	Function: FP_fnc_addTrash
+	
+	Description:
 	Adds (whatever) to BI trash collector.
 */
 

@@ -1,5 +1,5 @@
 /*
-	Function: local_intelHQ
+	Function: FP_fnc_local_intelHQ
 	
 	Description: 
 		Helper function for intelHQ. Should not be used on its own.

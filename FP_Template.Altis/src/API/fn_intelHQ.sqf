@@ -1,5 +1,5 @@
 /*
-	Function: intelHQ
+	Function: FP_fnc_intelHQ
 	
 	Description: 
 		Sends a message to a side, plays some sounds and uses sideChat.

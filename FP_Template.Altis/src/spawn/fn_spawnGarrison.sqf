@@ -1,5 +1,5 @@
 /*
-    Function: spawnGarrison
+    Function: FP_fnc_spawnGarrison
     
     Description: 
         Takes units and puts them inside buildings (garrison). If not enough positions, units not in houses will be put into their own group and patrol around

@@ -1,10 +1,16 @@
 /*
-	Function: spawnHeliExtraction
-		Not AI compatible.
+	Function: FP_fnc_spawnHeliExtraction
+
+	Description:
+
+		Note: Cannot pickup AI unless they are ordered to enter the helicopter.
+
 		Spawns a helicopter that flies in, picks up units and lands somewhere to drop them off.
 		Then returns to spawnPos and gets deleted
+
 		It is recommended to manully place an invisible helicopter landing pad near the LZ (both pickup and dropoff)
 		Found under Empty -> Objects -> Helipad (invisble)
+
 		Espescially important if using multiple helicopters since they will try to land on the same spot otherwise.
 
 	Arguments:

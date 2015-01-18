@@ -1,5 +1,5 @@
 /*
-    Function: spawnPara
+    Function: FP_fnc_spawnPara
     
     Description: 
         Spawns a flying helicopter at specified location, fills it with units, heli goes to the drop point. The group ejects and the heli returns to the spawn pos and is deleted.

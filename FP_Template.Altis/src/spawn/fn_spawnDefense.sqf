@@ -1,5 +1,5 @@
 /*
-	Function: spawnDefense
+	Function: FP_fnc_spawnDefense
 	
 	Description: 
 		Spawns a group that will defend an area, mount statics, check buildings and optionally patrol around.

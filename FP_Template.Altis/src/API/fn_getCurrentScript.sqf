@@ -1,12 +1,23 @@
 /*
-///////////////////////////
-	ARMA 3 function script
-	Version: 0.1
-	Author: Cuel
-	Created: 2014-01-15
-	@param {__FILE__}
-	@return scriptfile executing this function
-///////////////////////////
+	Function: FP_fnc_getCurrentScript
+	
+	Description: 
+		Returns the script name of the file executing this function.
+
+	Parameters:
+		__FILE__ - C Macro containing the whole path to a file.
+
+	Examples: 
+	(begin example) 
+		// From another script
+		__FILE__ call FP_fnc_getCurrentScript
+	(end) 
+
+	Returns:
+	String - name of file
+
+	Author: 
+	Cuel 2015-01-07
 */
 
 private ["_scr","_index","_builder"];

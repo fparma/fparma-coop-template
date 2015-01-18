@@ -1,5 +1,5 @@
 /*
-	Function: addCuratorObject
+	Function: FP_fnc_addCuratorObject
 	
 	Description: 
 		Adds <whatever> to Curators ( zeus )

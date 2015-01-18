@@ -1,5 +1,5 @@
 /*
-	Function: addAction
+	Function: FP_fnc_addAction
 	
 	Description: 
 		Adds action to object and broadcasts it, including JiPs

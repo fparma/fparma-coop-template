@@ -1,5 +1,5 @@
 /*
-	Function: hint
+	Function: FP_fnc_hint
 	
 	Description: 
 		Sends hint globally. Only call this function from ONE client or server

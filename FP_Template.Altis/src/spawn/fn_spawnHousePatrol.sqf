@@ -1,5 +1,5 @@
 /*
-	Function: spawnHousePatrol
+	Function: FP_fnc_spawnHousePatrol
 	
 	Description: 
 		Spawns a group at designated location with the specific amount. Group patrols and search houses

@@ -1,5 +1,5 @@
 /*
-	Function: switchMove
+	Function: FP_fnc_switchMove
 	
 	Description: 
 		Plays animation globally using switchMove. Only call this function from ONE client or the server.
