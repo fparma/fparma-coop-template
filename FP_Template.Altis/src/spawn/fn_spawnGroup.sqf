@@ -1,5 +1,5 @@
 /*
-    Function: spawnGroup
+    Function: FP_fnc_spawnGroup
     
     Description: 
         Base script to spawn groups. Spawns a group at designated location with the specific amount.
@@ -100,7 +100,7 @@ for "_y" from 1 to _amount - 1 do
 
 }forEach units _grp;
 
-[units _grp] call FP_fnc_addCuratorObject;
+(units _grp) call FP_fnc_addCuratorObject;
 
 _grp setBehaviour "SAFE";
 
