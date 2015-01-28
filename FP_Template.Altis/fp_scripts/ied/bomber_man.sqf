@@ -41,17 +41,11 @@ _expl3 attachTo [_unit, [0.1,0.1,0.15],"Pelvis"];
 	_expl3 setPosATL (getPosATL _expl3);
 }],"BIS_fnc_spawn", true] call BIS_fnc_MP;
 
-
-
-
-[_unit,_expl1,_expl2,_expl3] spawn {
-	waitUntil {sleep .5;!alive (_this select 0)};
-	{deleteVehicle _x}foreach [_this select 1,_this select 2, _this select 3];
-};
+_unit setVariable ["FP_iedBombs", [_expl1, _expl2, _expl3]];
 
 //function to see if the unit is still capable of doing anything
 _canAct = {
-	if (damage _unit < 0.5) exitWith {true};
+	if (damage _this < 0.4 && {!(_this getVariable ["AGM_isUnconscious", false])}) exitWith {true};
 	false
 };
 
@@ -103,9 +97,15 @@ while {_unit call _canAct && !_exit} do {
 		};
 		if (_unit call _canAct) then 
 		{
-			
-			_b = _bombtype createVehicle [getposatl _unit select 0,getposatl _unit select 1,(getposatl _unit select 2)+1];
-			_b setVelocity [0, 0, -5];
+			_pos = [getposatl _unit select 0,getposatl _unit select 1,0];
+			_pos set [2, .2];
+			_crater = createVehicle ["CraterLong_small", _pos, [], 0, "NONE"];
+			_b = createVehicle [_bombtype, _pos, [], 0, "NONE"];
+			_b setVelocity [0, 0, -10];			
+			_crater spawn {
+				sleep 300;
+				deleteVehicle _this;
+			};
 			_near = [];
 			{if (_x distance _unit < 40) then {_near pushBack _x}}forEach call CBA_fnc_players;
 			[[[2.5, 2, 25],{addCamShake _this}],"BIS_fnc_spawn", _near] call BIS_fnc_MP;
@@ -115,7 +115,7 @@ while {_unit call _canAct && !_exit} do {
 	}
 	else
 	{
-		if !([getPosATL _unit,400] call CBA_fnc_nearPlayer) exitWith {_unit setDamage 1;  deleteVehicle _unit;};
+		if !([getPosATL _unit,400] call CBA_fnc_nearPlayer) exitWith {_unit setDamage 1; {deleteVehicle _x} forEach (_unit getVariable ["FP_iedBombs", []]); deleteVehicle _unit;};
 	};
 	sleep 2;
 };
@@ -124,7 +124,9 @@ if (alive _unit) then {
 	doStop _unit;
 	_unit lookAt objNull;
 	_unit setUnitPos "DOWN";
+	{deleteVehicle _x} forEach (_unit getVariable ["FP_iedBombs", []]);
 }else{
+	{deleteVehicle _x} forEach (_unit getVariable ["FP_iedBombs", []]);
 	sleep 60;
 	hideBody _unit;
 	sleep 5;
