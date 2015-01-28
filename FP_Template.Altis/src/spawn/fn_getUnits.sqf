@@ -8,7 +8,7 @@
 
 	Notes:
 
-		The first two defines in _units should be "leaders" of a group
+		The first two units in _units should be "leaders" of a group
 
 		_specialUnits are stuff like AT, AR. They have a base 5% chance to spawn, increases with the amount in _units. Only once per call tho.
 
