@@ -25,6 +25,16 @@ player addEventHandler ["HandleRating", {
 	(abs _rating)
 }];
 
+// Weapons cold and unit lock. Edit on config.sqf
+if (isMultiplayer && !isNil "FP_missionStarters" && {count FP_missionStarters > 0}) then {
+	[] call FP_fnc_weaponsColdAndUnitLock;
+};
+
+// Longer view distance for pilots. Edit in config.sqf
+if (!isNil "FP_pilotNames" && {str player in FP_pilotNames}) then {
+	[] execVM "fp_scripts\viewdistance.sqf";
+};
+
 // Delete grenades thrown in spawn
 player addEventHandler ["Fired",
 {

@@ -14,9 +14,6 @@ if (isClass(configFile>>"CfgPatches">>"task_force_radio")) then {
 	[] call compile preProcessFileLineNumbers "src\tfar_settings.sqf";
 };
 
-// Run config
-[] call compile preprocessFileLineNumbers "config.sqf";
-
 // Clients
 if (!isDedicated) then {
 
@@ -54,6 +51,7 @@ if (!isDedicated) then {
 		FP_kit_type = player getVariable ["FP_kit_type", ""];
 	};
 };
+
 
 if (!isNil "FP_jrm_enabled" && {FP_jrm_enabled}) then {
 	[] execVM "src\jipAndRespawnManager.sqf";
