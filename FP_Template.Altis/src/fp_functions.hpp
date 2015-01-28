@@ -14,6 +14,7 @@ class FP {
 		class hint;
 		class getCurrentScript;
 		class addCuratorObject;
+		class weaponsColdAndUnitLock;
 	};
 	class local {
 		file = "src\API\local";
