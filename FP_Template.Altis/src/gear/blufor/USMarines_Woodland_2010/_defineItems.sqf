@@ -14,6 +14,10 @@ _STANDARD_RIFLE_ASS = "rhs_weap_m16a4_grip";
 _STANDARD_MAG = "30rnd_556x45_STANAG";
 _STANDARD_MAG_T = "30Rnd_556x45_Stanag_Tracer_Red";
 
+// Given to SQLs and PLT; mostly headgear
+PLT_HEADGEAR = "H_MilCap_mcamo";
+
+
 // Given to AR and Asst AR BP
 _STANDARD_AR = "rhs_weap_m249_pip";
 _STANDARD_AR_MAG = "rhsusf_100Rnd_556x45_soft_pouch";
