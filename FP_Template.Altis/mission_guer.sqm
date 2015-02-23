@@ -68,7 +68,7 @@ class Mission
 	randomSeed=11895797;
 	class Intel
 	{
-		briefingName="FP Template v1.7";
+		briefingName="FP Template v1.7.1";
 		overviewText="Edit this. ";
 		startWeather=0;
 		startWind=0;

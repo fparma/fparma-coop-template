@@ -15,7 +15,11 @@ _isJip = _this select 1; // this can be used to check for JiPs
 [] call compile preProcessFileLineNumbers "briefing.sqf";
 
 // Respawn with correct gear if using template gear
-player addEventHandler ["Respawn",{
+player addEventHandler ["Respawn", {
+	// Time before the teleport flag (if available) can be used again, to prevent people from just teleporting after dying.
+	// The flag is for JiPs not deaths. 3 min default. Edit in config.sqf
+	FP_tp_timeout = time + FP_tp_respawnDelay;
+
 	_this execVM "src\respawn.sqf";
 }];
 
@@ -25,7 +29,7 @@ player addEventHandler ["HandleRating", {
 	(abs _rating)
 }];
 
-// Weapons cold and unit lock. Edit on config.sqf
+// Weapons cold and unit lock on mission start. Edit on config.sqf
 if (isMultiplayer && !isNil "FP_missionStarters" && {count FP_missionStarters > 0}) then {
 	[] call FP_fnc_weaponsColdAndUnitLock;
 };
@@ -47,4 +51,3 @@ player addEventHandler ["Fired",
 		};
 	};
 }];
-

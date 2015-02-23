@@ -14,7 +14,7 @@ respawn = "BASE";
 
 //////////////////////////////////////////// Mission name etc settings ////////////////////////////////////////////
 // Mission name (short)
-OnLoadName = "FP TEMPLATE 1.7";
+OnLoadName = "FP TEMPLATE 1.7.1";
 
 // Longer description
 onLoadMission="description.ext to change!";
@@ -36,7 +36,7 @@ class CfgDebriefing
 		//pictureBackground = "";
 		picture = "flag_nato";
 		//pictureColor[] = {};
-	};	
+	};
 	class End2
 	{
 		title = "Mission Failure";
@@ -69,10 +69,10 @@ class CfgFunctions
 };
 
 
-showCompass   = 1; 
-showGPS       = 1; 
-showMap       = 1; 
-showWatch     = 1; 
+showCompass   = 1;
+showGPS       = 1;
+showMap       = 1;
+showWatch     = 1;
 enableItemsDropping = 0;
 onLoadIntroTime=false;
 onLoadMissionTime=false;
@@ -94,4 +94,3 @@ wreckRemovalMaxTime = 1200; //seconds
 #include "src\dialogs\data_download.hpp"
 #include "src\dialogs\gui_spectator.hpp"
 #include "src\spect\config.hpp"
-

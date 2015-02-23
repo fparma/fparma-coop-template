@@ -17,7 +17,7 @@ _tpobj = [_this,0,objNull] call BIS_fnc_param;
 _tptargets = [_this,1,[],[[]]] call BIS_fnc_param;
 if (isNull _tpobj || (count (_tptargets - [0])) < 1) exitWith {["Wrong parameters for teleport script, exiting"] call BIS_fnc_error};
 
-FP_timeout = 0;
+FP_tp_timeout = 0;
 _idx = 100;
 _cnt = {_idx = _idx -1 ;_idx};
 _tpobj addAction ["<t color='#FF00FF'>-- TP FLAG for JiPs - ASK FIRST! --</t>", "",0,call _cnt,false,true,"","(vehicle player == player && player distance _target < 5)"];
@@ -47,7 +47,7 @@ FP_query_TP = {
 	if ((getPosATL _unit) distance [0,0,0] < 5) exitWith {hint 'Target has faulty position'};
 	if (vehicle _unit != _unit) exitWith {hint "Target is currently inside a vehicle"};
 	if (!isPlayer _unit) exitWith {[_unit,1] call FP_handleTPAnswer };
-	if (time < FP_timeout) exitWith {hint format ['You have recently died and have been given a 3 minute timeout from using the flag. (wait: %1s)',round FP_timeout - time]};
+	if (time < FP_tp_timeout) exitWith {hint format ['You have recently died and must wait before you can teleport (%1s)',round FP_tp_timeout - time]};
 	if (isNil "FP_TP_Req_Busy") then {FP_TP_Req_Busy = false};
 	if (FP_TP_Req_Busy) exitWith {hint "Please wait."};
 	FP_TP_Req_Busy = true;
@@ -118,7 +118,9 @@ FP_handleTPAnswer = {
 		};	
 		default {["Incorrect selection from sender (FP_TP)"] call BIS_fnc_error;};
 	};
+
 	[_str,0,1,4,0,0,499] spawn BIS_fnc_dynamicText;
+	
 	if (_success) then {
 		[_sender] spawn {
 			_sender = _this select 0;

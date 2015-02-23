@@ -2,6 +2,9 @@
 //Otherwise, only people with AGM_MapTools in their inventory may draw
 AGM_Map_EveryoneCanDrawOnBriefing = false;
 
+// Seconds when unit respawns before the TP flag can be used, if available
+FP_tp_respawnDelay = 180;
+
 //Units that should have longer view distance when flying. Unit names in strings
 FP_pilotNames = ["p1", "p2"];
 

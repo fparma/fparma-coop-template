@@ -32,7 +32,6 @@ _GEAR = "blufor\vanilla";
 
 _unit = [_this,0,objNull,[objNull]] call BIS_fnc_param;
 _kit = toUpper ([_this,1,"",[""]] call BIS_fnc_param);
-_unit setVariable ["FP_kit_type", _kit]; // for respawn
 
 if (local _unit) then {
 	removeHeadgear _unit;
@@ -44,4 +43,18 @@ if (local _unit) then {
 	// assign gear
 	_FULLPATH = ("src\gear\" + _GEAR + "\" + _kit + ".sqf");
 	[_unit] call compile preprocessFileLineNumbers _FULLPATH;
+}else{
+
+	// setVariable has some serious issues.. cant really be used
+	// http://feedback.arma3.com/view.php?id=17240
+	// temp solution until better is found
+	if (!isDedicated) then {
+		[_unit, _kit] spawn {
+			waitUntil {!(isNull player)};
+			if (player == (_this select 0)) then {
+				FP_kit_type = (_this select 1);
+			};
+			if (true) exitWith {};
+		};
+	};
 };

@@ -44,11 +44,6 @@ if (!isDedicated) then {
 		sleep  0.3;
 		// Lower weapon after mission start
 		player switchMove "amovpercmstpslowwrfldnon";
-
-		// Needed to figure out what gear the player have
-		_timeOut = time + 15;
-		waitUntil {(player getVariable ["FP_kit_type", ""] != "") || time > _timeOut};
-		FP_kit_type = player getVariable ["FP_kit_type", ""];
 	};
 };
 
