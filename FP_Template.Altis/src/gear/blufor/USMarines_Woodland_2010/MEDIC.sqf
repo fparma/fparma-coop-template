@@ -11,7 +11,7 @@ _unit addMagazines [_STANDARD_MAG,6];
 _unit addMagazines [_STANDARD_MAG_T,2];
 
 [_unit, _STANDARD_RIFLE_C] call BIS_fnc_addWeapon;
-{if (_x != "") then {_unit addPrimaryWeaponItem _x};} forEach _STANDARD_ATTACHMENTS;
+{if (_x != "") then {_unit addPrimaryWeaponItem _x};} forEach _STANDARD_ATTACHMENTS_ALT;
 
 _unit addBackPack "B_Kitbag_mcamo";
 _bp = (unitBackpack _unit);

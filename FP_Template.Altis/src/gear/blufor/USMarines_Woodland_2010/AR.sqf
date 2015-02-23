@@ -11,7 +11,7 @@ _unit addMagazines [_STANDARD_AR_MAG, 4];
 _unit addMagazines [_STANDARD_AR_MAG_T, 2];
 
 [_unit, _STANDARD_AR] call BIS_fnc_addWeapon;
-{if (_x != "") then {_unit addPrimaryWeaponItem _x}} foreach _STANDARD_ATTACHMENTS;
+{if (_x != "") then {_unit addPrimaryWeaponItem _x}} foreach _STANDARD_ATTACHMENTS_AR;
 
 _unit addMagazines [_STANDARD_PISTOL_MAG,2];
 _unit addWeapon _STANDARD_PISTOL;

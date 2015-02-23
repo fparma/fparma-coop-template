@@ -4,7 +4,7 @@ _unit = _this select 0;
 _unit forceAddUniform (_UNIFORMS select 0);
 _unit addVest (_VESTS select 0);
 _unit addBackpack _LR_RADIO;
-_unit addHeadGear "H_Beret_red";
+_unit addHeadGear _SQL_HEADGEAR;
 
 _unit addMagazines [_STANDARD_SMOKE,2];
 _unit addMagazines [_GRENADE,2];

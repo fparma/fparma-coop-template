@@ -6,18 +6,23 @@ _HEADGEARS = ["Niko_MICH_DesertMarpat"];
 
 _STANDARD_ITEMS = ["ItemMap","ItemCompass","ItemWatch","NVGoggles","ItemRadio"];
 
-_STANDARD_RIFLE = "rhs_weap_m16a4_carryhandle";
-_STANDARD_RIFLE_C = "rhs_weap_m4_grip";
-_STANDARD_RIFLE_GL = "rhs_m4_m320";
-_STANDARD_RIFLE_ASS = "rhs_weap_m16a4_grip";
+_STANDARD_RIFLE = "RH_M16A4";
+_STANDARD_RIFLE_C = "RH_M4_ris";
+_STANDARD_RIFLE_GL = "RH_M16A4gl";
+_STANDARD_RIFLE_ASS = "RH_M16A4";
 
-_STANDARD_MAG = "30rnd_556x45_STANAG";
+_STANDARD_MAG = "RH_30Rnd_556x45_M855A1";
 _STANDARD_MAG_T = "30Rnd_556x45_Stanag_Tracer_Red";
 
+
+// Given to SQLs and PLT; mostly headgear
+_PLT_HEADGEAR = "H_Beret_red";
+_SQL_HEADGEAR = "Niko_MICH_DesertMarpat";
+
 // Given to AR and Asst AR BP
-_STANDARD_AR = "rhs_weap_m249_pip";
-_STANDARD_AR_MAG = "rhsusf_100Rnd_556x45_soft_pouch";
-_STANDARD_AR_MAG_T = "rhsusf_100Rnd_556x45_soft_pouch";
+_STANDARD_AR = "RH_M27IAR";
+_STANDARD_AR_MAG = "RH_60Rnd_556x45_M855A1";
+_STANDARD_AR_MAG_T = "RH_60Rnd_556x45_M855A1";
 
 // Given to MAT and Asst MAT BP
 _STANDARD_ROCKET_LAUNCHER = "CUP_launch_Mk153Mod0";
@@ -25,8 +30,10 @@ _STANDARD_ROCKET1 = "CUP_SMAW_HEAA_M";
 _STANDARD_ROCKET2 = "CUP_SMAW_HEDP_M";
 
 // Must be arrays
-_STANDARD_ATTACHMENTS = ["CUP_optic_CompM2_Black"];
-_LEADER_ATTACHMENTS =  ["rhsusf_acc_anpeq15","CUP_optic_CompM2_Black"];
+_STANDARD_ATTACHMENTS = ["RH_m16covers_s","RH_compM2"];
+_STANDARD_ATTACHMENTS_ALT = ["RH_peq15_top","RH_eotech553"];
+_STANDARD_ATTACHMENTS_AR = ["RH_peq15_top","RH_t1"];
+_LEADER_ATTACHMENTS =  ["RH_peq15_top"];
 _LEADER_ITEMS = ["ItemGPS", "AGM_MapTools"];
 
 _GL_SMOKES = ["1Rnd_SmokeOrange_Grenade_shell","1Rnd_SmokeRed_Grenade_shell","1Rnd_SmokeGreen_Grenade_shell"];
