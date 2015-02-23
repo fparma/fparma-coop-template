@@ -9,7 +9,8 @@ _obj = _this select 0;
 if (isNil "_obj") exitWith {};
 if (!alive _obj) exitWith {};
 //this is the explosion type
-_ammoType = "M_Mo_82mm_AT_LG";
+_pos = getPosATL _obj;
+_ammoType = "M_Titan_AT";
 //create the sound array
 _buzzArray = ["fp_iedbuzz1", "fp_iedbuzz2", "fp_iedbuzz3", "fp_iedbuzz4", "fp_iedbuzz5"];
 //Select random sound
@@ -26,5 +27,11 @@ if (alive _obj) then
 	//remove the exploding object
 	deletevehicle _obj;
 	//create the explosion
-	_ammoType createVehicle[(getposatl _obj select 0),(getposatl _obj select 1), (getposatl _obj select 2)+0.5];
+	_bomb = _ammoType createVehicle[_pos select 0, _pos select 1, (_pos select 2)+0.1];
+	sleep .1;
+	_crater = createVehicle ["CraterLong_small", _pos, [], 0, "NONE"];
+	_crater spawn {
+		sleep 300;
+		deleteVehicle _this;
+	};
 };
