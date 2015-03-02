@@ -35,10 +35,6 @@ class FP {
 		class dropPara;
 		class spawnHeliExtraction;
 	};
-	class GC {
-		file ="src\spawn\cleanup";
-		class addTrash;
-	};
 };
 
 class F {
@@ -46,16 +42,19 @@ class F {
 	class fspectator
 	{
 		file = "src\spect";
-		class CamInit;
-		class OnUnload;
-		class DrawTags;
-		class EventHandler;
-		class GetIcon;
-		class FreeCam;
-		class GetPlayers;
-		class ReloadModes;
-		class UpdateValues;
-		class HandleCamera;
-		class ToggleGUI;
+		class CamInit{};
+		class OnUnload{};
+		class DrawTags{};
+		class EventHandler{};
+		class FreeCam{};
+		class GetPlayers{};
+		class ReloadModes{};
+		class UpdateValues{};
+		class HandleCamera{};
+		class ToggleGUI{};
+		class OnMapClick{};
+		class DrawMarkers{};
+		class ForceExit{};
+		class HandleMenu{};
 	};
 };

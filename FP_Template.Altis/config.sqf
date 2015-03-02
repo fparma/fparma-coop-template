@@ -18,19 +18,16 @@ FP_noLockUnits = ["debugger","gm", "actual", "amed", "a0","b0", "c0", "d0","p1",
 
 /* === JiP and respawn manager parameters === */
 
-	/* If enabled at all, NOTE: Respawn must be BASE when using JRM */
+	/* If enabled at all, no other settings matter if this is not true. NOTE: Respawn must be BASE when using JRM */
 	FP_jrm_enabled = false;
 
-	/* If players can respawn, at all. true disables spectator */
-	FP_playerCanRespawn = true;
+	// Amount of times player can respawn. -1 = unlimited
+	FP_jrm_amountLives = -1;
 
-	/* If players die, they can not reconnect and respawn  */
-	FP_savePlayerDeathsAndPreventRespawn = false;
-
-	/*Seconds before JIP will not be possible anymore */
-	FP_timeBeforeJIPNotPossible = -1; // -1 disabled
+	/*Seconds before JiP will not be possible anymore */
+	FP_jrm_timeBeforeJIPNotPossible = -1; // -1 disabled
 
 	/* If JIP player should be teleported to his group, or if no group members, players on his side */
-	FP_JIPTeleport = false;
+	FP_jrm_JIPTeleport = false;
 
 /* ===  === */
