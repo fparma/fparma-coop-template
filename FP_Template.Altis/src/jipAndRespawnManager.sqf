@@ -1,4 +1,4 @@
-//if (!isMultiplayer) exitWith{};
+if (!isMultiplayer) exitWith{};
 
 // Note: IF USING this, respawn type must be BASE.
 
