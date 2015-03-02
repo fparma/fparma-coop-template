@@ -1,5 +1,5 @@
 /*
-	Executed locally when player joins mission (includes both mission start and JIP). 
+	Executed locally when player joins mission (includes both mission start and JIP).
 	See: https://community.bistudio.com/wiki/Functions_Library_(Arma_3)#Initialization_Order
 		for details about when the script is exactly executed.
 
@@ -51,3 +51,7 @@ player addEventHandler ["Fired",
 		};
 	};
 }];
+
+if (_isJip) then {
+	[player, "FP_fnc_addCuratorObject", false] call BIS_fnc_MP;
+};
