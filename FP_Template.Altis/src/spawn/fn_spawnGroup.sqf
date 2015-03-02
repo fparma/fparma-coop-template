@@ -75,9 +75,6 @@ for "_y" from 1 to _amount - 1 do
 
 //  Specific stuff.
 {
-	_x addEventHandler ["Killed",{
-		[_this select 0] call FP_fnc_addTrash;
-	}];
 	if ("optic_Arco" in (primaryWeaponItems _x)) then  
 	{
 		_x removePrimaryWeaponItem "optic_Arco";

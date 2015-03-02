@@ -94,13 +94,8 @@ else
 };
 
 if (_exit) exitWith {{deleteVehicle _x} forEach crew _veh; deleteVehicle _veh; ["Incorrect format of one or more waypoints! (%1)",_wps] call BIS_fnc_error; objNull};
-_veh addEventHandler ["Killed",{[_this select 0] call FP_fnc_addTrash}];
 
 if (count crew _veh < 1) then {["WARNING! VEHICLE HAS NO CREW %1",_class] call BIS_fnc_error};
-
-{
-	_x addEventHandler ["Killed",{[_this select 0] call FP_fnc_addTrash}];
-}forEach (crew _veh);
 
 _veh call FP_fnc_addCuratorObject;
 

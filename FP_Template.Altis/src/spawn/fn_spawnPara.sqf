@@ -44,10 +44,6 @@ _veh = createVehicle [_type,_spawnPos,[], 0, "FLY"];
 createVehicleCrew _veh;
 
 _veh setPosATL [getPosATL _veh select 0, getPosATL _veh select 1, 250];
-_veh addEventHandler ["Killed",{[_this select 0] call FP_fnc_addTrash}];
-{
-	_x addEventHandler ["Killed",{[_this select 0] call FP_fnc_addTrash}];
-}forEach (crew _veh);
 
 _veh call FP_fnc_addCuratorObject;
 
