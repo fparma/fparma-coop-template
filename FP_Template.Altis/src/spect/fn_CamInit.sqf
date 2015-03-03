@@ -43,6 +43,9 @@ if(isNil "f_cam_VirtualCreated") then
   _newUnit setpos [0,0,5];
   selectPlayer _newUnit;
   waituntil{player == _newUnit};
+  if (alive _unit) then {
+      _unit setDamage 1;
+  };
   //deleteVehicle _unit;
   f_cam_VirtualCreated = true;
 };

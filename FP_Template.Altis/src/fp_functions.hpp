@@ -1,5 +1,8 @@
 version = 1.1;
 createShortcuts = 1;
+
+#include "JRM\funcs.hpp"
+
 class FP {
 	class loadout {
 		file = "src\gear";

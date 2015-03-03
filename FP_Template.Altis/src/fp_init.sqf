@@ -40,7 +40,7 @@ if (!isDedicated) then {
 		if (str player in ["debugger"]) then {
 			[] execVM "fp_scripts\debug_man.sqf";
 		};
-		
+
 		sleep  0.3;
 		// Lower weapon after mission start
 		player switchMove "amovpercmstpslowwrfldnon";
@@ -49,5 +49,7 @@ if (!isDedicated) then {
 
 
 if (!isNil "FP_jrm_enabled" && {FP_jrm_enabled}) then {
-	[] execVM "src\jipAndRespawnManager.sqf";
+	//[] execVM "src\jipAndRespawnManager.sqf";
+	[] call FP_JRM_fnc_clientInit;
+	[] call FP_JRM_fnc_serverInit;
 };
