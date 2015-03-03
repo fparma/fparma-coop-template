@@ -16,7 +16,7 @@
 */
 
 if (!isServer) exitWith {
-    [[FP_clientUID] ,"FP_jrm_playerDied",false, false] call BIS_fnc_MP;
+    [[FP_clientUID] ,"FP_JRM_fnc_onNoLivesLeft",false, false] call BIS_fnc_MP;
 };
 
 _uid = [_this, 0, "", [""]] call BIS_fnc_param;

@@ -33,6 +33,7 @@ player addEventHandler ["Killed", {
 
 		[_this select 0] spawn {
 			setPlayerRespawnTime 9999;
+			sleep 1;
 			[_this select 0, _this select 0, nil, nil, true] spawn F_fnc_CamInit;
 		};
 

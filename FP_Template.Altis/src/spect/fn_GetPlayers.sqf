@@ -14,14 +14,4 @@ _ai = [];
 	};
 } foreach allGroups;
 
-_correctPlayers = [];
-{
-	_pos = getPosATL _x;
-	_pos set [2,0];
-	if  (_pos distance [0,0] > 10 && {getAssignedCuratorLogic _x == objNull}) then {
-		_correctPlayers pushBack _x;
-	};
-}foreach _players;
-
-
-[_correctPlayers, _ai]
+[_players, _ai]
