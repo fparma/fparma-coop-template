@@ -11,6 +11,10 @@
 private "_isJip";
 _isJip = _this select 1; // this can be used to check for JiPs
 
+if (_isJip) then {
+	[player, "FP_fnc_addCuratorObject", false] call BIS_fnc_MP;
+};
+
 // Get briefing
 [] call compile preProcessFileLineNumbers "briefing.sqf";
 
@@ -51,7 +55,3 @@ player addEventHandler ["Fired",
 		};
 	};
 }];
-
-if (_isJip) then {
-	[player, "FP_fnc_addCuratorObject", false] call BIS_fnc_MP;
-};
