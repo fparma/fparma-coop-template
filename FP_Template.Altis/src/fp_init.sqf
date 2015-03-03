@@ -48,8 +48,7 @@ if (!isDedicated) then {
 };
 
 
-if (!isNil "FP_jrm_enabled" && {FP_jrm_enabled}) then {
-	//[] execVM "src\jipAndRespawnManager.sqf";
+if (isMultiplayer && {!isNil "FP_jrm_enabled"} && {FP_jrm_enabled}) then {
 	[] call FP_JRM_fnc_clientInit;
 	[] call FP_JRM_fnc_serverInit;
 };

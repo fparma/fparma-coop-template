@@ -6,9 +6,10 @@ if (_uid == "") exitWith {
 };
 
 if (FP_JRM_amountLives < 0) exitWith {-1};
-_amountLives = FP_jrm_amountLives;
 
+_amountLives = FP_jrm_amountLives;
 _idx = -1;
+
 {
     if (_x select 0 == _uid) exitWith {
         _idx = _foreachindex;
