@@ -7,6 +7,7 @@
 		Make civilians in towns with houses that have house positions. They walk around and interact.
 		Only runs on clients.
 */
+
 if (isServer) then {
 	_center = createCenter sideLogic;
 	_group = createGroup _center;
@@ -27,7 +28,7 @@ if (isServer) then {
 			};
 		}foreach allUnits;
 		if (count _arr > 0) then {
-			_arr spawn 
+			_arr spawn
 			{
 				while {count _this > 0} do {
 					for "_i" from 0 to (count _this)-1 do {
@@ -216,7 +217,7 @@ _cleanUp = {
 		_dist = if (alive _x) then {_aliveCivDeleteDistance}else{_deadCivDeleteDistance};
 		if (!([_x,_dist] call _isPlayersNear)) then {
 			_grp = group _x;
-			private "_house"; 
+			private "_house";
 			_house = _x getVariable ["cul_house",objNull];
 			if (!isNull _house) then {
 				_house setVariable ["cul_owner",objNull,true];
@@ -244,13 +245,13 @@ _civilianAction = {
 	private "_action";
 	_action = ["STROLL","INTERACT"] call BIS_fnc_selectRandom;
 
-	switch (_action) do 
+	switch (_action) do
 	{
 		case "STROLL": {
 			private "_wp";
 			for "_i" from 0 to (1+(round random 2)) do {
 				private ["_pos","_onRoad"];
-				_onRoad = if (random 1 < 0.6) then {true}else {false};
+				_onRoad = if (random 1 < 0.3) then {true}else {false};
 				_pos = [_unit,100,_onRoad] call _randPos;
 
 				if (count _pos > 0) then {
@@ -267,7 +268,7 @@ _civilianAction = {
 		case "INTERACT": {
 			private ["_closest","_dist"];
 			_closest = objNull;
-			_dist = 200; 
+			_dist = 200;
 			{
 				if (_x != _unit && _x distance _unit < _dist && _x distance _unit > 15) then {
 					if (_x getVariable ["cul_currentCivAction",""] != _action) then {
@@ -305,7 +306,7 @@ _civilianAction = {
 						(!alive _unit
 						||
 						!alive _closest
-						|| 
+						||
 						time > (_startTime + _timeout))
 						||
 						{((_unit distance _closest) < 4 && !lineIntersects [eyepos _unit,eyepos _closest])}
@@ -341,7 +342,7 @@ _civilianAction = {
 						sleep 30;
 						// frees up the AI to make them do new actions
 						{
-							_x enableAI "MOVE"; 
+							_x enableAI "MOVE";
 							_x setVariable ["cul_currentCivAction",""];
 							// enalbeai will not make the units follow new waypoints, fix:
 							_x doMove [(getPosATL _x select 0)+1,(getPosATL _x select 1)+1,0];
@@ -353,7 +354,7 @@ _civilianAction = {
 			};
 		};
 		/* NOT IMPLEMENTED.. ai cant drive for shit
-		case "DRIVE_AROUND": 
+		case "DRIVE_AROUND":
 		{
 			private "_pos";
 			if (!([_unit,300] call _isPlayersNear)) then {
@@ -402,7 +403,7 @@ _civilianAction = {
 // Main loop
 waitUntil {!isNil "CUL_CIV_LOGIC"};
 private ["_house","_unit","_housepos","_spawnpos"];
-while {true} do 
+while {true} do
 {
 	if (alive player && (getPosATL player) select 2 < 20 && {speed vehicle player < 20}) then {
 
@@ -429,7 +430,7 @@ while {true} do
 
 	{
 		if (alive _x) then {
-			[_x] call _civilianAction;	
+			[_x] call _civilianAction;
 		};
 		sleep 0.4;
 	}foreach _currentPlayerCivilians;
