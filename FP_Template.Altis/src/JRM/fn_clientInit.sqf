@@ -1,3 +1,12 @@
+/*
+	Function: FP_JRM_fnc_clientIni
+
+	Description:
+	Inits JRM on clients
+
+	Author:
+	Cuel 2015-03-03
+*/
 
 if (isDedicated) exitWith{};
 

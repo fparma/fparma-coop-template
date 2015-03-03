@@ -1,3 +1,19 @@
+/*
+	Function: FP_JRM_fnc_decreaseLivesLeft
+
+	Description:
+		Called when a unit dies. Decreases his remaining respawns
+
+	Parameters:
+		_uid - Client UID
+
+	Returns:
+	Amount of remaining lives (-1 if infinite).
+
+	Author:
+	Cuel 2015-03-03
+*/
+
 
 _uid = [_this, 0, "", [""]] call BIS_fnc_param;
 if (_uid == "") exitWith {

@@ -1,3 +1,12 @@
+/*
+	Function: FP_JRM_fnc_serverInit
+
+	Description:
+		Inits the server
+		
+	Author:
+	Cuel 2015-03-03
+*/
 
 if (!isServer) exitWith {};
 

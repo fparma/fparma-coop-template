@@ -1,3 +1,24 @@
+/*
+	Function: FP_JRM_fnc_jipTeleport
+
+	Description:
+		Teleports a JIP player. If he is group leader, he wil be teleport to his group.
+
+        If member of a group, will be teleport to group leader
+
+        If no units in group, will be teleport to the average position of all players. If no player within 150m, chooses a random player.
+
+	Parameters:
+		_unit - Player object to teleport
+
+	Examples:
+	(begin example)
+		[player] call FP_JRM_fnc_jipTeleport;
+	(end)
+
+	Author:
+	Cuel 2015-03-03
+*/
 
 _unit = [_this, 0, objNull, [objNull]] call BIS_fnc_param;
 if (isNull _unit || !FP_jrm_JIPTeleport) exitWith {};
