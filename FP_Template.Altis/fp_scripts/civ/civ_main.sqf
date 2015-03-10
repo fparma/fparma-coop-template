@@ -181,7 +181,7 @@ _createCivilian = {
 /*
 @method getGoodHouse
 @return {Object}
-	- Good house to spawn civilian inside
+	- Good house to spawn civilian inside or objnull
 */
 _getGoodHouse = {
 	private ["_houses","_possibleHouses","_ret","_pos"];
