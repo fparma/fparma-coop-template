@@ -19,8 +19,8 @@
 		_movePos1 - Positon where helicopter should fly before landing
 		_landPos - Position where helicopter touches down and awaits troops loading
 		_unitsToBoard - Group or array of units that should be inside the helicopter before it leaves [Array, Group]
-		_maxDistanceForUnit - The maximum distance a unit in the above array can be from the helicopter to be considered for pickup
-		_movePos2 - Position to move before extraction
+		_maxDistanceForUnit - The maximum distance a unit in the above array can be from the helicopter to be considered for pickup (min: 50m)
+		_movePos2 - Position to move before dropoff
 		_dropPos - Position to drop units off. When helicopter is empty, it returns to spawnPos and is deleted
 		_captiveHelictoper - If helicopter should be "civilian" and thus ignored by all hostiles [Boolean - default false]
 
@@ -35,7 +35,7 @@
 
 if (!isServer) exitWith {};
 
-#define isBadPos(X) (X isEqualTo [0,0,0] or surfaceIsWater X)
+#define isBadPos(X) ([X select 0, X select 1] isEqualTo [0,0] or surfaceIsWater X)
 
 _heliType = [_this, 0, "", [""]] call BIS_fnc_param;
 _spawnPos = (_this select 1) call CBA_fnc_getPos;
@@ -43,7 +43,7 @@ _movePos1 = (_this select 2) call CBA_fnc_getPos;
 _landPos = (_this select 3) call CBA_fnc_getPos;
 _unitsToBoard = [_this, 4, [], [[], grpNull]] call BIS_fnc_param;
 if (typeName _unitsToBoard == typeName grpNull) then {_unitsToBoard = units _unitsToBoard};
-_maxDistanceForUnit = ([_this, 5, 100, [0]] call BIS_fnc_param) max 80;
+_maxDistanceForUnit = ([_this, 5, 100, [0]] call BIS_fnc_param) max 50;
 _movePos2 = (_this select 6) call CBA_fnc_getPos;
 _dropPos = (_this select 7) call CBA_fnc_getPos;
 _captiveHelictoper = [_this, 8, true, [true]] call BIS_fnc_param;
@@ -103,7 +103,7 @@ _pickUpWP = [_heli, _landPos, 10, "HOLD", "CARELESS", "RED", "FULL", "STAG COLUM
 // AND
 // 2) The amount of nearby units defined equals the amount of defined units in the heli
 
-_unitsLoadedCondition = format 
+_unitsLoadedCondition = format
 ["
 	{(vehicle _x) distance %1 < %4} count %3 > 0
 	&&
@@ -111,7 +111,7 @@ _unitsLoadedCondition = format
 		(
 			{alive _x && ((vehicle _x) distance %1) < %4 && _x in %2} count %3
 		)
-		== 
+		==
 		(
 			{alive _x && ((vehicle _x) distance %1) < %4} count %3
 		)
