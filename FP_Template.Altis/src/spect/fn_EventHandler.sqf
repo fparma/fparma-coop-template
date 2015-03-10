@@ -92,6 +92,12 @@ case "LBListSelChanged":
             if(f_cam_mode == 0 || f_cam_mode == 1) then
             {
                 f_cam_curTarget = _unit;
+
+				if (!isNull FP_JRM_deadPlayerUnit) then {
+					deleteVehicle FP_JRM_deadPlayerUnit;
+					FP_JRM_deadPlayerUnit = objNull;
+				};
+
                 if(f_cam_toggleCamera) then
                 {
                   f_cam_curTarget switchCamera "INTERNAL";
@@ -484,4 +490,3 @@ case "KeyUp":
 };
 _handled
 };
-

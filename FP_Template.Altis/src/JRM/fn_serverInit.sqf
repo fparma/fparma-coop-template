@@ -17,7 +17,7 @@ if (isNil "FP_jrm_savedDeaths") then {
 FP_jrm_deadPlayers = [];
 
 ["FP_jrm_playerConnectedEV","onPlayerConnected",{
-	if (time < 10 || {_name == "__SERVER__"}) exitWith {};
+	if (time < 10) exitWith {};
 	[_uid] call FP_JRM_fnc_onPlayerConnected;
 }] call BIS_fnc_addStackedEventHandler;
 

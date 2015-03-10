@@ -10,6 +10,8 @@ f_cam_checkIndex =
 	} foreach f_cam_listUnits;
 };
 
+
+
 // ====================================================================================
 while {true} do
 {
@@ -52,7 +54,7 @@ while {true} do
 	// ====================================================================================
 	// Check it and see if they have been added already
 	{
-		if(!(_x in f_cam_listUnits) && ({alive _x} count units _x) > 0 ) then
+		if ((!(_x in f_cam_listUnits) && ({alive _x} count units _x) > 0 ) || FP_JRM_deadPlayerUnit in units _x) then
 		{
 			_text = toString(toArray(groupID _x) - [45]);
 			_index = lbAdd [_listBox,_text];
@@ -60,7 +62,7 @@ while {true} do
 			f_cam_listUnits pushBack _x;
 			lbSetColor [_listBox,_index,[side _x,false] call BIS_fnc_sideColor];
 			{
-				if(alive _x) then
+				if(alive _x || {_x == FP_JRM_deadPlayerUnit}) then
 					{
 						if(!(_x in f_cam_listUnits) && !(_x iskindof "VirtualMan_F")) then
 						{
@@ -85,14 +87,14 @@ while {true} do
 		_index = _x GetVariable ["f_spect_listBoxIndex",-1];
 		if(typeName _x == "GROUP") then
 		{
-			if(_index >= 0 && ({alive _x} count units _x) > 0 && {lbText [_listBox,_index] != (toString(toArray(groupID _x) - [45]))}) then
+			if(_index >= 0 && (({alive _x} count units _x) > 0 || FP_JRM_deadPlayerUnit in units _x) && {lbText [_listBox,_index] != (toString(toArray(groupID _x) - [45]))}) then
 			{
 				// there is no lbSetText, so just punt it out of the list and fix it up there..
 				lbDelete [_listBox,_index];
 				f_cam_listUnits = f_cam_listUnits - [_x];
 				[] call f_cam_checkIndex;
 			};
-			if(({alive _x} count units _x) <= 0  && _index >= 0) then
+			if ((({alive _x} count units _x) <= 0 || FP_JRM_deadPlayerUnit in units _x)  && _index >= 0) then
 			{
 				lbDelete [_listBox,_index];
 				f_cam_listUnits = f_cam_listUnits - [_x];
@@ -106,14 +108,14 @@ while {true} do
 		//	{
 		//		_val = lbText [_listBox,_index] != "	"+ "*AI*";
 		//	};
-			if(_index >= 0 && alive _x && _val ) then
+			if(_index >= 0 && (alive _x || _x == FP_JRM_deadPlayerUnit) && _val ) then
 			{
 				// there is no lbSetText, so just punt it out of the list and fix it up there..
 				lbDelete [_listBox,_index];
 				f_cam_listUnits = f_cam_listUnits - [_x];
 				[] call f_cam_checkIndex;
 			};
-			if(!alive _x) then
+			if (!alive _x && {FP_JRM_deadPlayerUnit != _x}) then
 			{
 				if(_index >= 0) then
 				{

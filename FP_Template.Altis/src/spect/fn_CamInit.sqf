@@ -17,6 +17,10 @@ waituntil {missionnamespace getvariable ["BIS_fnc_feedback_allowDeathScreen",tru
 
 // ====================================================================================
 
+if (isNil "FP_JRM_deadPlayerUnit") then {
+	FP_JRM_deadPlayerUnit = objNull;
+};
+
 if(!isnil "BIS_fnc_feedback_allowPP") then
 {
   // disable effects death effects
@@ -32,7 +36,7 @@ if(f_cam_isJIP) then
 };
 
 // Create a Virtual Agent to act as our player to make sure we get to keep Draw3D
-if(isNil "f_cam_VirtualCreated") then
+if(false) then
 {
   createCenter sideLogic;
   _newGrp = createGroup sideLogic;
@@ -174,7 +178,7 @@ f_cam_camera = "camera" camCreate [position _oldUnit select 0,position _oldUnit 
 
 f_cam_fakecamera = "camera" camCreate [position _oldUnit select 0,position _oldUnit select 1,3];
 
-f_cam_curTarget = _oldUnit;
+f_cam_curTarget = if (!isNull FP_JRM_deadPlayerUnit) then {FP_JRM_deadPlayerUnit}else{_oldUnit};
 f_cam_freecamera = "camera" camCreate [position _oldUnit select 0,position _oldUnit select 1,3];
 f_cam_camera camCommit 0;
 f_cam_fakecamera camCommit 0;

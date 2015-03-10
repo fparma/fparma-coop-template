@@ -45,11 +45,8 @@ if (_uid in FP_jrm_deadPlayers || {FP_jrm_timeBeforeJIPNotPossible > -1 && (time
 
     _unit setDamage 1;
     //deleteVehicle _unit;
-    hideObjectGlobal _unit;
 }else{
     [_unit] call FP_JRM_fnc_jipTeleport;
 };
-
-
 
 };

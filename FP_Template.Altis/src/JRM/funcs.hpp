@@ -7,5 +7,7 @@ class FP_JRM {
         class onNoLivesLeft;
         class onPlayerConnected;
         class jipTeleport;
+        class forceRespawn;
+        class forceRespawnClient;
     };
 };

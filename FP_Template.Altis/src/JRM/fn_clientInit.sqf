@@ -1,5 +1,5 @@
 /*
-	Function: FP_JRM_fnc_clientIni
+	Function: FP_JRM_fnc_clientInit
 
 	Description:
 	Inits JRM on clients
@@ -31,10 +31,12 @@ player addEventHandler ["Killed", {
 		// player has no lives left, spawn spectator
 		[FP_clientUID] call FP_JRM_fnc_onNoLivesLeft;
 
-		[_this select 0] spawn {
+		FP_JRM_deadPlayerUnit = _this select 0;
+
+		[FP_JRM_deadPlayerUnit] spawn {
 			setPlayerRespawnTime 9999;
 			sleep 1;
-			[_this select 0, _this select 0, nil, nil, true] spawn F_fnc_CamInit;
+			[FP_JRM_deadPlayerUnit, FP_JRM_deadPlayerUnit, nil, nil, true] spawn F_fnc_CamInit;
 		};
 
 	}else{

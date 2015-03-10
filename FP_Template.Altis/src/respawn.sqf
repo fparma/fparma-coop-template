@@ -12,8 +12,6 @@ if (!isNil "FP_kit_type" && {FP_kit_type != ""}) then {
 _corpse spawn {
 	sleep 60;
 	if (!isNull _this) then {
-		hideBody _this;
-		sleep 10;
 		deleteVehicle _this;
 	};
 };
