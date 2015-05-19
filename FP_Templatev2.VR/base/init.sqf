@@ -68,4 +68,8 @@ if (isServer && FP_use_cleanUp) then {
 	[] execVM "base\scripts\clean_up.sqf";
 };
 
+if (FP_JRM_amountLives > -1) then {
+	[] call FP_JRM_fnc_init;
+};
+
 FP_fnc_baseInit = nil; // not needed anymore
