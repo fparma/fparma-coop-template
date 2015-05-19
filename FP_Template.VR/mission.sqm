@@ -1304,28 +1304,28 @@ class Mission
 		items=4;
 		class Item0
 		{
-			position[]={865.44727,5,1000.1733};
+			position[]={865.75934,5,1000.2123};
 			name="respawn_west";
 			type="b_hq";
 			colorName="ColorWEST";
 		};
 		class Item1
 		{
-			position[]={866.63226,5,1000.1948};
+			position[]={866.53485,5,1000.2041};
 			name="respawn_east";
 			type="b_hq";
 			colorName="ColorEAST";
 		};
 		class Item2
 		{
-			position[]={866.59857,5,999.49268};
+			position[]={866.53998,5,999.63867};
 			name="respawn_guerrila";
 			type="b_hq";
 			colorName="ColorGUER";
 		};
 		class Item3
 		{
-			position[]={865.43805,5,999.48682};
+			position[]={865.74042,5,999.56494};
 			name="respawn_civilian";
 			type="b_hq";
 			colorName="ColorCIV";

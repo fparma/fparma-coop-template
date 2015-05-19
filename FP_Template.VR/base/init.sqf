@@ -20,7 +20,7 @@ if (isClass(configFile>>"CfgPatches">>"task_force_radio")) then {
 if (hasInterface) then {
 	// Clients
 
-	// Log ace markers. Yes we are overwriting ace functions
+	// Log ace markers. yes, overwrite ace functions
 	ACE_markers_fnc_placeMarker = compile preProcessFileLineNumbers "base\scripts\log_ace_markers.sqf";
 	ACE_maptools_fnc_handleMouseButton = compile preProcessFileLineNumbers "base\scripts\log_ace_line_markers.sqf";
 
@@ -32,13 +32,16 @@ if (hasInterface) then {
 		_a setMarkerAlphaLocal 0;
 	};
 
-	// Add teleport options to flag. Format is ["Display Name", "objectName"]
+	// Add teleport options to flag. See config.sqf
 	if (!isNil "fp_flag") then {
 		[fp_flag, FP_flag_targets] call compile preProcessFileLineNumbers "base\scripts\teleport_flag.sqf";
 	};
 
 	[] spawn {
 		waitUntil {!isNull player};
+
+		// is set by fn_getKit
+		FP_kit_type = player getVariable ["FP_kit_type", []];
 
 		player addEventHandler ["Respawn", {
 			// Time before the teleport flag (if available) can be used again, to prevent people from just teleporting after dying.
@@ -47,6 +50,11 @@ if (hasInterface) then {
 
 			// Add new unit to zeus
 			[_this select 0, "FP_fnc_addCuratorObject", false] call BIS_fnc_MP;
+
+			// Respawn with gear if using template gear
+			if (count FP_kit_type > 0) then {
+					[_this select 0, FP_kit_type select 0, FP_kit_type select 1] call FP_fnc_getKit;
+			};
 		}];
 
 		// Fix so player cant join ENEMY side, where all sides fires on him

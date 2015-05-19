@@ -4,6 +4,8 @@
 	Description:
 		This function will give units a predefined kit.
 
+		To change the "default" gear (when callign without a scriptFile), edit config.sqf
+
 		As an example if a unit have [this, "PLT", "vanilla_nato"] call FP_fnc_getKit;
 		It will do the case "PLT" inside gear\loadouts\vanilla_nato.sqf
 
@@ -24,18 +26,13 @@
 	Cuel 2015-01-07
 */
 
-if (isNil "FP_GEAR_DEFAULT") then {
-	[] call compile preprocessFileLineNumbers "gear\config.sqf";
-};
-
 private ["_unit", "_kit", "_scriptFile"];
 _unit = [_this,0,objNull,[objNull]] call BIS_fnc_param;
 _kit = toUpper ([_this,1,"",[""]] call BIS_fnc_param);
 _scriptFile = [_this, 2, FP_GEAR_DEFAULT] call BIS_fnc_param;
 
 _unit setVariable ["BIS_enableRandomization", false];
-_unit setvariable ["BIS_noCoreConversations",true]; // disable "OUT OF AMMO"
-_unit disableConversation true;
+_unit setVariable ["FP_kit_type", [_kit, _scriptFile]];
 
 if (local _unit) then {
 	removeHeadgear _unit;
