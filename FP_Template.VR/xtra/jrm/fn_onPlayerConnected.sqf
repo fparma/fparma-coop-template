@@ -33,9 +33,9 @@ while {isNull _unit} do
 if (isNull _unit) exitWith{};
 
 // We have the player object
-if (_uid in FP_jrm_deadPlayers || {FP_jrm_timeBeforeJIPNotPossible > -1 && (time > (1 max FP_jrm_timeBeforeJIPNotPossible))}) then {
+if (_uid in FP_JRM_deadPlayers || {FP_JRM_timeBeforeJIPNotPossible > -1 && (time > (1 max FP_JRM_timeBeforeJIPNotPossible))}) then {
     /* Let player init this script so he has the killed EV */
-    waitUntil {isNull _unit || (_unit getVariable ["FP_jrm_isInit",false])};
+    waitUntil {isNull _unit || (_unit getVariable ["FP_JRM_isInit",false])};
     // Timeout
     if (isNull _unit) exitWith {};
 

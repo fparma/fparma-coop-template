@@ -9,7 +9,7 @@
 */
 
 if (FP_JRM_amountLives < 0 || !isMultiplayer) exitWith {};
-if (isNil "FP_jrm_savedDeaths") then {FP_jrm_savedDeaths = []};
+if (isNil "FP_JRM_savedDeaths") then {FP_JRM_savedDeaths = []};
 
 if (hasInterface) then {
 	0 spawn {
@@ -34,9 +34,9 @@ if (hasInterface) then {
 };
 
 if (isServer) then {
-	FP_jrm_deadPlayers = [];
+	FP_JRM_deadPlayers = [];
 
-	["FP_jrm_playerConnectedEV","onPlayerConnected",{
+	["FP_JRM_playerConnectedEV","onPlayerConnected",{
 		if (time < 5) exitWith {};
 		[_uid] call FP_JRM_fnc_onPlayerConnected;
 	}] call BIS_fnc_addStackedEventHandler;
@@ -50,8 +50,8 @@ if (isServer) then {
 
 		if (_unit getVariable ["ACE_isUnconscious", false]) then {
 			_amountLives = [_uid] call FP_JRM_fnc_decreaseLivesLeft;
-			if (_amountLives isEqualTo 0 && {!(_uid in FP_jrm_deadPlayers)}) then {
-				FP_jrm_deadPlayers pushBack _uid;
+			if (_amountLives isEqualTo 0 && {!(_uid in FP_JRM_deadPlayers)}) then {
+				FP_JRM_deadPlayers pushBack _uid;
 			};
 		};
 		false

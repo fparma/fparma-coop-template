@@ -22,7 +22,7 @@
 */
 
 _unit = [_this, 0, objNull, [objNull]] call BIS_fnc_param;
-if (isNull _unit || !FP_jrm_JIPTeleport) exitWith {};
+if (isNull _unit || !FP_JRM_JIPTeleport) exitWith {};
 
 private ["_goodPos" , "_tppos" ,"_isValidPos"];
 _tppos = [];

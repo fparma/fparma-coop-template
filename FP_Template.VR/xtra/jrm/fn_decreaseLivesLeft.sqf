@@ -30,15 +30,15 @@ _idx = -1;
         _idx = _foreachindex;
         _amountLives = _x select 1;
     };
-}forEach FP_jrm_savedDeaths;
+}forEach FP_JRM_savedDeaths;
 
 if (_idx > -1) then {
-    FP_jrm_savedDeaths set [_idx, [_uid, 0 max (_amountLives -1)]];
+    FP_JRM_savedDeaths set [_idx, [_uid, 0 max (_amountLives -1)]];
 }else{
-    FP_jrm_savedDeaths pushback [_uid, 0 max (_amountLives -1)];
+    FP_JRM_savedDeaths pushback [_uid, 0 max (_amountLives -1)];
 };
 
-publicVariable "FP_jrm_savedDeaths";
+publicVariable "FP_JRM_savedDeaths";
 // Do not decrease lives here as it would cause "1 respawn" to be 0 remaining
 
 _amountLives
