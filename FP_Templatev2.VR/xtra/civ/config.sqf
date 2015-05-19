@@ -118,7 +118,7 @@ _allCivilians =
 ];
 
 
-/*Not a setting , leave*/
+/*Not a setting*/
 private ["_createDebugMarker","_debugCounter"];
 if (_debug) then {
 	_debugCounter = 0;

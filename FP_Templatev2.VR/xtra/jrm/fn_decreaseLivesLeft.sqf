@@ -21,9 +21,8 @@ if (_uid == "") exitWith {
     -1
 };
 
-if (FP_JRM_amountLives < 0) exitWith {-1};
-
-_amountLives = FP_jrm_amountLives;
+_amountLives = FP_JRM_amountLives;
+if (_amountLives < 0) exitWith {-1};
 _idx = -1;
 
 {

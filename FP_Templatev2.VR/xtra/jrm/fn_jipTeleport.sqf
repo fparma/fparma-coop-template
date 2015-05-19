@@ -4,9 +4,10 @@
 	Description:
 		Teleports a JIP player. If he is group leader, he wil be teleport to his group.
 
-        If member of a group, will be teleport to group leader
+    If member of a group, will be teleport to group leader
 
-        If no units in group, will be teleport to the average position of all players. If no player within 150m, chooses a random player.
+    If no units in group, will be teleport to the average position of all players of his side.
+    If no player within 150m, chooses a random player.
 
 	Parameters:
 		_unit - Player object to teleport

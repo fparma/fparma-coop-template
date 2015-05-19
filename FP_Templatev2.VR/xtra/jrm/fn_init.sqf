@@ -13,7 +13,7 @@ if (isNil "FP_jrm_savedDeaths") then {FP_jrm_savedDeaths = []};
 
 if (hasInterface) then {
 	0 spawn {
-		waitUntil {!isNull player && {getPlayerUID != ""}};
+		waitUntil {!isNull player && {getPlayerUID player != ""}};
 		FP_clientUID = getPlayerUID player;
 
 		player addEventHandler ["Killed", {
@@ -21,6 +21,7 @@ if (hasInterface) then {
 				_amountLives = _this;
 				waitUntil {alive player};
 				if (_amountLives isEqualTo 0) then {
+					FP_JRM_playerDead = true;
 					[player, player, nil, nil, true] spawn F_fnc_camInit;
 				}else{
 					hintSilent format ["Remaining lives: %1", _amountLives];
@@ -36,7 +37,7 @@ if (isServer) then {
 	FP_jrm_deadPlayers = [];
 
 	["FP_jrm_playerConnectedEV","onPlayerConnected",{
-		if (time < 10) exitWith {};
+		if (time < 5) exitWith {};
 		[_uid] call FP_JRM_fnc_onPlayerConnected;
 	}] call BIS_fnc_addStackedEventHandler;
 

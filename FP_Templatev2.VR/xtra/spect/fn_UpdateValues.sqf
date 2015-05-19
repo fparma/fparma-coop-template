@@ -50,7 +50,7 @@ while {true} do
 	// ====================================================================================
 	// Check it and see if they have been added already
 	{
-		if(!(_x in f_cam_listUnits) && ({alive _x && _x distance [0, 100] > 50} count units _x) > 0 ) then
+		if(!(_x in f_cam_listUnits) && ({alive _x && _x distance [0, 0] > 50} count units _x) > 0 ) then
 		{
 			_text = toString(toArray(groupID _x) - [45]);
 			_index = lbAdd [_listBox,_text];
@@ -58,7 +58,7 @@ while {true} do
 			f_cam_listUnits pushBack _x;
 			lbSetColor [_listBox,_index,[side _x,false] call BIS_fnc_sideColor];
 			{
-				if(alive _x && {_x distance [0, 100] > 50}) then
+				if(alive _x && {_x distance [0, 0] > 50}) then
 					{
 						if(!(_x in f_cam_listUnits) && {!(_x iskindof "VirtualMan_F") && !(_x isKindOf "VirtualCurator_F")}) then
 						{
