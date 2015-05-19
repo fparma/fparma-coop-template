@@ -20,8 +20,6 @@ class CfgFunctions {
 		#include "gear\functions\funcs.hpp"
 	};
 
-	// Xtras below
-
 	// Spawning functions
 	class FP_Spawn {
 		#include "xtra\spawn\funcs.hpp"

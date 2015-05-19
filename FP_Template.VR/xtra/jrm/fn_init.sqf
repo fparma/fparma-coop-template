@@ -3,7 +3,7 @@
 
 	Description:
 		Inits JRM system
-		Called from base inti.sqf
+		Called from base init.sqf
 
 	Author:
 	Cuel 2015-05-15
