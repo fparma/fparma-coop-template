@@ -8,7 +8,7 @@
 	Cuel 2015-05-15
 */
 
-if (FP_JRM_amountLives < 0) exitWith {};
+if (FP_JRM_amountLives < 0 || !isMultiplayer) exitWith {};
 if (isNil "FP_jrm_savedDeaths") then {FP_jrm_savedDeaths = []};
 
 if (hasInterface) then {
