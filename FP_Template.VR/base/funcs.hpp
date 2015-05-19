@@ -8,7 +8,7 @@ class baseAPI {
 	class hint;
 	class getCurrentScript;
 	class addCuratorObject;
-	class weaponsColdAndUnitLock;
+	class coldStart;
 	class getPlayer;
 	class setVehicleName;
 	class clearVehicle;

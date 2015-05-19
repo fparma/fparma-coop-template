@@ -1,5 +1,5 @@
 /*
-	Function: FP_fnc_weaponsColdAndUnitLock
+	Function: FP_fnc_coldStart
 
 	API:
 		Any
