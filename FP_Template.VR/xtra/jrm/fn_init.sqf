@@ -23,6 +23,7 @@ if (hasInterface) then {
 				waitUntil {alive player};
 				if (_amountLives isEqualTo 0) then {
 					FP_JRM_playerDead = true;
+					[FP_clientUID] call FP_JRM_fnc_onNoLivesLeft;
 					[player, player, nil, nil, true] spawn F_fnc_camInit;
 				}else{
 					hintSilent format ["Remaining lives: %1", _amountLives];
