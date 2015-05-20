@@ -43,7 +43,7 @@ FP_lockCanMove = ["gm", "actual", "amed", "a0","b0", "c0", "d0","p1", "p2", "cre
 // If you want to utilize wave respawn, the respawn of the mission must be BASE.
 
 // Amount of respawns. 0 = no respawns. -1 will disable JRM and players may respawn infinite amount of times
-FP_JRM_amountLives = 1;
+FP_JRM_amountLives = -1;
 
 // Amount of seconds that JIP is allowed. Units connecting after this time will be killed
 // and forced into spectator.
@@ -53,4 +53,4 @@ FP_JRM_timeBeforeJIPNotPossible = -1;
 // Group leader = teleport to group
 // Member of group = teleport to leader
 // No members in group = teleport to an average position of all players on side
-FP_JRM_JIPTeleport = true;
+FP_JRM_JIPTeleport = false;
