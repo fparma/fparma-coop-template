@@ -228,10 +228,7 @@ case "KeyDown":
 
                 // black out the screen
                 ["F_ScreenSetup",false] call BIS_fnc_blackOut;
-                if(isNull (getAssignedCuratorLogic player)) then
-                {
-                    [[player,true,playableUnits],'f_fnc_zeusInit',false] spawn BIS_fnc_MP;
-                };
+
                 [] spawn {
                     waitUntil {!isNull (getAssignedCuratorLogic player)};
                     ["F_ScreenSetup"] call BIS_fnc_blackIn;
@@ -349,20 +346,7 @@ case "KeyDown":
         case 25:
 		{
             f_cam_muteSpectators = !f_cam_muteSpectators;
-            switch (f_var_radios) do {
-              // ACRE
-              case 1: {
-                [f_cam_muteSpectators] call acre_api_fnc_setSpectator;
-              };
-              // TFR
-              case 2: {
-                [player, f_cam_muteSpectators] call TFAR_fnc_forceSpectator;
-              };
-              case 3: {
-                [f_cam_muteSpectators] call acre_api_fnc_setSpectator;
-              };
-
-            };
+						[player, f_cam_muteSpectators] call TFAR_fnc_forceSpectator;
         };
         case 29: // CTRL
         {
@@ -513,4 +497,3 @@ case "KeyUp":
 };
 _handled
 };
-

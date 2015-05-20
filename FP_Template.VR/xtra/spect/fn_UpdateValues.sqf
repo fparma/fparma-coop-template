@@ -24,11 +24,11 @@ while {true} do
 	// update string.
 	if(alive f_cam_curTarget) then
 	{
-		ctrlSetText [1000,format ["Spectating:%1", name f_cam_curTarget]];
+		ctrlSetText [1000,format ["Spectating: %1", name f_cam_curTarget]];
 	}
 	else
 	{
-		ctrlSetText [1000,format ["Spectating:%1", "Dead"]];
+		ctrlSetText [1000,format ["Spectating: %1", "Dead"]];
 	};
 	// ====================================================================================
 	// fetch units
