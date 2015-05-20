@@ -6,11 +6,11 @@ FP_VD = 2000;
 // object view distance
 FP_OVD = 1800;
 
-// A script file inside gear\loadouts that will be applied to units calling without the third parameter to getKit
-// As in, it will be the default loadout script used. Useful for players
+// Gear: A script file inside gear\loadouts that will be the "default" script for all units calling
+// This is useful so unit inits does not have to be changed in every mission
 FP_GEAR_DEFAULT = "vanilla_nato";
 
-// If gear errors should be reported (Boolean)
+// Gear: If gear errors should be reported (Boolean). Shows stuff like failed to add etc.
 FP_GEAR_REPORT_ERRORS = !isMultiplayer;
 
 // Use clean up script. See base\scripts\clean_up
@@ -43,7 +43,7 @@ FP_lockCanMove = ["gm", "actual", "amed", "a0","b0", "c0", "d0","p1", "p2", "cre
 // If you want to utilize wave respawn, the respawn of the mission must be BASE.
 
 // Amount of respawns. 0 = no respawns. -1 will disable JRM and players may respawn infinite amount of times
-FP_JRM_amountLives = 2;
+FP_JRM_amountLives = 1;
 
 // Amount of seconds that JIP is allowed. Units connecting after this time will be killed
 // and forced into spectator.
