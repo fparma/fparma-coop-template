@@ -10,8 +10,11 @@ createCenter resistance;
 createCenter civilian;
 
 {
-	_x addCuratorEditableObjects [vehicles,true];
-	_x addCuratorEditableObjects [(allMissionObjects "Man"),false];
-	_x addCuratorEditableObjects [(allMissionObjects "Air"),true];
-	_x addCuratorEditableObjects [(allMissionObjects "Ammo"),false];
+	_curator = _x;
+	_curator addCuratorEditableObjects [vehicles,true];
+	_curator addCuratorEditableObjects [(allMissionObjects "Man"),false];
+	_curator addCuratorEditableObjects [(allMissionObjects "Air"),true];
+	_curator addCuratorEditableObjects [(allMissionObjects "Ammo"),false];
+	_curator setCuratorWaypointCost 0;
+	{_curator setCuratorCoef [_x, 0]} forEach ["place","edit","delete","destroy","group","synchronize"];
 }forEach allCurators;
