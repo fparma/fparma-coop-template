@@ -31,6 +31,8 @@ if (hasInterface) then {
 				};
 			};
 		}];
+
+		player setVariable ["FP_JRM_isInit", true, true];
 	};
 };
 

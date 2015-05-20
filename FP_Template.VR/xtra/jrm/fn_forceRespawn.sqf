@@ -3,7 +3,9 @@
 
 	Description:
 		Force respawns of all current dead units
-		Must be called on every client (all computers)
+		Must be called on all computers including server
+
+		Player will be invulnerable until the blackout has finished.
 
 	Parameters:
 	_posOrCode - A position or code/function. If nil, normal "respawn_X" markers will be used
@@ -22,6 +24,12 @@
 	Author:
 	Cuel 2015-05-15
 */
+
+
+if (isServer) then {
+	FP_JRM_deadPlayers = [];
+	publicVariable "FP_JRM_deadPlayers";
+};
 
 if (isNil "FP_JRM_playerDead" || {!FP_JRM_playerDead} || {isDedicated}) exitWith {};
 _this spawn {
@@ -42,6 +50,7 @@ _firedEV = player addEventHandler ["Fired", {
 sleep 2;
 [] call F_fnc_forceExit;
 
+// Figure out if a marker or code was passed, or a position
 private ["_function", "_pos"];
 if (isNil "_posOrCode") then {
 	_pos = (["respawn_west", "respawn_east", "respawn_guerrila", "respawn_civilian"]

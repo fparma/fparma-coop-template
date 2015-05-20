@@ -1,11 +1,16 @@
 /*
 	Function: FP_JRM_fnc_onPlayerConnected
+
 	Description:
+
 		Called when a player connects. Only on server.
-        Server finds the unit connected with the UID, and checks if he is allowed to be alive
-        (hasn't died earlier, didn't disconnect while unconscious, did not JiP after JIP maxiumum time)
+
+    Server finds the unit connected with the UID, and checks if he is allowed to be alive
+      (hasn't died earlier, didn't disconnect while unconscious, did not JiP after JIP maxiumum time)
+
 	Parameters:
 		_uid - Client UID
+
 	Author:
 	Cuel 2015-03-03
 */
