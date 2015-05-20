@@ -46,7 +46,7 @@ FP_lockCanMove = ["gm", "actual", "amed", "a0","b0", "c0", "d0","p1", "p2", "cre
 FP_JRM_amountLives = -1;
 
 // Amount of seconds that JIP is allowed. Units connecting after this time will be killed
-// and forced into spectator.
+// and forced into spectator. -1 = disabled
 FP_JRM_timeBeforeJIPNotPossible = -1;
 
 // If JIP players should be teleported.
