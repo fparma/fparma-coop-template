@@ -26,62 +26,40 @@
 	Cuel 2015-01-07
 */
 
-private ["_unit", "_kit", "_scriptFile"];
+private ["_unit", "_kit", "_scriptFile", "_script"];
 _unit = [_this,0,objNull,[objNull]] call BIS_fnc_param;
 _kit = toUpper ([_this,1,"",[""]] call BIS_fnc_param);
 _scriptFile = [_this, 2, FP_GEAR_DEFAULT] call BIS_fnc_param;
 
-_unit setVariable ["BIS_enableRandomization", false];
+// For respawn, retrieved in base init after player is inited
 _unit setVariable ["FP_kit_type", [_kit, _scriptFile]];
+_unit setVariable ["BIS_enableRandomization", false];
 
-if (local _unit) then {
-	removeHeadgear _unit;
-	removeAllContainers _unit;
-	removeAllItems _unit;
-	removeAllWeapons _unit;
-	removeAllAssignedItems _unit;
+if (!local _unit) exitWith {};
 
-	// Shows errors
-	if (FP_GEAR_REPORT_ERRORS && {isNil "FP_gear_errs"}) then {
-		FP_gear_errs = [];
-		[] spawn {
-			sleep 3;
-			if (count FP_gear_errs > 0) then {
-	            _structured = [];
-	            {
-	                _structured pushBack _x;
-	                _structured pushBack lineBreak;
-	            }forEach FP_gear_errs;
-				"GEAR ERRORS" hintC composeText _structured;
-				FP_gear_errs = nil; // reset for later calls
-			};
-		};
-	};
+removeHeadgear _unit;
+removeAllContainers _unit;
+removeAllItems _unit;
+removeAllWeapons _unit;
+removeAllAssignedItems _unit;
 
-	// assign gear
-	[_unit, _kit] call compile preprocessFileLineNumbers ("gear\loadouts\" + _scriptFile + ".sqf");
+// Shows errors after 3 seconds, all units are done then
+if (FP_GEAR_REPORT_ERRORS && {isNil "FP_gear_errs"}) then {
+	FP_gear_errs = [];
+	[] spawn {
+		sleep 3;
+		if (count FP_gear_errs > 0) then {
+	    _structured = [];
+      {
+          _structured pushBack _x;
+          _structured pushBack lineBreak;
+      }forEach FP_gear_errs;
 
-	//local host
-	if (!isDedicated && {isPlayer _unit}) then {
-		FP_kit_type = [_kit, _scriptFile];
-		player addEventHandler ["Respawn", {
-			[_this select 0, FP_kit_type select 0, FP_kit_type select 1] call FP_fnc_getKit;
-		}];
-	};
-
-}else{
-	// setVariable has some serious issues.. cant really be used
-	// http://feedback.arma3.com/view.php?id=17240
-	// temp solution until better is found
-	if (!isDedicated && {isNil "FP_kit_type"}) then {
-		[_unit, _kit, _scriptFile] spawn {
-			waitUntil {!(isNull player)};
-			if (player == (_this select 0)) then {
-				FP_kit_type = [_this select 1, _this select 2];
-				player addEventHandler ["Respawn", {
-					[_this select 0, FP_kit_type select 0, FP_kit_type select 1] call FP_fnc_getKit;
-				}];
-			};
+			"GEAR ERRORS" hintC composeText _structured;
+			FP_gear_errs = nil; // reset for later calls
 		};
 	};
 };
+
+_script = compile preprocessFileLineNumbers ("gear\loadouts\" + _scriptFile + ".sqf");
+[_unit, _kit] call _script;
