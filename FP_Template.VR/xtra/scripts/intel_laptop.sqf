@@ -1,23 +1,23 @@
 /*
 	Function: Laptop
-	
-	Description: 
-		Adds action to laptop and a nice little dialog when you use it. Takes about a minute to complete. 
+
+	Description:
+		Adds action to laptop and a nice little dialog when you use it. Takes about a minute to complete.
 		"Data downloader" script with a nice little GUI
 
 	Parameters:
 		_target - Laptop object
 		_info - String or Array with comma separated strings. Intel. Will also be recorded in diary.
 
-	Examples: 
-	(begin example) 
+	Examples:
+	(begin example)
 		0 = [theLaptop,["Plenty of intel","Not suited for you"]] execVM "xtra\scripts\intel_laptop.sqf";
-	(end) 
+	(end)
 
 	Returns:
 		ID from addAction.
 
-	Author: 
+	Author:
 	T-800a. Edited by Cuel 2015-01-07
 */
 
@@ -27,7 +27,7 @@ if (count _this in [1,2]) exitWith {
 	// This runs from init (only do it one time!)
 	_laptop = [_this,0,objNull,[objNull]] call BIS_fnc_param;
 	if (isNull _laptop) exitWith {["LAPTOP.SQF: Laptop does not exist! (%1)",_laptop] call BIS_fnc_error };
-	_id = _laptop addAction ["<t color='#ff8a00'>\\ Download data //</t>", "fp_scripts\laptop.sqf",0, 9, false, true, "", "((_target getVariable ['fp_inUse',0]) != 1)"];
+	_id = _laptop addAction ["<t color='#ff8a00'>\\ Download data //</t>", "xtra\scripts\intel_laptop.sqf",0, 9, false, true, "", "((_target getVariable ['fp_inUse',0]) != 1)"];
 	_laptop allowDamage false;
 	if (count _this == 2) then {
 		// store info on the laptop and show it later
@@ -65,11 +65,11 @@ for "_i" from 0 to 24 do {
 	sleep 1;
 };
 
-if (!T8_abort) then 
+if (!T8_abort) then
 {
-	ctrlSetText [ 8001, "Connected:" ];		
-	ctrlSetText [ 8003, format [ "%1 kb", _size ] ];		
-	ctrlSetText [ 8004, format [ "%1 kb", _newFile ] ];		
+	ctrlSetText [ 8001, "Connected:" ];
+	ctrlSetText [ 8003, format [ "%1 kb", _size ] ];
+	ctrlSetText [ 8004, format [ "%1 kb", _newFile ] ];
 
 	while { (!_finished && alive player && animationState player == _state) } do
 	{
@@ -82,19 +82,19 @@ if (!T8_abort) then
 
 		if ( _newFile > _size ) then {
 			_finished = true;
-			_dlRate = 0;		
+			_dlRate = 0;
 			_newFile = _size;
-			ctrlSetText [ 8001, "Download finished!" ];	
+			ctrlSetText [ 8001, "Download finished!" ];
 		};
-		ctrlSetText [ 8002, format [ "%1 KB/s", _dlRate ] ];		
+		ctrlSetText [ 8002, format [ "%1 KB/s", _dlRate ] ];
 		_percent =  (_newFile/ _size);
-		_percent = toArray str _percent; 
+		_percent = toArray str _percent;
 		_percent resize 4;
-		{_percent set [_x,-1]} forEach [0,1]; 
+		{_percent set [_x,-1]} forEach [0,1];
 		_percent = _percent - [-1];
 		_percent resize 2;
 		_percent = toString _percent ;
-		ctrlSetText [ 8004, format [ "%1 kb (%2%3)", _newFile,if (_finished) then {100}else{_percent},"%"]];				
+		ctrlSetText [ 8004, format [ "%1 kb (%2%3)", _newFile,if (_finished) then {100}else{_percent},"%"]];
 		sleep 0.2;
 	};
 };
@@ -120,7 +120,7 @@ if (!isNil "_info") then {
 	private ["_str","_id"];
 	player setVariable ["fp_amountIntel",(player getVariable ["fp_amountIntel",1]) +1 ];
 	_str = "";
-	if (typeName _info == typeName []) then 
+	if (typeName _info == typeName []) then
 	{
 		{
 			player sideChat str _x;
