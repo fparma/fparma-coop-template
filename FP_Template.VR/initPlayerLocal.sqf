@@ -8,6 +8,7 @@
 		1- Did player JiP
 */
 
+if (!hasInterface) exitWith {};
 _isJip = _this select 1;
 
 // Add JIP players to zeus

@@ -52,7 +52,7 @@ if (isServer) then {
 	["CUL_civ_onPlayerDisconnectEventHandler","onPlayerDisconnected","CUL_civ_onPlayerDisconnect"] call BIS_fnc_addStackedEventHandler;
 };
 
-if (isServer && isMultiplayer) exitWith{};
+if (!hasInterface && isMultiplayer) exitWith{};
 #include "civ_config.sqf";
 #define _increaseCiviliansByOne				(CUL_CIV_LOGIC setVariable ["CUL_civ_amount", (CUL_CIV_LOGIC getVariable ["CUL_civ_amount",0])+1,true])
 #define _decreaseCiviliansByOne			(CUL_CIV_LOGIC setVariable ["CUL_civ_amount", abs((CUL_CIV_LOGIC getVariable ["CUL_civ_amount",1])-1),true])
