@@ -76,7 +76,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=13;
+		items=14;
 		class Item0
 		{
 			side="LOGIC";
@@ -941,6 +941,25 @@ class Mission
 				};
 			};
 		};
+		class Item13
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={895.50049,5,999.98193};
+					id=45;
+					side="LOGIC";
+					vehicle="HeadlessClient_F";
+					leader=1;
+					skill=0.60000002;
+					text="HC";
+					description="headless client";
+				};
+			};
+		};
 	};
 	class Vehicles
 	{
@@ -948,7 +967,7 @@ class Mission
 		class Item0
 		{
 			position[]={856.73303,5,1004.311};
-			id=45;
+			id=46;
 			side="EMPTY";
 			vehicle="Flag_Blue_F";
 			leader=1;
@@ -958,7 +977,7 @@ class Mission
 		class Item1
 		{
 			position[]={982.70026,5,980.34912};
-			id=46;
+			id=47;
 			side="EMPTY";
 			vehicle="B_APC_Tracked_01_rcws_F";
 			leader=1;
@@ -969,7 +988,7 @@ class Mission
 		class Item2
 		{
 			position[]={968.04187,5,980.56348};
-			id=47;
+			id=48;
 			side="EMPTY";
 			vehicle="B_APC_Wheeled_01_cannon_F";
 			leader=1;
@@ -980,7 +999,7 @@ class Mission
 		class Item3
 		{
 			position[]={945.91156,5,997.25635};
-			id=48;
+			id=49;
 			side="EMPTY";
 			vehicle="B_MRAP_01_hmg_F";
 			leader=1;
@@ -994,7 +1013,7 @@ class Mission
 		class Item4
 		{
 			position[]={945.6944,5,987.96875};
-			id=49;
+			id=50;
 			side="EMPTY";
 			vehicle="B_MRAP_01_hmg_F";
 			leader=1;
@@ -1008,7 +1027,7 @@ class Mission
 		class Item5
 		{
 			position[]={945.27722,5,978.59082};
-			id=50;
+			id=51;
 			side="EMPTY";
 			vehicle="B_MRAP_01_hmg_F";
 			leader=1;
@@ -1022,7 +1041,7 @@ class Mission
 		class Item6
 		{
 			position[]={952.56458,5,997.5611};
-			id=51;
+			id=52;
 			side="EMPTY";
 			vehicle="B_MRAP_01_F";
 			leader=1;
@@ -1036,7 +1055,7 @@ class Mission
 		class Item7
 		{
 			position[]={952.51367,5,987.95117};
-			id=52;
+			id=53;
 			side="EMPTY";
 			vehicle="B_MRAP_01_F";
 			leader=1;
@@ -1050,7 +1069,7 @@ class Mission
 		class Item8
 		{
 			position[]={952.77692,5,977.93457};
-			id=53;
+			id=54;
 			side="EMPTY";
 			vehicle="B_MRAP_01_F";
 			leader=1;
@@ -1064,7 +1083,7 @@ class Mission
 		class Item9
 		{
 			position[]={967.21313,5,999.3916};
-			id=54;
+			id=55;
 			side="EMPTY";
 			vehicle="B_Heli_Transport_01_F";
 			leader=1;
@@ -1075,7 +1094,7 @@ class Mission
 		class Item10
 		{
 			position[]={1006.9444,5,1000.854};
-			id=55;
+			id=56;
 			side="EMPTY";
 			vehicle="C_Offroad_01_F";
 			skill=0.2;
@@ -1086,7 +1105,7 @@ class Mission
 		class Item11
 		{
 			position[]={1012.6618,5,1000.3906};
-			id=56;
+			id=57;
 			side="EMPTY";
 			vehicle="C_Offroad_01_F";
 			skill=0.2;
@@ -1097,7 +1116,7 @@ class Mission
 		class Item12
 		{
 			position[]={1012.5847,5,991.3291};
-			id=57;
+			id=58;
 			side="EMPTY";
 			vehicle="C_Offroad_01_F";
 			skill=0.2;
@@ -1108,7 +1127,7 @@ class Mission
 		class Item13
 		{
 			position[]={1007.3053,5,991.13428};
-			id=58;
+			id=59;
 			side="EMPTY";
 			vehicle="C_Offroad_01_F";
 			skill=0.2;
@@ -1120,7 +1139,7 @@ class Mission
 		{
 			position[]={880.11694,5,1001.2905};
 			azimut=-168.40761;
-			id=59;
+			id=60;
 			side="EMPTY";
 			vehicle="Land_Sign_WarningMilitaryVehicles_F";
 			leader=1;
@@ -1130,7 +1149,7 @@ class Mission
 		class Item15
 		{
 			position[]={886.52643,5,998.90869};
-			id=60;
+			id=61;
 			side="EMPTY";
 			vehicle="Land_PaperBox_closed_F";
 			leader=1;
@@ -1140,7 +1159,7 @@ class Mission
 		class Item16
 		{
 			position[]={879.02502,5,1000.2197};
-			id=61;
+			id=62;
 			side="EMPTY";
 			vehicle="Land_Pallet_MilBoxes_F";
 			leader=1;
@@ -1151,7 +1170,7 @@ class Mission
 		{
 			position[]={882.87549,5,999.78271};
 			azimut=68.451752;
-			id=62;
+			id=63;
 			side="EMPTY";
 			vehicle="Land_ScrapHeap_1_F";
 			leader=1;
@@ -1162,7 +1181,7 @@ class Mission
 		{
 			position[]={883.17737,5,1000.0068};
 			azimut=180;
-			id=63;
+			id=64;
 			side="EMPTY";
 			vehicle="CamoNet_BLUFOR_F";
 			leader=1;
@@ -1173,7 +1192,7 @@ class Mission
 		{
 			position[]={886.7276,5,1001.2036};
 			azimut=26.951923;
-			id=64;
+			id=65;
 			side="EMPTY";
 			vehicle="Land_WaterTank_F";
 			leader=1;
@@ -1183,7 +1202,7 @@ class Mission
 		class Item20
 		{
 			position[]={945.29376,5,966.95117};
-			id=65;
+			id=66;
 			side="EMPTY";
 			vehicle="B_MRAP_01_hmg_F";
 			leader=1;
@@ -1197,7 +1216,7 @@ class Mission
 		class Item21
 		{
 			position[]={953.20026,5,966.78613};
-			id=66;
+			id=67;
 			side="EMPTY";
 			vehicle="B_MRAP_01_F";
 			leader=1;
@@ -1212,7 +1231,7 @@ class Mission
 		{
 			position[]={851.61444,5,999.88818};
 			azimut=180;
-			id=67;
+			id=68;
 			side="EMPTY";
 			vehicle="CamoNet_BLUFOR_F";
 			skill=0.2;
@@ -1222,7 +1241,7 @@ class Mission
 		{
 			position[]={853.83563,5,999.36133};
 			azimut=144.60843;
-			id=68;
+			id=69;
 			side="EMPTY";
 			vehicle="MapBoard_altis_F";
 			skill=0;
@@ -1231,7 +1250,7 @@ class Mission
 		class Item24
 		{
 			position[]={850.78687,5,1000.5488};
-			id=69;
+			id=70;
 			side="EMPTY";
 			vehicle="Land_WoodenTable_large_F";
 			skill=0;
@@ -1241,7 +1260,7 @@ class Mission
 		{
 			position[]={852.27124,5,1000.6675};
 			azimut=-173.87888;
-			id=70;
+			id=71;
 			side="EMPTY";
 			vehicle="Land_ChairPlastic_F";
 			skill=0;
@@ -1251,7 +1270,7 @@ class Mission
 		{
 			position[]={849.08105,5,999.63232};
 			azimut=-26.996363;
-			id=71;
+			id=72;
 			side="EMPTY";
 			vehicle="Land_ChairPlastic_F";
 			skill=0;
@@ -1261,7 +1280,7 @@ class Mission
 		{
 			position[]={849.21399,5,1001.645};
 			azimut=22.05645;
-			id=72;
+			id=73;
 			side="EMPTY";
 			vehicle="Land_ChairPlastic_F";
 			skill=0;
@@ -1271,7 +1290,7 @@ class Mission
 		{
 			position[]={983.15997,5,1000.4111};
 			special="NONE";
-			id=73;
+			id=74;
 			side="EMPTY";
 			vehicle="JS_JC_FA18F";
 			skill=0.2;
@@ -1281,7 +1300,7 @@ class Mission
 		class Item29
 		{
 			position[]={867.09705,5,999.90186};
-			id=74;
+			id=75;
 			side="EMPTY";
 			vehicle="MASH_EP1";
 			leader=1;
@@ -1291,7 +1310,7 @@ class Mission
 		class Item30
 		{
 			position[]={864.51453,5,1003.1899};
-			id=75;
+			id=76;
 			side="EMPTY";
 			vehicle="FlagCarrierRedCross_EP1";
 			leader=1;
