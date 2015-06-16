@@ -12,6 +12,7 @@ class baseAPI {
 	class getPlayer;
 	class setVehicleName;
 	class clearVehicle;
+	class checkHC;
 	class baseInit {
 		file ="base\init.sqf";
 		preInit = 1;

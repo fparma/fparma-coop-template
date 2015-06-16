@@ -18,7 +18,7 @@
 		Cuel 2015-01-19
 */
 
-if hasInterface exitWith {false};
+if (isMultiplayer && {hasInterface}) exitWith {false};
 
 private ["_ret", "_hcPresent"];
 _ret = true;
