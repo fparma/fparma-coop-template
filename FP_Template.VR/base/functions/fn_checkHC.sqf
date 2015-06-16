@@ -25,5 +25,5 @@ _hc = missionNamespace getVariable ["HC", objNull];
 _hcPresent = if (!isNull _hc) then {isPlayer _hc} else {false};
 
 _ret = true;
-if (_hcPresent && {isServer}) then {_ret = false};
+if (_hcPresent && isServer) then {_ret = false};
 _ret
