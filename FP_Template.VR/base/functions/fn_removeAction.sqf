@@ -13,7 +13,7 @@
 
 	Examples:
 	(begin example)
-		[theVIP,0] call FP_removeAction;
+		[theVIP,0] call FP_fnc_removeAction;
 	(end)
 
 	Returns:
@@ -27,7 +27,7 @@ _obj = [_this,0,objNull,[objNull]] call BIS_fnc_param;
 _id = [_this,1,-999,[0]] call BIS_fnc_param;
 
 if (isNull _obj || _id == -999)  exitWith {
-	["Wrong parameters for FP_removeAction : %1", _this] call BIS_fnc_error;
+	["Wrong parameters for FP_fnc_removeAction : %1", _this] call BIS_fnc_error;
 	 false
 };
 
