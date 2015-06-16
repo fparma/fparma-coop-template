@@ -31,7 +31,7 @@ if (isServer) then {
 	publicVariable "FP_JRM_deadPlayers";
 };
 
-if (isNil "FP_JRM_playerDead" || {!FP_JRM_playerDead} || {isDedicated}) exitWith {};
+if (isNil "FP_JRM_playerDead" || {!FP_JRM_playerDead} || {!hasInterface}) exitWith {};
 _this spawn {
 
 FP_JRM_playerDead = false;

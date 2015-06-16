@@ -19,7 +19,7 @@
 		Cuel 2015-01-19
 */
 
-if (isDedicated) exitWith{};
+if (!hasInterface) exitWith{};
 
 _force = [_this, 0, false, [false]] call BIS_fnc_param;
 

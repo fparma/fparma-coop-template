@@ -23,7 +23,7 @@
 	Cuel 2015-04-23
 */
 
-if (isDedicated) exitWith {};
+if (!hasInterface) exitWith {};
 
 _veh = [_this,0,objNull, [objNull]] call BIS_fnc_param;
 _name = [_this, 1, "", ["", objNull]] call BIS_fnc_param;

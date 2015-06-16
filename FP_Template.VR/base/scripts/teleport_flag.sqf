@@ -11,7 +11,7 @@
 ///////////////////////////
 */
 
-if (isDedicated) exitWith {};
+if (!hasInterface) exitWith {};
 private ["_tpobj","_tptargets","_idx","_cnt"];
 _tpobj = [_this,0,objNull] call BIS_fnc_param;
 _tptargets = [_this,1,[],[[]]] call BIS_fnc_param;

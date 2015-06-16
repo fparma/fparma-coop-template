@@ -1,4 +1,4 @@
-if (isDedicated) exitWith{};
+if (!hasInterface) exitWith{};
 
 while {true} do {
 	waitUntil {sleep 0.5; vehicle player isKindOf "Air" && ((driver vehicle player == player) || (gunner vehicle player == player))};
