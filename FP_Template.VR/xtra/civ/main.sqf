@@ -53,7 +53,7 @@ if (isServer) then {
 };
 
 if (!hasInterface && isMultiplayer) exitWith{};
-#include "civ_config.sqf";
+#include "config.sqf";
 #define _increaseCiviliansByOne				(CUL_CIV_LOGIC setVariable ["CUL_civ_amount", (CUL_CIV_LOGIC getVariable ["CUL_civ_amount",0])+1,true])
 #define _decreaseCiviliansByOne			(CUL_CIV_LOGIC setVariable ["CUL_civ_amount", abs((CUL_CIV_LOGIC getVariable ["CUL_civ_amount",1])-1),true])
 #define _amountCiviliansInMission			(CUL_CIV_LOGIC getVariable ["CUL_civ_amount",0])
