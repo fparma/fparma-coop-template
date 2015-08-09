@@ -177,7 +177,7 @@ switch _kit do {
         [_unit, [[_COMMON_MAG, 6], [_COMMON_MAG_T, 2]]] call FP_fnc_addToContainers;
         [_unit, [_COMMON_RIFLE, _COMMON_RIFLE_ATTACHMENTS]] call FP_fnc_addWeapon;
 
-        [_unit, _COMMON_AT_RAT] call _addWeapon;
+        [_unit, _COMMON_AT_RAT] call FP_fnc_addWeapon;
 
     };
 
