@@ -44,7 +44,7 @@ if (typeName _unitsToBoard == typeName grpNull) then {_unitsToBoard = units _uni
 _maxDistanceForUnit = ([_this, 5, 100, [0]] call BIS_fnc_param) max 50;
 _movePos2 = (_this select 6) call CBA_fnc_getPos;
 _dropPos = (_this select 7) call CBA_fnc_getPos;
-_captiveHelictoper = [_this, 8, true, [true]] call BIS_fnc_param;
+_captiveHelictoper = [_this, 8, false, [true]] call BIS_fnc_param;
 
 if (_heliType == "" || count _unitsToBoard == 0 || {isBadPos(_x)} count [_spawnPos, _movePos1, _landPos, _movePos2, _dropPos] > 0) exitWith {
 	["Bad parameters (check no pos is water)!: (%1, %2, %3, %4, %5, %6, %7)", _heliType, _unitsToBoard, _spawnPos, _movePos1, _landPos, _movePos2, _dropPos] call BIS_fnc_error;
