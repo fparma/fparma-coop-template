@@ -1,7 +1,7 @@
 /*
 	Function: FP_fnc_getUnits
-	
-	Description: 
+
+	Description:
 		Main definition for teams and units used in spawn scripts.
 
 		You can create your own team by adding a case.
@@ -14,7 +14,7 @@
 
 		_airDropUnits is used for helicopter type for spawnPara.
 
-	Author: 
+	Author:
 	Cuel 2015-01-18
 */
 
@@ -45,12 +45,7 @@ switch (toUpper _type) do {
 		_specialUnits = ["I_Soldier_LAT_F"];
 		_airdropUnit = "I_Heli_Transport_02_F";
 	};
-	case "AAFD":{
-		_units = ["AAF_D_Soldier_SL","AAF_D_Soldier_TL","AAF_D_Soldier_R","AAF_D_Soldier_MED","AAF_D_Soldier_AR","AAF_D_Soldier_AB","AAF_D_Soldier_GL","AAF_D_Soldier_RL"];
-		_specialUnits = ["AAF_D_Soldier_LAT"];
-		_airdropUnit = "AAF_D_VEH_Heli_Transport";
-	};
-     case "RHSMSV":{
+	case "RHSMSV":{
 		_units = ["rhs_msv_sergeant","rhs_msv_junior_sergeant","rhs_msv_machinegunner","rhs_msv_machinegunner_assistant","rhs_msv_rifleman","rhs_msv_efreitor","rhs_msv_grenadier"];
 		_specialUnits = ["rhs_msv_at","rhs_msv_strelok_rpg_assist"];
 		_airdropUnit = "RHS_Mi8AMT_vvsc";
