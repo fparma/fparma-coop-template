@@ -19,6 +19,11 @@ if (_isJip) then {
 // Get briefing
 [] call compile preProcessFileLineNumbers "briefing.sqf";
 
+// Add teleport options to flag. See config.sqf
+if (!isNil "fp_flag") then {
+	[fp_flag, FP_flag_targets] call compile preProcessFileLineNumbers "base\scripts\teleport_flag.sqf";
+};
+
 // Longer view distance for pilots. Edit in config.sqf
 if (!isNil "FP_pilotNames" && {str player in FP_pilotNames}) then {
 	[] execVM "base\scripts\pilot_viewdistance.sqf";

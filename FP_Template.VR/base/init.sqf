@@ -30,11 +30,6 @@ if (hasInterface) then {
 		(format ["area_%1",_i]) setMarkerAlphaLocal 0;
 	};
 
-	// Add teleport options to flag. See config.sqf
-	if (!isNil "fp_flag") then {
-		[fp_flag, FP_flag_targets] call compile preProcessFileLineNumbers "base\scripts\teleport_flag.sqf";
-	};
-
 	[] spawn {
 		waitUntil {!isNull player};
 
