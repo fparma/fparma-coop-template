@@ -26,8 +26,10 @@
 	Cuel 2015-01-07
 */
 
-_obj = [_this,0,objNull,[objNull]] call BIS_fnc_param;
-_actionArray = [_this,1,[],[[]]] call BIS_fnc_param;
+params [
+	["_obj", objNull, [objNull]],
+	["_actionArray", [], [[]]]
+];
 
 if (isNull _obj || (count _actionArray < 2)) exitWith {
 	["Faulty parameters: %1", _this] call BIS_fnc_error;

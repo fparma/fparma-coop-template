@@ -23,11 +23,10 @@
 	Cuel 2015-01-07
 */
 
-_obj = [_this,0,objNull,[objNull]] call BIS_fnc_param;
-_id = [_this,1,-999,[0]] call BIS_fnc_param;
+params [["_obj", objNull, [objNull]], ["_id", -999, [0]]];
 
 if (isNull _obj || _id == -999)  exitWith {
-	["Wrong parameters for FP_fnc_removeAction : %1", _this] call BIS_fnc_error;
+	["Wrong parameters : %1", _this] call BIS_fnc_error;
 	 false
 };
 

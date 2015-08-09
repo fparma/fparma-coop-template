@@ -12,9 +12,7 @@
 */
 
 if (!hasInterface) exitWith {};
-private ["_tpobj","_tptargets","_idx","_cnt"];
-_tpobj = [_this,0,objNull] call BIS_fnc_param;
-_tptargets = [_this,1,[],[[]]] call BIS_fnc_param;
+params [["_tpobj", objNull, [objNull]], ["_tptargets", [], [[]]]];
 if (isNull _tpobj || (count (_tptargets - [0])) < 1) exitWith {["Wrong parameters for teleport script, exiting"] call BIS_fnc_log};
 
 _idx = 100;

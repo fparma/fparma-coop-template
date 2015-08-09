@@ -23,12 +23,10 @@
 	Cuel 2015-01-07
 */
 
-
-_unit = [_this,0,objNull,[objNull]] call BIS_fnc_param;
-_anim = [_this,1,"",[""]] call BIS_fnc_param;
+params [["_unit", objNull, [objNull]], ["_anim", "", [""]]];
 
 if (isNull _unit)  exitWith {
-	["Wrong parameters for FP_switchMove : %1", _this] call BIS_fnc_error;
+	["Wrong parameters: %1", _this] call BIS_fnc_error;
 	false
 };
 

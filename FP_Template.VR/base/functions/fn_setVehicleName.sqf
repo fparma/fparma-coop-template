@@ -24,9 +24,7 @@
 */
 
 if (!hasInterface) exitWith {};
-
-_veh = [_this,0,objNull, [objNull]] call BIS_fnc_param;
-_name = [_this, 1, "", ["", objNull]] call BIS_fnc_param;
+params [["_veh", objNull, [objNull]], ["_name", "", ["", objNull]]];
 
 if (isNull _veh) exitWith {["Faulty parameters %1", _this] call BIS_fnc_error};
 

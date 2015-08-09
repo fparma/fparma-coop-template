@@ -20,8 +20,7 @@
 */
 
 if (!hasInterface) exitWith{};
-
-_force = [_this, 0, false, [false]] call BIS_fnc_param;
+params [["_force", false, [false]]];
 
 if (!_force && !isNil "FP_coldLockActive") exitWith{};
 FP_coldLockActive = true;

@@ -24,7 +24,7 @@
 
 if (!isServer) exitWith {};
 
-_veh = [_this,0,objNull, [objNull]] call BIS_fnc_param;
+params [["_veh", objNull, [objNull]]];
 if (isNull _veh) exitWith {false};
 
 clearWeaponCargoGlobal _veh;

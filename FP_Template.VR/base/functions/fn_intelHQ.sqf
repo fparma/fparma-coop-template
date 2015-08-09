@@ -28,7 +28,7 @@
 	Cuel 2015-01-07
 */
 
-_obj = [_this,0,objNull,[[],objNull],[2]] call BIS_fnc_param;
+params [["_obj", objNull, [[], objNull], [2]]];
 if (typeName _obj == typeName objNull && {isNull _obj}) exitWith {
 	["faulty sender: %1",_this] call BIS_fnc_error;
 };
