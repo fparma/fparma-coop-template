@@ -4,10 +4,12 @@
 		for details about when the script is exactly executed.
 */
 
-createCenter west;
-createCenter east;
-createCenter resistance;
-createCenter civilian;
+// Create AI centers
+_allUnits = allUnits;
+if (({if ((side _x) isEqualTo east) exitWith {1}} count _allUnits) isEqualTo 0) then {createCenter east};
+if (({if ((side _x) isEqualTo west) exitWith {1}} count _allUnits) isEqualTo 0) then {createCenter west};
+if (({if ((side _x) isEqualTo resistance) exitWith {1}} count _allUnits) isEqualTo 0) then {createCenter resistance};
+if (({if ((side _x) isEqualTo civilian) exitWith {1}} count _allUnits) isEqualTo 0) then {createCenter civilian};
 
 {
 	_curator = _x;
