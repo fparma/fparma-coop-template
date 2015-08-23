@@ -61,5 +61,5 @@ enableItemsDropping = 0;
 onLoadIntroTime=false;
 onLoadMissionTime=false;
 enableDebugConsole = 1;
-allowFunctionsLog = 1;
+allowFunctionsLog = 0;
 joinUnassigned = 1;
