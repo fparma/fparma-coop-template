@@ -16,7 +16,7 @@ FP_GEAR_REPORT_ERRORS = !isMultiplayer;
 // Use clean up script. See base\scripts\clean_up
 FP_use_cleanUp = true;
 
-// The targets for teleport flag object. In format [displayName, objectName]. Must be string entries
+// The targets for teleport flag object. In format [displayName, objectName]. Must be strings
 FP_flag_targets = [
     ["Actual", "actual"],
     ["Alpha Actual","a0"],
