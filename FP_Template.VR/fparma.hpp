@@ -4,7 +4,7 @@
 
 // Functions
 class CfgFunctions {
-	version = 2.0.0;
+	version = 3.0.0;
 	createShortcuts = 1;
 
 	// BASE API. Do not remove
@@ -29,11 +29,5 @@ class CfgFunctions {
 	class FP_JRM {
 		#include "xtra\jrm\funcs.hpp"
 	};
-
-	// Spectate funcs
-	class F {
-		#include "xtra\spect\funcs.hpp"
-	};
-
 
 }; // << do not delete me

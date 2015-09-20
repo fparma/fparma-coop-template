@@ -1,10 +1,8 @@
 tag ="FP_JRM";
 class JRM {
 	file = "xtra\jrm";
-	class decreaseLivesLeft;
 	class forceRespawn;
-	class init;
-	class jipTeleport;
-	class onNoLivesLeft;
-	class onPlayerConnected;
+	class init {
+		postInit = 1;
+	};
 };

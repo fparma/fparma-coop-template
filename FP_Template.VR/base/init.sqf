@@ -2,7 +2,6 @@
 	General FP init. Not for editing unless you know what you doing
 */
 
-// Run config
 [] call compile preprocessFileLineNumbers "config.sqf";
 
 enableSaving [false,false];
@@ -14,7 +13,7 @@ setTerrainGrid 25;
 
 // TFAR settings. Sets the default channels etc
 if (isClass(configFile>>"CfgPatches">>"task_force_radio")) then {
-	[] call compile preProcessFileLineNumbers "base\scripts\tfar_settings.sqf";
+	[] call compile preprocessFileLineNumbers "base\scripts\tfar_settings.sqf";
 };
 
 if (hasInterface) then {
@@ -30,7 +29,7 @@ if (hasInterface) then {
 		(format ["area_%1",_i]) setMarkerAlphaLocal 0;
 	};
 
-	[] spawn {
+	0 spawn {
 		waitUntil {!isNull player};
 
 		// is set by fn_getKit
@@ -67,10 +66,6 @@ if (isServer && FP_use_cleanUp) then {
 	// will not delete units dead on mission start
 	// will not delete units where "this setVariable ["fp_noDelete", true]"
 	[] execVM "base\scripts\clean_up.sqf";
-};
-
-if (!isNil "FP_JRM_fnc_init") then {
-	[] call FP_JRM_fnc_init;
 };
 
 FP_fnc_baseInit = nil;
