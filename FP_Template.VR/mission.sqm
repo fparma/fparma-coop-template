@@ -271,7 +271,7 @@ class Mission
 					leader=1;
 					rank="COLONEL";
 					skill=0.2;
-					text="debugger";
+					text="gm";
 					init="this setGroupID [""COMMANDER""]; [this,""PLT""] call FP_fnc_getKit";
 					description="Commander (Game master)";
 					syncId=2;
