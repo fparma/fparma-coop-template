@@ -31,4 +31,3 @@ if (isServer) then {
         publicVariable _x;
     } forEach ["tf_freq_west_lr", "tf_freq_east_lr", "tf_freq_guer_lr"];
 };
-    
