@@ -10,6 +10,7 @@
 
 if (!hasInterface) exitWith {};
 _isJip = _this select 1;
+[] call compile preProcessFileLineNumbers "base\initPlayer.sqf";
 
 // Add JIP players to zeus
 if (_isJip) then {

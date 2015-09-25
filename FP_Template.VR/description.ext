@@ -13,11 +13,11 @@ disabledAI = 1;
 
 respawndelay = 4;
 respawnDialog = 0;
-respawn = "BASE";
+respawn = "BASE"; // don't edit respawn type unless you know what youre doing
 
 //////////////////////////////////////////// Mission name etc settings ////////////////////////////////////////////
 // Mission name (short)
-OnLoadName = "FP TEMPLATE 2.0.2";
+OnLoadName = "FP TEMPLATE 2.1.0";
 
 // Longer description
 onLoadMission="description.ext to change!";

@@ -29,7 +29,8 @@ class Mission
 		"A3_Modules_F_Curator_Curator",
 		"ace_map",
 		"map_vr",
-		"aia_misc_e_config"
+		"aia_misc_e_config",
+		"3DEN"
 	};
 	addOnsAuto[]=
 	{
@@ -37,7 +38,8 @@ class Mission
 		"A3_Modules_F",
 		"A3_Characters_F_BLUFOR",
 		"a3_characters_f",
-		"A3_Modules_F_Curator_Curator",
+		"3DEN",
+		"a3_modules_f_curator_curator",
 		"ace_map",
 		"A3_Structures_F_Mil_Flags",
 		"A3_Armor_F_Panther",
@@ -59,7 +61,7 @@ class Mission
 	randomSeed=11895797;
 	class Intel
 	{
-		briefingName="FP Template v2.0.2";
+		briefingName="FP Template v2.1.0";
 		overviewText="Edit this please.";
 		startWeather=0;
 		startWind=0;
@@ -915,29 +917,14 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={899.7135,5,1109.3408};
-					class args
-					{
-						items=2;
-						class Item0
-						{
-							value="8";
-							parentCls="ACE_ModuleBlueForceTracking";
-							typeName="Interval";
-						};
-						class Item1
-						{
-							value="1";
-							parentCls="ACE_ModuleBlueForceTracking";
-							typeName="HideAiGroups";
-						};
-					};
+					position[]={895.50049,5,999.98193};
 					id=44;
 					side="LOGIC";
-					vehicle="ACE_ModuleBlueForceTracking";
+					vehicle="HeadlessClient_F";
 					leader=1;
-					lock="UNLOCKED";
 					skill=0.60000002;
+					text="HC";
+					description="headless client";
 				};
 			};
 		};
@@ -949,14 +936,35 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={895.50049,5,999.98193};
+					position[]={900.44611,5,1061.9951};
+					class args
+					{
+						items=3;
+						class Item0
+						{
+							value="1";
+							parentCls="ACE_ModuleBlueForceTracking";
+							typeName="Enabled";
+						};
+						class Item1
+						{
+							value="10";
+							parentCls="ACE_ModuleBlueForceTracking";
+							typeName="Interval";
+						};
+						class Item2
+						{
+							value="1";
+							parentCls="ACE_ModuleBlueForceTracking";
+							typeName="HideAiGroups";
+						};
+					};
 					id=45;
 					side="LOGIC";
-					vehicle="HeadlessClient_F";
+					vehicle="ACE_ModuleBlueForceTracking";
 					leader=1;
+					lock="UNLOCKED";
 					skill=0.60000002;
-					text="HC";
-					description="headless client";
 				};
 			};
 		};
@@ -966,7 +974,7 @@ class Mission
 		items=31;
 		class Item0
 		{
-			position[]={856.73303,5,1004.311};
+			position[]={855.51782,5,1004.4575};
 			id=46;
 			side="EMPTY";
 			vehicle="Flag_Blue_F";
@@ -1305,6 +1313,7 @@ class Mission
 			vehicle="MASH_EP1";
 			leader=1;
 			skill=0.2;
+			init="this allowDamage false";
 			description="Commander (Game master)";
 		};
 		class Item30
@@ -1315,7 +1324,6 @@ class Mission
 			vehicle="FlagCarrierRedCross_EP1";
 			leader=1;
 			skill=0.2;
-			text="fp_flag_1";
 		};
 	};
 	class Markers
