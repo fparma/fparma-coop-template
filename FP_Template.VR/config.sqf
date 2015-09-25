@@ -6,6 +6,9 @@ FP_VD = 2000;
 // object view distance
 FP_OVD = 1800;
 
+//Units that should have longer view distance when flying. Unit names in strings
+FP_pilotNames = ["p1", "p2"];
+
 // Gear: A script file inside gear\loadouts that will be the "default" script for all units calling
 // This is useful so unit inits does not have to be changed in every mission
 FP_GEAR_DEFAULT = "vanilla_nato";
@@ -28,9 +31,6 @@ FP_flag_targets = [
 // Seconds when unit respawns before the TP flag can be used, if there is a flag
 FP_respawnTeleportDelay = 180;
 
-//Units that should have longer view distance when flying. Unit names in strings
-FP_pilotNames = ["p1", "p2"];
-
 // Players that are given the option to start the mission, comma separated strings representing object name
 // Empty array ([])  = disabled. Weapons are hot from the go, and no players will locked to a 20m circle until mission has started.
 FP_lockStarters = ["gm", "actual"];
@@ -39,8 +39,6 @@ FP_lockStarters = ["gm", "actual"];
 // Ignored if FP_lockStarters is an empty array. If empty, squad leaders can move by default
 FP_lockCanMove = ["gm", "actual", "amed", "a0","b0", "c0", "d0","p1", "p2", "crew1", "crew2", "crew3"];
 
-// === JiP and respawn manager settings (requires xtra) === //
-// If you want to utilize wave respawn, the respawn of the mission must be BASE.
-
 // Amount of respawns. 0 = no respawns. -1 = infite
+// You can do wave respawn by using xtra/jrm/forceRespawn
 FP_JRM_respawns = -1;

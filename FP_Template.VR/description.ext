@@ -13,7 +13,7 @@ disabledAI = 1;
 
 respawndelay = 4;
 respawnDialog = 0;
-respawn = "BASE";
+respawn = "BASE"; // don't edit respawn type unless you know what youre doing
 
 //////////////////////////////////////////// Mission name etc settings ////////////////////////////////////////////
 // Mission name (short)

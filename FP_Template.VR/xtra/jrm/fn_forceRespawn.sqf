@@ -3,24 +3,30 @@
 
 	Description:
 		Force respawns of all current dead units
-		Must be called on all computers including server
+		Should be called on all computers if it is a global respawn
+		Can also be used to respawn a single unit when called locally
 
 	Parameters:
-	_posOrCode - A position or code (_this select 0 is the unit)
+	_posOrCode - A marker, object, position,  or code (can also be string code) (_this select 0 will be the unit for code)
+		If position, will be teleported there after exiting spectator
 		If nil, ace spectator will teleport the unti back to where he was when entering spectator (respawn pos)
+	_reset - Clear all previous dead units [Default: false]
 
 	Author:
 	Cuel 2015-05-15
 */
 
-if (!hasInterface) exitWith {};
-_this spawn {
+params ["_posOrCode", ["_reset", false]];
 
-_posOrCode = _this select 0;
-_blackOutDelay = [_this, 1, 2, [0]] call BIS_fnc_param;
+if (_reset) then {
+	FP_JRM_lives = FP_JRM_respawns;
+	if (isServer) then {
+		FP_JRM_savedState = [];
+		publicVariable "FP_JRM_savedState";
+	};
+};
 
-["FP_ScreenSpect", true] call BIS_fnc_blackOut;
-sleep 2;
+if (!hasInterface || {!ACE_spectator_isSet}) exitWith {};
 
 // Figure out if a marker or code was passed, or a position
 private ["_function", "_pos"];
@@ -39,13 +45,19 @@ if (!isNil "_posOrCode") then {
 	};
 };
 
-[false] call ace_spectator_fnc_stageSpectator;
-if (!isNil "_pos") then {
-	player setPos _pos;
-}else{
-	[player] call _function;
-};
+[_pos, _function] spawn {
+	params ["_pos", "_function"];
 
-sleep _blackOutDelay;
-["FP_ScreenSpect"] call BIS_fnc_blackIn;
+	// For some reason the game crashes when using call instead of spawn here.. no idea why
+	_sc1 = [false] spawn ace_spectator_fnc_setSpectator;
+	_sc2 = [player, false] spawn ace_spectator_fnc_stageSpectator;
+	waitUntil {scriptDone _sc1 && scriptDone _sc2};
+
+	if (!isNil "_pos") then {
+		player setPos _pos;
+	} else {
+		if (!isNil "_function") then {
+			[player] call _function;
+		};
+	};
 };
