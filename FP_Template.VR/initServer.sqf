@@ -6,10 +6,14 @@
 
 // Create AI centers
 _allUnits = allUnits;
-if (({if ((side _x) isEqualTo east) exitWith {1}} count _allUnits) isEqualTo 0) then {createCenter east};
-if (({if ((side _x) isEqualTo west) exitWith {1}} count _allUnits) isEqualTo 0) then {createCenter west};
-if (({if ((side _x) isEqualTo resistance) exitWith {1}} count _allUnits) isEqualTo 0) then {createCenter resistance};
-if (({if ((side _x) isEqualTo civilian) exitWith {1}} count _allUnits) isEqualTo 0) then {createCenter civilian};
+_sideHasNoUnits = {
+	params ["_side"];
+	(({if ((side _x) isEqualTo _side) exitWith {1}} count _allUnits) isEqualTo 0)
+};
+if ([east] call _sideHasNoUnits) then {createCenter east};
+if ([west] call _sideHasNoUnits0) then {createCenter west};
+if ([resistance] call _sideHasNoUnits) then {createCenter resistance};
+if ([civilian] call _sideHasNoUnits) then {createCenter civilian};
 
 {
 	_curator = _x;
@@ -19,11 +23,15 @@ if (({if ((side _x) isEqualTo civilian) exitWith {1}} count _allUnits) isEqualTo
 	_curator addCuratorEditableObjects [(allMissionObjects "Ammo"),false];
 	_curator setCuratorWaypointCost 0;
 	{_curator setCuratorCoef [_x, 0]} forEach ["place","edit","delete","destroy","group","synchronize"];
-}forEach allCurators;
+} forEach allCurators;
 
 if (FP_use_cleanUp) then {
 	// clean up script
 	// will not delete units dead on mission start
 	// will not delete units where "this setVariable ["fp_noDelete", true]"
 	[] execVM "base\scripts\clean_up.sqf";
+};
+
+if (!isNil "FP_JRM_fnc_init") {
+	[] call FP_JRM_fnc_init;
 };
