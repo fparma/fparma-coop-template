@@ -1,10 +1,13 @@
 if (!hasInterface) exitWith {};
 
-while {true} do {
-	waitUntil {sleep 0.5; vehicle player isKindOf "Air" && ((driver vehicle player == player) || (gunner vehicle player == player))};
-	setViewDistance 8000;
-	setObjectViewDistance 5000;
-	waitUntil {sleep 0.5; (!(vehicle player isKindOf "Air") || ((driver vehicle player != player) && (gunner vehicle player != player)) || !alive player)};
-	setViewDistance FP_VD;
-	setObjectViewDistance FP_OVD;
-};
+["playerVehicleChanged", {
+	local _veh = vehicle player;
+	if !(_veh isKindOf "Air") exitWith {
+		setViewDistance FP_VD;
+		setObjectViewDistance FP_OVD;
+	};
+	if (ACE_player in [driver _veh, gunner _veh]) exitWith {
+		setViewDistance 8000;
+		setObjectViewDistance 5000;
+	};
+}] call ACE_common_fnc_addEventHandler;
