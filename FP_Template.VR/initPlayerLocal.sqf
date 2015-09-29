@@ -51,3 +51,7 @@ player addEventHandler ["Fired", {
 		};
 	};
 }];
+
+if (!isNil "FP_JRM_fnc_init") {
+	[] call FP_JRM_fnc_init;
+};

@@ -2,7 +2,5 @@ tag ="FP_JRM";
 class JRM {
 	file = "xtra\jrm";
 	class forceRespawn;
-	class init {
-		postInit = 1;
-	};
+	class init;
 };
