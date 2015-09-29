@@ -28,24 +28,17 @@
 	Cuel 2015-04-21
 */
 
-private ["_ret", "_matches"];
-_ret = objNull;
-_matches = [];
-
-if (typeName _this == typeName []) then {_this = _this select 0};
-if (typeName _this != typeName "")  exitWith {
+if (!params [["_name", "", [""]]]) exitWith {
 	["Wrong parameters: %1",_this] call BIS_fnc_error;
-	_ret
+	objNull
 };
 
+local _matches = [];
 {
 	if ([_this, name _x] call bis_fnc_inString) then {
 		_matches pushBack _x;
 	};
-}forEach ([] call CBA_fnc_players);
+} forEach ([] call CBA_fnc_players);
 
-if (count _matches == 1) then {
-	_ret = _matches select 0;
-};
-
-_ret
+if (count _matches == 1) exitWith {_matches select 0};
+objNull
