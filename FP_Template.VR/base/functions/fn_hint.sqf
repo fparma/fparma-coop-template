@@ -22,12 +22,7 @@
 	Cuel 2015-01-07
 */
 
-if (typeName _this == typeName []) then {_this = _this select 0;};
-if (typeName _this != typeName "")  exitWith {
-	["Wrong parameters: %1",_this] call BIS_fnc_error;
-	false
-};
-
-[_this, "hint", true] call BIS_fnc_MP;
+params ["_str"];
+[_str, "hint", true] call BIS_fnc_MP;
 
 true
