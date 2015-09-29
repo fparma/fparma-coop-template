@@ -23,7 +23,7 @@
 	(end)
 
 	Returns:
-	OBJECT | objNull
+	Player object | objNull
 
 	Author:
 	Cuel 2015-04-21
