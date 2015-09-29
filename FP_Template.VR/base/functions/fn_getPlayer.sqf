@@ -18,6 +18,7 @@
 
 	Examples:
 	(begin example)
+		_cuel = "cu" call FP_fnc_getPlayer;
 		_cuel = ["Cuel"] call FP_fnc_getPlayer;
 	(end)
 
