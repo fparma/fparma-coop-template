@@ -23,9 +23,7 @@
 */
 
 if (!isServer) exitWith {};
-
-params [["_veh", objNull, [objNull]]];
-if (isNull _veh) exitWith {false};
+if (!params [["_veh", objNull, [objNull]]]) exitWith {false};
 
 clearWeaponCargoGlobal _veh;
 clearMagazineCargoGlobal _veh;

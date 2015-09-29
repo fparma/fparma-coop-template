@@ -30,7 +30,7 @@
 */
 
 if (!params [["_name", "", [""]]]) exitWith {
-	["Wrong parameters: %1",_this] call BIS_fnc_error;
+	["Faulty parameters: %1",_this] call BIS_fnc_error;
 	objNull
 };
 

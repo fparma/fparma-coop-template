@@ -20,10 +20,8 @@
 
 if (isMultiplayer && {hasInterface}) exitWith {false};
 
-private ["_ret", "_hc", "_hcPresent"];
-_hc = missionNamespace getVariable ["HC", objNull];
-_hcPresent = if (!isNull _hc) then {isPlayer _hc} else {false};
+local _hc = missionNamespace getVariable ["HC", objNull];
+local _hcPresent = if (!isNull _hc) then {isPlayer _hc} else {false};
 
-_ret = true;
-if (_hcPresent && isServer) then {_ret = false};
-_ret
+if (_hcPresent && isServer) exitWith {false};
+true

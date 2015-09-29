@@ -20,8 +20,7 @@
 */
 
 if (!isServer) exitWith {};
-
-_add = if (typeName _this != typeName []) then {[_this]} else {_this};
+params ["_add"];
 
 {
 	_x addCuratorEditableObjects [_add,  true];
