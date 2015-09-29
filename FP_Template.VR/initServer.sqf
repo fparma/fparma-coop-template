@@ -10,6 +10,7 @@ local _sideHasNoUnits = {
 	params ["_side"];
 	(({if ((side _x) isEqualTo _side) exitWith {1}} count _allUnits) isEqualTo 0)
 };
+
 if ([east] call _sideHasNoUnits) then {createCenter east};
 if ([west] call _sideHasNoUnits0) then {createCenter west};
 if ([resistance] call _sideHasNoUnits) then {createCenter resistance};
