@@ -792,7 +792,7 @@ class Mission
 					leader=1;
 					rank="SERGEANT";
 					skill=0;
-					text="crew1";
+					text="crew0";
 					init="this setGroupID [""CREW""];  [this,""CREWMAN""] call FP_fnc_getKit";
 					description="Armorered Vehicle Crew Commander";
 				};
@@ -805,9 +805,9 @@ class Mission
 					vehicle="B_crew_F";
 					player="PLAY CDG";
 					skill=0;
-					text="crew3";
+					text="crew1";
 					init="this setGroupID [""CREW""];  [this,""CREWMAN""] call FP_fnc_getKit";
-					description="Armorered Vehicle Crew Gunner";
+					description="Armorered Vehicle Crew Driver";
 				};
 				class Item2
 				{
@@ -820,7 +820,7 @@ class Mission
 					skill=0;
 					text="crew2";
 					init="this setGroupID [""CREW""];  [this,""CREWMAN""] call FP_fnc_getKit";
-					description="Armorered Vehicle Crew Driver";
+					description="Armorered Vehicle Crew Gunner";
 				};
 			};
 		};
@@ -839,10 +839,11 @@ class Mission
 					vehicle="B_Helipilot_F";
 					player="PLAY CDG";
 					rank="CORPORAL";
-					skill=0.2;
-					text="p2";
+					leader=1;
+					skill=0;
+					text="p0";
 					init="this setGroupID [""PILOT""];  [this,""PILOT""] call FP_fnc_getKit";
-					description="Co-Pilot";
+					description="Pilot";
 				};
 				class Item1
 				{
@@ -852,12 +853,10 @@ class Mission
 					side="WEST";
 					vehicle="B_Helipilot_F";
 					player="PLAY CDG";
-					leader=1;
-					rank="SERGEANT";
-					skill=0.2;
+					skill=0;
 					text="p1";
 					init="this setGroupID [""PILOT""];  [this,""PILOT""] call FP_fnc_getKit";
-					description="Pilot";
+					description="Co-Pilot";
 				};
 			};
 		};
