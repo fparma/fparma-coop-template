@@ -6,11 +6,8 @@
 
 	Description:
 		Takes a string and returns a player object if found, otherwise objNull
-
 		Can be used partially, to find "cuel" you can pass ["cu"]
-
 		Will be objNull if not found, or if theres more than one match
-
 		Case insensitive
 
 	Parameters:
@@ -23,10 +20,10 @@
 	(end)
 
 	Returns:
-	Player object | objNull
+		Object
 
 	Author:
-	Cuel 2015-04-21
+		Cuel 2015-04-21
 */
 
 if (!params [["_name", "", [""]]]) exitWith {

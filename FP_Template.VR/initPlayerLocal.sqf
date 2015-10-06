@@ -8,13 +8,14 @@
 		1- Did player JiP
 */
 
+
 if (!hasInterface) exitWith {};
 _isJip = _this select 1;
-[] call compile preProcessFileLineNumbers "base\initPlayer.sqf";
+[_isJip] call compile preProcessFileLineNumbers "base\initPlayer.sqf";
 
 // Add JIP players to zeus
 if (_isJip) then {
-	[player, "FP_fnc_addCuratorObject", false] call BIS_fnc_MP;
+	[player] remoteExecCall ["FP_fnc_addCuratorObject", 2];
 };
 
 // Get briefing
@@ -55,3 +56,4 @@ player addEventHandler ["Fired", {
 if (!isNil "FP_JRM_fnc_init") {
 	[] call FP_JRM_fnc_init;
 };
+*/

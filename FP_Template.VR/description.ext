@@ -9,25 +9,19 @@ disabledAI = 1;
 // includes the dialogs and cfgFunctions
 #include "fparma.hpp"
 
-//////////////////////////////////////////// Respawn settings ////////////////////////////////////////////
-
-respawndelay = 4;
-respawnDialog = 0;
-respawn = "BASE"; // don't edit respawn type unless you know what youre doing
-
-//////////////////////////////////////////// Mission name etc settings ////////////////////////////////////////////
-// Mission name (short)
-OnLoadName = "FP TEMPLATE 2.1.0";
-
-// Longer description
-onLoadMission="description.ext to change!";
-
-// custom load screen
-loadScreen = "fp_misc\img\fp_logo.paa";
-
+// ===  Mission name etc settings
+OnLoadName = "FP TEMPLATE 2.2.0";// Mission name (short)
+onLoadMission="description.ext to change!"; // Longer description
+loadScreen = "fp_misc\img\fp_logo.paa"; // custom load image
 author="Cuel | 2015";
 
-//////////////////////////////////////////// Debriefing settings ////////////////////////////////////////////
+// ===  Respawn settings
+respawndelay = 4;
+respawnDialog = 0;
+// if you don't want respawns, see config .sqf
+respawn = "BASE"; // don't edit respawn type unless you know what youre doing
+
+// === Debriefing
 
 class CfgDebriefing
 {
@@ -51,8 +45,8 @@ class CfgDebriefing
 	};
 };
 
-//////////////////////////////////////////// DO NOT EDIT ////////////////////////////////////////////
 
+// === DO NOT EDIT
 showCompass   = 1;
 showGPS       = 1;
 showMap       = 1;

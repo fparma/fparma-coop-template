@@ -2,7 +2,7 @@
 	Function: FP_fnc_setVehicleName
 
 	API:
-		Clients
+		Client
 
 	Description:
 		Adds action to vehicle to display its name
@@ -17,23 +17,28 @@
 	(end)
 
 	Returns:
-	BOOL
+	   BOOL
 
 	Author:
-	Cuel 2015-04-23
+	   Cuel 2015-04-23
 */
 
 if (!hasInterface) exitWith {};
-params [["_veh", objNull, [objNull]], ["_name", "", ["", objNull]]];
+
+params [
+    ["_veh", objNull],
+    ["_name", "", ["", objNull]]
+];
 
 if (isNull _veh) exitWith {["Faulty parameters %1", _this] call BIS_fnc_error};
 
-if (typeName (_this select 1) == "OBJECT") then {
+if (typeName _name == "OBJECT") then {
     // Vehicle respawned
-    if (!isNull (_this select 1)) then {
-        _oldveh = _this select 1;
+    if (!isNull _name) then {
+        local _oldveh = _this select 1;
         _name =  _oldveh getVariable ["fp_name","Vehicle"];
-        _varName= format ["VEH%1",round random 1000];
+
+        local _varName = format ["VEH%1",round random 1000];
         _oldveh setVehicleVarName _VarName;
         _oldveh call compile format ["%1=_this ; publicVariable ""%1""",_varName];
         deleteVehicle _oldveh;
