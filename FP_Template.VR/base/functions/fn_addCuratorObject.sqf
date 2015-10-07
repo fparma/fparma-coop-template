@@ -23,5 +23,5 @@ if (!isServer) exitWith {};
 params ["_add"];
 
 {
-	_x addCuratorEditableObjects [_add,  true];
+	_x addCuratorEditableObjects [[_add],  true];
 } foreach allCurators;
