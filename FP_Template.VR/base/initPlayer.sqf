@@ -19,6 +19,19 @@ player addEventHandler ["HandleRating", {
 	(abs _rating)
 }];
 
+// Delete grenades thrown in spawn
+player addEventHandler ["Fired", {
+	if (_this select 2 == "HandGrenadeMuzzle") then {
+		local _side = [blufor, opfor, independent, civilian] find side player;
+		local _mrk = markerPos (["respawn_west","respawn_east","respawn_guerrila","respawn_civilian"] select _side);
+		if ((_this select 0) distance _mrk < 80) then {
+			[_this select 6] call ace_frag_fnc_addBlackList;
+			deleteVehicle (_this select 6);
+			titleText ["G IS FOR GRENADES", "PLAIN", 2];
+		};
+	};
+}];
+
 // Lower weapon after mission start
 [{
 	if (primaryWeapon player != "") then {
@@ -27,8 +40,8 @@ player addEventHandler ["HandleRating", {
 }, []] call ACE_common_fnc_execNextFrame;
 
 
-if (time > 0) exitWith {};
 // Replace ace markers temporarly to log them during briefing
+if (time > 0) exitWith {};
 
 // Normal markers
 FP_ace_placeMarker = ACE_markers_fnc_placeMarker;
@@ -55,20 +68,13 @@ ACE_markers_fnc_placeMarker = {
 FP_ace_placeLineMarker = ACE_maptools_fnc_handleMouseButton;
 ACE_maptools_fnc_handleMouseButton = {
 	if (ACE_maptools_drawing_isDrawing) then {
-		[[
-			[
-				player,
-				["black", "red", "green", "blue", "yellow", "white"]
-					select (["ColorBlack", "ColorRed","ColorGreen","ColorBlue","ColorYellow","ColorWhite"]
-					find (ACE_maptools_drawing_tempLineMarker) select 3)),
-				mapGridPosition (ACE_maptools_drawing_tempLineMarker select 1)
-			], {
-				systemChat format ["SERVER: %1 placed a %2 line at %3",
-				name (_this select 0),
-				_this select 1,
-				if (playerSide == side (_this select 0)) then {_this select 2} else {"<redacted>"}]
-			}
-		], "BIS_fnc_spawn", true] call BIS_fnc_MP;
+		local _clr = ["black", "red", "green", "blue", "yellow", "white"]
+			select (["ColorBlack", "ColorRed","ColorGreen","ColorBlue","ColorYellow","ColorWhite"]
+			find (ACE_maptools_drawing_tempLineMarker) select 3));
+		local _grid = mapGridPosition (ACE_maptools_drawing_tempLineMarker select 1);
+
+		local _msg = format ["SERVER: %1 placed a %2 line at %3", name player, _clr, _grid];
+		_msg remoteExecCall ["systemChat", side player];
 	};
 	_this call FP_ace_placeLineMarker;
 };
