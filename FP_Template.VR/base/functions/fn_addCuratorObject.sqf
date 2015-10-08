@@ -1,5 +1,5 @@
 /*
-	Function: FP_fnc_addCuratorObject
+	Function: FP_fnc_addToCurators
 
 	API:
 		Server
@@ -12,7 +12,7 @@
 
 	Example:
 	(begin example)
-		[someObject] call FP_fnc_addCuratorObject
+		[someObject] call FP_fnc_addToCurators
 	(end)
 
 	Author:

@@ -26,10 +26,8 @@ if (_disable) then {
 
 	local _firedEv =_unit addEventHandler ["Fired", {
 		local _proj = param [6, objNull];
-		if (!isNull _proj) then {
-			[_proj] call ace_frag_fnc_addBlackList;
-    		deleteVehicle _proj;
-		};
+		[_proj] call ace_frag_fnc_addBlackList;
+		deleteVehicle _proj;
 	}];
 	_unit setVariable ["FP_firedEV", _firedEv];
 } else {

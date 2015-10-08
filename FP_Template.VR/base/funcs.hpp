@@ -7,7 +7,7 @@ class functions {
 		file ="base\init.sqf";
 		preInit = 1;
 	};
-	class addCuratorObject;
+	class addToCurators;
 	class clearVehicle;
 	class getPlayer;
 	class setVehicleName;

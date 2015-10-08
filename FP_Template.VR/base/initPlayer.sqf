@@ -5,7 +5,7 @@ FP_kit_type = player getVariable ["FP_kit_type", []];
 player addEventHandler ["Respawn", {
 
 	// Add new unit to zeus
-	[_this select 0] remoteExecCall ["FP_fnc_addCuratorObject", 2];
+	[_this select 0] remoteExecCall ["FP_fnc_addToCurators", 2];
 
 	// Respawn with gear if using template gear
 	if (count FP_kit_type > 0) then {
