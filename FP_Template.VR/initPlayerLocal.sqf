@@ -21,7 +21,7 @@ if (!isNil "fp_flag") then {[fp_flag, FP_flag_targets] call compile preProcessFi
 
 // Longer view distance for pilots. Edit in config.sqf
 if (!isNil "FP_pilotNames" && {str player in FP_pilotNames}) then {
-	[] execVM "base\scripts\pilot_viewdistance.sqf";
+	[] call compile preProcessFileLineNumbers "base\scripts\dynamic_vd.sqf";
 };
 
 // Debug script for development. Create a unit named "debugger" and use him as player.
