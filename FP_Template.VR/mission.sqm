@@ -264,6 +264,7 @@ class Mission
 				class Item0
 				{
 					position[]={899.97565,5,1000.0186};
+					special="NONE";
 					id=3;
 					side="WEST";
 					vehicle="B_officer_F";
@@ -832,22 +833,22 @@ class Mission
 				items=2;
 				class Item0
 				{
-					position[]={936.52338,5,999.41064};
+					position[]={935.64484,5,999.94727};
 					special="NONE";
 					id=41;
 					side="WEST";
 					vehicle="B_Helipilot_F";
 					player="PLAY CDG";
-					rank="CORPORAL";
 					leader=1;
-					skill=0;
+					rank="CORPORAL";
+					skill=0.2;
 					text="p0";
 					init="this setGroupID [""PILOT""];  [this,""PILOT""] call FP_fnc_getKit";
 					description="Pilot";
 				};
 				class Item1
 				{
-					position[]={935.66425,5,1000.0176};
+					position[]={936.53046,5,999.16357};
 					special="NONE";
 					id=42;
 					side="WEST";

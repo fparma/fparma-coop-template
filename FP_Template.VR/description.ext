@@ -45,7 +45,6 @@ class CfgDebriefing
 	};
 };
 
-
 // === DO NOT EDIT
 showCompass   = 1;
 showGPS       = 1;

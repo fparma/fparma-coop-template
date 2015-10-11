@@ -1,6 +1,6 @@
 
 // Dialogs
-#include "xtra\dialogs\dialogs.hpp"
+//#include "xtra\dialogs\dialogs.hpp"
 
 // Functions
 class CfgFunctions {
@@ -16,6 +16,7 @@ class CfgFunctions {
 	// Rember to delete the dialogs (see top)
 
 	// Gear funcs
+	/*
 	class FP_Gear {
 		#include "gear\functions\funcs.hpp"
 	};
@@ -24,5 +25,6 @@ class CfgFunctions {
 	class FP_JRM {
 		#include "xtra\jrm\funcs.hpp"
 	};
+	*/
 
 };

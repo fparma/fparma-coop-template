@@ -17,10 +17,12 @@ params ["_player", "_isJip"];
 if (_isJip) then {[_player] remoteExecCall ["FP_fnc_addToCurators", 2]};
 
 // Add teleport options to flag. See config.sqf
-if (!isNil "fp_flag") then {[fp_flag, FP_flag_targets] call compile preProcessFileLineNumbers "base\scripts\teleport_flag.sqf"};
+if (!isNil "fp_flag" && {count FP_flag_targets > 0}) then {
+	[fp_flag, FP_flag_targets] call compile preProcessFileLineNumbers "base\scripts\teleport_flag.sqf"
+};
 
 // Longer view distance for pilots. Edit in config.sqf
-if (!isNil "FP_pilotNames" && {str player in FP_pilotNames}) then {
+if (!isNil "FP_pilots" && {str player in FP_pilots}) then {
 	[] call compile preProcessFileLineNumbers "base\scripts\dynamic_vd.sqf";
 };
 
