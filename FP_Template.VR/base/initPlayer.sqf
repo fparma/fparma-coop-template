@@ -23,8 +23,8 @@ player addEventHandler ["HandleRating", {
 player addEventHandler ["Fired", {
 	if (_this select 2 == "HandGrenadeMuzzle") then {
 		local _proj = param [6, objNull];
-		local _side = [blufor, opfor, independent, civilian] find side player;
-		local _mrk = markerPos (["respawn_west","respawn_east","respawn_guerrila","respawn_civilian"] select _side);
+		local _idx = [blufor, opfor, independent, civilian] find side player;
+		local _mrk = markerPos (["respawn_west","respawn_east","respawn_guerrila","respawn_civilian"] select _idx);
 		if ((_this select 0) distance _mrk < 80) then {
 			_proj call ace_frag_fnc_addBlackList;
 			deleteVehicle _proj;
@@ -34,15 +34,14 @@ player addEventHandler ["Fired", {
 }];
 
 // Lower weapon after mission start
-[{
-	if (primaryWeapon player != "") then {
+if (primaryWeapon player != "") then {
+	[{
 		player switchMove "amovpercmstpslowwrfldnon";
-	};
-}, []] call ACE_common_fnc_execNextFrame;
+	}, []] call ACE_common_fnc_execNextFrame;
+};
 
-
-// monkey patch ace markers temporarly to show messages during briefing
 if (time > 0) exitWith {};
+// monkey patch ace markers temporarly to show messages during briefing
 
 // Normal markers
 FP_ace_placeMarker = ACE_markers_fnc_placeMarker;

@@ -20,8 +20,8 @@
 */
 
 if (!isServer) exitWith {};
-params ["_add"];
+local _add = if (typeName _this != typeName []) then {[_this]} else {_this};
 
 {
-	_x addCuratorEditableObjects [[_add],  true];
+	_x addCuratorEditableObjects [_add,  true];
 } foreach allCurators;

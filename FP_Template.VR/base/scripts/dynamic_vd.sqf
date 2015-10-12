@@ -1,7 +1,7 @@
 if (!hasInterface) exitWith {};
 
 ["playerVehicleChanged", {
-	if (!((vehicle ACE_player) isKindOf "Air")) exitWith {
+	if (!((vehicle player) isKindOf "Air")) exitWith {
 		setViewDistance FP_VD;
 		setObjectViewDistance FP_OVD;
 	};
