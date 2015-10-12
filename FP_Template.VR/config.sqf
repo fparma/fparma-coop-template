@@ -15,3 +15,9 @@ FP_flag_targets = [
     ["Charlie SQL", "c0"],
     ["Delta SQL", "d0"]
 ];
+
+// The default gear script file. This is a file inside gear\loadouts
+FP_gear_default = "vanilla_nato";
+
+// Amount of respawns, -1 = infinite, 0 = none. Can also be higher
+FP_JRM_respawns = -1;

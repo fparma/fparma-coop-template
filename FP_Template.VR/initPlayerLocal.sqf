@@ -30,3 +30,7 @@ if (!isNil "FP_pilots" && {str player in FP_pilots}) then {
 if (str player in ["debugger"]) then {
 	[] call compile preProcessFileLineNumbers "base\scripts\debug_man.sqf";
 };
+
+if (!isServer &&  {!isNil "FP_JRM_fnc_init"}) then {
+	[] call FP_JRM_fnc_init;
+};

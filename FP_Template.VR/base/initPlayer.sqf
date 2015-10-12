@@ -26,12 +26,17 @@ player addEventHandler ["Fired", {
 		local _idx = [blufor, opfor, independent, civilian] find side player;
 		local _mrk = markerPos (["respawn_west","respawn_east","respawn_guerrila","respawn_civilian"] select _idx);
 		if ((_this select 0) distance _mrk < 80) then {
-			_proj call ace_frag_fnc_addBlackList;
+			[_proj] call ace_frag_fnc_addBlackList;
 			deleteVehicle _proj;
 			titleText ["G IS FOR GRENADES", "PLAIN", 2];
 		};
 	};
 }];
+
+// Custom ares funcs
+if (!isNil "Ares_fnc_RegisterCustomModule") then {
+	[] call compile preprocessFileLineNumbers "base\scripts\ares.sqf";
+};
 
 // Lower weapon after mission start
 if (primaryWeapon player != "") then {
