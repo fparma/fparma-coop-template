@@ -30,13 +30,13 @@
 
 #include "helpers.hpp";
 #define IS_VALID(X) (!isNil {(X)} && {count (X) > 0})
+params [
+    ["_unit", objNull, [objNull]],
+    ["_elems", []],
+    ["_clearBP", true, [true]]
+];
 
-private ["_unit", "_elems", "_single", "_clearBP"];
-_unit = [_this, 0, objNull, [objNull]] call BIS_fnc_param;
-_elems = [_this, 1, [], [[]]] call BIS_fnc_param;
-_clearBP = [_this, 2, true, [true]] call BIS_fnc_param;
-
-_single = {while {IS_ARRAY(_this)} do {_this = _this call BIS_fnc_selectRandom;}; _this};
+local _single = {while {IS_ARRAY(_this)} do {_this = _this call BIS_fnc_selectRandom}; _this};
 
 if (IS_VALID(_elems select 0)) then {
     _unit forceAddUniform ((_elems select 0) call _single);
@@ -52,5 +52,5 @@ if (IS_VALID(_elems select 2)) then {
 
 if (IS_VALID(_elems select 3)) then {
     _unit addBackpack ((_elems select 3) call _single);
-    if _clearBP then {clearBackpackCargoGlobal (unitBackpack _unit)};
+    if (_clearBP) then {clearBackpackCargoGlobal (unitBackpack _unit)};
 };

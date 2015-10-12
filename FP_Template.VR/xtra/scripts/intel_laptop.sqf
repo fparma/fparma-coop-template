@@ -24,14 +24,14 @@
 // abuse the fact that addAction calls with 3 parameters
 if (count _this in [1,2]) exitWith {
 	private ["_id","_laptop"];
-	// This runs from init (only do it one time!)
-	_laptop = [_this,0,objNull,[objNull]] call BIS_fnc_param;
+	params ["_laptop", objNull];
+
 	if (isNull _laptop) exitWith {["LAPTOP.SQF: Laptop does not exist! (%1)",_laptop] call BIS_fnc_error };
 	_id = _laptop addAction ["<t color='#ff8a00'>\\ Download data //</t>", "xtra\scripts\intel_laptop.sqf",0, 9, false, true, "", "((_target getVariable ['fp_inUse',0]) != 1)"];
 	_laptop allowDamage false;
 	if (count _this == 2) then {
 		// store info on the laptop and show it later
-		_laptop setVariable ["fp_info",(_this select 1)];
+		_laptop setVariable ["fp_info", (_this select 1)];
 	};
 	_id
 };

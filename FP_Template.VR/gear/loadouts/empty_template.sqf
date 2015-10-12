@@ -93,7 +93,6 @@ _ENGI_ITEMS = ["ACE_Clacker", "ACE_DefusalKit"];
 _ENGI_BP_ITEMS = [["ToolKit", 1], ["SatchelCharge_Remote_Mag", 1], ["DemoCharge_Remote_Mag", 2]];
 
 
-
 // ==================
 // Assign the stuff
 // ==================
@@ -102,8 +101,7 @@ switch _kit do {
     case "PLT"; // fall through to SQL
     case "SQL":
     {
-        private "_h";
-        _h = [_SQL_HEADGEAR, _PLT_HEADGEAR] select ((["SQL", "PLT"] find _kit) min 0);
+        local _h = if (_kit == "PLT") then {_PLT_HEADGEAR} else {_SQL_HEADGEAR};
 
         [_unit, [_SQL_UNIFORM, _SQL_VEST, _h, _SQL_BP]] call FP_fnc_addContainers;
         [_unit, [[_COMMON_MAG_GL, 7], [_COMMON_MAG_GL_T, 4], _COMMON_GL_NADES]] call FP_fnc_addToContainers;

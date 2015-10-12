@@ -196,7 +196,7 @@ _getGoodHouse = {
 			if (!(typeOf _x in _houseBlacklist)) then {
 				if (!([_x,_playersTooCloseDistance] call _isPlayersNear)) then {
 					if (_x call _getHousePositions > 2) then {
-						if (count (_x nearObjects ["Man",_otherCiviliansTooCloseDistance]) == 0) then {
+						if (count (_x nearObjects ["Man", _otherCiviliansTooCloseDistance]) == 0) then {
 							_pos = getPosATL _x;
 							if (!_isPositionExcludedLocation(_pos)) then {
 								_possibleHouses set [count _possibleHouses, _x];

@@ -103,8 +103,7 @@ switch _kit do {
     case "PLT"; // fall through to SQL
     case "SQL":
     {
-        private "_h";
-        _h = [_SQL_HEADGEAR, _PLT_HEADGEAR] select ((["SQL", "PLT"] find _kit) min 0);
+        local _h = if (_kit == "PLT") then {_PLT_HEADGEAR} else {_SQL_HEADGEAR};
 
         [_unit, [_SQL_UNIFORM, _SQL_VEST, _h, _SQL_BP]] call FP_fnc_addContainers;
         [_unit, [[_COMMON_MAG_GL, 6], [_COMMON_MAG_GL_T, 4], _COMMON_GL_NADES]] call FP_fnc_addToContainers;

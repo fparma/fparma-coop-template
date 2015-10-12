@@ -26,12 +26,12 @@
 */
 
 #include "helpers.hpp";
+params [
+    ["_unit", objNull, [objNull]],
+    ["_add", []]
+];
 
-private ["_unit", "_add", "_wep"];
-_unit = [_this, 0, objNull, [objNull]] call BIS_fnc_param;
-_add = [_this, 1, [], [[], ""]] call BIS_fnc_param;
-
-_attach = {
+local _attach = {
     switch (getNumber (configFile >> "cfgWeapons" >> _wep >> "type")) do {
         case 1: {_unit addPrimaryWeaponItem _this};
         case 2: {_unit addHandgunItem _this};

@@ -7,7 +7,7 @@
 _unit  = _this select 0;
 if (isNil "_unit") exitWith {"Invalid unit for suicide bomber." call BIS_fnc_error};
 if (!local _unit) exitWith {"Not executed where unit is local" call BIS_fnc_error};
-	
+
 _bombtype = "M_Mo_82mm_AT_LG";
 _bombfaction = faction _unit;
 

@@ -1,6 +1,9 @@
 /*
 	Function: Artillery
 
+	API:
+		Server 
+
 	Description:
 		Fires artillery within a trigger
 

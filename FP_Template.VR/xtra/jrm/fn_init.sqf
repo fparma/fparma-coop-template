@@ -5,10 +5,9 @@ if (isNil "FP_JRM_savedState") then {FP_JRM_savedState = []};
 if (isServer) then {
 	// If players disconnect while unconscious, count as a death
 	addMissionEventHandler ["HandleDisconnect", {
-		param ["_unit"];
-		param [2, "_uid", ""];
+		params ["_unit", "", ["_uid", ""]];
 
-		if (_uid == "" || !(_unit getVariable ["ACE_isUnconscious", false])) exitWith {false};
+		if (!alive _unit || _uid == "" || {!(_unit getVariable ["ACE_isUnconscious", false])}) exitWith {false};
 		_idx = -1;
 		_livesLeft = (FP_JRM_respawns - 1) max 0;
 

@@ -1,14 +1,14 @@
 
-// Dialogs. Remove if not using \xtra
+// Dialogs
 #include "xtra\dialogs\dialogs.hpp"
 
 // Functions
 class CfgFunctions {
-	version = 3.0.0;
+	version = 2.2.0;
 	createShortcuts = 1;
 
-	// BASE API. Do not remove
-	class FP_Base {
+	// Base functions.
+	class FP {
 		#include "base\funcs.hpp"
 	};
 
@@ -20,14 +20,8 @@ class CfgFunctions {
 		#include "gear\functions\funcs.hpp"
 	};
 
-	// Spawning functions
-	class FP_Spawn {
-		#include "xtra\spawn\funcs.hpp"
-	};
-
 	// JIP and respawn manager
 	class FP_JRM {
 		#include "xtra\jrm\funcs.hpp"
 	};
-
-}; // << do not delete me
+};

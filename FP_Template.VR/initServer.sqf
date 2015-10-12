@@ -12,7 +12,7 @@ local _sideHasNoUnits = {
 };
 
 if ([east] call _sideHasNoUnits) then {createCenter east};
-if ([west] call _sideHasNoUnits0) then {createCenter west};
+if ([west] call _sideHasNoUnits) then {createCenter west};
 if ([resistance] call _sideHasNoUnits) then {createCenter resistance};
 if ([civilian] call _sideHasNoUnits) then {createCenter civilian};
 
@@ -26,13 +26,6 @@ if ([civilian] call _sideHasNoUnits) then {createCenter civilian};
 	{_curator setCuratorCoef [_x, 0]} forEach ["place","edit","delete","destroy","group","synchronize"];
 } forEach allCurators;
 
-if (FP_use_cleanUp) then {
-	// clean up script
-	// will not delete units dead on mission start
-	// will not delete units where "this setVariable ["fp_noDelete", true]"
-	[] execVM "base\scripts\clean_up.sqf";
-};
-
-if (!isNil "FP_JRM_fnc_init") {
+if (!isNil "FP_JRM_fnc_init") then {
 	[] call FP_JRM_fnc_init;
 };

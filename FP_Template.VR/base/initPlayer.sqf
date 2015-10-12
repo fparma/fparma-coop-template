@@ -1,14 +1,11 @@
 
-// is set by fn_getKit
+// Respawn with gear, is set by fn_getKit
 FP_kit_type = player getVariable ["FP_kit_type", []];
 
 player addEventHandler ["Respawn", {
-	// Time before the teleport flag (if available) can be used again, to prevent people from just teleporting after dying.
-	// The flag is for JiPs not deaths. 3 min default. Edit in config.sqf
-	FP_tp_timeout = time + FP_respawnTeleportDelay;
 
 	// Add new unit to zeus
-	[_this select 0, "FP_fnc_addCuratorObject", false] call BIS_fnc_MP;
+	[_this select 0] remoteExecCall ["FP_fnc_addToCurators", 2];
 
 	// Respawn with gear if using template gear
 	if (count FP_kit_type > 0) then {
@@ -16,13 +13,71 @@ player addEventHandler ["Respawn", {
 	};
 }];
 
-// Fix so player cant join ENEMY side, where all sides fires on him
+// Fix so player can't join "ENEMY" side
 player addEventHandler ["HandleRating", {
 	_rating = _this select 1;
 	(abs _rating)
 }];
 
+// Delete grenades thrown in spawn
+player addEventHandler ["Fired", {
+	if (_this select 2 == "HandGrenadeMuzzle") then {
+		local _proj = param [6, objNull];
+		local _idx = [blufor, opfor, independent, civilian] find side player;
+		local _mrk = markerPos (["respawn_west","respawn_east","respawn_guerrila","respawn_civilian"] select _idx);
+		if ((_this select 0) distance _mrk < 80) then {
+			[_proj] call ace_frag_fnc_addBlackList;
+			deleteVehicle _proj;
+			titleText ["G IS FOR GRENADES", "PLAIN", 2];
+		};
+	};
+}];
+
+// Custom ares funcs
+if (!isNil "Ares_fnc_RegisterCustomModule") then {
+	[] call compile preprocessFileLineNumbers "base\scripts\ares.sqf";
+};
+
 // Lower weapon after mission start
+if (primaryWeapon player != "") then {
+	[{
+		player switchMove "amovpercmstpslowwrfldnon";
+	}, []] call ACE_common_fnc_execNextFrame;
+};
+
+if (time > 0) exitWith {};
+// monkey patch ace markers temporarly to show messages during briefing
+
+// Normal markers
+FP_ace_placeMarker = ACE_markers_fnc_placeMarker;
+ACE_markers_fnc_placeMarker = {
+	if (_this select 1 == 1) then {
+		local _mrkName = missionNamespace getVariable ["ACE_markers_currentMarkerConfigName", ""];
+		local _grid = mapGridPosition (missionNamespace getVariable ["ACE_markers_currentMarkerPosition", []]);
+		local _msg = format ["SERVER: %1 placed a '%2' marker at %3", name player, _mrkName, _grid];
+		_msg remoteExecCall ["systemChat", side player];
+	};
+	_this call FP_ace_placeMarker;
+};
+
+// Line markers
+FP_ace_placeLineMarker = ACE_maptools_fnc_handleMouseButton;
+ACE_maptools_fnc_handleMouseButton = {
+	if (ACE_maptools_drawing_isDrawing) then {
+		local _clr = ["black", "red", "green", "blue", "yellow", "white"]
+			select (["ColorBlack", "ColorRed","ColorGreen","ColorBlue","ColorYellow","ColorWhite"]
+			find (ACE_maptools_drawing_tempLineMarker) select 3);
+		local _grid = mapGridPosition (ACE_maptools_drawing_tempLineMarker select 1);
+		local _msg = format ["SERVER: %1 placed a %2 line at %3", name player, _clr, _grid];
+		_msg remoteExecCall ["systemChat", side player];
+	};
+	_this call FP_ace_placeLineMarker;
+};
+
 [{
-	player switchMove "amovpercmstpslowwrfldnon";
+	ACE_markers_fnc_placeMarker = FP_ace_placeMarker;
+	FP_ace_placeMarker = nil;
+
+	ACE_maptools_fnc_handleMouseButton = FP_ace_placeLineMarker;
+	FP_ace_placeLineMarker = nil;
 }, []] call ACE_common_fnc_execNextFrame;

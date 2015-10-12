@@ -14,7 +14,7 @@
 
 	Parameters:
 		_unit - Unit to add stuff to
-    _kind - String of a matching value from above
+        _kind - String of a matching value from above
 
 	Examples:
 	(begin example)
@@ -26,13 +26,14 @@
 */
 
 #include "helpers.hpp";
+params [
+    ["_unit", objNull, [objNull]],
+    ["_kind", [], [[], ""]]
+];
 
-private ["_unit", "_kind", "_add"];
-_unit = [_this, 0, objNull, [objNull]] call BIS_fnc_param;
-_kind = [_this, 1, [], [[], ""]] call BIS_fnc_param;
 if (IS_ARRAY(_kind)) then {_kind = _kind select 0};
 
-_add = {
+local _add = {
     if !(daytime > 7 && daytime < 20) then {
         _unit linkItem _this;
     }else{

@@ -12,7 +12,9 @@
 */
 
 if (!hasInterface) exitWith {};
-params [["_tpobj", objNull, [objNull]], ["_tptargets", [], [[]]]];
+private ["_tpobj","_tptargets","_idx","_cnt"];
+_tpobj = [_this,0,objNull] call BIS_fnc_param;
+_tptargets = [_this,1,[],[[]]] call BIS_fnc_param;
 if (isNull _tpobj || (count (_tptargets - [0])) < 1) exitWith {["Wrong parameters for teleport script, exiting"] call BIS_fnc_log};
 
 _idx = 100;
@@ -21,15 +23,19 @@ _tpobj addAction ["<t color='#FF00FF'>-- TP FLAG for JiPs - ASK FIRST! --</t>", 
 _tpobj addAction ["-----------------------", "",0,call _cnt,false,true,"","(vehicle player == player && player distance _target < 5)"];
 for "_i" from 0 to (count _tptargets)-1 do {
 	_tptar = (_tptargets select _i) select 1;
-	if (!isNull (missionNamespace getVariable [_tptar,objNull])) then {
+	if (!isNull (missionNamespace getVariable [_tptar, objNull])) then {
 		_tpobj addAction (call compile format ['[" >> %1", {[%2] call FP_query_TP},"",call _cnt,false,true,"","(vehicle player == player && alive %2 && player distance _target < 5)"]',(_tptargets select _i) select 0,_tptar]);
 	};
 };
 _tpobj addAction ["-----------------------", "",0,call _cnt,false,true,"","(vehicle player == player && player distance _target < 5)"];
 
 if (!isNil "FP_teleport_init") exitWith {};
-FP_tp_timeout = 0;
 FP_teleport_init = true;
+
+FP_tp_timeout = 0;
+player addEventHandler ["Respawn", {
+	FP_tp_timeout = time + 180;
+}];
 
 // commading menu entry
 FP_query_TPMenu = [
@@ -60,22 +66,23 @@ FP_receiveTPQuery = {
 	_requestingUnit = [_this,0,objNull] call BIS_fnc_param;
 	if (isNull _requestingUnit) exitWith {["Received incorrect TP request (query)"] call BIS_fnc_error};
 	if (isNil "FP_TP_busy") then {FP_TP_busy = false};
-	if (FP_TP_busy) exitWith {[[player,2],"FP_handleTPAnswer",_requestingUnit,false] spawn BIS_fnc_MP;};
+	if (FP_TP_busy) exitWith {[[player, 2],"FP_handleTPAnswer", _requestingUnit, false] spawn BIS_fnc_MP};
 	FP_TP_busy = true;
-	_str =  "<t font='TahomaB' size='0.5' shadow='1' color='#11C6F7'>" +  format['%1 is requesting to be teleported to you',name _requestingUnit] +  "</t>";
+	_str =  "<t font='TahomaB' size='0.5' shadow='1' color='#11C6F7'>" +  format['%1 is requesting to be teleported to you', name _requestingUnit] +  "</t>";
 	[_str,0,1,6,0,0,499] spawn BIS_fnc_dynamicText;
 	[_requestingUnit] spawn FP_handleTPWindow;
 };
 
 //CLIENT2: wait for user input in the commanding menu and send answer back to sender
 FP_handleTPWindow = {
-	_requestingUnit = [_this,0,objNull] call BIS_fnc_param;
+	params [["_requestingUnit", objNull]];
 	if (isNull _requestingUnit) exitWith {["Received incorrect TP request (handleTPWindow)"] call BIS_fnc_error};
 	_wait = time + 12;
 	FP_tp_menuAccept = 2;
 	showCommandingMenu "#USER:FP_query_TPMenu";
 	sleep 2;
 	waitUntil {commandingMenu  != "#USER:FP_query_TPMenu" || FP_tp_menuAccept in  [0,1] || _wait < time || !alive player};
+
 	if (_wait < time || !alive player) then {showCommandingMenu ""};
 	_selection = FP_tp_menuAccept;
 	if (_wait < time) then {_selection = 4};
@@ -122,14 +129,14 @@ FP_handleTPAnswer = {
 
 	if (_success) then {
 		[_sender] spawn {
-			_sender = _this select 0;
+			params ["_sender"];
 			sleep 2;
 			player setPosAtl (_sender modelToWorld [0,-1,0]);
 			if (getPosATL player select 2 < 0) then {
 				player setposATL [getposatl player select 0, getposatl player select 1,0];
 			};
 			sleep 1;
-			_stuff = nearestObjects [player, ["All"],100];
+			_stuff = nearestObjects [player, ["All"], 100];
 			{player reveal [_x,4]} forEach _stuff;
 		};
 	};

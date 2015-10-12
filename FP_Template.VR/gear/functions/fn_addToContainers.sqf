@@ -33,13 +33,13 @@
 #include "helpers.hpp";
 // Todo: maybe check config entry instead
 #define LINKABLE_ITEMS ["ItemMap", "ItemRadio", "ItemCompass","ItemWatch","ItemGPS", "ACE_Altimeter","tf_microdagr","I_UavTerminal","B_UavTerminal","O_UavTerminal"]
+params [
+    ["_unit", objNull],
+    ["_elems", [], [[], ""]],
+    ["_force", ""]
+];
 
-private ["_unit","_elems", "_add", "_traverse"];
-_unit = [_this, 0, objNull, [objNull]] call BIS_fnc_param;
-_elems = [_this, 1, [], [[], ""]] call BIS_fnc_param;
-_force = [_this, 2, "", [""]] call BIS_fnc_param;
-
-_add = {
+local _add = {
     if (_force != "") exitWith {
         switch _force do {
             case "backpack": {
@@ -77,7 +77,7 @@ if (IS_STRING(_elems)) exitWith {
 if (IS_ARRAY(_elems) && {count _elems == 0}) exitWith {};
 
 // use recursion if necessary
-_traverse = {
+local _traverse = {
     if (IS_STRING(_this)) exitWith {_this call _add};
     if (IS_STRING(_this select 0) && {IS_NUMBER(_this select 1)}) exitWith {
         for "_i" from 1 to (_this select 1) do {
@@ -86,8 +86,7 @@ _traverse = {
     };
 
     {
-        private "_cur";
-        _cur = _x;
+        local _cur = _x;
         if (IS_STRING(_cur)) then {
             _cur call _add;
         }else{
