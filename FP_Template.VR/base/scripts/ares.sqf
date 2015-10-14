@@ -1,6 +1,7 @@
 // Ares util functions
+#define DISP_NAME "FP Utils"
 
-["FP", "Eject cargo", {
+[DISP_NAME, "Eject cargo", {
 	local _obj = _this select 1;
 	if (isNull _obj || {_obj isKindOf "Man"} || {speed _obj > 2}) exitWith {};
 
