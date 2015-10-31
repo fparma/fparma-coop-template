@@ -6,9 +6,6 @@ class Header
 };
 disabledAI = 1;
 
-// includes the dialogs and cfgFunctions
-#include "fparma.hpp"
-
 // ===  Mission name etc settings
 OnLoadName = "FP TEMPLATE 2.2.0";// Mission name (short)
 onLoadMission="description.ext to change!"; // Longer description
@@ -22,7 +19,6 @@ respawnDialog = 0;
 respawn = "BASE"; // don't edit respawn type unless you know what youre doing
 
 // === Debriefing
-
 class CfgDebriefing
 {
 	class End1
@@ -42,6 +38,15 @@ class CfgDebriefing
 		//pictureBackground = "";
 		picture = "loc_Church";
 		//pictureColor[] = {};
+	};
+};
+
+// includes the dialogs and cfgFunctions
+#include "fparma.hpp"
+
+class Extended_PreInit_EventHandlers {
+	class FPARMA {
+		init = "[] call compile preProcessFileLineNumbers 'base\init.sqf'";
 	};
 };
 

@@ -2,7 +2,7 @@
 	Function: FP_fnc_clearVehicle
 
 	API:
-		Server
+		Single (server or client)
 
 	Description:
 		Clears a vehicle cargo etc
@@ -22,7 +22,6 @@
 	   Cuel 2015-04-23
 */
 
-if (!isServer) exitWith {};
 if (!params [
     ["_veh", objNull, [objNull]]
 ]) exitWith {false};

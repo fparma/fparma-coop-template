@@ -2,7 +2,7 @@
 	Function: FP_fnc_addToCurators
 
 	API:
-		Server
+		Server only
 
 	Description:
 		Adds <whatever> to Curators ( zeus )

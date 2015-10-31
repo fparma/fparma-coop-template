@@ -16,20 +16,21 @@
 		Cuel 2015-10-29
 */
 
-params ["_unit", "_disable"];
-
+params ["_unit", ["_disableWeapons", true]];
 if (!local _unit) exitWith {};
-local _evtIndex =  _unit getVariable ["FP_firedEV", -1];
 
-if (_disable) then {
-	if (_evtIndex > -1) exitWith {};
+private ["_evtIndex", "_firedEv";
+ _evtIndex =  _unit getVariable ["FP_firedEV", -1];
 
-	local _firedEv =_unit addEventHandler ["Fired", {
-		local _proj = param [6, objNull];
-		[_proj] call ace_frag_fnc_addBlackList;
-		deleteVehicle _proj;
-	}];
+if (_disableWeapons) exitWith {
+	if (_evtIndex > -1) then {
+		_firedEv =_unit addEventHandler ["Fired", {
+			local _proj = param [6, objNull];
+			[_proj] call ace_frag_fnc_addBlackList;
+			deleteVehicle _proj;
+		}];
+	};
 	_unit setVariable ["FP_firedEV", _firedEv];
-} else {
-	_unit removeEventHandler ["Fired", _evtIndex];
 };
+
+_unit removeEventHandler ["Fired", _evtIndex];

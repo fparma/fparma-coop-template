@@ -19,7 +19,7 @@ if ([civilian] call _sideHasNoUnits) then {createCenter civilian};
 {
 	local _curator = _x;
 	_curator addCuratorEditableObjects [vehicles,true];
-	_curator addCuratorEditableObjects [(allMissionObjects "Man"),false];
+	_curator addCuratorEditableObjects [(allMissionObjects "CAManBase"),false];
 	_curator addCuratorEditableObjects [(allMissionObjects "Air"),true];
 	_curator addCuratorEditableObjects [(allMissionObjects "Ammo"),false];
 	_curator setCuratorWaypointCost 0;
