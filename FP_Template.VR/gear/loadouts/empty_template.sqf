@@ -1,6 +1,4 @@
-private ["_unit", "_kit"];
-_unit = _this select 0;
-_kit = _this select 1;
+params ["_unit", "_kit"];
 
 // ==================
 // Defines below. First, commmon stuff
@@ -11,7 +9,7 @@ _COMMON_HEADGEARS = [];
 _COMMON_BP = "";
 
 _COMMON_NVG = ""; // can be: pvs14, pvs15, gen1, gen2, gen3, gen4, wide, blufor, opfor, indep. check fn_addNVG.sqf
-_COMMON_ITEMS = [["HandGrenade", 2], ["SmokeShellGreen", 2], "ItemMap","ItemCompass","ItemWatch", "ItemRadio", ["ACE_fieldDressing", 2], "ACE_Morphine"];
+_COMMON_ITEMS = ["ACRE_PRC343", ["HandGrenade", 2], ["SmokeShellGreen", 2], "ItemMap","ItemCompass","ItemWatch", "ItemRadio", ["ACE_fieldDressing", 2], "ACE_Morphine"];
 
 _COMMON_RIFLE = "";
 _COMMON_RIFLE_ATTACHMENTS = [];
@@ -45,14 +43,14 @@ _COMMON_PISTOL_MAG = "";
 // ==================
 // PLT AND SQL stuff
 // ==================
+_PLT_HEADGEAR = "";
+_SQL_HEADGEAR = "";
 _SQL_BINOC = ""; // can be binoc, soflam, lerca_b (black), lerca_t (tan), laser, laser_blufor, laser_opfor, laser_indep. check fn_addOptic.sqf
 _SQL_ATTACHMENTS = [];
-_SQL_HEADGEAR = "";
-_PLT_HEADGEAR = "";
 _SQL_VEST = "";
 _SQL_UNIFORM = _COMMON_UNIFORMS;
-_SQL_ITEMS = ["ACE_microDAGR", "ACE_MapTools"];
-_SQL_BP = ["tf_rt1523g","tf_mr3000","tf_anprc155", "tf_rt1523g"] select ([BLUFOR, OPFOR, independent, civilian] find side _unit);
+_SQL_ITEMS = ["ACRE_PRC148", "ACE_microDAGR", "ACE_MapTools"];
+_SQL_BP = "";
 
 // ==================
 // Medic stuff
@@ -99,9 +97,8 @@ _ENGI_BP_ITEMS = [["ToolKit", 1], ["SatchelCharge_Remote_Mag", 1], ["DemoCharge_
 switch _kit do {
 
     case "PLT"; // fall through to SQL
-    case "SQL":
-    {
-        local _h = if (_kit == "PLT") then {_PLT_HEADGEAR} else {_SQL_HEADGEAR};
+    case "SQL": {
+        private _h = if (_kit == "PLT") then {_PLT_HEADGEAR} else {_SQL_HEADGEAR};
 
         [_unit, [_SQL_UNIFORM, _SQL_VEST, _h, _SQL_BP]] call FP_fnc_addContainers;
         [_unit, [[_COMMON_MAG_GL, 7], [_COMMON_MAG_GL_T, 4], _COMMON_GL_NADES]] call FP_fnc_addToContainers;
@@ -112,8 +109,7 @@ switch _kit do {
 
     };
 
-    case "MEDIC":
-    {
+    case "MEDIC": {
         [_unit, [_COMMON_UNIFORMS, _MED_VEST, _MED_HEADGEAR, _MED_BP]] call FP_fnc_addContainers;
         [_unit, [[_COMMON_MAG_C, 6], [_COMMON_MAG_C_T, 2]]] call FP_fnc_addToContainers;
         [_unit, [_COMMON_RIFLE_C, _COMMON_RIFLE_C_ATTACHMENTS]] call FP_fnc_addWeapon;
@@ -121,23 +117,21 @@ switch _kit do {
         [_unit, _MED_BP_ITEMS, "backpack"] call FP_fnc_addToContainers;
 
     };
-    case "RIFLEMAN":
-    {
+
+    case "RIFLEMAN": {
         [_unit, [_COMMON_UNIFORMS, _MED_VEST, _MED_HEADGEAR, _MED_BP]] call FP_fnc_addContainers;
         [_unit, [[_COMMON_MAG, 6], [_COMMON_MAG_T, 4]]] call FP_fnc_addToContainers;
         [_unit, [_COMMON_RIFLE, _COMMON_RIFLE_ATTACHMENTS]] call FP_fnc_addWeapon;
     };
 
-    case "AR":
-    {
+    case "AR": {
         [_unit, [_COMMON_UNIFORMS, _COMMON_VESTS, _COMMON_HEADGEARS]] call FP_fnc_addContainers;
         [_unit, [[_COMMON_AR_MAG, 2], [_COMMON_AR_MAG_T, 2]]] call FP_fnc_addToContainers;
         [_unit, [_COMMON_AR, _COMMON_AR_ATTACHMENTS]] call FP_fnc_addWeapon;
 
     };
 
-    case "ARASS":
-    {
+    case "ARASS": {
         [_unit, [_COMMON_UNIFORMS, _COMMON_VESTS, _COMMON_HEADGEARS, _COMMON_BP]] call FP_fnc_addContainers;
         [_unit, [[_COMMON_MAG, 2], [_COMMON_MAG_T, 2]]] call FP_fnc_addToContainers;
         [_unit, [_COMMON_RIFLE, _COMMON_RIFLE_ATTACHMENTS]] call FP_fnc_addWeapon;
@@ -146,8 +140,7 @@ switch _kit do {
 
     };
 
-    case "AT":
-    {
+    case "AT": {
         [_unit, [_COMMON_UNIFORMS, _COMMON_VESTS, _COMMON_HEADGEARS, _COMMON_BP]] call FP_fnc_addContainers;
         [_unit, [[_COMMON_AT_MAG_HE, 1], [_COMMON_AT_MAG_AP, 2]], "backpack"]  call FP_fnc_addToContainers;
 
@@ -157,9 +150,7 @@ switch _kit do {
 
     };
 
-    case "ATASS":
-    {
-
+    case "ATASS": {
         [_unit, [_COMMON_UNIFORMS, _COMMON_VESTS, _COMMON_HEADGEARS, _COMMON_BP]] call FP_fnc_addContainers;
         [_unit, [[_COMMON_AT_MAG_HE, 1], [_COMMON_AT_MAG_AP, 2]], "backpack"]  call FP_fnc_addToContainers;
 
@@ -167,8 +158,7 @@ switch _kit do {
         [_unit, [_COMMON_RIFLE, _COMMON_RIFLE_ATTACHMENTS]] call FP_fnc_addWeapon;
     };
 
-    case "RAT":
-    {
+    case "RAT": {
 
         [_unit, [_COMMON_UNIFORMS, _COMMON_VESTS, _COMMON_HEADGEARS]] call FP_fnc_addContainers;
         [_unit, [[_COMMON_MAG, 6], [_COMMON_MAG_T, 2]]] call FP_fnc_addToContainers;
@@ -178,15 +168,13 @@ switch _kit do {
 
     };
 
-    case "GL":
-    {
+    case "GL": {
         [_unit, [_COMMON_UNIFORMS, _COMMON_VESTS, _COMMON_HEADGEARS]] call FP_fnc_addContainers;
         [_unit, [[_COMMON_MAG_GL, 9], [_COMMON_MAG_GL_T, 2], _COMMON_GL_NADES]] call FP_fnc_addToContainers;
         [_unit, [_COMMON_RIFLE_GL, _COMMON_RIFLE_GL_ATTACHMENTS]] call FP_fnc_addWeapon;
 
     };
-    case "ENGINEER":
-    {
+    case "ENGINEER": {
         [_unit, [_COMMON_UNIFORMS, _COMMON_VESTS, _COMMON_HEADGEARS, _ENGI_BP]] call FP_fnc_addContainers;
         [_unit, [[_COMMON_MAG, 6], [_COMMON_MAG_T, 2]]] call FP_fnc_addToContainers;
         [_unit, [_COMMON_RIFLE, _COMMON_RIFLE_ATTACHMENTS]] call FP_fnc_addWeapon;
@@ -194,15 +182,13 @@ switch _kit do {
         [_unit, _ENGI_BP_ITEMS]  call FP_fnc_addToContainers;
     };
 
-    case "PILOT":
-    {
+    case "PILOT": {
         [_unit, [_PILOT_UNIFORM, _PILOT_VEST, _PILOT_HEADGEAR]] call FP_fnc_addContainers;
         [_unit, _PILOT_MAGS] call FP_fnc_addToContainers;
         [_unit, _PILOT_WEAPON] call FP_fnc_addWeapon;
 
     };
-    case "CREWMAN":
-    {
+    case "CREWMAN": {
         [_unit, [_CREW_UNIFORM, _CREW_VEST, _CREW_HEADGEAR]] call FP_fnc_addContainers;
         [_unit, _CREW_MAGS] call FP_fnc_addToContainers;
         [_unit, _CREW_WEAPON] call FP_fnc_addWeapon;

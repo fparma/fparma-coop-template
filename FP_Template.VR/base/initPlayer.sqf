@@ -15,16 +15,15 @@ player addEventHandler ["Respawn", {
 
 // Fix so player can't join "ENEMY" side
 player addEventHandler ["HandleRating", {
-	_rating = _this select 1;
-	(abs _rating)
+    abs (_this select 1);
 }];
 
 // Delete grenades thrown in spawn
 player addEventHandler ["Fired", {
 	if (_this select 2 == "HandGrenadeMuzzle") then {
-		local _proj = param [6, objNull];
-		local _idx = [blufor, opfor, independent, civilian] find side player;
-		local _mrk = markerPos (["respawn_west","respawn_east","respawn_guerrila","respawn_civilian"] select _idx);
+		private _proj = param [6, objNull];
+		private _idx = [blufor, opfor, independent, civilian] find side player;
+		private _mrk = markerPos (["respawn_west","respawn_east","respawn_guerrila","respawn_civilian"] select _idx);
 		if ((_this select 0) distance _mrk < 80) then {
 			[_proj] call ace_frag_fnc_addBlackList;
 			deleteVehicle _proj;
@@ -46,15 +45,15 @@ if (primaryWeapon player != "") then {
 };
 
 if (time > 0) exitWith {};
-// monkey patch ace markers temporarly to show messages during briefing
 
+// monkey patch ace markers temporarly to show messages during briefing
 // Normal markers
 FP_ace_placeMarker = ACE_markers_fnc_placeMarker;
 ACE_markers_fnc_placeMarker = {
 	if (_this select 1 == 1) then {
-		local _mrkName = missionNamespace getVariable ["ACE_markers_currentMarkerConfigName", ""];
-		local _grid = mapGridPosition (missionNamespace getVariable ["ACE_markers_currentMarkerPosition", []]);
-		local _msg = format ["SERVER: %1 placed a '%2' marker at %3", name player, _mrkName, _grid];
+		private _mrkName = missionNamespace getVariable ["ACE_markers_currentMarkerConfigName", ""];
+		private _grid = mapGridPosition (missionNamespace getVariable ["ACE_markers_currentMarkerPosition", []]);
+		private _msg = format ["SERVER: %1 placed a '%2' marker at %3", name player, _mrkName, _grid];
 		_msg remoteExecCall ["systemChat", side player];
 	};
 	_this call FP_ace_placeMarker;
@@ -64,11 +63,11 @@ ACE_markers_fnc_placeMarker = {
 FP_ace_placeLineMarker = ACE_maptools_fnc_handleMouseButton;
 ACE_maptools_fnc_handleMouseButton = {
 	if (ACE_maptools_drawing_isDrawing) then {
-		local _clr = ["black", "red", "green", "blue", "yellow", "white"]
+		private _clr = ["black", "red", "green", "blue", "yellow", "white"]
 			select (["ColorBlack", "ColorRed","ColorGreen","ColorBlue","ColorYellow","ColorWhite"]
 			find (ACE_maptools_drawing_tempLineMarker) select 3);
-		local _grid = mapGridPosition (ACE_maptools_drawing_tempLineMarker select 1);
-		local _msg = format ["SERVER: %1 placed a %2 line at %3", name player, _clr, _grid];
+		private _grid = mapGridPosition (ACE_maptools_drawing_tempLineMarker select 1);
+		private _msg = format ["SERVER: %1 placed a %2 line at %3", name player, _clr, _grid];
 		_msg remoteExecCall ["systemChat", side player];
 	};
 	_this call FP_ace_placeLineMarker;

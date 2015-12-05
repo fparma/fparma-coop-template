@@ -33,7 +33,7 @@ params [
 
 if (IS_ARRAY(_kind)) then {_kind = _kind select 0};
 
-local _add = {
+private _add = {
     if !(daytime > 7 && daytime < 20) then {
         _unit linkItem _this;
     }else{

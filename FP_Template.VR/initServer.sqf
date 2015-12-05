@@ -5,8 +5,8 @@
 */
 
 // Create AI centers
-local _allUnits = allUnits;
-local _sideHasNoUnits = {
+private _allUnits = allUnits;
+private _sideHasNoUnits = {
 	params ["_side"];
 	(({if ((side _x) isEqualTo _side) exitWith {1}} count _allUnits) isEqualTo 0)
 };
@@ -17,7 +17,7 @@ if ([resistance] call _sideHasNoUnits) then {createCenter resistance};
 if ([civilian] call _sideHasNoUnits) then {createCenter civilian};
 
 {
-	local _curator = _x;
+	private _curator = _x;
 	_curator addCuratorEditableObjects [vehicles,true];
 	_curator addCuratorEditableObjects [(allMissionObjects "CAManBase"),false];
 	_curator addCuratorEditableObjects [(allMissionObjects "Air"),true];

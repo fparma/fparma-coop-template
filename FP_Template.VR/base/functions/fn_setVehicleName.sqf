@@ -34,10 +34,10 @@ if (isNull _veh) exitWith {["Faulty parameters %1", _this] call BIS_fnc_error};
 
 if (typeName _name == typeName objNull && {!isNull _name}) then {
     // Vehicle respawned
-    local _oldveh = _this select 1;
+    private _oldveh = _this select 1;
     _name =  _oldveh getVariable ["fp_name","Vehicle"];
 
-    local _varName = format ["VEH%1",round random 1000];
+    private _varName = format ["VEH%1",round random 1000];
     _oldveh setVehicleVarName _VarName;
     _oldveh call compile format ["%1=_this ; publicVariable ""%1""",_varName];
     deleteVehicle _oldveh;

@@ -36,7 +36,7 @@ params [
     ["_clearBP", true, [true]]
 ];
 
-local _single = {while {IS_ARRAY(_this)} do {_this = _this call BIS_fnc_selectRandom}; _this};
+private _single = {while {IS_ARRAY(_this)} do {_this = _this call BIS_fnc_selectRandom}; _this};
 
 if (IS_VALID(_elems select 0)) then {
     _unit forceAddUniform ((_elems select 0) call _single);

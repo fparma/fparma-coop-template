@@ -25,7 +25,7 @@ private ["_evtIndex", "_firedEv";
 if (_disableWeapons) exitWith {
 	if (_evtIndex > -1) then {
 		_firedEv =_unit addEventHandler ["Fired", {
-			local _proj = param [6, objNull];
+			private _proj = param [6, objNull];
 			[_proj] call ace_frag_fnc_addBlackList;
 			deleteVehicle _proj;
 		}];

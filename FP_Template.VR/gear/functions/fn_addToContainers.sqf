@@ -39,7 +39,7 @@ params [
     ["_force", ""]
 ];
 
-local _add = {
+private _add = {
     if (_force != "") exitWith {
         switch _force do {
             case "backpack": {
@@ -77,7 +77,7 @@ if (IS_STRING(_elems)) exitWith {
 if (IS_ARRAY(_elems) && {count _elems == 0}) exitWith {};
 
 // use recursion if necessary
-local _traverse = {
+private _traverse = {
     if (IS_STRING(_this)) exitWith {_this call _add};
     if (IS_STRING(_this select 0) && {IS_NUMBER(_this select 1)}) exitWith {
         for "_i" from 1 to (_this select 1) do {
@@ -86,7 +86,7 @@ local _traverse = {
     };
 
     {
-        local _cur = _x;
+        private _cur = _x;
         if (IS_STRING(_cur)) then {
             _cur call _add;
         }else{

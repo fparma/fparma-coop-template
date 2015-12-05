@@ -49,7 +49,7 @@ if (FP_GEAR_REPORT_ERRORS && {isNil "FP_gear_errs"}) then {
 	FP_gear_errs = [];
 	[{
 		if (count FP_gear_errs == 0) exitWith {};
-		local _structured = [];
+		private _structured = [];
 		{
 			_structured pushBack _x;
 			_structured pushBack lineBreak;

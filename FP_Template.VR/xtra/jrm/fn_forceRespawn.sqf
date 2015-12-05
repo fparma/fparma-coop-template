@@ -49,8 +49,8 @@ if (!isNil "_posOrCode") then {
 	params ["_pos", "_function"];
 
 	// For some reason the game crashes when using call instead of spawn here.. no idea why
-	_sc1 = [false] spawn ace_spectator_fnc_setSpectator;
-	_sc2 = [player, false] spawn ace_spectator_fnc_stageSpectator;
+	private _sc1 = [false] spawn ace_spectator_fnc_setSpectator;
+	private _sc2 = [player, false] spawn ace_spectator_fnc_stageSpectator;
 	waitUntil {scriptDone _sc1 && scriptDone _sc2};
 
 	if (!isNil "_pos") then {

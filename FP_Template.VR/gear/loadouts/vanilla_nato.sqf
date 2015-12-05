@@ -1,6 +1,4 @@
-private ["_unit", "_kit"];
-_unit = _this select 0;
-_kit = _this select 1;
+params ["_unit", "_kit"];
 
 // ==================
 // Defines below. First, commmon stuff
@@ -11,7 +9,7 @@ _COMMON_HEADGEARS = ["H_HelmetB_paint", "H_HelmetB_light","H_HelmetB_light_deser
 _COMMON_BP = "B_Bergen_mcamo";
 
 _COMMON_NVG = "blufor"; // check fn_addNVG.sqf
-_COMMON_ITEMS = [["HandGrenade", 2], ["SmokeShellGreen", 2], "ItemMap","ItemCompass","ItemWatch", "ItemRadio", "ACE_fieldDressing","ACE_fieldDressing", "ACE_Morphine"];
+_COMMON_ITEMS = ["ACRE_PRC343", ["HandGrenade", 2], ["SmokeShellGreen", 2], "ItemMap","ItemCompass","ItemWatch", "ItemRadio", "ACE_fieldDressing","ACE_fieldDressing", "ACE_Morphine"];
 
 _COMMON_RIFLE = "arifle_MX_F";
 _COMMON_RIFLE_ATTACHMENTS = ["optic_Aco"];
@@ -51,8 +49,8 @@ _SQL_HEADGEAR = "H_Beret_red";
 _PLT_HEADGEAR = "H_MilCap_mcamo";
 _SQL_VEST = "V_PlateCarrierGL_rgr";
 _SQL_UNIFORM = _COMMON_UNIFORMS;
-_SQL_ITEMS = ["ACE_microDAGR", "ACE_MapTools"];
-_SQL_BP = ["tf_rt1523g","tf_mr3000","tf_anprc155", "tf_rt1523g"] select ([BLUFOR, OPFOR, independent, civilian] find side _unit);
+_SQL_ITEMS = ["ACRE_PRC148", "ACE_microDAGR", "ACE_MapTools"];
+_SQL_BP = "B_AssaultPack_rgr";
 
 // ==================
 // Medic stuff
@@ -102,7 +100,7 @@ switch _kit do {
     case "PLT"; // fall through to SQL
     case "SQL":
     {
-        local _h = if (_kit == "PLT") then {_PLT_HEADGEAR} else {_SQL_HEADGEAR};
+        private _h = if (_kit == "PLT") then {_PLT_HEADGEAR} else {_SQL_HEADGEAR};
 
         [_unit, [_SQL_UNIFORM, _SQL_VEST, _h, _SQL_BP]] call FP_fnc_addContainers;
         [_unit, [[_COMMON_MAG_GL, 7], [_COMMON_MAG_GL_T, 4], _COMMON_GL_NADES]] call FP_fnc_addToContainers;

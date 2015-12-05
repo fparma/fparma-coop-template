@@ -31,7 +31,7 @@ if (!params [["_name", "", [""]]]) exitWith {
 	objNull
 };
 
-local _matches = [];
+private _matches = [];
 {
 	if ([_this, name _x] call bis_fnc_inString) then {
 		_matches pushBack _x;

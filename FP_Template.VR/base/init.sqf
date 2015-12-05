@@ -10,11 +10,6 @@ setViewDistance FP_VD;
 setObjectViewDistance FP_OVD;
 setTerrainGrid 25;
 
-// TFAR settings. Sets the default channels etc
-if (isClass(configFile >> "CfgPatches" >> "task_force_radio")) then {
-	[] call compile preprocessFileLineNumbers "base\scripts\tfar_settings.sqf";
-};
-
 // Clients
 if (hasInterface) then {
 

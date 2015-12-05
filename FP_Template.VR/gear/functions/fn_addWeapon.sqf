@@ -31,7 +31,7 @@ params [
     ["_add", []]
 ];
 
-local _attach = {
+private _attach = {
     switch (getNumber (configFile >> "cfgWeapons" >> _wep >> "type")) do {
         case 1: {_unit addPrimaryWeaponItem _this};
         case 2: {_unit addHandgunItem _this};

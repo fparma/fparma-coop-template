@@ -20,7 +20,7 @@
 */
 
 if (!isServer) exitWith {};
-local _add = if (typeName _this != typeName []) then {[_this]} else {_this};
+private _add = if (typeName _this != typeName []) then {[_this]} else {_this};
 
 {
 	_x addCuratorEditableObjects [_add,  true];

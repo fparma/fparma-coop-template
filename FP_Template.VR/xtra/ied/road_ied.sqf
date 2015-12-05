@@ -21,8 +21,7 @@ _ied = _this select 1;
 if (isNil "_ied") exitWith {};
 if (!(local _car)) exitWith {};
 
-if (alive _ied) then
-{
+if (alive _ied) then {
 	deleteVehicle _ied;
 	"M_Mo_82mm_AT_LG" createVehicle [(getPosATL _ied select 0),(getPosATL _ied select 1),((getPosATL _ied select  2)-.2)];
 	sleep 0.1;

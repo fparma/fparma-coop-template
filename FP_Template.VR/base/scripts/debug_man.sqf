@@ -12,7 +12,7 @@ FP_debug_godMode = true;
 player addAction ["<t color='#ffff00'>[ God Mode ]</t> ON", {
 	FP_debug_godMode = !FP_debug_godMode;
 	player allowDamage FP_debug_godMode;
-	_id = _this select 2;
+	private _id = _this select 2;
 	player setUserActionText [_id, format ["<t color='#ffff00'>[ God Mode ]</t> %1",if FP_debug_godMode then {"ON"}else{"OFF"}]];
 }, nil, 99, false, true];
 
@@ -20,7 +20,7 @@ FP_debug_captive = false;
 player addAction ["<t color='#ffff00'>[ Captive ]</t> ON", {
 	FP_debug_captive = !FP_debug_captive;
 	player setCaptive FP_debug_captive;
-	_id = _this select 2;
+	private _id = _this select 2;
 	player setUserActionText [_id, format ["<t color='#ffff00'>[ Captive ]</t> %1", if FP_debug_captive then {"OFF"}else{"ON"}]];
 }, nil, 98, false, true];
 
