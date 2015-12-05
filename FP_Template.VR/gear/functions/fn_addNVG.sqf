@@ -47,13 +47,11 @@ private _add = {
 };
 
 // eh,  allow to pass the real names aswell
-if (_kind in ["rhsusf_ANPVS_14","rhsusf_ANPVS_15","ACE_NVG_Gen1","ACE_NVG_Gen2","ACE_NVG_Gen4","ACE_NVG_Wide","NVGoggles_OPFOR","NVGoggles","NVGoggles_INDEP"]) exitWith {
+if (_kind in ["ACE_NVG_Gen1","ACE_NVG_Gen2","ACE_NVG_Gen4","ACE_NVG_Wide","NVGoggles_OPFOR","NVGoggles","NVGoggles_INDEP"]) exitWith {
     _kind call _add;
 };
 
 switch _kind do {
-    case "pvs14": {"rhsusf_ANPVS_14" call _add};
-    case "pvs15": {"rhsusf_ANPVS_15" call _add};
     case "gen1": {"ACE_NVG_Gen1" call _add};
     case "gen2": {"ACE_NVG_Gen2" call _add};
     case "gen4": {"ACE_NVG_Gen4" call _add};

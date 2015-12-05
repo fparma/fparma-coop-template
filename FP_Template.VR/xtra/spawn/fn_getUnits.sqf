@@ -45,11 +45,6 @@ switch (toUpper _type) do {
 		_specialUnits = ["I_Soldier_LAT_F"];
 		_airdropUnit = "I_Heli_Transport_02_F";
 	};
-	case "RHSMSV":{
-		_units = ["rhs_msv_sergeant","rhs_msv_junior_sergeant","rhs_msv_machinegunner","rhs_msv_machinegunner_assistant","rhs_msv_rifleman","rhs_msv_efreitor","rhs_msv_grenadier"];
-		_specialUnits = ["rhs_msv_at","rhs_msv_strelok_rpg_assist"];
-		_airdropUnit = "RHS_Mi8AMT_vvsc";
-	};
 	default {["fn_unitsArray: Tried to select non existing units: (%1)",_type] call BIS_fnc_error};
 };
 
