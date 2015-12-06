@@ -2,7 +2,7 @@
 	Function: FP_fnc_disableWeapons
 
 	API:
-		Unit must be local
+		Client, must be local
 
 	Description:
         Disables unit bullets, grenades etc.
@@ -19,7 +19,7 @@
 params ["_unit", ["_disableWeapons", true]];
 if (!local _unit) exitWith {};
 
-private ["_evtIndex", "_firedEv";
+private ["_evtIndex", "_firedEv"];
  _evtIndex =  _unit getVariable ["FP_firedEV", -1];
 
 if (_disableWeapons) exitWith {
