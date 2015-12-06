@@ -7,7 +7,7 @@ class Header
 disabledAI = 1;
 
 // ===  Mission name etc settings
-OnLoadName = "FP TEMPLATE 2.2.0";// Mission name (short)
+OnLoadName = "FP TEMPLATE 3.0.0";// Mission name (short)
 onLoadMission="description.ext to change!"; // Longer description
 loadScreen = "fp_misc\img\fp_logo.paa"; // custom load image
 author="Cuel | 2015";
@@ -19,10 +19,8 @@ respawnDialog = 0;
 respawn = "BASE"; // don't edit respawn type unless you know what youre doing
 
 // === Debriefing
-class CfgDebriefing
-{
-	class End1
-	{
+class CfgDebriefing {
+	class End1 {
 		title = "Mission Success";
 		description = "You have completed the mission.";
 		subtitle = "";
@@ -30,8 +28,7 @@ class CfgDebriefing
 		picture = "flag_nato";
 		//pictureColor[] = {};
 	};
-	class End2
-	{
+	class End2 {
 		title = "Mission Failure";
 		description = "You have failed the mission, better luck next time";
 		subtitle = "";
