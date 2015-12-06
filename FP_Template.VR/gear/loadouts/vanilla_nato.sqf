@@ -9,7 +9,7 @@ _COMMON_HEADGEARS = ["H_HelmetB_paint", "H_HelmetB_light","H_HelmetB_light_deser
 _COMMON_BP = "B_Bergen_mcamo";
 
 _COMMON_NVG = "blufor"; // check fn_addNVG.sqf
-_COMMON_ITEMS = ["ACRE_PRC343", ["HandGrenade", 2], ["SmokeShellGreen", 2], "ItemMap","ItemCompass","ItemWatch", "ItemRadio", "ACE_fieldDressing","ACE_fieldDressing", "ACE_Morphine"];
+_COMMON_ITEMS = ["ACRE_PRC343", ["HandGrenade", 2], ["SmokeShellGreen", 2], "ItemMap","ItemCompass","ItemWatch", "ACE_fieldDressing","ACE_fieldDressing", "ACE_Morphine"];
 
 _COMMON_RIFLE = "arifle_MX_F";
 _COMMON_RIFLE_ATTACHMENTS = ["optic_Aco"];

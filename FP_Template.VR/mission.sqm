@@ -936,7 +936,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={900.44611,5,1061.9951};
+					position[]={900.23773,5,1057.8228};
 					class args
 					{
 						items=3;
@@ -948,7 +948,7 @@ class Mission
 						};
 						class Item1
 						{
-							value="10";
+							value="8";
 							parentCls="ACE_ModuleBlueForceTracking";
 							typeName="Interval";
 						};
@@ -991,7 +991,7 @@ class Mission
 			leader=1;
 			lock="UNLOCKED";
 			skill=0.2;
-			init="[this, ""Fatty Magoo""] call FP_fnc_setVehicleName; [this] call FP_fnc_clearVehicle; this setObjectTexture [0, ""fp_misc\img\fattymagoo.paa""];";
+			init="[this, ""Fatty Magoo""] call FP_fnc_setVehicleName; if (local this) then {[this] call FP_fnc_clearVehicle;}; this setObjectTexture [0, ""fp_misc\img\fattymagoo.paa""];";
 		};
 		class Item2
 		{
@@ -1002,7 +1002,7 @@ class Mission
 			leader=1;
 			lock="UNLOCKED";
 			skill=0.2;
-			init="[this,""Aluminum Monster""] call FP_fnc_setVehicleName; [this] call FP_fnc_clearVehicle; this setObjectTexture [0, ""fp_misc\img\aluminummonster.paa""]";
+			init="[this,""Aluminum Monster""] call FP_fnc_setVehicleName; if (local this) then {[this] call FP_fnc_clearVehicle;}; this setObjectTexture [0, ""fp_misc\img\aluminummonster.paa""]";
 		};
 		class Item3
 		{
@@ -1014,7 +1014,7 @@ class Mission
 			lock="UNLOCKED";
 			skill=0.2;
 			text="acar1";
-			init="[this,""Alpha 1""] call FP_fnc_setVehicleName; [this] call FP_fnc_clearVehicle;";
+			init="[this,""Alpha 1""] call FP_fnc_setVehicleName; if (local this) then {[this] call FP_fnc_clearVehicle;};";
 			syncId=4;
 			synchronizations[]={0};
 		};
@@ -1027,7 +1027,7 @@ class Mission
 			leader=1;
 			skill=0.2;
 			text="bcar1";
-			init="[this,""Bravo 1""] call FP_fnc_setVehicleName; [this] call FP_fnc_clearVehicle;";
+			init="[this,""Bravo 1""] call FP_fnc_setVehicleName; if (local this) then {[this] call FP_fnc_clearVehicle;};";
 			description="man";
 			syncId=5;
 			synchronizations[]={0};
@@ -1041,7 +1041,7 @@ class Mission
 			leader=1;
 			skill=0.2;
 			text="ccar1";
-			init="[this,""Charlie 1""] call FP_fnc_setVehicleName; [this] call FP_fnc_clearVehicle;";
+			init="[this,""Charlie 1""] call FP_fnc_setVehicleName; if (local this) then {[this] call FP_fnc_clearVehicle;};";
 			description="man";
 			syncId=6;
 			synchronizations[]={0};
@@ -1056,7 +1056,7 @@ class Mission
 			lock="UNLOCKED";
 			skill=0.2;
 			text="acar1_1";
-			init="[this,""Alpha 2""] call FP_fnc_setVehicleName; [this] call FP_fnc_clearVehicle;";
+			init="[this,""Alpha 2""] call FP_fnc_setVehicleName; if (local this) then {[this] call FP_fnc_clearVehicle;};";
 			syncId=7;
 			synchronizations[]={0};
 		};
@@ -1069,7 +1069,7 @@ class Mission
 			leader=1;
 			skill=0.2;
 			text="bcar1_1";
-			init="[this,""Bravo 2""] call FP_fnc_setVehicleName; [this] call FP_fnc_clearVehicle;";
+			init="[this,""Bravo 2""] call FP_fnc_setVehicleName; if (local this) then {[this] call FP_fnc_clearVehicle;};";
 			description="man";
 			syncId=8;
 			synchronizations[]={0};
@@ -1083,7 +1083,7 @@ class Mission
 			leader=1;
 			skill=0.2;
 			text="ccar1_1";
-			init="[this,""Charlie 2""] call FP_fnc_setVehicleName; [this] call FP_fnc_clearVehicle;";
+			init="[this,""Charlie 2""] call FP_fnc_setVehicleName; if (local this) then {[this] call FP_fnc_clearVehicle;};";
 			description="man";
 			syncId=9;
 			synchronizations[]={0};
@@ -1106,7 +1106,7 @@ class Mission
 			side="EMPTY";
 			vehicle="C_Offroad_01_F";
 			skill=0.2;
-			init="[this,""RESPAWN VEHICLE""] call FP_fnc_setVehicleName; [this] call FP_fnc_clearVehicle;";
+			init="[this,""RESPAWN VEHICLE""] call FP_fnc_setVehicleName; if (local this) then {[this] call FP_fnc_clearVehicle;};";
 			syncId=10;
 			synchronizations[]={1};
 		};
@@ -1117,7 +1117,7 @@ class Mission
 			side="EMPTY";
 			vehicle="C_Offroad_01_F";
 			skill=0.2;
-			init=" [this,""RESPAWN VEHICLE""] call FP_fnc_setVehicleName; [this] call FP_fnc_clearVehicle;";
+			init=" [this,""RESPAWN VEHICLE""] call FP_fnc_setVehicleName; if (local this) then {[this] call FP_fnc_clearVehicle;};";
 			syncId=11;
 			synchronizations[]={1};
 		};
@@ -1128,7 +1128,7 @@ class Mission
 			side="EMPTY";
 			vehicle="C_Offroad_01_F";
 			skill=0.2;
-			init="[this,""RESPAWN VEHICLE""] call FP_fnc_setVehicleName; [this] call FP_fnc_clearVehicle;";
+			init="[this,""RESPAWN VEHICLE""] call FP_fnc_setVehicleName; if (local this) then {[this] call FP_fnc_clearVehicle;};";
 			syncId=12;
 			synchronizations[]={1};
 		};
@@ -1139,7 +1139,7 @@ class Mission
 			side="EMPTY";
 			vehicle="C_Offroad_01_F";
 			skill=0.2;
-			init="[this,""RESPAWN VEHICLE""] call FP_fnc_setVehicleName; [this] call FP_fnc_clearVehicle;";
+			init="[this,""RESPAWN VEHICLE""] call FP_fnc_setVehicleName; if (local this) then {[this] call FP_fnc_clearVehicle;};";
 			syncId=13;
 			synchronizations[]={1};
 		};
@@ -1216,7 +1216,7 @@ class Mission
 			leader=1;
 			skill=0.2;
 			text="ccar1_2";
-			init="[this,""Delta 1""] call FP_fnc_setVehicleName; [this] call FP_fnc_clearVehicle;";
+			init="[this,""Delta 1""] call FP_fnc_setVehicleName; if (local this) then {[this] call FP_fnc_clearVehicle;};";
 			description="man";
 			syncId=14;
 			synchronizations[]={0};
@@ -1230,7 +1230,7 @@ class Mission
 			leader=1;
 			skill=0.2;
 			text="ccar1_1_1";
-			init="[this,""Delta 2""] call FP_fnc_setVehicleName; [this] call FP_fnc_clearVehicle;";
+			init="[this,""Delta 2""] call FP_fnc_setVehicleName; if (local this) then {[this] call FP_fnc_clearVehicle;};";
 			description="man";
 			syncId=15;
 			synchronizations[]={0};

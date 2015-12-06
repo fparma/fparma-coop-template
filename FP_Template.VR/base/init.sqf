@@ -20,5 +20,3 @@ if (hasInterface) then {
 	};
 
 };
-
-FP_fnc_preInit = nil;

@@ -1,4 +1,4 @@
-// Only allow people with map tools to draw on briefing
+// Only allow people with map tools to draw on briefing (false, true = everyone can draw)
 ACE_maptools_EveryoneCanDrawOnBriefing = false;
 
 FP_VD = 2000; // View distance
@@ -19,5 +19,5 @@ FP_flag_targets = [
 // The default gear script file. This is a file inside gear\loadouts
 FP_gear_default = "vanilla_nato";
 
-// Amount of respawns, -1 = infinite, 0 = none. Can also be higher
+// Amount of respawns, -1 = infinite, 0 = no respawn. Can also be higher
 FP_JRM_respawns = -1;
