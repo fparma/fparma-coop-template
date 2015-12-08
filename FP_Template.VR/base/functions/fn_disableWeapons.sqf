@@ -2,7 +2,7 @@
 	Function: FP_fnc_disableWeapons
 
 	API:
-		Client, must be local
+		Local unit
 
 	Description:
         Disables unit bullets, grenades etc.
@@ -16,21 +16,31 @@
 		Cuel 2015-10-29
 */
 
-params ["_unit", ["_disableWeapons", true]];
+params ["_unit", "_disable"];
 if (!local _unit) exitWith {};
 
-private ["_evtIndex", "_firedEv"];
- _evtIndex =  _unit getVariable ["FP_firedEV", -1];
-
-if (_disableWeapons) exitWith {
-	if (_evtIndex > -1) then {
-		_firedEv =_unit addEventHandler ["Fired", {
-			private _proj = param [6, objNull];
-			[_proj] call ace_frag_fnc_addBlackList;
-			deleteVehicle _proj;
-		}];
-	};
-	_unit setVariable ["FP_firedEV", _firedEv];
+if (_disable) then {
+    if (player == _unit) then {
+        FP_oldAce_detonate = ACE_explosives_fnc_detonateExplosive;
+        ACE_explosives_fnc_detonateExplosive = {false};
+        _unit setVariable ["FP_disableID",
+            [_unit, "DefaultAction", {true}, {}] call ace_common_fnc_addActionEventHandler
+        ];
+    };
+    _unit setVariable ["FP_firedID",
+        _unit addEventHandler ["Fired", {
+            private _obj = param [6, objNull];
+            if (!isNil "ace_frag_fnc_addBlackList") then {
+                [_obj] call ace_frag_fnc_addBlackList;
+            };
+            deleteVehicle _obj;
+        }]
+    ];
+} else {
+    if (player == _unit) then {
+        ACE_explosives_fnc_detonateExplosive = FP_oldAce_detonate;
+        FP_oldAce_detonate = nil;
+        [_unit, "DefaultAction", _unit getVariable ["FP_disableID", -1]] call ACE_common_fnc_removeActionEventHandler;
+    };
+    _unit removeEventHandler ["Fired", _unit getVariable ["FP_firedID", -1]];
 };
-
-_unit removeEventHandler ["Fired", _evtIndex];
