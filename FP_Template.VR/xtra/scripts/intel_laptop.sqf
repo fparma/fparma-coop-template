@@ -37,7 +37,7 @@ private _runHack = {
     private _onSuccess = {
         (_this select 0) params ["_laptop", "_speaker", "_info", "_callback", "_id"];
         deleteVehicle _speaker;
-        [_laptop, _id] remoteExecCall ["removeAction", -2];
+        [_laptop, _id] remoteExecCall ["removeAction", 0];
 
         if (count _info > 0) then {
             private _idx = player getVariable ["fp_amountIntel", 1];
