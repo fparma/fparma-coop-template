@@ -7,7 +7,7 @@ class Header
 disabledAI = 1;
 
 // ===  Mission name etc settings
-OnLoadName = "FP TEMPLATE 3.0.0";// Mission name (short)
+OnLoadName = "FP TEMPLATE 3.0.1";// Mission name (short)
 onLoadMission="description.ext to change!"; // Longer description
 loadScreen = "fp_misc\img\fp_logo.paa"; // custom load image
 author="Cuel | 2015";
@@ -15,8 +15,24 @@ author="Cuel | 2015";
 // ===  Respawn settings
 respawndelay = 4;
 respawnDialog = 0;
-// if you don't want respawns, see config .sqf
 respawn = "BASE"; // don't edit respawn type unless you know what youre doing
+
+class CfgFunctions {
+	createShortcuts = 1;
+    // Base functions.
+    class FP {
+    	#include "base\funcs.hpp"
+    };
+    // Anything below can be deleted if you do not want to use it.
+    // Gear funcs
+    class FP_Gear {
+    	#include "gear\functions\funcs.hpp"
+    };
+    // JIP and respawn manager
+    class FP_JRM {
+    	#include "xtra\jrm\funcs.hpp"
+    };
+};
 
 // === Debriefing
 class CfgDebriefing {
@@ -38,8 +54,7 @@ class CfgDebriefing {
 	};
 };
 
-// includes the dialogs and cfgFunctions
-#include "fparma.hpp"
+// === DO NOT EDIT BELOW
 
 class Extended_PreInit_EventHandlers {
 	class FPARMA {
@@ -47,14 +62,13 @@ class Extended_PreInit_EventHandlers {
 	};
 };
 
-// === DO NOT EDIT
-showCompass   = 1;
-showGPS       = 1;
-showMap       = 1;
-showWatch     = 1;
-enableItemsDropping = 0;
-onLoadIntroTime=false;
-onLoadMissionTime=false;
-enableDebugConsole = 1;
-allowFunctionsLog = 0;
+showGPS = 1;
+showMap = 1;
+showWatch = 1;
+showCompass = 1;
 joinUnassigned = 1;
+allowFunctionsLog = 0;
+enableDebugConsole = 1;
+onLoadIntroTime = false;
+enableItemsDropping = 0;
+onLoadMissionTime = false;
