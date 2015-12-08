@@ -2,7 +2,7 @@
 ACE_maptools_EveryoneCanDrawOnBriefing = false;
 
 // Units (object names) that can start the mission from cold start, and units that can move during cold start
-// If canStart is empty string, cold start is not activated.
+// If canStart is empty string (""), cold start is not activated.
 FP_coldStartCanStart = "gm, actual";
 FP_coldStartCanMove = "gm, actual, a0, b0, c0, d0, crew0, crew1, crew2, p0, p1";
 
