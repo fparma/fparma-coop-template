@@ -190,7 +190,8 @@ switch _kit do {
         [_unit, [[_COMMON_MAG, 6], [_COMMON_MAG_T, 2]]] call FP_fnc_addToContainers;
         [_unit, [_COMMON_RIFLE, _COMMON_RIFLE_ATTACHMENTS]] call FP_fnc_addWeapon;
 
-        [_unit, _ENGI_BP_ITEMS]  call FP_fnc_addToContainers;
+        [_unit, _ENGI_ITEMS] call FP_fnc_addToContainers;
+        [_unit, _ENGI_BP_ITEMS, "backpack"]  call FP_fnc_addToContainers;
     };
 
     case "PILOT":
