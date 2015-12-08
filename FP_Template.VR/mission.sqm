@@ -339,7 +339,7 @@ class Mission
 				};
 				class Item1
 				{
-					position[]={910.87531,5,999.3623};
+					position[]={910.68726,5,999.2998};
 					special="NONE";
 					id=7;
 					side="WEST";
@@ -539,7 +539,7 @@ class Mission
 					side="WEST";
 					vehicle="B_engineer_F";
 					player="PLAY CDG";
-					skill=0;
+					skill=0.2;
 					text="b7";
 					init="this setGroupID [""BRAVO""]; [this,""ENGINEER""] call FP_fnc_getKit; this assignTeam ""RED"";";
 					description=" Bravo Engineer";

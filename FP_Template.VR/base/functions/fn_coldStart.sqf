@@ -48,6 +48,7 @@ if (player in _canMove) exitWith {};
 [{
     if (!isNil "FP_coldStartStarted") exitWith {[_this select 1] call CBA_fnc_removeEventHandler};
     if (player distance (_this select 0) > 20) then {
+        (vehicle player) setVelocity [0,0,0];
         player setPosATL (_this select 0);
         hintSilent "You can't move until the mission has started";
         [] spawn {sleep 4; hintSilent ""};
