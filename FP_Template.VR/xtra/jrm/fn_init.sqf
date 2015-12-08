@@ -41,7 +41,7 @@ player addEventHandler ["Respawn", {
 	private _uid = getPlayerUID player;
 	FP_JRM_lives = (FP_JRM_lives - 1) max 0;
 
-	if (FP_JRM_lives < 1) then {
+	if (FP_JRM_lives == 0) then {
 		[{
 			[true] spawn ace_spectator_fnc_setSpectator;
 			[player, true] spawn ace_spectator_fnc_stageSpectator;
