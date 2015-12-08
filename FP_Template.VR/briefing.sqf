@@ -32,7 +32,7 @@ player createDiarySubject ["fp_radios"," - Radio channels"];
 
 player createDiaryRecord ["fp_radios", ["Plt-Radio", "
 	[ Plt ]<br />
-	Freq 41.1
+	Chan 1
 "]];
 
 player createDiaryRecord ["fp_radios", ["Group channels", "
@@ -43,7 +43,6 @@ player createDiaryRecord ["fp_radios", ["Group channels", "
 	[ Actual ] : 5 <br />
 	[ Crew / Pilot] : 6 or 7 <br />
 "]];
-
 
 //  Unomment  next line to not have squads show on the briefing
 // if (true) exitWith {};

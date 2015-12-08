@@ -5,7 +5,7 @@
 		Local unit
 
 	Description:
-        Disables unit bullets, grenades etc.
+        Disables unit bullets, grenades, detonating explosives etc.
 
 	Parameters:
         _unit - Unit to disable weapons on
