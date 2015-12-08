@@ -23,7 +23,11 @@ if (FP_coldStartCanStart == "" || {count _canStart == 0}) exitWith {};
         player removeAction FP_coldStartAction;
         FP_coldStartAction = nil;
     };
-    [player, false] call FP_fnc_disableWeapons;
+    hintSilent "Mission going live, weapons hot";
+    [] spawn {
+        sleep 4;
+        [player, false] call FP_fnc_disableWeapons;
+    };
     ["FP_coldStart", 0] call CBA_fnc_removeEventHandler;
 }] call CBA_fnc_addEventHandler;
 
@@ -36,7 +40,7 @@ if (player in _canStart) then {
         FP_coldStartStarted = true;
         publicVariable "FP_coldStartStarted";
         ["FP_coldStart"] call CBA_fnc_globalEvent;
-    }, nil, 0, false, true];
+    }, nil, 99, false, true];
 };
 
 if (player in _canMove) exitWith {};
