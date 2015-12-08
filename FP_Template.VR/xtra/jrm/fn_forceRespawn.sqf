@@ -53,7 +53,7 @@ if (!isNil "_posOrCode") then {
 	private _sc2 = [player, false] spawn ace_spectator_fnc_stageSpectator;
 	waitUntil {scriptDone _sc1 && scriptDone _sc2};
 
-	if (!isNil "_pos") then {
+	if (!isNil "_pos" && {_pos distance [0,0] > 5}) then {
 		player setPos _pos;
 	} else {
 		if (!isNil "_function") then {
