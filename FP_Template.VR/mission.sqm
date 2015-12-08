@@ -763,13 +763,13 @@ class Mission
 				};
 				class Item7
 				{
-					position[]={924.81927,5,995.24658};
+					position[]={924.75232,5,994.93262};
 					special="NONE";
 					id=37;
 					side="WEST";
 					vehicle="B_engineer_F";
 					player="PLAY CDG";
-					skill=0;
+					skill=0.2;
 					text="d7";
 					init="this setGroupID [""DELTA""]; [this,""ENGINEER""] call FP_fnc_getKit; this assignTeam ""RED"";";
 					description=" Delta Engineer";
