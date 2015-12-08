@@ -21,11 +21,6 @@ if (!isNil "fp_flag" && {count FP_flag_targets > 0}) then {
 	[fp_flag, FP_flag_targets] call compile preProcessFileLineNumbers "base\scripts\teleport_flag.sqf"
 };
 
-// Longer view distance for pilots. Edit in config.sqf
-if (!isNil "FP_pilots" && {str player in FP_pilots}) then {
-	[] call compile preProcessFileLineNumbers "base\scripts\dynamic_vd.sqf";
-};
-
 // Debug script for development. Create a unit named "debugger" and use him as player.
 if (str player in ["debugger"]) then {
 	[] call compile preProcessFileLineNumbers "base\scripts\debug_man.sqf";

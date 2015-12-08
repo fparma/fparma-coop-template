@@ -44,3 +44,5 @@ if (_disable) then {
     };
     _unit removeEventHandler ["Fired", _unit getVariable ["FP_firedID", -1]];
 };
+
+true

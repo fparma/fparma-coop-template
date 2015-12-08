@@ -44,10 +44,16 @@ if (primaryWeapon player != "") then {
 	}, []] call ACE_common_fnc_execNextFrame;
 };
 
-if (time > 0) exitWith {};
+// Longer view distance for pilots
+if (player in ([FP_pilots, false, true] call ACE_common_fnc_parseList)) then {
+	[] call compile preProcessFileLineNumbers "base\scripts\dynamic_vd.sqf";
+};
+
+[] call FP_fnc_coldStart;
 
 // monkey patch ace markers temporarly to show messages during briefing
-// Normal markers
+if (time > 0) exitWith {};
+
 FP_ace_placeMarker = ACE_markers_fnc_placeMarker;
 ACE_markers_fnc_placeMarker = {
 	if (_this select 1 == 1) then {

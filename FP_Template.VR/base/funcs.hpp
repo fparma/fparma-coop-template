@@ -6,4 +6,5 @@ class functions {
 	class getPlayer;
 	class setVehicleName;
 	class disableWeapons;
+    class coldStart;
 };
