@@ -17,7 +17,7 @@
 */
 
 params ["_unit", "_disable"];
-if (!local _unit) exitWith {};
+if (!local _unit) exitWith {false};
 
 if (_disable) then {
     if (player == _unit) then {
