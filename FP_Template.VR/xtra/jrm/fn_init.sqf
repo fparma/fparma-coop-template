@@ -1,6 +1,6 @@
 
-if (FP_JRM_respawns < 0) exitWith {};
 if (isNil "FP_JRM_savedState") then {FP_JRM_savedState = []};
+if (FP_JRM_respawns < 0) exitWith {};
 
 if (isServer) then {
 	// If players disconnect while unconscious, count as a death
@@ -41,12 +41,7 @@ player addEventHandler ["Respawn", {
 	private _uid = getPlayerUID player;
 	FP_JRM_lives = (FP_JRM_lives - 1) max 0;
 
-	if (FP_JRM_lives == 0) then {
-		[{
-			[true] spawn ace_spectator_fnc_setSpectator;
-			[player, true] spawn ace_spectator_fnc_stageSpectator;
-		}, []] call ACE_common_fnc_execNextFrame;
-	};
+	if (FP_JRM_lives == 0) then {[true] call FP_fnc_spectate};
 
 	// Update state
 	{
@@ -65,11 +60,6 @@ player addEventHandler ["Respawn", {
 {
 	if (_x select 0 == _uid) exitWith {
 		FP_JRM_lives = _x select 1;
-		if (FP_JRM_lives == 0) then {
-			[{
-				[true] spawn ace_spectator_fnc_setSpectator;
-				[player, true] spawn ace_spectator_fnc_stageSpectator;
-			}, []] call ACE_common_fnc_execNextFrame;
-		};
+		if (FP_JRM_lives == 0) then {[true] call FP_fnc_spectate};
 	};
 } forEach FP_JRM_savedState;
