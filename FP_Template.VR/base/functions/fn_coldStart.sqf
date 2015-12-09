@@ -18,7 +18,7 @@ private _canMove = [FP_coldStartCanMove, false, true] call ACE_common_fnc_parseL
 if (FP_coldStartCanStart == "" || {count _canStart == 0}) exitWith {};
 
 // event to handle mission start
-["FP_coldStart", {
+FP_coldStartIdx = ["FP_coldStart", {
     if (!isNil "FP_coldStartAction") then {
         player removeAction FP_coldStartAction;
         FP_coldStartAction = nil;
@@ -28,7 +28,8 @@ if (FP_coldStartCanStart == "" || {count _canStart == 0}) exitWith {};
         sleep 4;
         [player, false] call FP_fnc_disableWeapons;
     };
-    ["FP_coldStart", 0] call CBA_fnc_removeEventHandler;
+    ["FP_coldStart", FP_coldStartIdx] call CBA_fnc_removeEventHandler;
+    FP_coldStartIdx = nil;
 }] call CBA_fnc_addEventHandler;
 
 // Disable weapons
