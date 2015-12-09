@@ -7,4 +7,6 @@ class functions {
 	class setVehicleName;
 	class disableWeapons;
     class coldStart;
+    class isValidPos;
+    class spectate;
 };
