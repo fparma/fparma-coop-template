@@ -13,7 +13,7 @@ FP_OVD = 1800; // object view distance
 FP_pilots = "p0, p1";
 
 // Flag teleport targets in format [Display name, objectName]
-FP_flag_targets = [
+FP_flagTargets = [
     ["Actual", "actual"],
     ["Alpha SQL", "a0"],
     ["Bravo SQL", "b0"],
@@ -22,7 +22,7 @@ FP_flag_targets = [
 ];
 
 // The default gear script file. This is a file inside gear\loadouts
-FP_gear_default = "vanilla_nato";
+FP_gearDefault = "vanilla_nato";
 
 // Amount of respawns, -1 = infinite, 0 = no respawn. Can also be higher
 FP_JRM_respawns = -1;

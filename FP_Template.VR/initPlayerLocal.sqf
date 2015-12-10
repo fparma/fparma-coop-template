@@ -17,8 +17,8 @@ params ["_player", "_isJip"];
 if (_isJip) then {[_player] remoteExecCall ["FP_fnc_addToCurators", 2]};
 
 // Add teleport options to flag. See config.sqf
-if (!isNil "fp_flag" && {count FP_flag_targets > 0}) then {
-	[fp_flag, FP_flag_targets] call compile preProcessFileLineNumbers "base\scripts\teleport_flag.sqf"
+if (!isNil "fp_flag" && {count FP_flagTargets > 0}) then {
+	[fp_flag, FP_flagTargets] call compile preProcessFileLineNumbers "base\scripts\teleport_flag.sqf"
 };
 
 // Debug script for development. Create a unit named "debugger" and use him as player.

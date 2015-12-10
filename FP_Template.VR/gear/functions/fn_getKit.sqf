@@ -29,7 +29,7 @@
 params [
 	["_unit", objNull, [objNull]],
 	["_kit", "", [""]],
-	["_scriptFile", FP_GEAR_DEFAULT]
+	["_scriptFile", FP_gearDefault]
 ];
 
 // For respawn, retrieved in base init after player is inited
