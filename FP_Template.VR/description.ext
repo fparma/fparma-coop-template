@@ -9,7 +9,7 @@ disabledAI = 1;
 // ===  Mission name etc settings
 OnLoadName = "FP TEMPLATE 3.0.1";// Mission name (short)
 onLoadMission="description.ext to change!"; // Longer description
-loadScreen = "fp_misc\img\fp_logo.paa"; // custom load image
+loadScreen = "\fp_misc\img\fp_logo.paa"; // custom load image
 author="Cuel | 2015";
 
 // ===  Respawn settings
@@ -37,7 +37,7 @@ class CfgDebriefing {
 		description = "You have completed the mission.";
 		subtitle = "";
 		//pictureBackground = "";
-		picture = "flag_nato";
+		picture = "\fp_misc\img\fp_logo.paa";
 		//pictureColor[] = {};
 	};
 	class End2 {
