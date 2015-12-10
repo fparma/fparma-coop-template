@@ -68,3 +68,14 @@ enableDebugConsole = 1;
 onLoadIntroTime = false;
 enableItemsDropping = 0;
 onLoadMissionTime = false;
+
+// Clean up settings
+corpseManagerMode = 1;
+corpseLimit = 20;
+corpseRemovalMinTime = 120;
+corpseRemovalMaxTime = 300;
+
+wreckManagerMode = 1;
+wreckLimit = 10;
+wreckRemovalMinTime = 300;
+wreckRemovalMaxTime = 800;
