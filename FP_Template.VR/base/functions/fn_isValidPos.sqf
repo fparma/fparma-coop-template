@@ -23,4 +23,5 @@
 */
 
 private _pos = _this call CBA_fnc_getPos;
+if (count _pos < 2) exitWith {false};
 !([_pos select 0, _pos select 1] isEqualTo [0,0])
