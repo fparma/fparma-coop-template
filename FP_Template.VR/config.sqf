@@ -4,10 +4,10 @@ ACE_maptools_EveryoneCanDrawOnBriefing = false;
 // Amount of respawns, -1 = infinite, 0 = no respawn. Can also be higher
 FP_JRM_respawns = -1;
 
-// Units (object names) that can start the mission from cold start
+// Units (object names, comma separated) that can start the mission from cold start
 // If FP_coldStartCanStart is empty string (""), cold start is never activated.
 FP_coldStartCanStart = "gm, actual";
-// Units that can move during cold start (object names)
+// Units that can move during cold start (object names, comma separated)
 FP_coldStartCanMove = "gm, actual, a0, b0, c0, d0, crew0, crew1, crew2, p0, p1";
 
 FP_VD = 2000; // View distance
