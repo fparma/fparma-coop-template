@@ -1,4 +1,4 @@
-// Only allow people with map tools to draw on briefing (false, true = everyone can draw)
+// Only allow people with map tools to draw on briefing (true = everyone can draw)
 ACE_maptools_EveryoneCanDrawOnBriefing = false;
 
 // Units (object names) that can start the mission from cold start, and units that can move during cold start
