@@ -1,7 +1,14 @@
+/*
+    Initializes the player
+*/
+
+// Custom ares funcs
+if (isClass (configFile >> "CfgPatches" >> "Ares")) then {
+	[] call compile preprocessFileLineNumbers "base\scripts\ares\init.sqf";
+};
 
 // Respawn with gear, is set by fn_getKit
 FP_kit_type = player getVariable ["FP_kit_type", []];
-
 player addEventHandler ["Respawn", {
 
 	// Add new unit to zeus
@@ -32,11 +39,6 @@ player addEventHandler ["Fired", {
 	};
 }];
 
-// Custom ares funcs
-if (isClass (configFile >> "CfgPatches" >> "Ares")) then {
-	[] call compile preprocessFileLineNumbers "base\scripts\ares\init.sqf";
-};
-
 // Lower weapon after mission start
 if (primaryWeapon player != "") then {
 	[{
@@ -49,6 +51,7 @@ if (player in ([FP_pilots, false, true] call ACE_common_fnc_parseList)) then {
 	[] call compile preProcessFileLineNumbers "base\scripts\dynamic_vd.sqf";
 };
 
+// Initialize cold start (edit with config.sqf)
 [] call FP_fnc_coldStart;
 
 // Assign team colors to units
@@ -63,39 +66,11 @@ if (leader group player == player) then {
     };
 };
 
+// Init jip and respawn manager. Edit in config.sqf
+if (!isServer &&  {!isNil "FP_JRM_fnc_init"}) then {
+	[] call FP_JRM_fnc_init;
+};
 
 // monkey patch ace markers temporarly to show messages during briefing
 if (time > 0) exitWith {};
-
-FP_ace_placeMarker = ACE_markers_fnc_placeMarker;
-ACE_markers_fnc_placeMarker = {
-	if (_this select 1 == 1) then {
-		private _mrkName = missionNamespace getVariable ["ACE_markers_currentMarkerConfigName", ""];
-		private _grid = mapGridPosition (missionNamespace getVariable ["ACE_markers_currentMarkerPosition", []]);
-		private _msg = format ["SERVER: %1 placed a '%2' marker at %3", name player, _mrkName, _grid];
-		_msg remoteExecCall ["systemChat", side player];
-	};
-	_this call FP_ace_placeMarker;
-};
-
-// Line markers
-FP_ace_placeLineMarker = ACE_maptools_fnc_handleMouseButton;
-ACE_maptools_fnc_handleMouseButton = {
-	if (ACE_maptools_drawing_isDrawing) then {
-		private _clr = ["black", "red", "green", "blue", "yellow", "white"]
-			select (["ColorBlack", "ColorRed","ColorGreen","ColorBlue","ColorYellow","ColorWhite"]
-			find (ACE_maptools_drawing_tempLineMarker) select 3);
-		private _grid = mapGridPosition (ACE_maptools_drawing_tempLineMarker select 1);
-		private _msg = format ["SERVER: %1 placed a %2 line at %3", name player, _clr, _grid];
-		_msg remoteExecCall ["systemChat", side player];
-	};
-	_this call FP_ace_placeLineMarker;
-};
-
-[{
-	ACE_markers_fnc_placeMarker = FP_ace_placeMarker;
-	FP_ace_placeMarker = nil;
-
-	ACE_maptools_fnc_handleMouseButton = FP_ace_placeLineMarker;
-	FP_ace_placeLineMarker = nil;
-}, []] call ACE_common_fnc_execNextFrame;
+[] call compile preProcessFileLineNumbers "base\scripts\log_ace_markers.sqf";

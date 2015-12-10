@@ -25,7 +25,3 @@ if (!isNil "fp_flag" && {count FP_flag_targets > 0}) then {
 if (str player in ["debugger"]) then {
 	[] call compile preProcessFileLineNumbers "base\scripts\debug_man.sqf";
 };
-
-if (!isServer &&  {!isNil "FP_JRM_fnc_init"}) then {
-	[] call FP_JRM_fnc_init;
-};

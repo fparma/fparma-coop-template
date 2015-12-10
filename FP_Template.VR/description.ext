@@ -15,22 +15,18 @@ author="Cuel | 2015";
 // ===  Respawn settings
 respawndelay = 4;
 respawnDialog = 0;
-respawn = "BASE"; // don't edit respawn type unless you know what youre doing
+// don't edit respawn type unless you know what youre doing
+// if you don't want respawn, edit config.sqf
+respawn = "BASE";
 
 class CfgFunctions {
 	createShortcuts = 1;
-    // Base functions.
-    class FP {
-    	#include "base\funcs.hpp"
-    };
-    // Anything below can be deleted if you do not want to use it.
+    // Base functions. Do not remove
+	#include "base\funcs.hpp"
+
     // Gear funcs
     class FP_Gear {
     	#include "gear\functions\funcs.hpp"
-    };
-    // JIP and respawn manager
-    class FP_JRM {
-    	#include "xtra\jrm\funcs.hpp"
     };
 };
 
