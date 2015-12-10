@@ -1,6 +1,9 @@
 // Only allow people with map tools to draw on briefing (true = everyone can draw)
 ACE_maptools_EveryoneCanDrawOnBriefing = false;
 
+// Amount of respawns, -1 = infinite, 0 = no respawn. Can also be higher
+FP_JRM_respawns = -1;
+
 // Units (object names) that can start the mission from cold start
 // If FP_coldStartCanStart is empty string (""), cold start is never activated.
 FP_coldStartCanStart = "gm, actual";
@@ -24,6 +27,3 @@ FP_flagTargets = [
 
 // The default gear script file. This is a file inside gear\loadouts
 FP_gearDefault = "vanilla_nato";
-
-// Amount of respawns, -1 = infinite, 0 = no respawn. Can also be higher
-FP_JRM_respawns = -1;
