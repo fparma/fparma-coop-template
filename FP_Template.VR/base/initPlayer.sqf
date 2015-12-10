@@ -33,8 +33,8 @@ player addEventHandler ["Fired", {
 }];
 
 // Custom ares funcs
-if (!isNil "Ares_fnc_RegisterCustomModule") then {
-	[] call compile preprocessFileLineNumbers "base\scripts\ares.sqf";
+if (isClass (configFile >> "CfgPatches" >> "Ares")) then {
+	[] call compile preprocessFileLineNumbers "base\scripts\ares\init.sqf";
 };
 
 // Lower weapon after mission start
