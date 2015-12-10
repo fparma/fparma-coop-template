@@ -1,4 +1,11 @@
+/*
+	Function: FP_JRM_fnc_init
 
+	Description:
+        Initializes the jip and respawn manager.
+        This function is called automatically.
+
+*/
 if (isNil "FP_JRM_savedState") then {FP_JRM_savedState = []};
 if (FP_JRM_respawns < 0) exitWith {};
 
