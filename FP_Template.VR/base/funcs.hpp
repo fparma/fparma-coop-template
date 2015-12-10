@@ -19,5 +19,6 @@ class FP_JRM {
         file = "base\functions\jrm";
         class init;
         class forceRespawn;
+        class getSpectators;
     };
 };

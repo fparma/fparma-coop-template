@@ -5,14 +5,13 @@
 
 params ["_pos"];
 if (!(_pos call FP_fnc_isValidPos)) exitWith {};
-private _deadPlayers = [FP_JRM_savedState, {(_x select 1) == 0}] call ACE_common_fnc_filter;
-if (count _deadPlayers == 0) exitWith {["ERROR: No dead players"] call ares_fnc_ShowZeusMessage};
+private _plrs = [] call FP_JRM_fnc_getSpectators;
+if (count _plrs == 0) exitWith {["ERROR: No dead players"] call ares_fnc_ShowZeusMessage};
 
-private _playerObjects = [];
-{
-    private _uid = _x select 0;
-    {if (getPlayerUID _x == _uid && alive _x) then {_playerObjects pushBack _x}} forEach allPlayers;
-} forEach _deadPlayers;
+private _uids = [];
+{_uids pushBack (getPlayerUID _x)} forEach _plrs;
+FP_JRM_savedState = [FP_JRM_savedState, {!((_x select 0) in _uids)}] call ACE_common_fnc_filter;
+publicVariable "FP_JRM_fnc_savedState";
 
-[_pos] remoteExecCall ["FP_JRM_fnc_forceRespawn", _playerObjects];
-["Respawned %1 players", count _playerObjects] call ares_fnc_ShowZeusMessage;
+[_pos] remoteExecCall ["FP_JRM_fnc_forceRespawn", _plrs];
+["Respawned %1 players", count _plrs] call ares_fnc_ShowZeusMessage;
