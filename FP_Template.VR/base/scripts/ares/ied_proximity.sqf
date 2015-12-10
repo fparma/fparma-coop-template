@@ -19,7 +19,7 @@ _distance = parseNumber (["3", "5", "7", "10"] select _distance);
 _onlyPlayers = [false, true] select _onlyPlayers;
 _onlyOnFoot = [false, true] select _onlyOnFoot;
 
-private _condition = "this";
+private _condition = "count thisList > 0";
 if (_onlyPlayers && _onlyOnFoot) then {
     _condition = _condition  + "&& {{isPlayer _x && (vehicle _x == _x)} count thisList > 0}";
 } else {
@@ -50,7 +50,8 @@ private _statement = {
 
 private _ied = createVehicle [_className, [0, 0, 0], [], 0, "NONE"];
 _ied setPosATL _pos;
-private _trigger = ([getposATL _ied, "AREA:", [_distance, _distance, 0, false], "ACT:", ["ANY", "PRESENT", true]] call CBA_fnc_createTrigger) select 0;
+private _trigger = ([_pos, "AREA:", [_distance, _distance, 0, false], "ACT:", ["ANY", "PRESENT", false]] call CBA_fnc_createTrigger) select 0;
 _trigger setVariable ["fp_ied", _ied];
 _trigger setTriggerStatements [_condition, _statement, ""];
 _trigger attachTo [_ied, [0,0,0]];
+[_ied] remoteExecCall ["FP_fnc_addToCurators", 2];
