@@ -20,7 +20,6 @@ private _ret = [];
 
 {
     _x params ["_uid"];
-    player sideChat str _uid;
     {
         if (alive _x && {getPlayerUID _x == _uid}) exitWith {
             player sideChat "push";
