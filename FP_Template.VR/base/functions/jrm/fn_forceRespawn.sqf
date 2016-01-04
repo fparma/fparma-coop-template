@@ -48,6 +48,8 @@ if (!isNil "_posOrCode") then {
 [false] call FP_fnc_spectate;
 if (!isNil "_pos" && {_pos call FP_fnc_isValidPos}) then {
     player setPos _pos;
+    private _stuff = nearestObjects [player, ["All"], 100];
+    {player reveal [_x, 4]} forEach _stuff;
 } else {
     if (!isNil "_function") then {
         [player] call _function;
