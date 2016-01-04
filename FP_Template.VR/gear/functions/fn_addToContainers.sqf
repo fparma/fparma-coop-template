@@ -40,6 +40,7 @@ params [
 ];
 
 private _add = {
+    if (count _this == 0) exitWith {};
     if (_force != "") exitWith {
         switch _force do {
             case "backpack": {
