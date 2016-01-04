@@ -9,7 +9,7 @@ _COMMON_HEADGEARS = [];
 _COMMON_BP = "";
 
 _COMMON_NVG = ""; // can be: pvs14, pvs15, gen1, gen2, gen3, gen4, wide, blufor, opfor, indep. check fn_addNVG.sqf
-_COMMON_ITEMS = ["ACRE_PRC343", ["HandGrenade", 2], ["SmokeShellGreen", 2], "ItemMap","ItemCompass","ItemWatch", "ItemRadio", ["ACE_fieldDressing", 2], "ACE_Morphine"];
+_COMMON_ITEMS = ["ItemMap","ItemCompass","ItemWatch", "ACRE_PRC343", ["HandGrenade", 2], ["SmokeShellGreen", 2], ["ACE_fieldDressing", 2], "ACE_Morphine"];
 
 _COMMON_RIFLE = "";
 _COMMON_RIFLE_ATTACHMENTS = [];
@@ -94,11 +94,11 @@ _ENGI_BP_ITEMS = [["ToolKit", 1], ["SatchelCharge_Remote_Mag", 1], ["DemoCharge_
 // ==================
 // Assign the stuff
 // ==================
-switch _kit do {
+switch (toUpper _kit) do {
 
     case "PLT"; // fall through to SQL
     case "SQL": {
-        private _h = if (_kit == "PLT") then {_PLT_HEADGEAR} else {_SQL_HEADGEAR};
+        private _h = [_PLT_HEADGEAR, _SQL_HEADGEAR] select (_kit == "SQL");
 
         [_unit, [_SQL_UNIFORM, _SQL_VEST, _h, _SQL_BP]] call FP_fnc_addContainers;
         [_unit, [[_COMMON_MAG_GL, 7], [_COMMON_MAG_GL_T, 4], _COMMON_GL_NADES]] call FP_fnc_addToContainers;
@@ -119,7 +119,7 @@ switch _kit do {
     };
 
     case "RIFLEMAN": {
-        [_unit, [_COMMON_UNIFORMS, _MED_VEST, _MED_HEADGEAR, _MED_BP]] call FP_fnc_addContainers;
+        [_unit, [_COMMON_UNIFORMS, _MED_VEST, _MED_HEADGEAR, _COMMON_BP]] call FP_fnc_addContainers;
         [_unit, [[_COMMON_MAG, 6], [_COMMON_MAG_T, 4]]] call FP_fnc_addToContainers;
         [_unit, [_COMMON_RIFLE, _COMMON_RIFLE_ATTACHMENTS]] call FP_fnc_addWeapon;
     };
@@ -201,9 +201,12 @@ switch _kit do {
 // ==================
 // Runs for everyone
 // ==================
+
 [_unit, _COMMON_ITEMS] call FP_fnc_addToContainers;
 
 [_unit, [_COMMON_PISTOL_MAG, 2]] call FP_fnc_addToContainers;
 [_unit, _COMMON_PISTOL] call FP_fnc_addWeapon;
 
-[_unit, _COMMON_NVG] call FP_fnc_addNVG;
+if (_COMMON_NVG != "") then {
+    [_unit, _COMMON_NVG] call FP_fnc_addNVG;
+};

@@ -42,7 +42,7 @@ _SQL_ATTACHMENTS = ["hlc_muzzle_Tundra", "RH_peq2_top", "RH_LTdocterl"];
 // ==================
 // Assign the stuff
 // ==================
-switch _kit do {
+switch (toUpper _kit) do {
 
     case "PLT"; // fall through to SQL
     case "SQL": {

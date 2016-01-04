@@ -94,7 +94,7 @@ _ENGI_BP_ITEMS = [["SatchelCharge_Remote_Mag", 2], ["DemoCharge_Remote_Mag", 2]]
 // ==================
 // Assign the stuff
 // ==================
-switch _kit do {
+switch (toUpper _kit) do {
 
     case "PLT"; // fall through to SQL
     case "SQL": {
