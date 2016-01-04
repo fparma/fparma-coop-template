@@ -31,7 +31,8 @@ params [
     ["_kind", [], [[], ""]]
 ];
 
-if (IS_ARRAY(_kind)) then {_kind = _kind select 0};
+if (count _kind == 0) exitWith {};
+if (IS_ARRAY(_kind)) then {_kind = _kind call BIS_fnc_selectRandom};
 
 private _add = {
     if !(daytime > 7 && daytime < 20) then {
@@ -46,7 +47,7 @@ private _add = {
     };
 };
 
-// eh,  allow to pass the real names aswell
+// allow to pass the real names aswell
 if (_kind in ["ACE_NVG_Gen1","ACE_NVG_Gen2","ACE_NVG_Gen4","ACE_NVG_Wide","NVGoggles_OPFOR","NVGoggles","NVGoggles_INDEP"]) exitWith {
     _kind call _add;
 };
