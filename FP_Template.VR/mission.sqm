@@ -334,7 +334,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.2;
 					text="a0";
-					init="this setGroupID [""ALPHA""]; [this,""SQL""] call FP_fnc_getKit; this assignTeam ""BLUE"";";
+					init="this setGroupID [""ALPHA""]; [this,""SQL""] call FP_fnc_getKit;";
 					description=" Alpha SQL";
 				};
 				class Item1
@@ -347,7 +347,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="a1";
-					init="this setGroupID [""ALPHA""]; [this,""MEDIC""] call FP_fnc_getKit; this assignTeam ""BLUE"";";
+					init="this setGroupID [""ALPHA""]; [this,""MEDIC""] call FP_fnc_getKit;";
 					description=" Alpha Medic";
 				};
 				class Item2
@@ -360,7 +360,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0;
 					text="a2";
-					init="this setGroupID [""ALPHA""];  [this,""AR""] call FP_fnc_getKit; this assignTeam ""BLUE"";";
+					init="this setGroupID [""ALPHA""];  [this,""AR""] call FP_fnc_getKit;";
 					description=" Alpha AR";
 				};
 				class Item3
@@ -373,7 +373,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0;
 					text="a3";
-					init="this setGroupID [""ALPHA""];  [this,""ARASS""] call FP_fnc_getKit ; this assignTeam ""BLUE"";";
+					init="this setGroupID [""ALPHA""];  [this,""ARASS""] call FP_fnc_getKit ;";
 					description=" Alpha Asst. AR";
 				};
 				class Item4
@@ -386,7 +386,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="a6";
-					init="this setGroupID [""ALPHA""]; [this,""RAT""] call FP_fnc_getKit; this assignTeam ""RED"";";
+					init="this setGroupID [""ALPHA""]; [this,""RAT""] call FP_fnc_getKit;";
 					description=" Alpha FTL / RAT";
 				};
 				class Item5
@@ -399,7 +399,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="a4";
-					init="this setGroupID [""ALPHA""];  [this,""AT""] call FP_fnc_getKit; this assignTeam ""RED"";";
+					init="this setGroupID [""ALPHA""];  [this,""AT""] call FP_fnc_getKit;";
 					description=" Alpha AT";
 				};
 				class Item6
@@ -413,7 +413,7 @@ class Mission
 					lock="UNLOCKED";
 					skill=0;
 					text="a5";
-					init="this setGroupID [""ALPHA""]; [this,""ATASS""] call FP_fnc_getKit; this assignTeam ""RED"";";
+					init="this setGroupID [""ALPHA""]; [this,""ATASS""] call FP_fnc_getKit;";
 					description=" Alpha Asst. AT";
 				};
 				class Item7
@@ -426,7 +426,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0;
 					text="a7";
-					init="this setGroupID [""ALPHA""]; [this,""ENGINEER""] call FP_fnc_getKit; this assignTeam ""RED"";";
+					init="this setGroupID [""ALPHA""]; [this,""ENGINEER""] call FP_fnc_getKit;";
 					description=" Alpha Engineer";
 				};
 			};
@@ -449,7 +449,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=0.2;
 					text="b0";
-					init="this setGroupID [""BRAVO""]; [this,""SQL""] call FP_fnc_getKit ; this assignTeam ""BLUE"";";
+					init="this setGroupID [""BRAVO""]; [this,""SQL""] call FP_fnc_getKit ;";
 					description="Bravo SQL";
 				};
 				class Item1
@@ -462,7 +462,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0;
 					text="b1";
-					init="this setGroupID [""BRAVO""]; [this,""MEDIC""] call FP_fnc_getKit ; this assignTeam ""BLUE"";";
+					init="this setGroupID [""BRAVO""]; [this,""MEDIC""] call FP_fnc_getKit ;";
 					description=" Bravo Medic";
 				};
 				class Item2
@@ -475,7 +475,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0;
 					text="b2";
-					init="this setGroupID [""BRAVO""];  [this,""AR""] call FP_fnc_getKit ; this assignTeam ""BLUE"";";
+					init="this setGroupID [""BRAVO""];  [this,""AR""] call FP_fnc_getKit ;";
 					description=" Bravo AR";
 				};
 				class Item3
@@ -488,7 +488,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0;
 					text="b3";
-					init="this setGroupID [""BRAVO""];  [this,""ARASS""] call FP_fnc_getKit ; this assignTeam ""BLUE"";";
+					init="this setGroupID [""BRAVO""];  [this,""ARASS""] call FP_fnc_getKit ;";
 					description=" Bravo Asst. AR";
 				};
 				class Item4
@@ -501,7 +501,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0;
 					text="b6";
-					init="this setGroupID [""BRAVO""]; [this,""RAT""] call FP_fnc_getKit; this assignTeam ""RED"";";
+					init="this setGroupID [""BRAVO""]; [this,""RAT""] call FP_fnc_getKit;";
 					description=" Bravo FTL / RAT";
 				};
 				class Item5
@@ -514,7 +514,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0;
 					text="b4";
-					init="this setGroupID [""BRAVO""];  [this,""AT""] call FP_fnc_getKit; this assignTeam ""RED"";";
+					init="this setGroupID [""BRAVO""];  [this,""AT""] call FP_fnc_getKit;";
 					description=" Bravo AT";
 				};
 				class Item6
@@ -528,7 +528,7 @@ class Mission
 					lock="UNLOCKED";
 					skill=0;
 					text="b5";
-					init="this setGroupID [""BRAVO""]; [this,""ATASS""] call FP_fnc_getKit; this assignTeam ""RED"";";
+					init="this setGroupID [""BRAVO""]; [this,""ATASS""] call FP_fnc_getKit;";
 					description=" Bravo Asst. AT";
 				};
 				class Item7
@@ -541,7 +541,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="b7";
-					init="this setGroupID [""BRAVO""]; [this,""ENGINEER""] call FP_fnc_getKit; this assignTeam ""RED"";";
+					init="this setGroupID [""BRAVO""]; [this,""ENGINEER""] call FP_fnc_getKit;";
 					description=" Bravo Engineer";
 				};
 			};
@@ -564,7 +564,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=0;
 					text="c0";
-					init="this setGroupID [""CHARLIE""]; [this,""SQL""] call FP_fnc_getKit ; this assignTeam ""BLUE"";";
+					init="this setGroupID [""CHARLIE""]; [this,""SQL""] call FP_fnc_getKit ;";
 					description="Charlie SQL";
 				};
 				class Item1
@@ -577,7 +577,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0;
 					text="c1";
-					init="this setGroupID [""CHARLIE""]; [this,""MEDIC""] call FP_fnc_getKit ; this assignTeam ""BLUE"";";
+					init="this setGroupID [""CHARLIE""]; [this,""MEDIC""] call FP_fnc_getKit ;";
 					description=" Charlie Medic";
 				};
 				class Item2
@@ -590,7 +590,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0;
 					text="c2";
-					init="this setGroupID [""CHARLIE""];  [this,""AR""] call FP_fnc_getKit ; this assignTeam ""BLUE"";";
+					init="this setGroupID [""CHARLIE""];  [this,""AR""] call FP_fnc_getKit ;";
 					description=" Charlie AR";
 				};
 				class Item3
@@ -603,7 +603,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0;
 					text="c3";
-					init="this setGroupID [""CHARLIE""];  [this,""ARASS""] call FP_fnc_getKit ; this assignTeam ""BLUE"";";
+					init="this setGroupID [""CHARLIE""];  [this,""ARASS""] call FP_fnc_getKit ;";
 					description=" Charlie Asst. AR";
 				};
 				class Item4
@@ -616,7 +616,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0;
 					text="c4";
-					init="this setGroupID [""CHARLIE""]; [this,""RAT""] call FP_fnc_getKit; this assignTeam ""RED"";";
+					init="this setGroupID [""CHARLIE""]; [this,""RAT""] call FP_fnc_getKit;";
 					description=" Charlie FTL / RAT";
 				};
 				class Item5
@@ -629,7 +629,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0;
 					text="c5";
-					init="this setGroupID [""CHARLIE""];  [this,""AT""] call FP_fnc_getKit; this assignTeam ""RED"";";
+					init="this setGroupID [""CHARLIE""];  [this,""AT""] call FP_fnc_getKit;";
 					description=" Charlie AT";
 				};
 				class Item6
@@ -643,7 +643,7 @@ class Mission
 					lock="UNLOCKED";
 					skill=0;
 					text="c6";
-					init="this setGroupID [""CHARLIE""]; [this,""ATASS""] call FP_fnc_getKit; this assignTeam ""RED"";";
+					init="this setGroupID [""CHARLIE""]; [this,""ATASS""] call FP_fnc_getKit;";
 					description=" Charlie Asst. AT";
 				};
 				class Item7
@@ -656,7 +656,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0;
 					text="c7";
-					init="this setGroupID [""CHARLIE""]; [this,""ENGINEER""] call FP_fnc_getKit; this assignTeam ""RED"";";
+					init="this setGroupID [""CHARLIE""]; [this,""ENGINEER""] call FP_fnc_getKit;";
 					description=" Charlie Engineer";
 				};
 			};
@@ -679,7 +679,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=0;
 					text="d0";
-					init="this setGroupID [""DELTA""]; [this,""SQL""] call FP_fnc_getKit; this assignTeam ""BLUE"";";
+					init="this setGroupID [""DELTA""]; [this,""SQL""] call FP_fnc_getKit;";
 					description="Delta SQL";
 				};
 				class Item1
@@ -692,7 +692,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0;
 					text="d1";
-					init="this setGroupID [""DELTA""]; [this,""MEDIC""] call FP_fnc_getKit; this assignTeam ""BLUE"";";
+					init="this setGroupID [""DELTA""]; [this,""MEDIC""] call FP_fnc_getKit;";
 					description=" Delta Medic";
 				};
 				class Item2
@@ -705,7 +705,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0;
 					text="d2";
-					init="this setGroupID [""DELTA""]; [this,""AR""] call FP_fnc_getKit; this assignTeam ""BLUE"";";
+					init="this setGroupID [""DELTA""]; [this,""AR""] call FP_fnc_getKit;";
 					description="Delta AR";
 				};
 				class Item3
@@ -718,7 +718,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0;
 					text="d3";
-					init="this setGroupID [""DELTA""]; [this,""ARASS""] call FP_fnc_getKit; this assignTeam ""BLUE"";";
+					init="this setGroupID [""DELTA""]; [this,""ARASS""] call FP_fnc_getKit;";
 					description=" Delta Asst. AR";
 				};
 				class Item4
@@ -731,7 +731,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0;
 					text="d4";
-					init="this setGroupID [""DELTA""]; [this,""RAT""] call FP_fnc_getKit; this assignTeam ""RED"";";
+					init="this setGroupID [""DELTA""]; [this,""RAT""] call FP_fnc_getKit;";
 					description=" Delta FTL / RAT";
 				};
 				class Item5
@@ -744,7 +744,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0;
 					text="d5";
-					init="this setGroupID [""DELTA""]; [this,""AT""] call FP_fnc_getKit; this assignTeam ""RED"";";
+					init="this setGroupID [""DELTA""]; [this,""AT""] call FP_fnc_getKit;";
 					description=" Delta AT";
 				};
 				class Item6
@@ -758,7 +758,7 @@ class Mission
 					lock="UNLOCKED";
 					skill=0;
 					text="d6";
-					init="this setGroupID [""DELTA""];[this,""ATASS""] call FP_fnc_getKit ; this assignTeam ""RED"";";
+					init="this setGroupID [""DELTA""];[this,""ATASS""] call FP_fnc_getKit ;";
 					description=" Delta Asst. AT";
 				};
 				class Item7
@@ -771,7 +771,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.2;
 					text="d7";
-					init="this setGroupID [""DELTA""]; [this,""ENGINEER""] call FP_fnc_getKit; this assignTeam ""RED"";";
+					init="this setGroupID [""DELTA""]; [this,""ENGINEER""] call FP_fnc_getKit;";
 					description=" Delta Engineer";
 				};
 			};
