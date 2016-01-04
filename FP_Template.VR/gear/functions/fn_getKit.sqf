@@ -45,7 +45,7 @@ removeAllWeapons _unit;
 removeAllAssignedItems _unit;
 
 // Shows errors after 3 seconds, all units are done then
-if (FP_GEAR_REPORT_ERRORS && {isNil "FP_gear_errs"}) then {
+if (!isMultiplayer && {isNil "FP_gear_errs"}) then {
 	FP_gear_errs = [];
 	[{
 		if (count FP_gear_errs == 0) exitWith {};
@@ -57,7 +57,7 @@ if (FP_GEAR_REPORT_ERRORS && {isNil "FP_gear_errs"}) then {
 
 		"GEAR ERRORS" hintC composeText _structured;
 		FP_gear_errs = nil; // reset for later calls
-	}, 3, []] call ACE_common_fnc_waitAndExecute;
+	}, [], 3] call ACE_common_fnc_waitAndExecute;
 };
 
 _script = compile preprocessFileLineNumbers ("gear\loadouts\" + _scriptFile + ".sqf");
