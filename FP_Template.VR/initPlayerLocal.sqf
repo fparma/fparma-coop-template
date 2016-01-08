@@ -14,7 +14,7 @@ params ["_player", "_isJip"];
 [] call compile preProcessFileLineNumbers "briefing.sqf";
 
 // Add JIP players to zeus
-if (_isJip) then {[_player] remoteExecCall ["FP_fnc_addToCurators", 2]};
+if (_isJip) then {[_player] call FP_fnc_addToCurators};
 
 // Add teleport options to flag. See config.sqf
 if (!isNil "fp_flag" && {count FP_flagTargets > 0}) then {

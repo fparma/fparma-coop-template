@@ -19,7 +19,10 @@
 		Cuel 2015-01-16
 */
 
-if (!isServer) exitWith {};
+if (!isServer) exitWith {
+    _this remoteExecCall ["FP_fnc_addToCurators", 2];
+};
+
 private _add = if (typeName _this != typeName []) then {[_this]} else {_this};
 
 {

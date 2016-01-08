@@ -56,4 +56,4 @@ private _trigger = ([_pos, "AREA:", [_distance, _distance, 0, false], "ACT:", ["
 _trigger setVariable ["fp_ied", _ied];
 _trigger setTriggerStatements [_condition, _statement, ""];
 _trigger attachTo [_ied, [0,0,0]];
-[_ied] remoteExecCall ["FP_fnc_addToCurators", 2];
+[_ied] call FP_fnc_addToCurators;
