@@ -24,6 +24,10 @@ class CfgFunctions {
     // Base functions. Do not remove
 	#include "base\funcs.hpp"
 
+    class FP_AI {
+    	#include "xtra\ai\funcs.hpp"
+    };
+
     // Gear funcs
     class FP_Gear {
     	#include "gear\functions\funcs.hpp"
