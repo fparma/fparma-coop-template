@@ -39,29 +39,29 @@ player addEventHandler ["Fired", {
 	};
 }];
 
-// Lower weapon after mission start
-if (primaryWeapon player != "") then {
-	[{
-		player switchMove "amovpercmstpslowwrfldnon";
-	}, []] call ACE_common_fnc_execNextFrame;
-};
-
 // Longer view distance for pilots
 if (player in ([FP_pilots, false, true] call ACE_common_fnc_parseList)) then {
 	[] call compile preProcessFileLineNumbers "base\scripts\dynamic_vd.sqf";
 };
 
-// Assign team colors to units
-if (leader group player == player) then {
-    private _units = ((units group player) - [player]);
-    player assignTeam "GREEN";
-    if (count _units >= 3) then {
-        private _cnt = floor ((count _units) / 2);
-        {
-            _x assignTeam (["RED", "BLUE"] select (_forEachIndex < _cnt));
-        } forEach _units;
+[{
+    // Lower weapon after mission start
+    if (primaryWeapon player != "") then {
+        player switchMove "amovpercmstpslowwrfldnon";
     };
-};
+
+    // Assign team colors to units
+    if (leader group player == player) then {
+        private _units = ((units group player) - [player]);
+        player assignTeam "GREEN";
+        if (count _units >= 3) then {
+            private _cnt = floor ((count _units) / 2);
+            {
+                _x assignTeam (["RED", "BLUE"] select (_forEachIndex < _cnt));
+            } forEach _units;
+        };
+    };
+}, []] call ACE_common_fnc_execNextFrame;
 
 // monkey patch ace markers temporarly to show messages during briefing
 if (time > 0) exitWith {};
