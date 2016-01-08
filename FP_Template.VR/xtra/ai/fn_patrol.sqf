@@ -23,6 +23,6 @@ if (_posRad isEqualType 0) exitWith {
 if (!(([_posRad] call CBA_fnc_getPos) call FP_fnc_isValidPos)) exitWith {
     ["Invalid position %1", _this] call BIS_fnc_error;
 };
-player sidechat str _posRad;
+
 [_grp, _posRad, "SAFE", "RED", "NORMAL", "STAG COLUMN", "", [3, 6, 9], 10] call CBA_fnc_taskSearchArea;
 _grp
