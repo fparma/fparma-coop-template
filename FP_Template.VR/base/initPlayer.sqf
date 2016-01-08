@@ -51,9 +51,6 @@ if (player in ([FP_pilots, false, true] call ACE_common_fnc_parseList)) then {
 	[] call compile preProcessFileLineNumbers "base\scripts\dynamic_vd.sqf";
 };
 
-// Initialize cold start (edit with config.sqf)
-[] call FP_fnc_coldStart;
-
 // Assign team colors to units
 if (leader group player == player) then {
     private _units = ((units group player) - [player]);
@@ -64,11 +61,6 @@ if (leader group player == player) then {
             _x assignTeam (["RED", "BLUE"] select (_forEachIndex < _cnt));
         } forEach _units;
     };
-};
-
-// Init jip and respawn manager. Edit in config.sqf
-if (!isServer &&  {!isNil "FP_JRM_fnc_init"}) then {
-	[] call FP_JRM_fnc_init;
 };
 
 // monkey patch ace markers temporarly to show messages during briefing

@@ -54,7 +54,7 @@ class CfgDebriefing {
 
 class Extended_PreInit_EventHandlers {
 	class FPARMA {
-		init = "[] call compile preProcessFileLineNumbers 'base\init.sqf'";
+		init = "[] call compile preProcessFileLineNumbers 'base\preInit.sqf'";
 	};
 };
 
