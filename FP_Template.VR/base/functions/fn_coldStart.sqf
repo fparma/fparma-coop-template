@@ -27,6 +27,7 @@ FP_coldStartIdx = ["FP_coldStart", {
     [] spawn {
         sleep 4;
         [player, false] call FP_fnc_disableWeapons;
+        hintSilent "";
     };
     ["FP_coldStart", FP_coldStartIdx] call CBA_fnc_removeEventHandler;
     FP_coldStartIdx = nil;
