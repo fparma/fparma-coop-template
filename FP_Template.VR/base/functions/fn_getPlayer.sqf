@@ -26,14 +26,10 @@
 		Cuel 2015-04-21
 */
 
-if (!params [["_name", "", [""]]]) exitWith {
-	["Faulty parameters: %1",_this] call BIS_fnc_error;
-	objNull
-};
-
+params ["_name"];
 private _matches = [];
 {
-	if ([_this, name _x] call bis_fnc_inString) then {
+	if ([_name, name _x] call bis_fnc_inString) then {
 		_matches pushBack _x;
 	};
 } forEach ([] call CBA_fnc_players);
