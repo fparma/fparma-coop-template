@@ -33,8 +33,6 @@
 	Helicopter object (OK) | objNull (FAIL)
 */
 
-#define isBadPos(X) ([X select 0, X select 1] isEqualTo [0,0] or surfaceIsWater X)
-
 _heliType = [_this, 0, "", [""]] call BIS_fnc_param;
 _spawnPos = (_this select 1) call CBA_fnc_getPos;
 _movePos1 = (_this select 2) call CBA_fnc_getPos;
@@ -46,8 +44,8 @@ _movePos2 = (_this select 6) call CBA_fnc_getPos;
 _dropPos = (_this select 7) call CBA_fnc_getPos;
 _captiveHelictoper = [_this, 8, false, [true]] call BIS_fnc_param;
 
-if (_heliType == "" || count _unitsToBoard == 0 || {isBadPos(_x)} count [_spawnPos, _movePos1, _landPos, _movePos2, _dropPos] > 0) exitWith {
-	["Bad parameters (check no pos is water)!: (%1, %2, %3, %4, %5, %6, %7)", _heliType, _unitsToBoard, _spawnPos, _movePos1, _landPos, _movePos2, _dropPos] call BIS_fnc_error;
+if (_heliType == "" || count _unitsToBoard == 0) exitWith {
+	["Bad parameters %1", _this] call BIS_fnc_error;
 	objNull
 };
 
