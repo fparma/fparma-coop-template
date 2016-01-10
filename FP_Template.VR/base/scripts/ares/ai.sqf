@@ -14,6 +14,7 @@ switch (toUpper _mode) do {
             ["Radius (m)", _radius, 2],
             ["Search buildings", ["Yes", "No"], 0]
         ]] call Ares_fnc_ShowChooseDialog;
+        if (count _args == 0) exitWith {};
 
         _radius = parseNumber (_radius select (_args select 0));
         private _search = [true, false] select (_args select 1);
@@ -26,6 +27,7 @@ switch (toUpper _mode) do {
             ["Radius (m)", _radius, 2],
             ["Building pos treshold", _treshold, 1]
         ]] call Ares_fnc_ShowChooseDialog;
+        if (count _args == 0) exitWith {};
 
         _radius = parseNumber (_radius select (_args select 0));
         _treshold = parseNumber (_treshold select (_args select 1));
@@ -39,6 +41,7 @@ switch (toUpper _mode) do {
             ["Fill buildins evenly", ["Yes", "No"], 1],
             ["Lock units in place", ["Yes", "No"], 1]
         ]] call Ares_fnc_ShowChooseDialog;
+        if (count _args == 0) exitWith {};
 
         _radius = parseNumber (_radius select (_args select 0));
         [

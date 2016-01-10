@@ -12,6 +12,7 @@ private _args = ["IED Settings", [
     ["Only players can trigger", ["No", "Yes"], 1],
     ["Only targets on foot", ["No", "Yes"], 1]
 ]] call Ares_fnc_ShowChooseDialog;
+if (count _args == 0) exitWith {};
 
 _args params ["_iedType", "_distance", "_onlyPlayers", "_onlyOnFoot"];
 private _objects = ["Land_Sack_F","Land_GarbageBarrel_01_F","Land_BarrelTrash_F","Land_GarbagePallet_F","Land_GarbageWashingMachine_F","Land_Tyres_F"];
@@ -49,6 +50,7 @@ private _statement = {
         }, _crater, 300] call ACE_common_fnc_waitAndExecute;
     };
 } call ACE_common_fnc_codeToString;
+if (count _args == 0) exitWith {};
 
 private _ied = createVehicle [_className, [0, 0, 0], [], 0, "NONE"];
 _ied setPosATL _pos;

@@ -12,7 +12,7 @@ if (_maxAmount isEqualTo 0 || {count _plrs == 0}) exitWith {["ERROR: No cargo sl
 private _uids = [];
 {_uids pushBack (getPlayerUID _x)} forEach _plrs;
 FP_JRM_savedState = [FP_JRM_savedState, {!((_x select 0) in _uids)}] call ACE_common_fnc_filter;
-publicVariable "FP_JRM_fnc_savedState";
+publicVariable "FP_JRM_savedState";
 
 private _code = {
     ["FP_screen"] call BIS_fnc_blackOut;
