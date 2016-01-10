@@ -21,5 +21,7 @@
 
 if (!hasInterface) exitWith {};
 params [["_spectate", false]];
-[_spectate] call ace_spectator_fnc_setSpectator;
-[player, _spectate] call ace_spectator_fnc_stageSpectator;
+[{
+    [_this] call ace_spectator_fnc_setSpectator;
+    [player, _this] call ace_spectator_fnc_stageSpectator;
+}, {(!isNull player)}, _spectate] call ACE_commonc_fnc_waitUntilAndExecute;
