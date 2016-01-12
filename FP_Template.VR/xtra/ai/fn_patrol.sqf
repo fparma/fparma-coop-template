@@ -14,13 +14,14 @@
 	Cuel 2016-01-08
 */
 
-params [["_grp", grpNull], ["_posRad", "", ["", objNull, 0]], ["_searchBuildings", true]];
+params [["_grp", grpNull], ["_posRad", "", ["", objNull, 0]]];
 
 if (_posRad isEqualType 0) exitWith {
     [_grp,  _grp, _posRad, 8, "MOVE", "AWARE", "YELLOW", "FULL", "STAG COLUMN", "this spawn CBA_fnc_searchNearby", [3,6,9]] call CBA_fnc_taskPatrol;
 };
 
-if (!(([_posRad] call CBA_fnc_getPos) call FP_fnc_isValidPos)) exitWith {
+_posRad = [_posRad] call CBA_fnc_getPos;
+if (!(_posRad call FP_fnc_isValidPos)) exitWith {
     ["Invalid position %1", _this] call BIS_fnc_error;
 };
 
