@@ -25,3 +25,9 @@ if ([civilian] call _sideHasNoUnits) then {createCenter civilian};
 	_curator setCuratorWaypointCost 0;
 	{_curator setCuratorCoef [_x, 0]} forEach ["place","edit","delete","destroy","group","synchronize"];
 } forEach allCurators;
+
+addMissionEventHandler ["HandleDisconnect", {
+    params ["_unit"];
+    deleteVehicle _unit;
+    false
+}];
