@@ -5,9 +5,10 @@
 
 params ["_mode", "_grp"];
 if (_grp isEqualType objNull) then {_grp = [_grp] call CBA_fnc_getGroup};
-if (!(_grp isEqualType grpNull) || { {alive _x} count units _grp == 0}) exitWith {};
+if (!(_grp isEqualType grpNull) || {{alive _x} count units _grp == 0}) exitWith {};
 
 switch (toUpper _mode) do {
+
     case "PATROL": {
         private _radius = ["50", "100", "150", "200", "250", "300", "400", "500"];
         private _args = ["Patrol settings", [
@@ -20,6 +21,7 @@ switch (toUpper _mode) do {
         private _search = [true, false] select (_args select 1);
         [_grp, _radius, _search] remoteExecCall ["FP_fnc_patrol", leader _grp];
     };
+
     case "DEFEND": {
         private _radius = ["50", "100", "150", "200", "250", "300", "400", "500"];
         private _treshold = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
@@ -33,8 +35,9 @@ switch (toUpper _mode) do {
         _treshold = parseNumber (_treshold select (_args select 1));
         [_grp, _radius, _treshold] remoteExecCall ["FP_fnc_defend", leader _grp];
     };
+
     case "GARRISON": {
-        private _radius = ["50", "100", "150", "200", "250", "300", "400", "500"];
+        private _radius = ["Closest building","50", "100", "150", "200", "250", "300", "400", "500"];
         private _args = ["Garrison settings", [
             ["Radius (m)", _radius, 2],
             ["Put on roof", ["Yes", "No"], 0],
@@ -43,7 +46,8 @@ switch (toUpper _mode) do {
         ]] call Ares_fnc_ShowChooseDialog;
         if (count _args == 0) exitWith {};
 
-        _radius = parseNumber (_radius select (_args select 0));
+        _args params ["_r"];
+        _radius = [parseNumber (_radius select _r), -1] select (_r == 0);
         [
             _grp,
             _radius,
