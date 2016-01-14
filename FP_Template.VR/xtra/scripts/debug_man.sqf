@@ -15,21 +15,22 @@ FP_debug_godMode = true;
 }, 0, 99, false, true, "", ""]] call CBA_fnc_addPlayerAction;
 
 FP_debug_captive = false;
-[[["<t color='#ffff00'>[ Captive ]</t> ON", {
+[["<t color='#ffff00'>[ Captive ]</t> ON", {
 	FP_debug_captive = !FP_debug_captive;
 	player setCaptive FP_debug_captive;
 	private _id = _this select 2;
 	player setUserActionText [_id, format ["<t color='#ffff00'>[ Captive ]</t> %1", if FP_debug_captive then {"OFF"}else{"ON"}]];
 }, 0, 98, false, true, "", ""]] call CBA_fnc_addPlayerAction;
 
-[[["<t color='#ffff00'>[ Open Arsenal ]</t> ON", {
+[["<t color='#ffff00'>[ Open Arsenal ]</t> ON", {
 	["Open", true] spawn BIS_fnc_arsenal;
 }, 0, 97, false, true, "", ""]] call CBA_fnc_addPlayerAction;
 
-[[["<t color='#ffff00'>[ Mission stats ]</t> ON", {
+[["<t color='#ffff00'>[ Mission stats ]</t> ON", {
 	hint format ["All units: %1 \nW: %2, E: %3, G: %4, C: %5\nAmount dead: %6 \n FPS: %7",
 		count allUnits, {side _x == west} count allUnits, {side _x == east} count allUnits, {side _x == independent} count allUnits, {side _x == civilian} count allUnits, count allDeadMen, round diag_fps];
 }, 0, 96, false, true, "", ""]] call CBA_fnc_addPlayerAction;
+
 
 /*
 Author: Quiksilver
