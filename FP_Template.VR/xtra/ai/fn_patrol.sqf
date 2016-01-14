@@ -16,7 +16,7 @@
 params [["_grp", grpNull], ["_posRad", "", ["", objNull, 0]]];
 
 if (_posRad isEqualType 0) exitWith {
-    [_grp,  _grp, _posRad, 8, "MOVE", "AWARE", "YELLOW", "FULL", "STAG COLUMN", "this spawn CBA_fnc_searchNearby", [3,6,9]] call CBA_fnc_taskPatrol;
+    [_grp,  _grp, _posRad, 8, "MOVE", "AWARE", "YELLOW", "NORMAL", "STAG COLUMN", "this spawn CBA_fnc_searchNearby", [3,6,9]] call CBA_fnc_taskPatrol;
 };
 
 _posRad = [_posRad] call CBA_fnc_getPos;
