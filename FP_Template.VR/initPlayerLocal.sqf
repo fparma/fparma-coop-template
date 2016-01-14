@@ -20,8 +20,3 @@ if (_isJip) then {[_player] call FP_fnc_addToCurators};
 if (!isNil "fp_flag" && {count FP_flagTargets > 0}) then {
 	[fp_flag, FP_flagTargets] call compile preProcessFileLineNumbers "base\scripts\teleport_flag.sqf"
 };
-
-// Debug script for development. Create a unit named "debugger" and use him as player.
-if (str player in ["debugger"]) then {
-	[] call compile preProcessFileLineNumbers "base\scripts\debug_man.sqf";
-};
