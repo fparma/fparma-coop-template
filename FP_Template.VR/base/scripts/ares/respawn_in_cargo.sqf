@@ -9,8 +9,7 @@ private _maxAmount = _veh emptyPositions "cargo";
 private _plrs = [_maxAmount] call FP_JRM_fnc_getSpectators;
 if (_maxAmount isEqualTo 0 || {count _plrs == 0}) exitWith {["ERROR: No cargo slots / no dead players"] call ares_fnc_ShowZeusMessage};
 
-private _uids = [];
-{_uids pushBack (getPlayerUID _x)} forEach _plrs;
+private _uids = [_plrs, {getPlayerUID _x}] call ACE_common_fnc_map;
 FP_JRM_savedState = [FP_JRM_savedState, {!((_x select 0) in _uids)}] call ACE_common_fnc_filter;
 publicVariable "FP_JRM_savedState";
 

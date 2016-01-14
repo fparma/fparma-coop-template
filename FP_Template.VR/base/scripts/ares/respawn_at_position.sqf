@@ -8,8 +8,7 @@ if (!(_pos call FP_fnc_isValidPos)) exitWith {};
 private _plrs = [] call FP_JRM_fnc_getSpectators;
 if (count _plrs == 0) exitWith {["ERROR: No dead players"] call ares_fnc_ShowZeusMessage};
 
-private _uids = [];
-{_uids pushBack (getPlayerUID _x)} forEach _plrs;
+private _uids = [_plrs, {getPlayerUID _x}] call ACE_common_fnc_map;
 FP_JRM_savedState = [FP_JRM_savedState, {!((_x select 0) in _uids)}] call ACE_common_fnc_filter;
 publicVariable "FP_JRM_savedState";
 
