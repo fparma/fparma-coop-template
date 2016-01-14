@@ -44,7 +44,7 @@ if (player in ([FP_pilots, false, true] call ACE_common_fnc_parseList)) then {
 	[] call compile preProcessFileLineNumbers "base\scripts\dynamic_vd.sqf";
 };
 
-[{
+[{time > 0}, {
     // Lower weapon after mission start
     if (primaryWeapon player != "") then {
         player switchMove "amovpercmstpslowwrfldnon";
@@ -61,7 +61,18 @@ if (player in ([FP_pilots, false, true] call ACE_common_fnc_parseList)) then {
             } forEach _units;
         };
     };
-}, []] call ACE_common_fnc_execNextFrame;
+
+    // stop monkey patch for ace markers
+    if (!isNil "FP_ace_placeMarker") then {
+        ACE_markers_fnc_placeMarker = FP_ace_placeMarker;
+        FP_ace_placeMarker = nil;
+    };
+
+    if (!isNil "FP_ace_placeLineMarker") then {
+        ACE_maptools_fnc_handleMouseButton = FP_ace_placeLineMarker;
+        FP_ace_placeLineMarker = nil;
+    };
+}, []] call ACE_common_fnc_waitUntilAndExecute;
 
 // monkey patch ace markers temporarly to show messages during briefing
 if (time > 0) exitWith {};

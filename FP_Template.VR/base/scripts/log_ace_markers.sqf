@@ -29,11 +29,3 @@ ACE_maptools_fnc_handleMouseButton = {
 	};
 	_this call FP_ace_placeLineMarker;
 };
-
-// Once mission starts, put back the original ace functions
-[{time > 0}, {
-    ACE_markers_fnc_placeMarker = FP_ace_placeMarker;
-    FP_ace_placeMarker = nil;
-    ACE_maptools_fnc_handleMouseButton = FP_ace_placeLineMarker;
-    FP_ace_placeLineMarker = nil;
-}, []] call ACE_common_fnc_waitUntilAndExecute;
