@@ -203,9 +203,6 @@ switch _kit do {
 
         [_unit, _ENGI_ITEMS] call FP_fnc_addToContainers;
         [_unit, _ENGI_BP_ITEMS]  call FP_fnc_addToContainers;
-        if (str _unit == "engi1") then {
-          _unit addItem "ACRE_PRC148";
-        };
     };
 
     case "PILOT": {
