@@ -7,7 +7,7 @@ class Header
 disabledAI = 1;
 
 // ===  Mission name etc settings
-OnLoadName = "FP TEMPLATE 3.1.0";// Mission name (short)
+OnLoadName = "FP TEMPLATE 3.2.0";// Mission name (short)
 onLoadMission="description.ext to change!"; // Longer description
 loadScreen = "\fp_misc\img\fp_logo.paa"; // custom load image
 author="Cuel | 2015";
