@@ -1,5 +1,5 @@
 /*
-	Function: Artillery
+	Script: Artillery
 
 	API:
 		Server

@@ -1,5 +1,5 @@
 /*
-	Function: Laptop
+	Script: Laptop
 
 	Description:
 		Hack the laptop. Specify the time and info retrieved when hacked
