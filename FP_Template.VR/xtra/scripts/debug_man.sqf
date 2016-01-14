@@ -1,6 +1,9 @@
 /*
 	General debug script for mission makers
 	Show all units on map, adds a few useful actions etc
+
+    Usage:
+    [] call compile preprocessFileLineNumbers "xtra\scripts\debug_man.sqf";
 */
 
 FP_debug_godMode = true;
