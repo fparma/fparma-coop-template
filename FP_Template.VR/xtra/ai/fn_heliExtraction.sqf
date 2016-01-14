@@ -38,6 +38,7 @@ params [
     "_extractPos",
     ["_maxDistanceForUnit", 100]
 ];
+
 if (_unitsToBoard isEqualType objNull) then {_unitsToBoard = [_unitsToBoard]};
 if (_unitsToBoard isEqualType grpNull) then {_unitsToBoard = units _unitsToBoard};
 if (count _unitsToBoard == 0) exitWith {["No units %1", _this] call BIS_fnc_error; objNull};

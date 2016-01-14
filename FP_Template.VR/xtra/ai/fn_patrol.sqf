@@ -6,9 +6,8 @@
 
     Parameters:
         _grp - Group that will patrol
-        _mrkTrig - Number/Marker/Trigger - Number = radius. Marker/Trigger - position to patrol in
-            If named "areaX" or "area_X" where X is a number, they will be auto hidden
-
+        _mrkTrig - Number/Marker/Trigger - Number = radius. Marker/Trigger - position to patrol within
+            If markers named "areaX" or "area_X" where X is a number, they will be auto hidden in PreInit
 
 	Author:
 	Cuel 2016-01-08
