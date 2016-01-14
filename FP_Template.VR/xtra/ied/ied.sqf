@@ -9,9 +9,9 @@ if (!alive _obj) exitWith {};
 
 _pos = getPosATL _obj;
 _ammoType = "M_Titan_AT";
-_buzzArray = ["fp_iedbuzz1", "fp_iedbuzz2", "fp_iedbuzz3", "fp_iedbuzz4", "fp_iedbuzz5"];
-_iedSound = _buzzArray select (floor (random (count _buzzArray)));
-[[_obj], _iedSound] call CBA_fnc_globalSay;
+private _snd = (["iedbuzz1", "iedbuzz2", "iedbuzz3", "iedbuzz4", "iedbuzz5"] call BIS_fnc_selectRandom);
+playSound3D [format ["fp_misc\sounds\%1.ogg", _snd], _obj, false, _pos, 0.3, 1];
+
 
 if (alive _obj) then
 {

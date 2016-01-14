@@ -38,7 +38,9 @@ private _statement = {
     [_ied] spawn {
         params ["_ied"];
         private _pos = getposATL _ied;
-        [[_ied], ["fp_iedbuzz1", "fp_iedbuzz2", "fp_iedbuzz3", "fp_iedbuzz4", "fp_iedbuzz5"] call BIS_fnc_selectRandom] call CBA_fnc_globalSay;
+        private _snd = (["iedbuzz1", "iedbuzz2", "iedbuzz3", "iedbuzz4", "iedbuzz5"] call BIS_fnc_selectRandom);
+        playSound3D [format ["fp_misc\sounds\%1.ogg", _snd], _ied, true, getpos _ied, 0.3, 1];
+
         sleep 3.3;
         deleteVehicle _ied;
         ("M_Titan_AT" createVehicle [_pos select 0, _pos select 1, (_pos select 2) + 0.1]) setVelocity [0, 0, -50];
@@ -50,7 +52,6 @@ private _statement = {
         }, _crater, 300] call ACE_common_fnc_waitAndExecute;
     };
 } call ACE_common_fnc_codeToString;
-if (count _args == 0) exitWith {};
 
 private _ied = createVehicle [_className, [0, 0, 0], [], 0, "NONE"];
 _ied setPosATL _pos;
