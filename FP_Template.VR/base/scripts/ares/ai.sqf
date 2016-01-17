@@ -81,12 +81,13 @@ switch (toUpper _mode) do {
         _wp1 setWaypointStatements ["true", format [
             "
                 %1;
-                [((group this) getVariable ['fp_forcewp_id', -1])] call CBA_fnc_removePerFrameHandler;
-                (group this) setVariable ['fp_forcewp_id', nil];
-                (group this) setCombatMode (((group this) getVariable ['fp_orig_mode', ['YELLOW']]) select 0);
-                (group this) setBehaviour (((group this) getVariable ['fp_orig_mode', ['AWARE']]) select 1);
-                {_x enableAI 'TARGET'; _x enableAI 'AUTOTARGET'} forEach units (group this);
-                (group this) setSpeedMode 'NORMAL';
+                private _grp = group this;
+                [(_grp getVariable ['fp_forcewp_id', -1])] call CBA_fnc_removePerFrameHandler;
+                _grp setVariable ['fp_forcewp_id', nil];
+                _grp setCombatMode (((group this) getVariable ['fp_orig_mode', ['YELLOW']]) select 0);
+                _grp setBehaviour (((group this) getVariable ['fp_orig_mode', ['AWARE']]) select 1);
+                {_x enableAI 'TARGET'; _x enableAI 'AUTOTARGET'} forEach units _grp;
+                _grp setSpeedMode 'NORMAL';
             ",
             waypointStatements _wp1
         ]];
