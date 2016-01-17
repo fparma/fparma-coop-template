@@ -12,14 +12,12 @@ switch (toUpper _mode) do {
     case "PATROL": {
         private _radius = ["50", "100", "150", "200", "250", "300", "400", "500"];
         private _args = ["Patrol settings", [
-            ["Radius (m)", _radius, 2],
-            ["Search buildings", ["Yes", "No"], 0]
+            ["Radius (m)", _radius, 2]
         ]] call Ares_fnc_ShowChooseDialog;
         if (count _args == 0) exitWith {};
 
         _radius = parseNumber (_radius select (_args select 0));
-        private _search = [true, false] select (_args select 1);
-        [_grp, _radius, _search] remoteExecCall ["FP_fnc_patrol", leader _grp];
+        [_grp, _radius] remoteExecCall ["FP_fnc_patrol", leader _grp];
     };
 
     case "DEFEND": {
