@@ -31,3 +31,4 @@ FP_ares_jrm = compile preprocessFileLineNumbers (_path + "respawn_jrm.sqf");
 [AI, "Patrol area", {["PATROL", _this select 1] call FP_ares_ai}] call Ares_fnc_RegisterCustomModule;
 [AI, "Defend area", {["DEFEND", _this select 1] call FP_ares_ai}] call Ares_fnc_RegisterCustomModule;
 [AI, "Garrison", {["GARRISON", _this select 1] call FP_ares_ai}] call Ares_fnc_RegisterCustomModule;
+[AI, "Force move WP", {["FORCE_WP", _this select 1] call FP_ares_ai}] call Ares_fnc_RegisterCustomModule;

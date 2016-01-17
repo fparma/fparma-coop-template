@@ -56,4 +56,70 @@ switch (toUpper _mode) do {
             [true, false] select (_args select 3)
         ] remoteExecCall ["FP_fnc_garrison", leader _grp];
     };
+
+    case "FORCE_WP": {
+        if ((_grp getVariable ["fp_forcewp_id", -1]) != -1) exitWith {
+            (_grp getVariable "fp_forcewp_id") call CBA_fnc_removePerFrameHandler;
+        };
+
+        if (!local _grp) exitWith {["ERROR: Group must be owned by you"] call ares_fnc_ShowZeusMessage};
+        private _units = units _grp;
+        if ({alive _x} count units _grp == 0) exitWith {};
+
+        private _wps = waypoints _grp;
+        private _wp1 = currentWaypoint _grp;
+
+        if (_wp1 in [0, count _wps]) exitWith {["ERROR: Failed to determine waypoint"] call ares_fnc_ShowZeusMessage};
+        _wp1 = _wps select _wp1;
+
+        _grp setVariable ["fp_orig_mode", [combatMode _grp, behaviour (leader _grp)]];
+        _grp setCombatMode "BLUE";
+        _grp setBehaviour "CARELESS";
+        _grp setSpeedMode "FULL";
+        {_x disableAI "TARGET"; _x disableAI "AUTOTARGET"} forEach _units;
+
+        _wp1 setWaypointStatements ["true", format [
+            "
+                %1;
+                [((group this) getVariable ['fp_forcewp_id', -1])] call CBA_fnc_removePerFrameHandler;
+                (group this) setVariable ['fp_forcewp_id', nil];
+                (group this) setCombatMode (((group this) getVariable ['fp_orig_mode', ['YELLOW']]) select 0);
+                (group this) setBehaviour (((group this) getVariable ['fp_orig_mode', ['AWARE']]) select 1);
+                {_x enableAI 'TARGET'; _x enableAI 'AUTOTARGET'} forEach units (group this);
+                (group this) setSpeedMode 'NORMAL';
+            ",
+            waypointStatements _wp1
+        ]];
+
+        private _pfhId = [{
+            params ["_args", "_id"];
+            _args params ["_grp", "_wp", "_origWpPos"];
+            private _wpPos = waypointPosition _wp;
+
+            private _units = [units _grp, {alive _x && {!(_x getVariable ["ACE_isUnconcious", false])}}] call ACE_common_fnc_filter;
+            if (count _units == 0 ||
+                {(waypointVisible _wp) isEqualType 0} ||
+                {!(_wpPos isEqualTo _origWpPos)}
+            ) exitWith {
+                [_id] call CBA_fnc_removePerFrameHandler;
+                _grp setVariable ['fp_forcewp_id', nil];
+                _grp setCombatMode ((_grp getVariable ['fp_orig_mode', ['YELLOW']]) select 0);
+                _grp setBehaviour ((_grp getVariable ['fp_orig_mode', ['AWARE']]) select 1);
+                _grp setSpeedMode 'NORMAL';
+                {
+                    _x enableAI "TARGET";
+                    _x enableAI "AUTOTARGET";
+                    _x doMove (getPosATL _x);
+                } forEach units _grp;
+            };
+
+            {
+                _x forceSpeed 18;
+                _x doMove _wpPos;
+            }forEach _units;
+        }, 1.2, [_grp,  _wp1, waypointPosition _wp1]] call CBA_fnc_addPerFrameHandler;
+
+        _grp setVariable ["fp_forcewp_id", _pfhId];
+        ["Group will try to reach their waypoint no matter what"] call ares_fnc_ShowZeusMessage;
+    };
 };
