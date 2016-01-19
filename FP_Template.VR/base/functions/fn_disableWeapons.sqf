@@ -18,7 +18,6 @@
 
 params ["_unit", "_disable"];
 if (!local _unit) exitWith {false};
-if (isNil "FP_disableWeaponsID") then {FP_disableWeaponsID = -1};
 
 if (_disable) then {
     if (player == _unit) then {
