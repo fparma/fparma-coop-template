@@ -1,33 +1,33 @@
 /*
-	Function: FP_fnc_heliExtraction
+    Function: FP_fnc_heliExtraction
 
-	Description:
+    Description:
 
-		Note: Cannot pickup AI unless they are ordered to enter the helicopter.
+        Note: Cannot pickup AI unless they are ordered to enter the helicopter.
 
-		Spawns a helicopter (or uses an already existing heli) that flies in, picks up units and lands somewhere to drop them off.
-		Then returns to spawnPos and gets deleted / lands (if existed)
+        Spawns a helicopter (or uses an already existing heli) that flies in, picks up units and lands somewhere to drop them off.
+        Then returns to spawnPos and gets deleted / lands (if existed)
 
-		It is recommended to manully place an invisible helicopter landing pad near the LZ (both pickup and dropoff)
-		Found under Empty -> Objects -> Helipad (invisble)
+        It is recommended to manully place an invisible helicopter landing pad near the LZ (both pickup and dropoff)
+        Found under Empty -> Objects -> Helipad (invisble)
 
-		Espescially important if using multiple helicopters since they will try to land on the same spot otherwise.
+        Espescially important if using multiple helicopters since they will try to land on the same spot otherwise.
 
-	Arguments:
-		_heli - An existing helicopter OR , type of helicopter to spawn. Crew will be created using createVehicleCrew
+    Arguments:
+        _heli - An existing helicopter OR , type of helicopter to spawn. Crew will be created using createVehicleCrew
         _unitsToBoard - Group or array of units that should be inside the helicopter before it leaves [Array, Group]
-		_spawnPos - Position to spawn helicopter (flying). Ignored if existing helicopter
-		_pickupPos - Position where helicopter touches down and awaits troops
-		_extractPos - Position to drop units off. When helicopter is empty, it returns to spawnPos and is deleted or lands
+        _spawnPos - Position to spawn helicopter (flying). Ignored if existing helicopter
+        _pickupPos - Position where helicopter touches down and awaits troops
+        _extractPos - Position to drop units off. When helicopter is empty, it returns to spawnPos and is deleted or lands
         _maxDistanceForUnit - The maximum distance a unit in the above array can be from the helicopter to be considered for pickup (default 100)
 
-	Examples:
-	(begin example)
-		["B_Heli_Transport_01_camo_F", "hspawn", "hland", call CBA_fnc_players, "hend", 150] call FP_fnc_spawnHeliExtraction;
-	(end)
+    Examples:
+    (begin example)
+        ["B_Heli_Transport_01_camo_F", "hspawn", "hland", call CBA_fnc_players, "hend", 150] call FP_fnc_spawnHeliExtraction;
+    (end)
 
-	Returns:
-	Helicopter object (OK) | objNull (FAIL)
+    Returns:
+    Helicopter object (OK) | objNull (FAIL)
 */
 
 params [
@@ -108,14 +108,14 @@ private _pickUpWP = [_heli, _pickupPos, 10, "HOLD", "CARELESS", "RED", "FULL", "
 // 2) The amount of nearby units defined equals the amount of defined units in the heli
 private _unitsLoadedCondition = format [
 "{(vehicle _x) distance %1 < %4} count %3 > 0
-	&&
-	{((
-		{alive _x && ((vehicle _x) distance %1) < %4 && _x in %2} count %3
+    &&
+    {((
+        {alive _x && ((vehicle _x) distance %1) < %4 && _x in %2} count %3
    )
-	==
+    ==
    (
-		{alive _x && ((vehicle _x) distance %1) < %4} count %3
-	))}
+        {alive _x && ((vehicle _x) distance %1) < %4} count %3
+    ))}
 ", _pickupPos, _heliVarName, _unitsToBoard, _maxDistanceForUnit];
 private _landSwitchTrigger = ([
     _pickupPos,

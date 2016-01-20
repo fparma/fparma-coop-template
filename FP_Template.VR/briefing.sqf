@@ -31,35 +31,35 @@ And description of objectives
 player createDiarySubject ["fp_radios"," - Radio channels"];
 
 player createDiaryRecord ["fp_radios", ["Plt-Radio", "
-	[ Plt ]<br />
-	Chan 1
+    [ Plt ]<br />
+    Chan 1
 "]];
 
 player createDiaryRecord ["fp_radios", ["Group channels", "
-	[ Alpha ] : 1 <br />
-	[ Bravo ] : 2 <br />
-	[ Charlie ] : 3 <br />
-	[ Delta ] : 4 <br />
-	[ Actual ] : 5 <br />
-	[ Crew / Pilot] : 6 or 7 <br />
+    [ Alpha ] : 1 <br />
+    [ Bravo ] : 2 <br />
+    [ Charlie ] : 3 <br />
+    [ Delta ] : 4 <br />
+    [ Actual ] : 5 <br />
+    [ Crew / Pilot] : 6 or 7 <br />
 "]];
 
 //  Unomment  next line to not have squads show on the briefing
 // if (true) exitWith {};
 
 /*
-	Adds squads to the map screen
-	Full credits CPC-Skippy
+    Adds squads to the map screen
+    Full credits CPC-Skippy
 
-		(optional) Mission Maker can change groups name using :
-		(group this) setGroupID ["Group Name"];
-		on all units in the group
+        (optional) Mission Maker can change groups name using :
+        (group this) setGroupID ["Group Name"];
+        on all units in the group
 
-		(optional) Mission Maker can change groups color using :
-		(group this) setVariable ["color",'#000000']; where 000000 can be changed to whatever hexa code
+        (optional) Mission Maker can change groups color using :
+        (group this) setVariable ["color",'#000000']; where 000000 can be changed to whatever hexa code
 
-		You can set a custom name on one unit by doing
-		this setVariable ["displayName","Noob #1"];
+        You can set a custom name on one unit by doing
+        this setVariable ["displayName","Noob #1"];
 
 */
 private["_includeAI","_rank","_role","_strRank","_strRole","_strGrp","_strColorGrp","_strFinal","_oldGrp","_newGrp","_unitsArr"];
@@ -79,8 +79,8 @@ _unitsArr         = [];//will contain all units that have to be processed
 
 switch(_includeAI) do {
     case 0:{//only players
-			_unitsArr = call CBA_fnc_players;
-	};
+            _unitsArr = call CBA_fnc_players;
+    };
     case 1:{//both AI and players
         _unitsArr = allUnits;
     };

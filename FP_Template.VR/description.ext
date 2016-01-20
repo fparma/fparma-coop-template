@@ -1,8 +1,8 @@
 class Header
 {
-	gameType = Coop;
-	minPlayers = 1;
-	maxPlayers = 64;
+    gameType = Coop;
+    minPlayers = 1;
+    maxPlayers = 64;
 };
 disabledAI = 1;
 
@@ -20,38 +20,38 @@ respawnDialog = 0;
 respawn = "BASE";
 
 class CfgFunctions {
-	createShortcuts = 1;
+    createShortcuts = 1;
     // Base functions. Do not remove
-	#include "base\funcs.hpp"
+    #include "base\funcs.hpp"
 
     class FP_AI {
-    	#include "xtra\ai\funcs.hpp"
+    #include "xtra\ai\funcs.hpp"
     };
 
     // Gear funcs
     class FP_Gear {
-    	#include "gear\functions\funcs.hpp"
+    #include "gear\functions\funcs.hpp"
     };
 };
 
 // === Debriefing
 class CfgDebriefing {
-	class End1 {
-		title = "Mission Success";
-		description = "You have completed the mission.";
-		subtitle = "";
-		//pictureBackground = "";
-		picture = "\fp_misc\img\fp_logo.paa";
-		//pictureColor[] = {};
-	};
-	class End2 {
-		title = "Mission Failure";
-		description = "You have failed the mission, better luck next time";
-		subtitle = "";
-		//pictureBackground = "";
-		picture = "loc_Church";
-		//pictureColor[] = {};
-	};
+    class End1 {
+        title = "Mission Success";
+        description = "You have completed the mission.";
+        subtitle = "";
+        //pictureBackground = "";
+        picture = "\fp_misc\img\fp_logo.paa";
+        //pictureColor[] = {};
+    };
+    class End2 {
+        title = "Mission Failure";
+        description = "You have failed the mission, better luck next time";
+        subtitle = "";
+        //pictureBackground = "";
+        picture = "loc_Church";
+        //pictureColor[] = {};
+    };
 };
 
 // === DO NOT EDIT BELOW

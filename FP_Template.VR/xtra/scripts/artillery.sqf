@@ -1,25 +1,25 @@
 /*
-	Script: Artillery
+    Script: Artillery
 
-	API:
-		Server
+    API:
+        Server
 
-	Description:
-		Fires artillery within a trigger
+    Description:
+        Fires artillery within a trigger
 
-	Parameters:
-		_target - Trigger to fire within
+    Parameters:
+        _target - Trigger to fire within
         _nrBarrages - Amount barrages [Default: 1]
-		_nrRounds - Amount of rounds per barrage [Default: 3]
-		_travelTime - Travel time for rounds to splash [Default: 5]
+        _nrRounds - Amount of rounds per barrage [Default: 3]
+        _travelTime - Travel time for rounds to splash [Default: 5]
 
-	Examples:
-	(begin example)
-		0 = [thisTrigger, 2, 2, 15] execVM "xtra\scripts\artillery.sqf"
-	(end)
+    Examples:
+    (begin example)
+        0 = [thisTrigger, 2, 2, 15] execVM "xtra\scripts\artillery.sqf"
+    (end)
 
-	Author:
-	Cuel 2015-01-07
+    Author:
+    Cuel 2015-01-07
 */
 
 private ["_target","_nrRounds","_nrBarrages","_travelTime","_ammo","_spawnHeight","_pos","_tmppos"];
@@ -32,15 +32,15 @@ params [
 ];
 if (isNull _target) exitWith {["ARTILLERY.SQF: Trigger is null! ",_this] call BIS_fnc_error; false};
 
-_dist =	(triggerArea _target select 0) max (triggerArea _target select 1);
+_dist =    (triggerArea _target select 0) max (triggerArea _target select 1);
 _ammo = "Sh_82mm_AMOS";
 _spawnHeight = 250;
 
 for "_i" from 1 to _nrBarrages do {
-	sleep _travelTime;
-	for "_y" from 1 to _nrRounds do {
-		_pos =  [_target] call CBA_fnc_randPosArea;
-		_pos set [2,_spawnHeight];
+    sleep _travelTime;
+    for "_y" from 1 to _nrRounds do {
+        _pos =  [_target] call CBA_fnc_randPosArea;
+        _pos set [2,_spawnHeight];
         player sideChat str _y;
         if (_y == 1 || (random 1 < 0.4)) then {
             (["mortar1", "mortar2"] select (random 1 > 0.5))
@@ -50,8 +50,8 @@ for "_i" from 1 to _nrBarrages do {
         _bomb = createVehicle [_ammo, _pos, [], 0, "NONE"];
         _bomb setVectorDirAndUp [[0,0,-1],[0,1,0]];
         _bomb setVelocity [0,0,-100];
-		sleep 3+(random 3);
-	};
+        sleep 3+(random 3);
+    };
 };
 
 true

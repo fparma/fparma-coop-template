@@ -1,5 +1,5 @@
 /*
-	Function: FP_fnc_garrison
+    Function: FP_fnc_garrison
 
     Description:
         Takes units and puts them inside nearby buildings (garrison).
@@ -17,8 +17,8 @@
     Returns:
         ARRAY: Units (might be in dfferent groups)
 
-	Author:
-	Cuel 2016-01-08
+    Author:
+    Cuel 2016-01-08
 */
 
 params [
@@ -172,26 +172,26 @@ for [{_i = _unitIndex}, {_i < count _units}, {I(_i)}] do {
 
 private "_grp2";
 if (count _unUsedUnits > 0) then {
-	_grp2 = createGroup (side (_unUsedUnits select 0));
-	{
-		[_x] joinSilent _grp2;
-	}foreach _unUsedUnits;
+    _grp2 = createGroup (side (_unUsedUnits select 0));
+    {
+        [_x] joinSilent _grp2;
+    }foreach _unUsedUnits;
 
-	[_grp2, _center, _buildingRadius, 6+(round (random 4)), "MOVE", "SAFE", "YELLOW", "LIMITED", "COLUMN", "[this] spawn CBA_fnc_searchNearby", [3+(random 4),10,10+(random 5)]] call CBA_fnc_taskPatrol;
+    [_grp2, _center, _buildingRadius, 6+(round (random 4)), "MOVE", "SAFE", "YELLOW", "LIMITED", "COLUMN", "[this] spawn CBA_fnc_searchNearby", [3+(random 4),10,10+(random 5)]] call CBA_fnc_taskPatrol;
 };
 
 if (_lockUnits) then {
 
-	{
-		_x disableAI "MOVE";
-		_x addEventHandler ["Hit", {
-			_unit = _this select 0;
-			if (!alive _unit) exitWith {};
+    {
+        _x disableAI "MOVE";
+        _x addEventHandler ["Hit", {
+            _unit = _this select 0;
+            if (!alive _unit) exitWith {};
             _unit setVariable ["fp_enabled", true];
-			_unit enableAI "MOVE";
-			_unit doMove [(getPosATL _unit select 0)+1, (getPosATL _unit select 1) +1, getPosATL _unit select 2];
-		}];
-	}forEach units _grp;
+            _unit enableAI "MOVE";
+            _unit doMove [(getPosATL _unit select 0)+1, (getPosATL _unit select 1) +1, getPosATL _unit select 2];
+        }];
+    }forEach units _grp;
 
     [{
         params ["_units", "_id"];
@@ -212,7 +212,7 @@ if (_lockUnits) then {
 };
 
 if (count _unUsedUnits == 0) exitWith {
-	(units _grp);
+    (units _grp);
 };
 
 (units _grp + units _grp2)
