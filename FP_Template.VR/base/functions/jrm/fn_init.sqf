@@ -41,9 +41,7 @@ if (isServer) then {
 * Clients
 */
 if (!hasInterface) exitWith {};
-
 FP_JRM_lives = FP_JRM_respawns;
-private _uid = getPlayerUID player;
 
 player addEventHandler ["Respawn", {
 	private _idx = -1;
@@ -66,6 +64,7 @@ player addEventHandler ["Respawn", {
 }];
 
 // If player rejoin, get their amount of lives and start spect if they're are considered dead
+private _uid = getPlayerUID player;
 {
 	if (_x select 0 == _uid) exitWith {
 		FP_JRM_lives = _x select 1;
