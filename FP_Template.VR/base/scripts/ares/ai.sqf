@@ -102,9 +102,6 @@ switch (toUpper _mode) do {
             ) exitWith {
                 [_id] call CBA_fnc_removePerFrameHandler;
                 _grp setVariable ['fp_forcewp_id', nil];
-                _grp setCombatMode ((_grp getVariable ['fp_orig_mode', ['YELLOW']]) select 0);
-                _grp setBehaviour ((_grp getVariable ['fp_orig_mode', ['AWARE']]) select 1);
-                _grp setSpeedMode 'NORMAL';
                 {
                     _x forceSpeed -1;
                     _x enableAI "TARGET";
@@ -112,6 +109,9 @@ switch (toUpper _mode) do {
                     _x enableAI "FSM";
                     _x doMove (getPosATL _x);
                 } forEach units _grp;
+                _grp setCombatMode ((_grp getVariable ['fp_orig_mode', ['YELLOW']]) select 0);
+                _grp setBehaviour ((_grp getVariable ['fp_orig_mode', ['', 'AWARE']]) select 1);
+                _grp setSpeedMode 'NORMAL';
             };
 
             {
