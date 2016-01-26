@@ -74,7 +74,7 @@ switch (toUpper _mode) do {
         _grp setCombatMode "BLUE";
         _grp setBehaviour "CARELESS";
         _grp setSpeedMode "FULL";
-        {_x disableAI "TARGET"; _x disableAI "AUTOTARGET"} forEach _units;
+        {_x disableAI "TARGET"; _x disableAI "AUTOTARGET"; _x disableAI "FSM"} forEach _units;
 
         _wp1 setWaypointStatements ["true", format [
             "
@@ -84,7 +84,7 @@ switch (toUpper _mode) do {
                 _grp setVariable ['fp_forcewp_id', nil];
                 _grp setCombatMode (((group this) getVariable ['fp_orig_mode', ['YELLOW']]) select 0);
                 _grp setBehaviour (((group this) getVariable ['fp_orig_mode', ['AWARE']]) select 1);
-                {_x enableAI 'TARGET'; _x enableAI 'AUTOTARGET'} forEach units _grp;
+                {_x enableAI 'TARGET'; _x enableAI 'AUTOTARGET'; _x enableAI 'FSM'} forEach units _grp;
                 _grp setSpeedMode 'NORMAL';
             ",
             waypointStatements _wp1
@@ -108,6 +108,7 @@ switch (toUpper _mode) do {
                 {
                     _x enableAI "TARGET";
                     _x enableAI "AUTOTARGET";
+                    _x enableAI "FSM";
                     _x doMove (getPosATL _x);
                 } forEach units _grp;
             };
