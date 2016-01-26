@@ -84,7 +84,7 @@ switch (toUpper _mode) do {
                 _grp setVariable ['fp_forcewp_id', nil];
                 _grp setCombatMode (((group this) getVariable ['fp_orig_mode', ['YELLOW']]) select 0);
                 _grp setBehaviour (((group this) getVariable ['fp_orig_mode', ['AWARE']]) select 1);
-                {_x enableAI 'TARGET'; _x enableAI 'AUTOTARGET'; _x enableAI 'FSM'} forEach units _grp;
+                {_x enableAI 'TARGET'; _x enableAI 'AUTOTARGET'; _x enableAI 'FSM'; _x forceSpeed -1} forEach units _grp;
                 _grp setSpeedMode 'NORMAL';
             ",
             waypointStatements _wp1
@@ -106,6 +106,7 @@ switch (toUpper _mode) do {
                 _grp setBehaviour ((_grp getVariable ['fp_orig_mode', ['AWARE']]) select 1);
                 _grp setSpeedMode 'NORMAL';
                 {
+                    _x forceSpeed -1;
                     _x enableAI "TARGET";
                     _x enableAI "AUTOTARGET";
                     _x enableAI "FSM";
@@ -114,7 +115,7 @@ switch (toUpper _mode) do {
             };
 
             {
-                _x forceSpeed 18;
+                _x forceSpeed (_x getSpeed "FAST");
                 _x doMove _wpPos;
             }forEach _units;
         }, 1.2, [_grp,  _wp1, waypointPosition _wp1]] call CBA_fnc_addPerFrameHandler;
