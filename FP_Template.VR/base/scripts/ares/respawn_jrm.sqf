@@ -9,6 +9,8 @@ switch (toUpper _mode) do {
     // Respawns a single unit at selected position
     case "SINGLE": {
         private _pos = _Xarg call CBA_fnc_getPos;
+        if (!(_pos call FP_fnc_isValidPos)) exitWith {};
+
         private _players = [] call FP_JRM_fnc_getSpectators;
         if (count _players == 0) exitWith {["ERROR: No dead players"] call ares_fnc_ShowZeusMessage};
         private _names = [_players, {name _x}] call ACE_common_fnc_map;
@@ -32,6 +34,7 @@ switch (toUpper _mode) do {
     case "POSITION": {
         private _pos = _Xarg call CBA_fnc_getPos;
         if (!(_pos call FP_fnc_isValidPos)) exitWith {};
+
         private _plrs = [] call FP_JRM_fnc_getSpectators;
         if (count _plrs == 0) exitWith {["ERROR: No dead players"] call ares_fnc_ShowZeusMessage};
 
