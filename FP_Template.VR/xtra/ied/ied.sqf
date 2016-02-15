@@ -15,12 +15,12 @@ playSound3D [format ["fp_misc\sounds\%1.ogg", _snd], _obj, false, _pos, 0.3, 1];
 
 if (alive _obj) then
 {
-	sleep 3.3;
-	deletevehicle _obj;
-	_bomb = _ammoType createVehicle[_pos select 0, _pos select 1, (_pos select 2)+0.1];
-	sleep .1;
-	_crater = createVehicle ["CraterLong_small", _pos, [], 0, "NONE"];
-	[{
-		deleteVehicle _this;
-	}, _crater, 300] call ACE_common_fnc_waitAndExecute;
+    sleep 3.3;
+    deletevehicle _obj;
+    _bomb = _ammoType createVehicle[_pos select 0, _pos select 1, (_pos select 2)+0.1];
+    sleep .1;
+    _crater = createVehicle ["CraterLong_small", _pos, [], 0, "NONE"];
+    [{
+        deleteVehicle _this;
+    }, _crater, 300] call ACE_common_fnc_waitAndExecute;
 };

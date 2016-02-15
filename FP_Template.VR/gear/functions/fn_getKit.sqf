@@ -27,9 +27,9 @@
 */
 
 params [
-	["_unit", objNull, [objNull]],
-	["_kit", "", [""]],
-	["_scriptFile", FP_gearDefault]
+    ["_unit", objNull, [objNull]],
+    ["_kit", "", [""]],
+    ["_scriptFile", FP_gearDefault]
 ];
 
 // For respawn, retrieved in base init after player is inited
@@ -46,18 +46,18 @@ removeAllAssignedItems _unit;
 
 // Shows errors after 3 seconds, all units are done then
 if (!isMultiplayer && {isNil "FP_gear_errs"}) then {
-	FP_gear_errs = [];
-	[{
-		if (count FP_gear_errs == 0) exitWith {};
-		private _structured = [];
-		{
-			_structured pushBack _x;
-			_structured pushBack lineBreak;
-		}forEach FP_gear_errs;
+    FP_gear_errs = [];
+    [{
+        if (count FP_gear_errs == 0) exitWith {};
+        private _structured = [];
+        {
+            _structured pushBack _x;
+            _structured pushBack lineBreak;
+        }forEach FP_gear_errs;
 
-		"GEAR ERRORS" hintC composeText _structured;
-		FP_gear_errs = nil; // reset for later calls
-	}, [], 3] call ACE_common_fnc_waitAndExecute;
+        "GEAR ERRORS" hintC composeText _structured;
+        FP_gear_errs = nil; // reset for later calls
+    }, [], 3] call ACE_common_fnc_waitAndExecute;
 };
 
 _script = compile preprocessFileLineNumbers ("gear\loadouts\" + _scriptFile + ".sqf");

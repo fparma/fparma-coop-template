@@ -19,11 +19,11 @@
 params ["_posOrCode", ["_reset", false]];
 
 if (_reset) then {
-	FP_JRM_lives = FP_JRM_respawns;
-	if (isServer) then {
-		FP_JRM_savedState = [];
-		publicVariable "FP_JRM_savedState";
-	};
+    FP_JRM_lives = FP_JRM_respawns;
+    if (isServer) then {
+        FP_JRM_savedState = [];
+        publicVariable "FP_JRM_savedState";
+    };
 };
 
 if (!hasInterface || {!ACE_spectator_isSet}) exitWith {};
@@ -31,18 +31,18 @@ if (!hasInterface || {!ACE_spectator_isSet}) exitWith {};
 // Figure out if a marker or code was passed, or a position
 private ["_function", "_pos"];
 if (!isNil "_posOrCode") then {
-	if (typeName _posOrCode == typeName {}) then {
-		_function = _posOrCode;
-	} else {
-		if (typeName _posOrCode == typeName "") then {
-			_function = missionNamespace getVariable _posOrCode;
-			if (isNil "_function") then {
-				_pos = markerPos _posOrCode;
-			};
-		} else {
-			_pos = _posOrCode call CBA_fnc_getPos;
-		};
-	};
+    if (typeName _posOrCode == typeName {}) then {
+        _function = _posOrCode;
+    } else {
+        if (typeName _posOrCode == typeName "") then {
+        _function = missionNamespace getVariable _posOrCode;
+        if (isNil "_function") then {
+            _pos = markerPos _posOrCode;
+        };
+    } else {
+        _pos = _posOrCode call CBA_fnc_getPos;
+        };
+    };
 };
 
 [false] call FP_fnc_spectate;

@@ -18,5 +18,5 @@ if (_isJip) then {[_player] call FP_fnc_addToCurators};
 
 // Add teleport options to flag. See config.sqf
 if (!isNil "fp_flag" && {count FP_flagTargets > 0}) then {
-	[fp_flag, FP_flagTargets] call compile preProcessFileLineNumbers "base\scripts\teleport_flag.sqf"
+    [fp_flag, FP_flagTargets] call compile preProcessFileLineNumbers "base\scripts\teleport_flag.sqf"
 };

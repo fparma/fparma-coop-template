@@ -117,6 +117,7 @@ private _unitsLoadedCondition = format [
         {alive _x && ((vehicle _x) distance %1) < %4} count %3
     ))}
 ", _pickupPos, _heliVarName, _unitsToBoard, _maxDistanceForUnit];
+
 private _landSwitchTrigger = ([
     _pickupPos,
     "AREA:", [5, 5, 0, false],

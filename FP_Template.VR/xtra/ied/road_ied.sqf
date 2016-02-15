@@ -22,9 +22,9 @@ if (isNil "_ied") exitWith {};
 if (!(local _car)) exitWith {};
 
 if (alive _ied) then {
-	deleteVehicle _ied;
-	"M_Mo_82mm_AT_LG" createVehicle [(getPosATL _ied select 0),(getPosATL _ied select 1),((getPosATL _ied select  2)-.2)];
-	sleep 0.1;
-	_car setHit ["wheel_1_1_steering",1];
-	_car setHit ["wheel_2_1_steering",1];
+    deleteVehicle _ied;
+    "M_Mo_82mm_AT_LG" createVehicle [(getPosATL _ied select 0),(getPosATL _ied select 1),((getPosATL _ied select  2)-.2)];
+    sleep 0.1;
+    _car setHit ["wheel_1_1_steering",1];
+    _car setHit ["wheel_2_1_steering",1];
 };

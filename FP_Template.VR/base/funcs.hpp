@@ -1,12 +1,12 @@
 class FP {
     tag="FP";
     class functions {
-    	file = "base\functions";
-    	class addToCurators;
-    	class clearVehicle;
-    	class getPlayer;
-    	class setVehicleName;
-    	class disableWeapons;
+        file = "base\functions";
+        class addToCurators;
+        class clearVehicle;
+        class getPlayer;
+        class setVehicleName;
+        class disableWeapons;
         class isValidPos;
         class spectate;
         class coldStart {
