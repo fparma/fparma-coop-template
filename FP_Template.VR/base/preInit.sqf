@@ -3,6 +3,7 @@
 */
 
 [] call compile preprocessFileLineNumbers "config.sqf";
+FP_cachedGroups = [] call CBA_fnc_hashCreate;
 
 enableSaving [false,false];
 enableCamShake true;

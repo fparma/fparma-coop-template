@@ -9,6 +9,8 @@ class FP {
         class disableWeapons;
         class isValidPos;
         class spectate;
+        class cache;
+        class unCache;
         class coldStart {
             postInit = 1;
         };
