@@ -20,3 +20,14 @@ if (_isJip) then {[_player] call FP_fnc_addToCurators};
 if (!isNil "fp_flag" && {count FP_flagTargets > 0}) then {
     [fp_flag, FP_flagTargets] call compile preProcessFileLineNumbers "base\scripts\teleport_flag.sqf"
 };
+
+// Disable remote sensors for regular clients (not server, hc, zeus)
+// Curator logic might be null at time 0
+[{
+    if (hasInterface &&
+        {!isServer} &&
+        {isNull (getAssignedCuratorLogic player)}
+    ) then {
+        disableRemoteSensors true;
+    };
+}, [], 1] call ACE_common_fnc_waitAndExecute;
