@@ -2,7 +2,7 @@
 	Function: FP_fnc_cache
 
 	Description:
-        Cache a group of units for later use in the mission
+        Cache (hide/disable) a group of units for later use in the mission
 
 	Parameters:
     _units - A single unit, a group, or array of units
@@ -36,15 +36,13 @@ if (_id == "" || {count _units == 0}) exitWith {
 {
     if (!isPlayer _x && {simulationEnabled _x}) then {
         _x allowDamage false;
-        // TODO: update after 1.54, currently hideObjectGlobal is bugged
-        [_x, true] remoteExecCall ["hideObject"];
+        _x hideObjectGlobal true;
         _x enableSimulationGlobal false;
 
         private _veh = vehicle _x;
         if (_veh != _x && {simulationEnabled _veh}) then {
-            // TODO: update after 1.54, currently hideObjectGlobal is bugged
-            [_x, true] remoteExecCall ["hideObject"];
             _veh enableSimulationGlobal false;
+            _x hideObjectGlobal true;
         };
     };
 } forEach _units;

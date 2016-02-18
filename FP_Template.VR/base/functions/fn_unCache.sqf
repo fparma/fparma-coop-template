@@ -23,14 +23,12 @@ if (isNil "_units") exitWith {false};
 
 {
     _x allowDamage true;
-    // TODO: update after 1.54, currently hideObjectGlobal is bugged
-    [_x, false] remoteExecCall ["hideObject"];
     _x enableSimulationGlobal true;
+    _x hideObjectGlobal false;
 
     private _veh = vehicle _x;
     if (_veh != _x && {!simulationEnabled _veh}) then {
-        // TODO: update after 1.54, currently hideObjectGlobal is bugged
-        [_x, false] remoteExecCall ["hideObject"];
+        _x enableSimulationGlobal true;
         _veh hideObjectGlobal false;
     };
 } forEach _units;
