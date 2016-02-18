@@ -29,7 +29,7 @@
 params ["_name"];
 private _matches = [];
 {
-    if ([_name, name _x] call bis_fnc_inString) then {
+    if ([_name, name _x] call BIS_fnc_inString) then {
         _matches pushBack _x;
     };
 } forEach ([] call CBA_fnc_players);
