@@ -13,7 +13,7 @@ switch (toUpper _mode) do {
 
         private _players = [] call FP_JRM_fnc_getSpectators;
         if (count _players == 0) exitWith {["ERROR: No dead players"] call ares_fnc_ShowZeusMessage};
-        private _names = [_players, {name _x}] call ACE_common_fnc_map;
+        private _names = _players apply {name _x};
 
         private _args = ["Respawn single unit", [
             ["Player", _names, 0]
@@ -22,7 +22,7 @@ switch (toUpper _mode) do {
 
         private _plr = _players select (_args select 0);
         private _uid = getPlayerUID _plr;
-        FP_JRM_savedState = [FP_JRM_savedState, {(_x select 0) != _uid}] call ACE_common_fnc_filter;
+        FP_JRM_savedState = FP_JRM_savedState select {(_x select 0) != _uid};
         publicVariable "FP_JRM_savedState";
 
         [_pos] remoteExecCall ["FP_JRM_fnc_forceRespawn", _plr];
@@ -38,8 +38,8 @@ switch (toUpper _mode) do {
         private _plrs = [] call FP_JRM_fnc_getSpectators;
         if (count _plrs == 0) exitWith {["ERROR: No dead players"] call ares_fnc_ShowZeusMessage};
 
-        private _uids = [_plrs, {getPlayerUID _x}] call ACE_common_fnc_map;
-        FP_JRM_savedState = [FP_JRM_savedState, {!((_x select 0) in _uids)}] call ACE_common_fnc_filter;
+        private _uids = _plrs apply {getPlayerUID _x};
+        FP_JRM_savedState = FP_JRM_savedState select {!((_x select 0) in _uids)};
         publicVariable "FP_JRM_savedState";
 
         [_pos] remoteExecCall ["FP_JRM_fnc_forceRespawn", _plrs];
@@ -53,8 +53,8 @@ switch (toUpper _mode) do {
         private _plrs = [_maxAmount] call FP_JRM_fnc_getSpectators;
         if (_maxAmount isEqualTo 0 || {count _plrs == 0}) exitWith {["ERROR: No cargo slots / no dead players"] call ares_fnc_ShowZeusMessage};
 
-        private _uids = [_plrs, {getPlayerUID _x}] call ACE_common_fnc_map;
-        FP_JRM_savedState = [FP_JRM_savedState, {!((_x select 0) in _uids)}] call ACE_common_fnc_filter;
+        private _uids = _plrs apply {getPlayerUID _x};
+        FP_JRM_savedState = FP_JRM_savedState select {!((_x select 0) in _uids)};
         publicVariable "FP_JRM_savedState";
 
         private _code = {
