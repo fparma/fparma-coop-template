@@ -28,10 +28,6 @@ class CfgFunctions {
     #include "xtra\ai\funcs.hpp"
     };
 
-    // Gear funcs
-    class FP_Gear {
-    #include "gear\functions\funcs.hpp"
-    };
 };
 
 // === Debriefing
