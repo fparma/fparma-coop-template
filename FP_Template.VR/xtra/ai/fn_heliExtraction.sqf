@@ -11,7 +11,7 @@
         It is recommended to manully place an invisible helicopter landing pad near the LZ (both pickup and dropoff)
         Found under Empty -> Objects -> Helipad (invisble)
 
-        Espescially important if using multiple helicopters since they will try to land on the same spot otherwise.
+        Espescially important if using multiple helicopters
 
     Arguments:
         _heli - An existing helicopter OR , type of helicopter to spawn. Crew will be created using createVehicleCrew
