@@ -7,17 +7,9 @@ if (isClass (configFile >> "CfgPatches" >> "Ares")) then {
     [] call compile preprocessFileLineNumbers "base\scripts\ares\init.sqf";
 };
 
-// Respawn with gear, is set by fn_getKit
-FP_kit_type = player getVariable ["FP_kit_type", []];
 player addEventHandler ["Respawn", {
-
     // Add new unit to zeus
     [_this select 0] call FP_fnc_addToCurators;
-
-    // Respawn with gear if using template gear
-    if (count FP_kit_type > 0) then {
-        [_this select 0, FP_kit_type select 0, FP_kit_type select 1] call FP_fnc_getKit;
-    };
 }];
 
 // Fix so player can't join "ENEMY" side
@@ -50,19 +42,7 @@ if (player in ([FP_pilots, false, true] call ACE_common_fnc_parseList)) then {
         player switchMove "amovpercmstpslowwrfldnon";
     };
 
-    // Assign team colors to units
-    if (leader group player == player) then {
-        private _units = ((units group player) - [player]);
-        player assignTeam "GREEN";
-        if (count _units >= 3) then {
-            private _cnt = floor ((count _units) / 2);
-            {
-                _x assignTeam (["RED", "BLUE"] select (_forEachIndex < _cnt));
-            } forEach _units;
-        };
-    };
-
-    // stop monkey patch for ace markers
+    // stop monkey patch for ace markers when mission started
     if (!isNil "FP_ace_placeMarker") then {
         ACE_markers_fnc_placeMarker = FP_ace_placeMarker;
         FP_ace_placeMarker = nil;
