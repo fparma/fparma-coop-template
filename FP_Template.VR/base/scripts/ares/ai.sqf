@@ -95,7 +95,7 @@ switch (toUpper _mode) do {
             _args params ["_grp", "_wp", "_origWpPos"];
             private _wpPos = waypointPosition _wp;
 
-            private _units = [units _grp, {alive _x && {!(_x getVariable ["ACE_isUnconcious", false])}}] call ACE_common_fnc_filter;
+            private _units = (units _grp) select {alive _x && {!(_x getVariable ["ACE_isUnconcious", false])}};
             if (count _units == 0 ||
                 {(waypointVisible _wp) isEqualType 0} ||
                 {!(_wpPos isEqualTo _origWpPos)}
@@ -116,7 +116,7 @@ switch (toUpper _mode) do {
             {
                 _x forceSpeed (_x getSpeed "FAST");
                 _x doMove _wpPos;
-            }forEach _units;
+            } forEach _units;
         }, 1.2, [_grp,  _wp1, waypointPosition _wp1]] call CBA_fnc_addPerFrameHandler;
 
         _grp setVariable ["fp_forcewp_id", _pfhId];

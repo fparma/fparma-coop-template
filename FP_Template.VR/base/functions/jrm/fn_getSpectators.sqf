@@ -27,6 +27,6 @@ private _ret = [];
     } forEach _plrs;
 
     if (count _ret >= _amount) exitWith {};
-} forEach ([FP_JRM_savedState, {(_x select 1) == 0}] call ACE_common_fnc_filter);
+} forEach ({FP_JRM_savedState select {(_x select 1) == 0}});
 
 _ret
