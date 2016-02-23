@@ -23,11 +23,6 @@ class CfgFunctions {
     createShortcuts = 1;
     // Base functions. Do not remove
     #include "base\funcs.hpp"
-
-    class FP_AI {
-    #include "xtra\ai\funcs.hpp"
-    };
-
 };
 
 // === Debriefing

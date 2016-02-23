@@ -17,6 +17,15 @@ class FP {
     };
 };
 
+class FP_AI {
+    tag="FP";
+    file = "xtra\ai";
+    class defend;
+    class garrison;
+    class patrol;
+    class heliExtraction;
+};
+
 class FP_JRM {
     tag="FP_JRM";
     class functions {
@@ -27,13 +36,4 @@ class FP_JRM {
         class forceRespawn;
         class getSpectators;
     };
-};
-
-class FP_AI {
-    tag="FP";
-    file = "xtra\ai";
-    class defend;
-    class garrison;
-    class patrol;
-    class heliExtraction;
 };
