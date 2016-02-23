@@ -2,6 +2,10 @@ class FP {
     tag="FP";
     class functions {
         file = "base\functions";
+        class defend;
+        class garrison;
+        class patrol;
+
         class addToCurators;
         class clearVehicle;
         class getPlayer;
@@ -15,15 +19,6 @@ class FP {
             postInit = 1;
         };
     };
-};
-
-class FP_AI {
-    tag="FP";
-    file = "xtra\ai";
-    class defend;
-    class garrison;
-    class patrol;
-    class heliExtraction;
 };
 
 class FP_JRM {
