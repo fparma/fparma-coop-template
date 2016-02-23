@@ -1,6 +1,9 @@
 /*
 	Function: FP_fnc_cache
 
+    API:
+        Server
+
 	Description:
         Cache (hide/disable) a group of units for later use in the mission
         @TODO: HC support?

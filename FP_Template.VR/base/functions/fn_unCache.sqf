@@ -1,8 +1,12 @@
 /*
 	Function: FP_fnc_unCache
 
+    API:
+        Server
+
 	Description:
         Uncache all units associated with an ID
+
 	Parameters:
     _id - ID string
 
