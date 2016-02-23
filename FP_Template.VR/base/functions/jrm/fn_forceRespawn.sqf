@@ -12,6 +12,11 @@
 		If nil, ace spectator will teleport the unti back to where he was when entering spectator (respawn pos)
 	_reset - Clear all previous dead units [Default: false]
 
+    Example:
+    (begin example)
+        ["respawn_west", true] call FP_JRM_fnc_forceRespawn;
+    (end)
+
 	Author:
 	Cuel 2015-05-15
 */
