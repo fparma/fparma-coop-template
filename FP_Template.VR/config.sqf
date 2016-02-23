@@ -5,6 +5,8 @@ FP_VD = 2000; // View distance
 FP_OVD = 1800; // object view distance
 
 // Amount of respawns, -1 = infinite, 0 = no respawn. Can also be higher
+// deaths are saved and units will spectate after that
+// to respawn units, use Ares or setup a trigger (check base\functions\jrm\forceRespawn)
 FP_JRM_respawns = -1;
 
 // Units (object names, comma separated) that can start the mission from cold start
