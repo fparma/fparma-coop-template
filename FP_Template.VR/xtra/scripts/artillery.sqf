@@ -44,7 +44,7 @@ for "_i" from 1 to _nrBarrages do {
         player sideChat str _y;
         if (_y == 1 || (random 1 < 0.4)) then {
             (["mortar1", "mortar2"] select (random 1 > 0.5))
-                remoteExecCall ["playSound", allPlayers select {_x distance2d _pos < 100}];
+                remoteExecCall ["playSound", allPlayers select {(_x distance2d _pos) < 100}];
         };
         sleep 0.1;
         _bomb = createVehicle [_ammo, _pos, [], 0, "NONE"];

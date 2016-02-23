@@ -1,5 +1,5 @@
 /*
-    Function: FP_fnc_heliExtraction
+    Script: Heli extraction
 
     Description:
 
@@ -23,7 +23,7 @@
 
     Examples:
     (begin example)
-        ["B_Heli_Transport_01_camo_F", "hspawn", "hland", call CBA_fnc_players, "hend", 150] call FP_fnc_spawnHeliExtraction;
+        ["B_Heli_Transport_01_camo_F", "hspawn", "hland", call CBA_fnc_players, "hend", 150] execVM "xtra\scripts\heli_extraction.sqf"
     (end)
 
     Returns:

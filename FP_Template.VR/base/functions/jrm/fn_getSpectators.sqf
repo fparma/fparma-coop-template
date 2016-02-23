@@ -14,7 +14,8 @@
 	Cuel 2015-12-10
 */
 
-params [["_amount", count FP_JRM_savedState]];
+params [["_amount", count FP_JRM_savedState, [0]]];
+player sideChat str _amount;
 private _plrs = allPlayers;
 private _ret = [];
 
@@ -27,6 +28,6 @@ private _ret = [];
     } forEach _plrs;
 
     if (count _ret >= _amount) exitWith {};
-} forEach ({FP_JRM_savedState select {(_x select 1) == 0}});
+} forEach (FP_JRM_savedState select {(_x select 1) == 0});
 
 _ret

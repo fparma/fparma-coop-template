@@ -28,3 +28,12 @@ class FP_JRM {
         class getSpectators;
     };
 };
+
+class FP_AI {
+    tag="FP";
+    file = "xtra\ai";
+    class defend;
+    class garrison;
+    class patrol;
+    class heliExtraction;
+};
