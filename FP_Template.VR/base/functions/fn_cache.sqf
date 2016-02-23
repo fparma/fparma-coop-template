@@ -3,6 +3,7 @@
 
 	Description:
         Cache (hide/disable) a group of units for later use in the mission
+        @TODO: HC support?
 
 	Parameters:
     _units - A single unit, a group, or array of units to cache.
@@ -40,6 +41,7 @@ if (_id == "" || {count _units == 0}) exitWith {
     ["Wrong parameters or no units: %1", _this] call BIS_fnc_error;
     false
 };
+
 {
     _x allowDamage false;
     _x hideObjectGlobal true;
