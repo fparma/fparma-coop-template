@@ -41,19 +41,4 @@ if (player in ([FP_pilots, false, true] call ACE_common_fnc_parseList)) then {
     if (primaryWeapon player != "") then {
         player switchMove "amovpercmstpslowwrfldnon";
     };
-
-    // stop monkey patch for ace markers when mission started
-    if (!isNil "FP_ace_placeMarker") then {
-        ACE_markers_fnc_placeMarker = FP_ace_placeMarker;
-        FP_ace_placeMarker = nil;
-    };
-
-    if (!isNil "FP_ace_placeLineMarker") then {
-        ACE_maptools_fnc_handleMouseButton = FP_ace_placeLineMarker;
-        FP_ace_placeLineMarker = nil;
-    };
 }, []] call ACE_common_fnc_waitUntilAndExecute;
-
-// monkey patch ace markers temporarly to show messages during briefing
-if (time > 0) exitWith {};
-[] call compile preProcessFileLineNumbers "base\scripts\log_ace_markers.sqf";
