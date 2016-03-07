@@ -48,7 +48,7 @@ if (player in _canStart) then {
 if (player in _canMove) exitWith {};
 // Units that can't move
 [{
-    if (!isNil "FP_coldStartStarted") exitWith {[_this select 1] call CBA_fnc_removeEventHandler};
+    if (!isNil "FP_coldStartStarted") exitWith {[_this select 1] call CBA_fnc_removePerFrameHandler};
     if (player distance (_this select 0) > 20) then {
         (vehicle player) setVelocity [0,0,0];
         player setPosATL (_this select 0);
