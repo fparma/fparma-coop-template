@@ -11,17 +11,18 @@ FP_JRM_respawns = -1;
 
 // Units (object names, comma separated) that can start the mission from cold start
 // If FP_coldStartCanStart is empty string (""), cold start is never activated.
-FP_coldStartCanStart = "gm, actual";
+FP_coldStartCanStart = "gm, gm2, plt0";
 // Units that can move during cold start (object names, comma separated)
-FP_coldStartCanMove = "gm, actual, a0, b0, c0, d0, crew0, crew1, crew2, p0, p1";
+FP_coldStartCanMove = "gm, gm2, plt0, plt1, a0, a1, a2, b0, b1, b2, e0, q0, q1, q2, w0, w1, l0, l1";
 // Players (object names) that gets higher viewdistance in aircrafts
 FP_pilots = "p0, p1";
 
 // Flag teleport targets in format [Display name, objectName]
 FP_flagTargets = [
-    ["Actual", "actual"],
-    ["Alpha SQL", "a0"],
-    ["Bravo SQL", "b0"],
-    ["Charlie SQL", "c0"],
-    ["Delta SQL", "d0"]
+    ["Plt Command", "plt0"],
+    ["Alpha Actual", "a0"],
+    ["Bravo Actual", "b0"]
 ];
+
+// The default loadout script file to use. This is a sqf file in \loadouts
+FP_defaultLoadout = "template.sqf";
