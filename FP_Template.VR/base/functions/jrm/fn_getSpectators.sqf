@@ -15,7 +15,6 @@
 */
 
 params [["_amount", count FP_JRM_savedState, [0]]];
-player sideChat str _amount;
 private _plrs = allPlayers;
 private _ret = [];
 
