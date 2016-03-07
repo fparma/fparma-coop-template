@@ -2,10 +2,6 @@ class FP {
     tag="FP";
     class functions {
         file = "base\functions";
-        class defend;
-        class garrison;
-        class patrol;
-
         class addToCurators;
         class clearVehicle;
         class getPlayer;
@@ -13,13 +9,23 @@ class FP {
         class disableWeapons;
         class isValidPos;
         class spectate;
-        class cache;
-        class unCache;
         class coldStart {
             postInit = 1;
         };
     };
 };
+
+class FP_AI {
+    tag="FP";
+    class functions {
+        file = "base\functions\ai";
+        class defend;
+        class garrison;
+        class patrol;
+        class cache;
+        class unCache;
+    };
+}
 
 class FP_JRM {
     tag="FP_JRM";

@@ -4,7 +4,6 @@
 	Description:
         Initializes the jip and respawn manager.
         This function is called automatically.
-
 */
 if (isNil "FP_JRM_savedState") then {FP_JRM_savedState = []};
 if (FP_JRM_respawns < 0) exitWith {};
@@ -12,7 +11,7 @@ if (!isNil "FP_JRM_initialized") exitWith {};
 FP_JRM_initialized = true;
 
 if (isServer) then {
-// If players disconnect while unconscious, count as a death
+    // If players disconnect while unconscious, count as a death
     addMissionEventHandler ["HandleDisconnect", {
         params ["_unit", "", ["_uid", ""]];
 
@@ -38,7 +37,7 @@ if (isServer) then {
 };
 
 /*
-* Clients
+    Clients
 */
 if (!hasInterface) exitWith {};
 FP_JRM_lives = FP_JRM_respawns;
