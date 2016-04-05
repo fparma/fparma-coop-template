@@ -20,6 +20,7 @@ if (FP_coldStartCanStart == "" || {count _canStart == 0}) exitWith {};
 // event to handle mission start
 FP_coldStartIdx = ["FP_coldStart", {
     if (!isNil "FP_coldStartAction") then {
+        [FP_coldStartAction] call CBA_fnc_removePlayerAction;
         player removeAction FP_coldStartAction;
         FP_coldStartAction = nil;
     };
@@ -38,11 +39,11 @@ FP_coldStartIdx = ["FP_coldStart", {
 
 if (player in _canStart) then {
     // Action to start mission
-    FP_coldStartAction = player addAction ["<t color='#ffff00'>[ Start mission (weapons hot) ]</t>", {
+    FP_coldStartAction = ["<t color='#ffff00'>[ Start mission (weapons hot) ]</t>", {
         FP_coldStartStarted = true;
         publicVariable "FP_coldStartStarted";
         ["FP_coldStart"] call CBA_fnc_globalEvent;
-    }, nil, 99, false, true];
+    }, nil, 99, false, true] call CBA_fnc_addPlayerAction;
 };
 
 if (player in _canMove) exitWith {};
