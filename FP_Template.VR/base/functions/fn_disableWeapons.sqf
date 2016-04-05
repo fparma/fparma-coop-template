@@ -21,8 +21,6 @@ if (!local _unit) exitWith {false};
 
 if (_disable) then {
     if (player == _unit) then {
-        // FP_oldAce_detonate = ACE_explosives_fnc_detonateExplosive;
-        // ACE_explosives_fnc_detonateExplosive = {false};
         _unit setVariable ["FP_disableID",
             [_unit, "DefaultAction", {true}, {}] call ace_common_fnc_addActionEventHandler
         ];
@@ -38,8 +36,6 @@ if (_disable) then {
     ];
 } else {
     if (player == _unit) then {
-        // ACE_explosives_fnc_detonateExplosive = FP_oldAce_detonate;
-        // FP_oldAce_detonate = nil;
         [_unit, "DefaultAction", _unit getVariable ["FP_disableID", -1]] call ACE_common_fnc_removeActionEventHandler;
     };
     _unit removeEventHandler ["Fired", _unit getVariable ["FP_firedID", -1]];
