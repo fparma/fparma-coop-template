@@ -1,3 +1,5 @@
+// Add config here for loadout in format ["ClassName", "file in \loadouts"]
+// This is NOT case sensitive
 [
   ["B_RangeMaster_F", "plt.sqf"],
   ["B_officer_F", "plt.sqf"],
