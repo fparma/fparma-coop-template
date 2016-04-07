@@ -8,4 +8,4 @@ FP_OVD_AIR = 4500;  // Object view distance when piloting or gunning air vehicle
 
 // The amount of allowed respawns
 // if -1 = infinite respawn. 0 = zero respawn. can be higher
-FP_JRM_respawns = 0;
+FP_JRM_respawns = -1;
