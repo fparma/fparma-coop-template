@@ -35,13 +35,13 @@ if (isNil "FP_cachedGroups") then {
 
 private _isReCache = _units isEqualType "";
 if (_isReCache) then {
-    _id = _units;
-    _units = [FP_cachedGroups, _id] call CBA_fnc_hashGet;
+  _id = _units;
+  _units = [FP_cachedGroups, _id] call CBA_fnc_hashGet;
 } else {
-    if (!(_units isEqualType [])) then {
-        if (_units isEqualType objNull) exitWith {_units = [_units]};
-        if (_units isEqualType grpNull) then {_units = units _units};
-    };
+  if (!(_units isEqualType [])) then {
+    if (_units isEqualType objNull) exitWith {_units = [_units]};
+    if (_units isEqualType grpNull) then {_units = units _units};
+  };
 };
 
 if (_id == "" || {count _units == 0}) exitWith {
@@ -50,27 +50,27 @@ if (_id == "" || {count _units == 0}) exitWith {
 };
 
 {
-    _x allowDamage false;
-    _x hideObjectGlobal true;
-    _x enableSimulationGlobal false;
+  _x allowDamage false;
+  _x hideObjectGlobal true;
+  _x enableSimulationGlobal false;
 
-    private _veh = vehicle _x;
-    if (_veh != _x && {simulationEnabled _veh}) then {
-        _veh enableSimulationGlobal false;
-        _x hideObjectGlobal true;
-    };
+  private _veh = vehicle _x;
+  if (_veh != _x && {simulationEnabled _veh}) then {
+    _veh enableSimulationGlobal false;
+    _x hideObjectGlobal true;
+  };
 } forEach (_units select {alive _x && {simulationEnabled _x} && {!isPlayer _x}});
 
 if (_isReCache) exitWith {true};
 private _existingUnits = [FP_cachedGroups, _id] call CBA_fnc_hashGet;
 
 if (count _existingUnits == 0) exitWith {
-    [FP_cachedGroups, _id, _units] call CBA_fnc_hashSet;
-    true
+  [FP_cachedGroups, _id, _units] call CBA_fnc_hashSet;
+  true
 };
 
 {
-    _existingUnits pushBackUnique _x;
+  _existingUnits pushBackUnique _x;
 } forEach _units;
 [FP_cachedGroups, _id, _existingUnits] call CBA_fnc_hashSet;
 
