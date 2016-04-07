@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=343;
+		nextID=367;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={902.90277,12.088294,1010.2944};
-		dir[]={0.83799899,-0.41549325,-0.35406587};
-		up[]={0.38337216,0.90923083,-0.16197939};
-		aside[]={-0.38923946,-6.7219662e-007,-0.9212113};
+		pos[]={888.29041,15.529196,1019.4082};
+		dir[]={0.76772159,-0.43545741,-0.47034022};
+		up[]={0.37191382,0.89980531,-0.22785109};
+		aside[]={-0.52243686,3.7216523e-007,-0.85275215};
 	};
 };
 binarizationWanted=0;
@@ -34,7 +34,7 @@ addons[]=
 	"A3_Characters_F",
 	"A3_Characters_F_BLUFOR",
 	"A3_Modules_F_Curator_Curator",
-	"A3_Characters_F_Gamma"
+	"A3_Weapons_F_Ammoboxes"
 };
 randomSeed=6694819;
 class ScenarioData
@@ -62,7 +62,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=28;
+		items=29;
 		class Item0
 		{
 			dataType="Marker";
@@ -104,7 +104,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={892.67413,8.9768047,1008.5097};
+				position[]={892.67401,8.9768047,1008.51};
 			};
 			side="Empty";
 			class Attributes
@@ -114,6 +114,29 @@ class Mission
 			};
 			id=44;
 			type="Flag_Blue_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ace_isMedicalFacility";
+					expression="_this setVariable [""ace_medical_isMedicalFacility"",_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item5
 		{
@@ -137,8 +160,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={888.42407,5.9688811,1002.4785};
-				angles[]={0,2.5238931,0};
+				position[]={890.69916,5.9688811,1002.8016};
+				angles[]={0,2.1398587,0};
 			};
 			side="Empty";
 			class Attributes
@@ -170,8 +193,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={888.31738,5.4821024,1004.2766};
-				angles[]={0,3.2484267,0};
+				position[]={888.44037,5.4821024,1002.5809};
+				angles[]={0,3.9378862,0};
 			};
 			side="Empty";
 			class Attributes
@@ -187,7 +210,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={884.41046,5.4821024,1003.3943};
+				position[]={884.39215,5.4821024,1003.0409};
 				angles[]={0,5.8120103,0};
 			};
 			side="Empty";
@@ -204,7 +227,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={884.43176,5.4821024,1005.2825};
+				position[]={884.37335,5.4821024,1005.5477};
 				angles[]={0,0.38495767,0};
 			};
 			side="Empty";
@@ -273,40 +296,123 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={911.96399,5.0014391,1008.029};
+						position[]={916.01202,5.0014391,1008.071};
 					};
 					side="West";
-					flags=3;
 					class Attributes
 					{
 						rank="COLONEL";
 						init="this setGroupId [""GAME MASTER""]";
-						name="gm";
+						name="gm1";
 						description="Game master (zeus)";
-						isPlayer=1;
+						isPlayable=1;
 					};
-					id=128;
-					type="B_officer_F";
+					id=353;
+					type="B_RangeMaster_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="ace_isSurrendered";
+							expression="if (_value) then {[objNull,[_this],true] call ace_captives_fnc_moduleSurrender}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"BOOL"
+										};
+									};
+									value=0;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="ace_isHandcuffed";
+							expression="if (_value) then {[objNull,[_this],true] call ace_captives_fnc_moduleHandcuffed}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"BOOL"
+										};
+									};
+									value=0;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 				class Item1
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={916.01196,5.0014391,1008.0707};
+						position[]={911.96399,5.0014391,1008.029};
 					};
 					side="West";
-					flags=1;
+					flags=2;
 					class Attributes
 					{
 						rank="COLONEL";
 						init="this setGroupId [""GAME MASTER""]";
-						name="gm2";
+						name="gm0";
 						description="Game master (zeus)";
-						isPlayable=1;
+						isPlayer=1;
 					};
-					id=131;
-					type="B_officer_F";
+					id=354;
+					type="B_RangeMaster_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="ace_isSurrendered";
+							expression="if (_value) then {[objNull,[_this],true] call ace_captives_fnc_moduleSurrender}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"BOOL"
+										};
+									};
+									value=0;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="ace_isHandcuffed";
+							expression="if (_value) then {[objNull,[_this],true] call ace_captives_fnc_moduleHandcuffed}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"BOOL"
+										};
+									};
+									value=0;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 			};
 			class Attributes
@@ -319,7 +425,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={911.99707,6.2534661,1006.0292};
+				position[]={911.99701,6.2530003,1006.029};
 			};
 			id=129;
 			type="ModuleCurator_F";
@@ -340,7 +446,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="gm";
+							value="gm0";
 						};
 					};
 				};
@@ -428,7 +534,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={915.99664,6.1986661,1005.9937};
+				position[]={915.99701,6.1989999,1005.994};
 			};
 			id=132;
 			type="ModuleCurator_F";
@@ -449,7 +555,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="gm2";
+							value="gm1";
 						};
 					};
 				};
@@ -547,7 +653,7 @@ class Mission
 						position[]={921.914,5.0014391,1007.899};
 					};
 					side="West";
-					flags=3;
+					flags=2;
 					class Attributes
 					{
 						rank="COLONEL";
@@ -556,8 +662,50 @@ class Mission
 						description="Platoon Command";
 						isPlayable=1;
 					};
-					id=229;
-					type="B_Soldier_SL_F";
+					id=350;
+					type="B_officer_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="ace_isSurrendered";
+							expression="if (_value) then {[objNull,[_this],true] call ace_captives_fnc_moduleSurrender}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"BOOL"
+										};
+									};
+									value=0;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="ace_isHandcuffed";
+							expression="if (_value) then {[objNull,[_this],true] call ace_captives_fnc_moduleHandcuffed}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"BOOL"
+										};
+									};
+									value=0;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 				class Item1
 				{
@@ -572,11 +720,53 @@ class Mission
 						rank="CORPORAL";
 						init="this setGroupId [""Plt Command""];";
 						name="plt1";
-						description="Platoon UAV Operator";
+						description="Platoon Medic";
 						isPlayable=1;
 					};
-					id=263;
-					type="B_soldier_UAV_F";
+					id=348;
+					type="B_medic_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="ace_isSurrendered";
+							expression="if (_value) then {[objNull,[_this],true] call ace_captives_fnc_moduleSurrender}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"BOOL"
+										};
+									};
+									value=0;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="ace_isHandcuffed";
+							expression="if (_value) then {[objNull,[_this],true] call ace_captives_fnc_moduleHandcuffed}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"BOOL"
+										};
+									};
+									value=0;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 			};
 			class Attributes
@@ -813,18 +1003,59 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={950.00012,5.0014391,993.78302};
+						position[]={950,5.0014391,993.78296};
 					};
 					side="West";
-					flags=1;
 					class Attributes
 					{
 						init="this setGroupId [""Alpha 1""]";
 						description=" Alpha  1  Rifleman";
 						isPlayable=1;
 					};
-					id=261;
-					type="B_Soldier_F";
+					id=349;
+					type="B_soldier_LAT_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="ace_isSurrendered";
+							expression="if (_value) then {[objNull,[_this],true] call ace_captives_fnc_moduleSurrender}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"BOOL"
+										};
+									};
+									value=0;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="ace_isHandcuffed";
+							expression="if (_value) then {[objNull,[_this],true] call ace_captives_fnc_moduleHandcuffed}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"BOOL"
+										};
+									};
+									value=0;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 			};
 			class Attributes
@@ -1866,6 +2097,65 @@ class Mission
 			};
 			id=326;
 		};
+		class Item28
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={886.00299,5.2840548,1002.063};
+				angles[]={0,4.7247982,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="if (isServer) then {[this] call FP_fnc_clearVehicle; this addItemCargoGlobal [""ACRE_PRC343"", 40];  this addItemCargoGlobal [""ACRE_PRC148"", 10];  this addItemCargoGlobal [""ACRE_PRC152"", 10];  this addItemCargoGlobal [""ACRE_PRC117F"", 10];  this addItemCargoGlobal [""ACRE_PRC77"", 10];}";
+				description="RADIO BOX";
+			};
+			id=366;
+			type="Box_NATO_Support_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""FirstAidKit"",""Medikit"",""MineDetector""],[10,1,1]],[[""Laserbatteries"",""ACE_10Rnd_762x51_M118LR_Mag"",""ACE_20Rnd_762x51_M118LR_Mag"",""ACE_10Rnd_762x51_Mk316_Mod_0_Mag"",""ACE_20Rnd_762x51_Mk316_Mod_0_Mag"",""ACE_10Rnd_762x51_Mk319_Mod_0_Mag"",""ACE_20Rnd_762x51_Mk319_Mod_0_Mag"",""ACE_20Rnd_762x51_Mag_Tracer"",""ACE_20Rnd_762x51_Mag_Tracer_Dim"",""ACE_20Rnd_762x51_Mag_SD"",""ACE_10Rnd_762x51_M993_AP_Mag"",""ACE_20Rnd_762x51_M993_AP_Mag"",""ACE_10Rnd_338_300gr_HPBT_Mag"",""ACE_10Rnd_338_API526_Mag"",""ACE_5Rnd_127x99_Mag"",""ACE_5Rnd_127x99_API_Mag"",""ACE_5Rnd_127x99_AMAX_Mag""],[5,4,4,4,4,4,4,4,4,3,4,4,4,4,4,4,4]],[[""Binocular"",""Rangefinder"",""Laserdesignator"",""ToolKit"",""ItemGPS"",""acc_flashlight"",""acc_pointer_IR"",""muzzle_snds_acp"",""muzzle_snds_L"",""muzzle_snds_H"",""muzzle_snds_H_SW"",""muzzle_snds_B"",""muzzle_snds_338_black"",""muzzle_snds_338_green"",""muzzle_snds_338_sand"",""bipod_01_F_blk"",""bipod_01_F_mtp"",""bipod_01_F_snd"",""ACE_muzzle_mzls_H"",""ACE_muzzle_mzls_B"",""ACE_muzzle_mzls_smg_01"",""ACE_muzzle_mzls_smg_02"",""ACE_muzzle_mzls_338"",""ACE_muzzle_mzls_93mmg"",""ACE_acc_pointer_green"",""ACE_MapTools"",""ACE_IR_Strobe_Item"",""ACE_Flashlight_MX991""],[1,1,1,1,5,5,5,5,5,5,2,5,2,2,2,2,2,2,5,5,5,5,5,5,4,12,12,12]],[[],[]]],false]";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ace_isMedicalFacility";
+					expression="_this setVariable [""ace_medical_isMedicalFacility"",_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
 	};
 	class Connections
 	{
@@ -1879,7 +2169,7 @@ class Mission
 			class Item0
 			{
 				linkID=0;
-				item0=131;
+				item0=353;
 				item1=132;
 				class CustomData
 				{
@@ -1889,7 +2179,7 @@ class Mission
 			class Item1
 			{
 				linkID=1;
-				item0=128;
+				item0=354;
 				item1=129;
 				class CustomData
 				{

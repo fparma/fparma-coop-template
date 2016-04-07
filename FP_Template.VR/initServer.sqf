@@ -4,6 +4,10 @@
         for details about when the script is exactly executed.
 */
 
+// Initialize jip and respawn manager
+[] call FP_JRM_fnc_init;
+
+// Add some default stuff to zeus
 {
     private _curator = _x;
     _curator addCuratorEditableObjects [vehicles, true];

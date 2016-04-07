@@ -1,31 +1,51 @@
+/*
+    Author: Cuel
 
-if (!params [
-    ["_unit", objNull, [objNull]],
-    ["_type", "", ["", nil]],
-    ["_script", FP_defaultLoadout, [""]]
-]) exitWith {false};
+    Description:
+      Applies loadout to a unit. This function is called from initPlayerlocal.sqf normally
+      See README.txt for instructions
+
+    Parameters
+      _unit - Unit to apply loadout to
+      _type - The "typeOf" unit to match in _loadout_config.sqf.
+          This can be overriden. Or just use custom strings if needed
+
+    Returns: BOOLEAN
+*/
+params [
+  ["_unit", objNull, [objNull]],
+  ["_type", "", [""]]
+];
 
 if (!local _unit) exitWith {false};
-if (isNil "_type" || {_type == ""}) then {_type = typeOf _unit};
 
-_unit setVariable ["FP_loadout", [_type, _script]];
+private _conf = call compile preprocessFileLineNumbers "loadouts\_loadout_config.sqf";
+private _ele = _conf select {(toLower (_x select 0)) == (toLower _type)};
+
+if (count _ele != 1) exitWith {
+  if (!isMultiplayer) then {
+    if (isNil "FP_LOADOUT_ERR") then {
+      FP_LOADOUT_ERR = [];
+      [{time > 2}, {"LOADOUT ERRORS" hintC composeText FP_LOADOUT_ERR; FP_LOADOUT_ERR = nil}, []] call ace_common_fnc_waitUntilAndExecute;
+    };
+    FP_LOADOUT_ERR pushBack format ["LOADOUT: Found zero or duplicate loadouts for %1. (type %2)", str _unit, _type];
+    FP_LOADOUT_ERR pushBack lineBreak;
+  } else {
+    diag_log format ["LOADOUT: Found zero or duplicate loadouts for %1. (type %2)", str _unit, _type];
+  };
+  false
+};
+
 _unit setVariable ["BIS_enableRandomization", false];
-
 removeHeadgear _unit;
 removeAllContainers _unit;
 removeAllItems _unit;
 removeAllWeapons _unit;
 removeAllAssignedItems _unit;
 
-// Wait a second before applying loadout to avoid gear desync
 [{
-    params ["_unit"];
-    if (local _unit) then {
-        private __script = compile preprocessFileLineNumbers ("loadouts\" + _this select 2);
-        [_unit, _this select 1] call __script;
-    } else {
-        [_this, {
-            [_this select 0, _this select 1] call compile preprocessFileLineNumbers ("loadouts\" + _this select 2);
-        }] remoteExec ["BIS_fnc_call", _unit];
-    };
-}, 1, [_unit, _type, _script]] call ACE_common_fnc_waitAndExecute;
+    params ["_args", "_script"];
+    _args call compile preprocessFileLineNumbers ("loadouts\" + _script);
+}, [[_unit, _type], (_ele select 0) select 1]] call ace_common_fnc_execNextFrame;
+
+true

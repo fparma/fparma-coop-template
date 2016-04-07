@@ -6,26 +6,28 @@ class Header
 };
 disabledAI = 1;
 
+class CfgFunctions {
+    createShortcuts = 1;
+    // Base functions. Do not remove
+    #include "fp\functions\funcs.hpp"
+
+    // Remove this if you don't plan on using loadouts
+    // The folder can then be deleted
+    #include "loadouts\functions\funcs.hpp"
+};
+
 // ===  Mission name etc settings
 OnLoadName = "FP TEMPLATE 4.0.0";// Mission name (short)
 onLoadMission="description.ext to change!"; // Longer description
-loadScreen = "\fp_misc\img\fp_logo.paa"; // custom load image
-author="Cuel | 2015";
+loadScreen = "img_loading.jpg"; // custom load image
+author="Cuel | 2016";
 
 // ===  Respawn settings
 respawndelay = 4;
 respawnDialog = 0;
 // don't edit respawn type unless you know what youre doing
-// if you don't want respawn, edit config.sqf
+// if you do know, you should check with someone who knows
 respawn = "BASE";
-
-class CfgFunctions {
-    createShortcuts = 1;
-    // Base functions. Do not remove
-    #include "base\funcs.hpp"
-    #include "loadouts\functions\funcs.hpp"
-
-};
 
 // === Debriefing
 class CfgDebriefing {
@@ -34,7 +36,7 @@ class CfgDebriefing {
         description = "You have completed the mission.";
         subtitle = "";
         //pictureBackground = "";
-        picture = "\fp_misc\img\fp_logo.paa";
+        picture = "b_inf";
         //pictureColor[] = {};
     };
     class End2 {

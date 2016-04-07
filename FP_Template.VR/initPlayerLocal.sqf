@@ -1,33 +1,41 @@
 /*
 	Executed locally when player joins mission (includes both mission start and JIP).
+  This script guarantees that player object exists. Init.sqf does not
 	See: https://community.bistudio.com/wiki/Functions_Library_(Arma_3)#Initialization_Order
 		for details about when the script is exactly executed.
-
-	Parameters:
-		0 - Player object
-		1- Did player JiP
 */
 
-params ["_player", "_isJip"];
+// These below scripts are RECOMMENDED but not enabled by default
+// Remove the comments and change the needed strings to fit your mission (match object names)
 
-[] call compile preProcessFileLineNumbers "base\initPlayer.sqf";
-[] call compile preProcessFileLineNumbers "briefing.sqf";
+// Cold start
+[
+  "gm0, gm1, plt0", // units who can start the mission. are automatically added to "can move"
+  "plt1, a0, a1, a2, b0, b1, b2, e0, q0, q1, q2, w0, w1, l0, l1" // units who can move freely
+] call compile preprocessFileLineNumbers "scripts\cold_start.sqf";
 
-// Add JIP players to zeus
-if (_isJip) then {[_player] call FP_fnc_addToCurators};
+// Teleport flag, format is ["display name", "objectName"]
+[fp_flag,
+  ["Plt Command", "plt0"],
+  ["Alpha actual", "a0"],
+  ["Bravo actual", "b0"],
+] execVM "scripts\teleport_flag.sqf";
 
-// Add teleport options to flag. See config.sqf
-if (!isNil "fp_flag" && {count FP_flagTargets > 0}) then {
-    [fp_flag, FP_flagTargets] call compile preProcessFileLineNumbers "base\scripts\teleport_flag.sqf"
+
+// APPLY LOADOUTS
+if (!isNil "FP_fnc_getLoadout") then {
+  private _added = [player, typeOf player] call FP_fnc_getLoadout;
+  // Respawn with gear
+  if (_added) then {
+    player addEventHandler ["Respawn", {
+      [player, typeOf player] call FP_fnc_getLoadout;
+    }];
+  };
+
+  // Loadouts in singleplayer / editor
+  if (!isMultiplayer) then {
+    {
+      [_x, typeOf _x] call FP_fnc_getLoadout;
+    } forEach (switchableUnits - (entities "HeadlessClient_F" + [player]));
+  };
 };
-
-// Disable remote sensors for regular clients (not server, hc, zeus)
-// Curator logic might be null at time 0
-[{
-    if (hasInterface &&
-        {!isServer} &&
-        {isNull (getAssignedCuratorLogic player)}
-    ) then {
-        disableRemoteSensors true;
-    };
-}, [], 1] call ACE_common_fnc_waitAndExecute;
