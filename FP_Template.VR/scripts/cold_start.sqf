@@ -38,42 +38,42 @@ if (count _canStart == 0) exitWith {false};
 
 // event to handle mission start
 FP_coldStartIdx = ["FP_coldStart", {
-    if (!isNil "FP_coldStartAction") then {
-        player removeAction FP_coldStartAction;
-        FP_coldStartAction = nil;
-    };
-    hintSilent "Mission going live, weapons hot";
-    [] spawn {
-        sleep 4;
-        [player, false] call FP_fnc_disableWeapons;
-        hintSilent "";
-    };
-    ["FP_coldStart", FP_coldStartIdx] call CBA_fnc_removeEventHandler;
-    FP_coldStartIdx = nil;
+  if (!isNil "FP_coldStartAction") then {
+    player removeAction FP_coldStartAction;
+    FP_coldStartAction = nil;
+  };
+  hintSilent "Mission going live, weapons hot";
+  [] spawn {
+    sleep 4;
+    [player, false] call FP_fnc_disableWeapons;
+    hintSilent "";
+  };
+  ["FP_coldStart", FP_coldStartIdx] call CBA_fnc_removeEventHandler;
+  FP_coldStartIdx = nil;
 }] call CBA_fnc_addEventHandler;
 
 // Disable weapons
 [player, true] call FP_fnc_disableWeapons;
 
 if (player in _canStart) then {
-    // Action to start mission
-    FP_coldStartAction = player addAction ["<t color='#ffff00'>[ Start mission (weapons hot) ]</t>", {
-        FP_coldStartStarted = true;
-        publicVariable "FP_coldStartStarted";
-        ["FP_coldStart"] call CBA_fnc_globalEvent;
-    }, nil, 99, false, true];
+  // Action to start mission
+  FP_coldStartAction = player addAction ["<t color='#ffff00'>[ Start mission (weapons hot) ]</t>", {
+      FP_coldStartStarted = true;
+      publicVariable "FP_coldStartStarted";
+      ["FP_coldStart"] call CBA_fnc_globalEvent;
+  }, nil, 99, false, true];
 };
 
 if (player in _canMove) exitWith {true};
 // Units that can't move
 [{
-    if (!isNil "FP_coldStartStarted") exitWith {[_this select 1] call CBA_fnc_removePerFrameHandler};
-    if (player distance (_this select 0) > 20) then {
-        (vehicle player) setVelocity [0,0,0];
-        player setPosATL (_this select 0);
-        hintSilent "You can't move until the mission has started";
-        [] spawn {sleep 4; hintSilent ""};
-    };
+  if (!isNil "FP_coldStartStarted") exitWith {[_this select 1] call CBA_fnc_removePerFrameHandler};
+  if (player distance (_this select 0) > 20) then {
+    (vehicle player) setVelocity [0,0,0];
+    player setPosATL (_this select 0);
+    hintSilent "You can't move until the mission has started";
+    [] spawn {sleep 4; hintSilent ""};
+  };
 }, 1.23, getPosATL player] call CBA_fnc_addPerFrameHandler;
 
 true

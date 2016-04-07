@@ -31,12 +31,12 @@
 */
 
 params [
-    ["_heliType", "", ["", objNull]],
-    ["_unitsToBoard", []],
-    "_spawnPos",
-    "_pickupPos",
-    "_extractPos",
-    ["_maxDistanceForUnit", 100]
+  ["_heliType", "", ["", objNull]],
+  ["_unitsToBoard", []],
+  "_spawnPos",
+  "_pickupPos",
+  "_extractPos",
+  ["_maxDistanceForUnit", 100]
 ];
 
 if (_unitsToBoard isEqualType objNull) then {_unitsToBoard = [_unitsToBoard]};
@@ -45,15 +45,15 @@ if (count _unitsToBoard == 0) exitWith {["No units %1", _this] call BIS_fnc_erro
 
 private "_heli";
 if (_heliType isEqualType "") then {
-    _heli = createVehicle [_heliType, _spawnPos, [], random 10, "FLY"];
-    _heli setDir ([_spawnPos, _pickupPos] call BIS_fnc_dirTo);
-    clearItemCargoGlobal _heli;
-    clearWeaponCargoGlobal _heli;
-    clearMagazineCargoGlobal _heli;
-    createVehicleCrew _heli;
+  _heli = createVehicle [_heliType, _spawnPos, [], random 10, "FLY"];
+  _heli setDir ([_spawnPos, _pickupPos] call BIS_fnc_dirTo);
+  clearItemCargoGlobal _heli;
+  clearWeaponCargoGlobal _heli;
+  clearMagazineCargoGlobal _heli;
+  createVehicleCrew _heli;
 } else {
-    _heli = _heliType;
-    _spawnPos = getPosATL _heli;
+  _heli = _heliType;
+  _spawnPos = getPosATL _heli;
 };
 if (isNull _heli) exitWith {["Bad helicopter", _this] call BIS_fnc_error; objNull};
 
@@ -67,30 +67,30 @@ while {count (waypoints _grp) > 0} do {
 };
 
 private _LZtypes = [
-    "Land_HelipadSquare_F",
-    "Land_HelipadRescue_F",
-    "Land_HelipadEmpty_F",
-    "Land_HelipadCircle_F",
-    "Land_HelipadCivil_F"
+  "Land_HelipadSquare_F",
+  "Land_HelipadRescue_F",
+  "Land_HelipadEmpty_F",
+  "Land_HelipadCircle_F",
+  "Land_HelipadCivil_F"
 ];
 
 private _findOrMakeLZ = {
-   private _lzPos = _this;
-   private _near = nearestObjects [_lzPos, _LZtypes, _maxDistanceForUnit];
-    if (count _near == ({_x getVariable ["fp_inUse", false]} count _near)) then {
-       private _LZtype = "Land_HelipadEmpty_F";
-       for "_i" from 0 to 10 do {
-           private _maxDist = if (_i == 0) then {3} else {15 * _i};
-           _lzPos = [_this, 0, _maxDist, 10, 0, 0.2, 0, [], [_this]] call BIS_fnc_findSafePos;
-           if !(_lzPos isEqualTo _this) exitWith {};
-       };
-       private _lz = createVehicle [_LZtype, _lzPos, [], 0, "CAN COLLIDE"];
-       _lz setVariable ["fp_inUse", true];
-       private _lzs = _heli getVariable ["fp_lz", []];
-       _lzs pushBack _lz,
-       _heli setVariable ["fp_lz", _lzs];
-   };
-   (_lzPos)
+ private _lzPos = _this;
+ private _near = nearestObjects [_lzPos, _LZtypes, _maxDistanceForUnit];
+  if (count _near == ({_x getVariable ["fp_inUse", false]} count _near)) then {
+    private _LZtype = "Land_HelipadEmpty_F";
+    for "_i" from 0 to 10 do {
+      private _maxDist = if (_i == 0) then {3} else {15 * _i};
+      _lzPos = [_this, 0, _maxDist, 10, 0, 0.2, 0, [], [_this]] call BIS_fnc_findSafePos;
+      if !(_lzPos isEqualTo _this) exitWith {};
+    };
+    private _lz = createVehicle [_LZtype, _lzPos, [], 0, "CAN COLLIDE"];
+    _lz setVariable ["fp_inUse", true];
+    private _lzs = _heli getVariable ["fp_lz", []];
+    _lzs pushBack _lz,
+    _heli setVariable ["fp_lz", _lzs];
+ };
+ (_lzPos)
 };
 
 _pickupPos = _pickupPos call _findOrMakeLZ;
@@ -108,21 +108,21 @@ private _pickUpWP = [_heli, _pickupPos, 10, "HOLD", "CARELESS", "RED", "FULL", "
 // 2) The amount of nearby units defined equals the amount of defined units in the heli
 private _unitsLoadedCondition = format [
 "{(vehicle _x) distance %1 < %4} count %3 > 0
-    &&
-    {((
-        {alive _x && ((vehicle _x) distance %1) < %4 && _x in %2} count %3
-   )
-    ==
-   (
-        {alive _x && ((vehicle _x) distance %1) < %4} count %3
-    ))}
+  &&
+  {((
+    {alive _x && ((vehicle _x) distance %1) < %4 && _x in %2} count %3
+ )
+  ==
+ (
+   {alive _x && ((vehicle _x) distance %1) < %4} count %3
+  ))}
 ", _pickupPos, _heliVarName, _unitsToBoard, _maxDistanceForUnit];
 
 private _landSwitchTrigger = ([
-    _pickupPos,
-    "AREA:", [5, 5, 0, false],
-    "ACT:", ["NONE", "PRESENT", false],
-    "STATE:", [_unitsLoadedCondition, format ["%1 setVariable ['FP_hasPickedUp', true]", _heliVarName], ""]
+  _pickupPos,
+  "AREA:", [5, 5, 0, false],
+  "ACT:", ["NONE", "PRESENT", false],
+  "STATE:", [_unitsLoadedCondition, format ["%1 setVariable ['FP_hasPickedUp', true]", _heliVarName], ""]
 ] call CBA_fnc_createTrigger) select 0;
 _landSwitchTrigger setTriggerType "SWITCH";
 _landSwitchTrigger synchronizeTrigger [_pickUpWP];
@@ -134,16 +134,16 @@ private _dropCondition = format ["%1 getVariable ['FP_hasPickedUp', false] && {{
 
 // Once all units out, return to spawnpos and get deleted / land
 private _goHome = format [
-    "%1 flyInHeight 60;
-    [%1, %2, 50, 'MOVE', 'CARELESS', 'RED', 'FULL', 'STAG COLUMN', %3] call CBA_fnc_addWaypoint",
-    _heliVarName,
-    _spawnPos,
-    if (_heliType isEqualType "") then {
-        '''{deleteVehicle _x} forEach ((vehicle this) getVariable ["fp_lz", []]); deleteVehicle (vehicle this); {deleteVehicle _x} forEach (units group this)''';
-    } else {
-        _spawnPos call _findOrMakeLZ;
-        '''(vehicle this) land "LAND"; (vehicle this) setVariable ["FP_hasPickedUp", nil]; (vehicle this) spawn {sleep 10; {deleteVehicle _x} forEach (_this getVariable ["fp_lz", []])}''';
-    }
+  "%1 flyInHeight 60;
+  [%1, %2, 50, 'MOVE', 'CARELESS', 'RED', 'FULL', 'STAG COLUMN', %3] call CBA_fnc_addWaypoint",
+  _heliVarName,
+  _spawnPos,
+  if (_heliType isEqualType "") then {
+    '''{deleteVehicle _x} forEach ((vehicle this) getVariable ["fp_lz", []]); deleteVehicle (vehicle this); {deleteVehicle _x} forEach (units group this)''';
+  } else {
+    _spawnPos call _findOrMakeLZ;
+    '''(vehicle this) land "LAND"; (vehicle this) setVariable ["FP_hasPickedUp", nil]; (vehicle this) spawn {sleep 10; {deleteVehicle _x} forEach (_this getVariable ["fp_lz", []])}''';
+  }
 ];
 
 _dropOffSwitchTrigger = ([_extractPos, "AREA:", [5, 5, 0, false], "ACT:", ["NONE", "PRESENT", false], "STATE:", [_dropCondition, _goHome, ""]] call CBA_fnc_createTrigger) select 0;

@@ -25,8 +25,8 @@
 
 if (!isServer) exitWith {};
 params [
-    ["_units", [], ["", objNull, grpNull, []]],
-    ["_id", "", [""]]
+  ["_units", [], ["", objNull, grpNull, []]],
+  ["_id", "", [""]]
 ];
 
 if (isNil "FP_cachedGroups") then {

@@ -23,7 +23,7 @@
 */
 
 if (!params [
-    ["_veh", objNull, [objNull]]
+  ["_veh", objNull, [objNull]]
 ]) exitWith {false};
 
 clearWeaponCargoGlobal _veh;

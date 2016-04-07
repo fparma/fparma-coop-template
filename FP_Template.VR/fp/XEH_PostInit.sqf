@@ -8,41 +8,41 @@ if (!hasInterface) exitWith {};
 if (didJIP) then {[player] call FP_fnc_addToCurators};
 
 player addEventHandler ["Respawn", {
-    // Add new unit to zeus
-    [_this select 0] call FP_fnc_addToCurators;
+  // Add new unit to zeus
+  [_this select 0] call FP_fnc_addToCurators;
 }];
 
 // Fix so player can't join "ENEMY" side
 player addEventHandler ["HandleRating", {
-    abs (_this select 1);
+  abs (_this select 1);
 }];
 
 // When piloting or gunning air vehicle, increase view distance
 ["playerVehicleChanged", {
-    if (!((vehicle ACE_player) isKindOf "Air")) exitWith {
-        setViewDistance FP_VD;
-        setObjectViewDistance FP_OVD;
-    };
+  if (!((vehicle ACE_player) isKindOf "Air")) exitWith {
+    setViewDistance FP_VD;
+    setObjectViewDistance FP_OVD;
+  };
 
-    private _veh = vehicle ACE_player;
-    if (ACE_player in [driver _veh, gunner _veh]) then {
-      setViewDistance FP_VD_AIR;
-      setObjectViewDistance FP_OVD_AIR;
-    };
+  private _veh = vehicle ACE_player;
+  if (ACE_player in [driver _veh, gunner _veh]) then {
+    setViewDistance FP_VD_AIR;
+    setObjectViewDistance FP_OVD_AIR;
+  };
 }] call ACE_common_fnc_addEventHandler;
 
 // Delete grenades thrown in spawn
 player addEventHandler ["Fired", {
-    if (_this select 2 == "HandGrenadeMuzzle") then {
-        private _proj = param [6, objNull];
-        private _idx = [blufor, opfor, independent, civilian] find side player;
-        private _mrk = markerPos (["respawn_west","respawn_east","respawn_guerrila","respawn_civilian"] select _idx);
-        if ((_this select 0) distance _mrk < 80) then {
-            [_proj] call ace_frag_fnc_addBlackList;
-            deleteVehicle _proj;
-            titleText ["G IS FOR GRENADES", "PLAIN", 2];
-        };
+  if (_this select 2 == "HandGrenadeMuzzle") then {
+    private _proj = param [6, objNull];
+    private _idx = [blufor, opfor, independent, civilian] find side player;
+    private _mrk = markerPos (["respawn_west","respawn_east","respawn_guerrila","respawn_civilian"] select _idx);
+    if ((_this select 0) distance _mrk < 80) then {
+        [_proj] call ace_frag_fnc_addBlackList;
+        deleteVehicle _proj;
+        titleText ["G IS FOR GRENADES", "PLAIN", 2];
     };
+  };
 }];
 
 // Initialize jip and respawn manager
@@ -51,7 +51,7 @@ player addEventHandler ["Fired", {
 [{
   // Lower weapon after mission start
   if (primaryWeapon player != "") then {
-      player switchMove "amovpercmstpslowwrfldnon";
+    player switchMove "amovpercmstpslowwrfldnon";
   };
 
   // Disable remote sensors for regular clients (not server, hc, zeus)

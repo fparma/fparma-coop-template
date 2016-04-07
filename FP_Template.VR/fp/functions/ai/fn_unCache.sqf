@@ -27,15 +27,15 @@ private _units = [FP_cachedGroups, _id] call CBA_fnc_hashGet;
 if (isNil "_units") exitWith {false};
 
 {
-    _x allowDamage true;
-    _x enableSimulationGlobal true;
-    _x hideObjectGlobal false;
+  _x allowDamage true;
+  _x enableSimulationGlobal true;
+  _x hideObjectGlobal false;
 
-    private _veh = vehicle _x;
-    if (_veh != _x && {!simulationEnabled _veh}) then {
-        _x enableSimulationGlobal true;
-        _veh hideObjectGlobal false;
-    };
+  private _veh = vehicle _x;
+  if (_veh != _x && {!simulationEnabled _veh}) then {
+    _x enableSimulationGlobal true;
+    _veh hideObjectGlobal false;
+  };
 } forEach _units;
 
 true

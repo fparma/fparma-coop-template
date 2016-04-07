@@ -44,8 +44,8 @@ removeAllWeapons _unit;
 removeAllAssignedItems _unit;
 
 [{
-    params ["_args", "_script"];
-    _args call compile preprocessFileLineNumbers ("loadouts\" + _script);
+  params ["_args", "_script"];
+  _args call compile preprocessFileLineNumbers ("loadouts\" + _script);
 }, [[_unit, _type], (_ele select 0) select 1]] call ace_common_fnc_execNextFrame;
 
 true

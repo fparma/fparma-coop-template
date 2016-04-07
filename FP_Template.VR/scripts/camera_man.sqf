@@ -40,16 +40,16 @@ _unit createDiaryRecord
 }, 0, -99, false, true, "", ""]] call CBA_fnc_addPlayerAction;
 
 [] spawn {
-    FP_shownHud = true;
-    waitUntil {!isNull (findDisplay 46)};
-    (findDisplay 46) displayAddEventHandler ["keyDown", {
-        params ["", "_dikCode", "", "_ctrl"];
-        private _res = false;
-        if (_ctrl && _dikCode ==  48) then {
-            showHUD [!FP_shownHud, !FP_shownHud, !FP_shownHud, !FP_shownHud, !FP_shownHud, !FP_shownHud, !FP_shownHud, !FP_shownHud];
-            FP_shownHud = !FP_shownHud;
-            _res = true;
-        };
-        _res
-    }];
+  FP_shownHud = true;
+  waitUntil {!isNull (findDisplay 46)};
+  (findDisplay 46) displayAddEventHandler ["keyDown", {
+    params ["", "_dikCode", "", "_ctrl"];
+    private _res = false;
+    if (_ctrl && _dikCode ==  48) then {
+      showHUD [!FP_shownHud, !FP_shownHud, !FP_shownHud, !FP_shownHud, !FP_shownHud, !FP_shownHud, !FP_shownHud, !FP_shownHud];
+      FP_shownHud = !FP_shownHud;
+      _res = true;
+    };
+    _res
+  }];
 };

@@ -20,11 +20,11 @@
 */
 
 if (!isServer) exitWith {
-    _this remoteExecCall ["FP_fnc_addToCurators", 2];
+  _this remoteExecCall ["FP_fnc_addToCurators", 2];
 };
 
 private _add = if (typeName _this != typeName []) then {[_this]} else {_this};
 
 {
-    _x addCuratorEditableObjects [_add,  true];
+  _x addCuratorEditableObjects [_add,  true];
 } foreach allCurators;
