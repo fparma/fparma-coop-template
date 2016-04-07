@@ -45,8 +45,8 @@ if (_isReCache) then {
 };
 
 if (_id == "" || {count _units == 0}) exitWith {
-    ["Wrong parameters or no units: %1", _this] call BIS_fnc_error;
-    false
+  ["Wrong parameters or no units: %1", _this] call BIS_fnc_error;
+  false
 };
 
 {
