@@ -56,8 +56,7 @@ player addEventHandler ["Fired", {
 
   // Disable remote sensors for regular clients (not server, hc, zeus)
   // Curator logic might be null at time 0
-  if (hasInterface &&
-    {!isServer} &&
+  if (!isServer &&
     {isNull (getAssignedCuratorLogic player)}
   ) then {
     disableRemoteSensors true;
