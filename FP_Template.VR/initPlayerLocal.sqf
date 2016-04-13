@@ -14,13 +14,14 @@
   "plt1, a0, a1, a2, b0, b1, b2, e0, q0, q1, q2, w0, w1, l0, l1" // units who can move freely
 ] call compile preprocessFileLineNumbers "scripts\cold_start.sqf";
 
-// Teleport flag, format is ["display name", "objectName"]
+// Teleport flag, first is the object to addaction to, second format is ["display name", "objectName"]
 [fp_flag,
   ["Plt Command", "plt0"],
   ["Alpha actual", "a0"],
   ["Bravo actual", "b0"],
 ] execVM "scripts\teleport_flag.sqf";
 */
+
 
 // APPLY LOADOUTS
 if (!isNil "FP_fnc_getLoadout") then {

@@ -4,34 +4,32 @@
 
     Description:
     Export current arsenal loadout, with some improvements
-    Also supports just "simply exporting" the players current gear
+    Also supports just "simply exporting" the players current gear, if called from editor
 
     Returns:
     STRING - SQF code
 */
 
-params [["_exportGogglesAndFace", false, [false]]];
 private _tab = toString [09];
-private _br = toString [13,10];
+private _br = toString [13, 10];
 private _center = (missionnamespace getvariable ["BIS_fnc_arsenal_center", player]);
-private _export = ""; // format ["case (_type == ""GiveThisKitAName"" || _type == ""%1""): {", typeOf _center] + _br;
+private _export = 'params ["_unit", "_type"];' + _br;
 private _var = "_unit";
 
 private _radios = [];
 
 private _fnc_addMultiple = {
-  _items = _this select 0;
-  _expression = _this select 1;
+  params ["_items", "_expression"];
   _itemsUsed = [];
   {
     _item = _x;
     _itemLower = tolower _x;
     if (_itemLower select [0, 8] == "acre_prc") then {
       private _ex = (_expression splitString " ") select 1;
-      private _r = _x splitString "_";
-      private _radio = [_r select 0, _r select 1] joinString "_";
+      private _rStr = _x splitString "_";
+      private _radio = [_rStr select 0, _rStr select 1] joinString "_";
       if (_radio == "ACRE_PRC343") then {_radio = "ItemRadio"};
-      _radios pushBackUnique format ["%1 %2 ""%3"";",_var, _ex, _radio];
+        _radios pushBackUnique format ["%1 %2 ""%3"";",_var, _ex, _radio];
     } else {
       if !(_itemLower in _itemsUsed) then {
         _itemsUsed set [count _itemsUsed, _itemLower];
@@ -39,7 +37,7 @@ private _fnc_addMultiple = {
         _expressionLocal = _expression;
         if (_itemCount > 1) then {
           _count = [];
-          for "_i" from 1 to _itemCount do {_count pushBack (_i - 1)};
+          for "_i" from 1 to _itemCount do {_count pushBack _i};
           _expressionLocal = format ["{%2} count %1", _count, _expression];
         };
         _export = _export + _br + format [_expressionLocal,_var,_x] + ";";
@@ -90,9 +88,7 @@ if (!isnull unitbackpack _center) then {
 
 _export = _export + _br;
 {
-  _weapon = _x select 0;
-  _weaponAccessories = _x select 1;
-  _weaponCommand = _x select 2;
+  _x params ["_weapon", "_weaponAccessories", "_weaponCommand"];
   if (_weapon != "") then {
     _export = _export +  format ["%1 addWeapon ""%2"";",_var, _weapon] + _br;
     private _filter = _weaponAccessories select {_x != ""};

@@ -7,6 +7,9 @@ if (!hasInterface) exitWith {};
 // Add JIP players to zeus
 if (didJIP) then {[player] call FP_fnc_addToCurators};
 
+// Initialize jip and respawn manager
+[] call FP_JRM_fnc_init;
+
 player addEventHandler ["Respawn", {
   // Add new unit to zeus
   [_this select 0] call FP_fnc_addToCurators;
@@ -33,7 +36,7 @@ player addEventHandler ["HandleRating", {
 
 // Delete grenades thrown in spawn
 player addEventHandler ["Fired", {
-  if (_this select 2 == "HandGrenadeMuzzle") then {
+  if ((_this select 2) == "HandGrenadeMuzzle") then {
     private _proj = param [6, objNull];
     private _idx = [blufor, opfor, independent, civilian] find side player;
     private _mrk = markerPos (["respawn_west","respawn_east","respawn_guerrila","respawn_civilian"] select _idx);
@@ -44,9 +47,6 @@ player addEventHandler ["Fired", {
     };
   };
 }];
-
-// Initialize jip and respawn manager
-[] call FP_JRM_fnc_init;
 
 [{
   // Lower weapon after mission start

@@ -22,6 +22,8 @@ switch (toUpper _mode) do {
 
     private _plr = _players select (_args select 0);
     private _uid = getPlayerUID _plr;
+    if (isNull _plr || _uid == "") exitWith {["ERROR: Unable to find unit"] call ares_fnc_ShowZeusMessage};
+
     FP_JRM_savedState = FP_JRM_savedState select {(_x select 0) != _uid};
     publicVariable "FP_JRM_savedState";
 
