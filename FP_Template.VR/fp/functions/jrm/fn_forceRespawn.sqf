@@ -51,12 +51,15 @@ if (!isNil "_posOrCode") then {
 };
 
 [false] call FP_fnc_spectate;
-if (!isNil "_pos") then {
-  player setPos _pos;
-  private _stuff = nearestObjects [player, ["All"], 100];
-  {player reveal [_x, 4]} forEach _stuff;
-} else {
+[{
+  params ["_pos", "_function"];
+  if (!isNil "_pos") then {
+    player setPos _pos;
+    private _stuff = nearestObjects [player, ["All"], 100];
+    {player reveal [_x, 4]} forEach _stuff;
+  } else {
   if (!isNil "_function") then {
     [player] call _function;
   };
 };
+}, [_pos, function]] call ace_common_fnx_execNextFrame;
