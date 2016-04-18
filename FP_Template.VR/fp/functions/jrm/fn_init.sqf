@@ -67,10 +67,13 @@ private _uid = getPlayerUID player;
 {
   if (_x select 0 == _uid) exitWith {
     FP_JRM_lives = _x select 1;
-    if (FP_JRM_lives == 0) then {[true] call FP_fnc_spectate};
+    if (FP_JRM_lives == 0) then {
+      [{time > 0.1}, {
+        [true] call FP_fnc_spectate;
+      }, []] call ace_common_fnc_waitUntilAndExecute;
+    };
   };
 } forEach FP_JRM_savedState;
-
 
 // Add ARES respawn functionality
 if (!isNil "Ares_fnc_RegisterCustomModule" && isNil "FP_ares_jrm") then {
