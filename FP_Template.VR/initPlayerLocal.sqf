@@ -6,8 +6,9 @@
 */
 
 // These below scripts are RECOMMENDED but not enabled by default
-// Remove the comments and change the needed strings to fit your mission (match object names)
-/*
+// Remove the comments and change the needed strings to fit your mission (match the object names)
+
+
 // Cold start
 [
   "gm0, gm1, plt0", // units who can start the mission. are automatically added to "can move"
@@ -15,17 +16,17 @@
 ] call compile preprocessFileLineNumbers "scripts\cold_start.sqf";
 
 // Teleport flag, first is the object to addaction to, second format is ["display name", "objectName"]
-[[fp_flag,
+[fp_flag, [
   ["Plt Command", "plt0"],
   ["Alpha actual", "a0"],
   ["Bravo actual", "b0"]
 ]] execVM "scripts\teleport_flag.sqf";
-*/
 
 
 // APPLY LOADOUTS
 if (!isNil "FP_fnc_getLoadout") then {
   private _added = [player, typeOf player] call FP_fnc_getLoadout;
+
   // Respawn with gear
   if (_added) then {
     player addEventHandler ["Respawn", {
