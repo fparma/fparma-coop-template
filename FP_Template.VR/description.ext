@@ -19,7 +19,7 @@ class CfgFunctions {
 // ===  Mission name etc settings
 OnLoadName = "FP TEMPLATE 4.0.0";// Mission name (short)
 onLoadMission="description.ext to change!"; // Longer description
-loadScreen = "img_loading.jpg"; // custom load image
+// loadScreen = "img_loading.jpg"; // custom load image
 author="Cuel | 2016";
 
 // ===  Respawn settings
