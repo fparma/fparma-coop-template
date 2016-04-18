@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={895.71844,22.341805,1018.9977};
-		dir[]={0.86060554,-0.48215103,-0.16471863};
-		up[]={0.47422007,0.87564355,-0.090765208};
-		aside[]={-0.18799953,7.8999437e-007,-0.98222935};
+		pos[]={869.79987,40.736076,1004.5262};
+		dir[]={0.78057778,-0.61335725,0.121397};
+		up[]={0.60664272,0.78927249,0.094345391};
+		aside[]={0.15368153,1.1465272e-006,-0.98817962};
 	};
 };
 binarizationWanted=0;
@@ -40,6 +40,33 @@ randomSeed=6694819;
 class ScenarioData
 {
 	author="Cuel   ☂";
+};
+class CustomAttributes
+{
+	class Category0
+	{
+		name="Scenario";
+		class Attribute0
+		{
+			property="EnableDebugConsole";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"SCALAR"
+						};
+					};
+					value=0;
+				};
+			};
+		};
+		nAttributes=1;
+	};
 };
 class Mission
 {
@@ -1336,17 +1363,59 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={956.09784,5.0014391,1003.7876};
+						position[]={956.09802,5.0014391,1003.788};
 					};
 					side="West";
 					class Attributes
 					{
 						init="this setGroupId [""Bravo Actual""]";
-						description="Bravo UAV Operator";
+						description="Bravo Medic";
 						isPlayable=1;
 					};
 					id=308;
 					type="B_medic_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="ace_isSurrendered";
+							expression="if (_value) then {[objNull,[_this],true] call ace_captives_fnc_moduleSurrender}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"BOOL"
+										};
+									};
+									value=0;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="ace_isHandcuffed";
+							expression="if (_value) then {[objNull,[_this],true] call ace_captives_fnc_moduleHandcuffed}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"BOOL"
+										};
+									};
+									value=0;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 			};
 			class Attributes
