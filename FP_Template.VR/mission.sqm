@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={869.79987,40.736076,1004.5262};
-		dir[]={0.78057778,-0.61335725,0.121397};
-		up[]={0.60664272,0.78927249,0.094345391};
-		aside[]={0.15368153,1.1465272e-006,-0.98817962};
+		pos[]={894.89844,12.495762,1026.62};
+		dir[]={-0.13133053,-0.45645824,-0.88013458};
+		up[]={-0.067468442,0.88931215,-0.4521465};
+		aside[]={-0.98910713,6.1557512e-007,0.1475924};
 	};
 };
 binarizationWanted=0;
@@ -271,17 +271,58 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={901.73077,6.1795015,1005.6606};
+				position[]={901.73102,6.1795015,1005.661};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.2;
-				init="this allowDamage false";
 				description="Commander (Game master)";
 			};
 			id=73;
 			type="MASH_EP1";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ace_isMedicalFacility";
+					expression="_this setVariable [""ace_medical_isMedicalFacility"",_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=1;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
 		};
 		class Item12
 		{
@@ -2214,7 +2255,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={886.00299,5.2840548,1002.063};
+				position[]={886.47198,5.2840548,1002.105};
 				angles[]={0,4.7247982,0};
 			};
 			side="Empty";
