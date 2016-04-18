@@ -3,7 +3,7 @@
   Show all units on map, adds a few useful actions etc
 
     Usage:
-    [] call compile preprocessFileLineNumbers "scripts\debug_man.sqf";
+    [] call compile preprocessFileLineNumbers "scripts\debug.sqf";
 */
 
 FP_debug_godMode = true;
