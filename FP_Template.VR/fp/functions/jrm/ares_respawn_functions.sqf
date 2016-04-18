@@ -22,14 +22,13 @@ switch (toUpper _mode) do {
 
     private _plr = _players select (_args select 0);
     private _uid = getPlayerUID _plr;
-    if (isNull _plr || _uid == "") exitWith {["ERROR: Unable to find unit"] call ares_fnc_ShowZeusMessage};
+    if (isNull _plr || _uid == "") exitWith {["ERROR: Unable to find player"] call ares_fnc_ShowZeusMessage};
 
     FP_JRM_savedState = FP_JRM_savedState select {(_x select 0) != _uid};
     publicVariable "FP_JRM_savedState";
 
     [_pos] remoteExecCall ["FP_JRM_fnc_forceRespawn", _plr];
     ["Respawned %1 at %2", name _plr, mapGridPosition _pos] call ares_fnc_ShowZeusMessage;
-
   };
 
   // Respawns all spectating units at the selected position
