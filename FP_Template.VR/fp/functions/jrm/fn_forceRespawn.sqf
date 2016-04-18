@@ -36,10 +36,10 @@ if (!hasInterface || {!ACE_spectator_isSet}) exitWith {};
 // Figure out if a marker or code was passed, or a position
 private ["_function", "_pos"];
 if (!isNil "_posOrCode") then {
-  if (typeName _posOrCode == typeName {}) then {
+  if (_posOrCode isEqualType {}) then {
     _function = _posOrCode;
   } else {
-    if (typeName _posOrCode == typeName "") then {
+    if (_posOrCode isEqualType "") then {
       _function = missionNamespace getVariable _posOrCode;
       if (isNil "_function") then {
         _pos = markerPos _posOrCode;
