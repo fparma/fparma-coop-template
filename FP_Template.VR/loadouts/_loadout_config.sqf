@@ -7,6 +7,7 @@
   ["B_Soldier_TL_F", "sql.sqf"],
   ["B_Medic_F", "medic.sqf"],
   ["B_Soldier_F", "rifleman.sqf"],
+  ["B_Soldier_GL_F", "grenadier.sqf"],
   ["B_Soldier_LAT_F", "rifleman_at.sqf"],
   ["B_Soldier_AR_F", "ar.sqf"],
   ["B_Soldier_AAR_F", "ar_asst.sqf"],
