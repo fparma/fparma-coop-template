@@ -15,11 +15,11 @@
 ] call compile preprocessFileLineNumbers "scripts\cold_start.sqf";
 
 // Teleport flag, first is the object to addaction to, second format is ["display name", "objectName"]
-[fp_flag,
+[[fp_flag,
   ["Plt Command", "plt0"],
   ["Alpha actual", "a0"],
-  ["Bravo actual", "b0"],
-] execVM "scripts\teleport_flag.sqf";
+  ["Bravo actual", "b0"]
+]] execVM "scripts\teleport_flag.sqf";
 */
 
 
