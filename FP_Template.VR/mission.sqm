@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=367;
+		nextID=369;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={888.29041,15.529196,1019.4082};
-		dir[]={0.76772159,-0.43545741,-0.47034022};
-		up[]={0.37191382,0.89980531,-0.22785109};
-		aside[]={-0.52243686,3.7216523e-007,-0.85275215};
+		pos[]={895.71844,22.341805,1018.9977};
+		dir[]={0.86060554,-0.48215103,-0.16471863};
+		up[]={0.47422007,0.87564355,-0.090765208};
+		aside[]={-0.18799953,7.8999437e-007,-0.98222935};
 	};
 };
 binarizationWanted=0;
@@ -812,11 +812,54 @@ class Mission
 					class Attributes
 					{
 						init="this setGroupId [""Alpha Actual""]";
-						description="Alpha UAV Operator";
+						name="amed";
+						description="Alpha Medic";
 						isPlayable=1;
 					};
 					id=264;
 					type="B_medic_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="ace_isSurrendered";
+							expression="if (_value) then {[objNull,[_this],true] call ace_captives_fnc_moduleSurrender}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"BOOL"
+										};
+									};
+									value=0;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="ace_isHandcuffed";
+							expression="if (_value) then {[objNull,[_this],true] call ace_captives_fnc_moduleHandcuffed}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"BOOL"
+										};
+									};
+									value=0;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 			};
 			class Attributes
