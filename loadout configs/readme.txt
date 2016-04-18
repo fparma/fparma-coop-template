@@ -1,0 +1,1 @@
+To use these, place them in the loadouts folder. Make sure the class names match
