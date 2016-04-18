@@ -22,7 +22,7 @@
 		Cuel 2015-10-29
 */
 
-params ["_unit", "_disable"];
+params [["_unit", player], ["_disable", false]];
 if (!local _unit) exitWith {false};
 
 if (_disable) then {
