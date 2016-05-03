@@ -8,7 +8,7 @@
 // These below scripts are RECOMMENDED but not enabled by default
 // Remove the comments and change the needed strings to fit your mission (match the object names)
 
-
+/*
 // Cold start
 [
   "gm0, gm1, plt0", // units who can start the mission. are automatically added to "can move"
@@ -21,7 +21,7 @@
   ["Alpha actual", "a0"],
   ["Bravo actual", "b0"]
 ]] execVM "scripts\teleport_flag.sqf";
-
+*/
 
 // APPLY LOADOUTS
 if (!isNil "FP_fnc_getLoadout") then {
