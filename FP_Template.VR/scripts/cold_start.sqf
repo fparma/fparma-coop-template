@@ -30,6 +30,7 @@ if (!params [
   ["_starters", "", [""]],
   ["_movers", ""]
 ]) exitWith {false};
+if (!isNil "FP_coldStartStarted" && {FP_coldStartStarted}) exitWith {false};
 
 private _canStart = [_starters, false, true] call ACE_common_fnc_parseList;
 private _canMove = [_starters + "," + _movers, false, true] call ACE_common_fnc_parseList;
