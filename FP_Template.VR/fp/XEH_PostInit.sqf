@@ -39,6 +39,8 @@ player addEventHandler ["Fired", {
   if ((_this select 2) == "HandGrenadeMuzzle") then {
     private _proj = param [6, objNull];
     private _idx = [blufor, opfor, independent, civilian] find side player;
+    if (_idx == -1) exitWith {};
+
     private _mrk = markerPos (["respawn_west","respawn_east","respawn_guerrila","respawn_civilian"] select _idx);
     if ((_this select 0) distance _mrk < 80) then {
         [_proj] call ace_frag_fnc_addBlackList;
