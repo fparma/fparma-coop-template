@@ -42,7 +42,7 @@ private _runHack = {
     if (count _info > 0) then {
       private _idx = player getVariable ["fp_amountIntel", 1];
       player createDiaryRecord ["Diary",[("Laptop intel #" + str _idx), _info]];
-      player setVariable ["fp_amountIntel", (player getVariable ["fp_amountIntel", 1]) + 1];
+      player setVariable ["fp_amountIntel", _idx + 1];
       hintSilent "Briefing note added with laptop intel";
       [] spawn {sleep 5; hintSilent ""};
     };
