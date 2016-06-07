@@ -1,4 +1,4 @@
-version=51;
+version=52;
 class EditorData
 {
 	moveGridStep=1;
@@ -16,25 +16,116 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={906.01044,47.800488,1069.2336};
-		dir[]={0.26326814,-0.64781988,-0.71502477};
-		up[]={0.22402103,0.76124233,-0.60843384};
-		aside[]={-0.9384684,6.8470399e-007,-0.34553891};
+		pos[]={908.96271,12.365231,1011.2626};
+		dir[]={0.72704279,-0.48536494,-0.48588178};
+		up[]={0.40410846,0.87385625,-0.27006552};
+		aside[]={-0.5556736,7.0115493e-007,-0.83147448};
 	};
 };
 binarizationWanted=0;
 addons[]=
 {
+	"A3_Ui_F",
+	"ace_map",
 	"A3_Structures_F_Mil_Flags",
 	"A3_Structures_F_Mil_Shelters",
 	"A3_Structures_F_Civ_InfoBoards",
 	"A3_Structures_F_EPA_Civ_Camping",
 	"A3_Structures_F_Furniture",
-	"cup_misc_e_config",
+	"ace_sitting",
+	"CUP_Misc_e_Config",
 	"A3_Characters_F",
-	"A3_Characters_F_BLUFOR",
 	"A3_Modules_F_Curator_Curator",
+	"ace_explosives",
+	"ace_gforces",
+	"ACE_Parachute",
 	"A3_Weapons_F_Ammoboxes"
+};
+class AddonsMetaData
+{
+	class List
+	{
+		items=13;
+		class Item0
+		{
+			className="A3_Ui_F";
+			name="Arma 3 - User Interface";
+			author="Bohemia Interactive";
+			url="http://www.arma3.com";
+		};
+		class Item1
+		{
+			className="ace_map";
+			name="ace_map";
+		};
+		class Item2
+		{
+			className="A3_Structures_F_Mil";
+			name="Arma 3 - Military Buildings and Structures";
+			author="Bohemia Interactive";
+			url="http://www.arma3.com";
+		};
+		class Item3
+		{
+			className="A3_Structures_F";
+			name="Arma 3 Alpha - Buildings and structures";
+			author="Bohemia Interactive";
+			url="http://www.arma3.com";
+		};
+		class Item4
+		{
+			className="A3_Structures_F_EPA";
+			name="Arma 3 Survive Episode - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="http://www.arma3.com";
+		};
+		class Item5
+		{
+			className="ace_sitting";
+			name="ace_sitting";
+		};
+		class Item6
+		{
+			className="CUP_Misc_e_Config";
+			name="CUP_Misc_e_Config";
+		};
+		class Item7
+		{
+			className="A3_Characters_F";
+			name="Arma 3 Alpha - Characters and Clothing";
+			author="Bohemia Interactive";
+			url="http://www.arma3.com";
+		};
+		class Item8
+		{
+			className="A3_Modules_F_Curator";
+			name="Arma 3 Zeus Update - Scripted features";
+			author="Bohemia Interactive";
+			url="http://www.arma3.com";
+		};
+		class Item9
+		{
+			className="ace_explosives";
+			name="ace_explosives";
+		};
+		class Item10
+		{
+			className="ace_gforces";
+			name="ace_gforces";
+		};
+		class Item11
+		{
+			className="ACE_Parachute";
+			name="ACE_Parachute";
+		};
+		class Item12
+		{
+			className="A3_Weapons_F";
+			name="Arma 3 Alpha - Weapons and Accessories";
+			author="Bohemia Interactive";
+			url="http://www.arma3.com";
+		};
+	};
 };
 randomSeed=6694819;
 class ScenarioData
@@ -134,6 +225,7 @@ class Mission
 				position[]={892.67401,8.9768047,1008.51};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				skill=0;
@@ -174,6 +266,7 @@ class Mission
 				angles[]={0,3.1415927,0};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				skill=0.2;
@@ -191,6 +284,7 @@ class Mission
 				angles[]={0,2.1398587,0};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				skill=0;
@@ -207,6 +301,7 @@ class Mission
 				position[]={886.35199,5.4322958,1004.3109};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				skill=0;
@@ -224,6 +319,7 @@ class Mission
 				angles[]={0,3.9378862,0};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				skill=0;
@@ -241,6 +337,7 @@ class Mission
 				angles[]={0,5.8120103,0};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				skill=0;
@@ -258,6 +355,7 @@ class Mission
 				angles[]={0,0.38495767,0};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				skill=0;
@@ -271,9 +369,10 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={901.73102,6.1795015,1005.661};
+				position[]={903.13116,6.1795015,1004.0518};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				skill=0.2;
@@ -329,9 +428,10 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={899.70825,8.9768047,1007.8273};
+				position[]={900.58911,8.9768047,1005.8072};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				skill=0.2;
@@ -367,6 +467,7 @@ class Mission
 						position[]={916.01202,5.0014391,1008.071};
 					};
 					side="West";
+					flags=4;
 					class Attributes
 					{
 						rank="COLONEL";
@@ -428,7 +529,7 @@ class Mission
 						position[]={911.96399,5.0014391,1008.029};
 					};
 					side="West";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						rank="COLONEL";
@@ -497,6 +598,7 @@ class Mission
 			};
 			id=129;
 			type="ModuleCurator_F";
+			atlOffset=1.2530003;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -606,6 +708,7 @@ class Mission
 			};
 			id=132;
 			type="ModuleCurator_F";
+			atlOffset=1.1989999;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -721,7 +824,7 @@ class Mission
 						position[]={921.914,5.0014391,1007.899};
 					};
 					side="West";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						rank="COLONEL";
@@ -783,6 +886,7 @@ class Mission
 						position[]={924,5.0014391,1005.86};
 					};
 					side="West";
+					flags=4;
 					class Attributes
 					{
 						rank="CORPORAL";
@@ -857,7 +961,7 @@ class Mission
 						position[]={931.92401,5.0014391,1005.965};
 					};
 					side="West";
-					flags=3;
+					flags=7;
 					class Attributes
 					{
 						rank="CAPTAIN";
@@ -877,6 +981,7 @@ class Mission
 						position[]={933.92999,5.0014391,1003.868};
 					};
 					side="West";
+					flags=4;
 					class Attributes
 					{
 						init="this setGroupId [""Alpha Actual""]";
@@ -950,7 +1055,7 @@ class Mission
 						position[]={935.91302,5.0014391,1000.088};
 					};
 					side="West";
-					flags=3;
+					flags=7;
 					class Attributes
 					{
 						rank="LIEUTENANT";
@@ -970,7 +1075,7 @@ class Mission
 						position[]={933.8551,5.0014391,997.99762};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						rank="CORPORAL";
@@ -989,7 +1094,7 @@ class Mission
 						position[]={935.89813,5.0014391,996.13458};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						rank="SERGEANT";
@@ -1008,7 +1113,7 @@ class Mission
 						position[]={938.00244,5.0014391,994.20026};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Alpha 1""]";
@@ -1026,7 +1131,7 @@ class Mission
 						position[]={939.97931,5.0014391,994.25201};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Alpha 1""]";
@@ -1044,7 +1149,7 @@ class Mission
 						position[]={941.98181,5.0014391,994.18298};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Alpha 1""]";
@@ -1062,7 +1167,7 @@ class Mission
 						position[]={943.99719,5.0014391,995.84119};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						rank="SERGEANT";
@@ -1081,7 +1186,7 @@ class Mission
 						position[]={946.08038,5.0014391,993.92303};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Alpha 1""]";
@@ -1099,7 +1204,7 @@ class Mission
 						position[]={948.07727,5.0014391,993.93262};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Alpha 1""]";
@@ -1117,6 +1222,7 @@ class Mission
 						position[]={950,5.0014391,993.78296};
 					};
 					side="West";
+					flags=4;
 					class Attributes
 					{
 						init="this setGroupId [""Alpha 1""]";
@@ -1189,7 +1295,7 @@ class Mission
 						position[]={935.84198,5.0014391,989.92902};
 					};
 					side="West";
-					flags=3;
+					flags=7;
 					class Attributes
 					{
 						rank="LIEUTENANT";
@@ -1209,7 +1315,7 @@ class Mission
 						position[]={933.80298,5.0014391,987.96417};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						rank="CORPORAL";
@@ -1228,7 +1334,7 @@ class Mission
 						position[]={935.95068,5.0014391,985.86615};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						rank="SERGEANT";
@@ -1247,7 +1353,7 @@ class Mission
 						position[]={937.99921,5.0014391,984.13751};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Alpha 2""]";
@@ -1265,7 +1371,7 @@ class Mission
 						position[]={940.04224,5.0014391,984.15051};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Alpha 2""]";
@@ -1283,7 +1389,7 @@ class Mission
 						position[]={942.05121,5.0014391,984.16351};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Alpha 2""]";
@@ -1301,7 +1407,7 @@ class Mission
 						position[]={943.95819,5.0014391,985.80591};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						rank="SERGEANT";
@@ -1320,7 +1426,7 @@ class Mission
 						position[]={945.87976,5.0014391,983.77924};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Alpha 2""]";
@@ -1338,7 +1444,7 @@ class Mission
 						position[]={948.01477,5.0014391,983.64124};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Alpha 2""]";
@@ -1356,7 +1462,7 @@ class Mission
 						position[]={950.05072,5.0014391,983.66223};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Alpha 2""]";
@@ -1387,7 +1493,7 @@ class Mission
 						position[]={954.09283,5.0014391,1005.8846};
 					};
 					side="West";
-					flags=3;
+					flags=7;
 					class Attributes
 					{
 						rank="CAPTAIN";
@@ -1407,6 +1513,7 @@ class Mission
 						position[]={956.09802,5.0014391,1003.788};
 					};
 					side="West";
+					flags=4;
 					class Attributes
 					{
 						init="this setGroupId [""Bravo Actual""]";
@@ -1479,7 +1586,7 @@ class Mission
 						position[]={958.08185,5.0014391,1000.0076};
 					};
 					side="West";
-					flags=3;
+					flags=7;
 					class Attributes
 					{
 						rank="LIEUTENANT";
@@ -1499,7 +1606,7 @@ class Mission
 						position[]={956.02332,5.0014391,997.91748};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						rank="CORPORAL";
@@ -1518,7 +1625,7 @@ class Mission
 						position[]={958.06635,5.0014391,996.05444};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						rank="SERGEANT";
@@ -1537,7 +1644,7 @@ class Mission
 						position[]={960.17065,5.0014391,994.12012};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Bravo 1""]";
@@ -1555,7 +1662,7 @@ class Mission
 						position[]={962.14752,5.0014391,994.17188};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Bravo 1""]";
@@ -1573,7 +1680,7 @@ class Mission
 						position[]={964.15002,5.0014391,994.10284};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Bravo 1""]";
@@ -1591,7 +1698,7 @@ class Mission
 						position[]={966.08038,5.0014391,995.57745};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						rank="SERGEANT";
@@ -1610,7 +1717,7 @@ class Mission
 						position[]={968.16357,5.0014391,993.6593};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Bravo 1""]";
@@ -1628,7 +1735,7 @@ class Mission
 						position[]={970.16046,5.0014391,993.66888};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Bravo 1""]";
@@ -1646,7 +1753,7 @@ class Mission
 						position[]={972.08331,5.0014391,993.51929};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Bravo 1""]";
@@ -1677,7 +1784,7 @@ class Mission
 						position[]={958.00983,5.0014391,989.84857};
 					};
 					side="West";
-					flags=3;
+					flags=7;
 					class Attributes
 					{
 						rank="LIEUTENANT";
@@ -1697,7 +1804,7 @@ class Mission
 						position[]={955.97119,5.0014391,987.88403};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						rank="CORPORAL";
@@ -1716,7 +1823,7 @@ class Mission
 						position[]={958.1189,5.0014391,985.78601};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						rank="SERGEANT";
@@ -1735,7 +1842,7 @@ class Mission
 						position[]={960.16742,5.0014391,984.05737};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Bravo 2""]";
@@ -1753,7 +1860,7 @@ class Mission
 						position[]={962.21045,5.0014391,984.07037};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Bravo 2""]";
@@ -1771,7 +1878,7 @@ class Mission
 						position[]={964.21942,5.0014391,984.08337};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Bravo 2""]";
@@ -1789,7 +1896,7 @@ class Mission
 						position[]={966.04138,5.0014391,985.54218};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						rank="SERGEANT";
@@ -1808,7 +1915,7 @@ class Mission
 						position[]={967.96295,5.0014391,983.5155};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Bravo 2""]";
@@ -1826,7 +1933,7 @@ class Mission
 						position[]={970.09796,5.0014391,983.3775};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Bravo 2""]";
@@ -1844,7 +1951,7 @@ class Mission
 						position[]={972.13391,5.0014391,983.3985};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Bravo 2""]";
@@ -1875,7 +1982,7 @@ class Mission
 						position[]={976.18896,5.0014391,1003.3738};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Echo""]";
@@ -1935,7 +2042,7 @@ class Mission
 						position[]={978.15295,5.0014391,1003.4058};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Echo""]";
@@ -1995,7 +2102,7 @@ class Mission
 						position[]={980.17297,5.0014391,1003.4357};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Echo""]";
@@ -2055,7 +2162,7 @@ class Mission
 						position[]={974.16992,5.0014391,1005.3613};
 					};
 					side="West";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						rank="SERGEANT";
@@ -2088,7 +2195,7 @@ class Mission
 						position[]={984.3479,5.0014391,1005.3434};
 					};
 					side="West";
-					flags=3;
+					flags=7;
 					class Attributes
 					{
 						rank="LIEUTENANT";
@@ -2108,7 +2215,7 @@ class Mission
 						position[]={986.45691,5.0014391,1003.4894};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Quebec""]";
@@ -2127,7 +2234,7 @@ class Mission
 						position[]={988.45898,5.0014391,1003.5123};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						init="this setGroupId [""Quebec""]";
@@ -2159,7 +2266,7 @@ class Mission
 						position[]={992.11786,5.0014391,1005.2914};
 					};
 					side="West";
-					flags=3;
+					flags=7;
 					class Attributes
 					{
 						rank="LIEUTENANT";
@@ -2179,7 +2286,7 @@ class Mission
 						position[]={994.18488,5.0014391,1003.3522};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						rank="CORPORAL";
@@ -2212,7 +2319,7 @@ class Mission
 						position[]={998.14288,5.0014391,1005.4512};
 					};
 					side="West";
-					flags=3;
+					flags=7;
 					class Attributes
 					{
 						rank="SERGEANT";
@@ -2232,7 +2339,7 @@ class Mission
 						position[]={999.79688,5.0014391,1003.6094};
 					};
 					side="West";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						rank="CORPORAL";
@@ -2259,6 +2366,7 @@ class Mission
 				angles[]={0,4.7247982,0};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				init="if (isServer) then {[this] call FP_fnc_clearVehicle; this addItemCargoGlobal [""ACRE_PRC343"", 40];  this addItemCargoGlobal [""ACRE_PRC148"", 10];  this addItemCargoGlobal [""ACRE_PRC152"", 10];  this addItemCargoGlobal [""ACRE_PRC117F"", 10];  this addItemCargoGlobal [""ACRE_PRC77"", 10];}";

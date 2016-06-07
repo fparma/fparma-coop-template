@@ -31,6 +31,7 @@ if (!isNil "FP_fnc_getLoadout") then {
   if (_added) then {
     player addEventHandler ["Respawn", {
       [player, typeOf player] call FP_fnc_getLoadout;
+
     }];
   };
 
