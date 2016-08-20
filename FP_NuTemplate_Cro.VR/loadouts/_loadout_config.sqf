@@ -1,0 +1,31 @@
+// Add config here for loadout in format ["ClassName", "file in \loadouts"]
+// This is NOT case sensitive
+[
+  ["B_RangeMaster_F", "plt.sqf"],
+  ["B_officer_F", "plt.sqf"],
+  ["B_Soldier_SL_F", "sql.sqf"],
+  ["B_Soldier_TL_F", "sql.sqf"],
+  ["B_Soldier_UAV_F", "uav.sqf"],
+  ["B_Medic_F", "medic.sqf"],
+  ["B_Soldier_F", "rifleman.sqf"],
+  ["B_Soldier_lite_F", "pointman.sqf"],
+  ["B_Soldier_M_F", "marksman.sqf"],
+  ["B_Soldier_LAT_F", "rifleman_at.sqf"],
+  ["B_Soldier_AR_F", "ar.sqf"],
+  ["B_HeavyGunner_F", "mmg.sqf"],
+  ["B_Soldier_A_F", "mmg_asst.sqf"],
+  ["B_Soldier_AT_F", "at.sqf"],
+  ["B_Soldier_AAT_F", "at_asst.sqf"],
+  ["B_engineer_F", "engineer.sqf"],
+  ["B_Soldier_exp_F", "engineer_expl.sqf"],
+  ["B_crew_F", "crew.sqf"],
+  ["B_pilot_F", "pilot.sqf"],
+  ["B_support_Mort_F", "arty.sqf"],
+  ["B_Helipilot_F", "pilot.sqf"],
+  ["B_helicrew_F", "pilot.sqf"],
+  ["B_recon_TL_F", "recontl.sqf"],
+  ["B_sniper_F", "sniper.sqf"],
+  ["B_spotter_F", "sniper.sqf"],
+  ["B_recon_JTAC_F", "reconspec.sqf"],
+  ["B_recon_F", "recon.sqf"]
+]
