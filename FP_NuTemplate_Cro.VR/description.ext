@@ -1,0 +1,75 @@
+class Header
+{
+  gameType = Coop;
+  minPlayers = 1;
+  maxPlayers = 64;
+};
+disabledAI = 1;
+
+class CfgFunctions {
+  createShortcuts = 1;
+  // Base functions. Do not remove
+  #include "fp\functions\funcs.hpp"
+
+  // Remove this if you don't plan on using loadouts
+  // The folder can then be deleted
+  #include "loadouts\functions\funcs.hpp"
+};
+
+// ===  Mission name etc settings
+OnLoadName = "FP NuTEMPLATE 4.0.0";// Mission name (short)
+onLoadMission="description.ext to change!"; // Longer description
+// loadScreen = "img_loading.jpg"; // custom load image
+author="Cuel | Croguy | 2016";
+
+// ===  Respawn settings
+respawndelay = 4;
+respawnDialog = 0;
+// don't edit respawn type unless you know what youre doing
+// if you do know, you should check with someone who knows
+respawn = "BASE";
+
+// === Debriefing
+class CfgDebriefing {
+  class End1 {
+    title = "Mission Success";
+    description = "You have completed the mission.";
+    subtitle = "";
+    //pictureBackground = "";
+    picture = "b_inf";
+    //pictureColor[] = {};
+  };
+  class End2 {
+    title = "Mission Failure";
+    description = "You have failed the mission, better luck next time";
+    subtitle = "";
+    //pictureBackground = "";
+    picture = "\a3\Ui_f\data\GUI\Cfg\Debriefing\endDefault_ca.paa";
+    //pictureColor[] = {};
+  };
+};
+
+// === DO NOT EDIT BELOW
+#include "XEH.hpp"
+
+showGPS = 1;
+showMap = 1;
+showWatch = 1;
+showCompass = 1;
+joinUnassigned = 1;
+allowFunctionsLog = 0;
+enableDebugConsole = 1;
+onLoadIntroTime = false;
+enableItemsDropping = 0;
+onLoadMissionTime = false;
+
+// Clean up settings
+corpseManagerMode = 1;
+corpseLimit = 20;
+corpseRemovalMinTime = 120;
+corpseRemovalMaxTime = 300;
+
+wreckManagerMode = 1;
+wreckLimit = 10;
+wreckRemovalMinTime = 300;
+wreckRemovalMaxTime = 800;
