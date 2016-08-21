@@ -12,7 +12,7 @@
 // Cold start
 [
   "gm0, gm1, plt0", // units who can start the mission. are automatically added to "can move"
-  "plt1, a0, a1, a2, b0, b1, b2, e0, q0, q1, q2, w0, w1, l0, l1" // units who can move freely
+  "plt1, plt0, a1, b1, c1, d1, e1" // units who can move freely
 ] call compile preprocessFileLineNumbers "scripts\cold_start.sqf";
 
 // Teleport flag, first is the object to addaction to, second format is ["display name", "objectName"]
