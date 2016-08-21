@@ -1,19 +1,20 @@
 /*
     Script: Heli extraction
+	Author: Cuel 
 
     Description:
-
-        Note: Cannot pickup AI unless they are ordered to enter the helicopter.
-
         Spawns a helicopter (or uses an already existing heli) that flies in, picks up units and lands somewhere to drop them off.
         Then returns to spawnPos and gets deleted / lands (if existed)
 
-        It is recommended to manully place an invisible helicopter landing pad near the LZ (both pickup and dropoff)
+        It is recommended to manually place an invisible helicopter landing pad near the LZ (both pickup and dropoff)
         Found under Empty -> Objects -> Helipad (invisble)
 
-        Espescially important if using multiple helicopters
+        Especially important if using multiple helicopters
+        Note: Cannot pickup AI unless they are ordered to enter the helicopter.
 
-    Arguments:
+
+
+    Parameters:
         _heli - An existing helicopter OR , type of helicopter to spawn. Crew will be created using createVehicleCrew
         _unitsToBoard - Group or array of units that should be inside the helicopter before it leaves [Array, Group]
         _spawnPos - Position to spawn helicopter (flying). Ignored if existing helicopter
