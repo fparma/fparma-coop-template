@@ -33,7 +33,7 @@ if (isNil "_units") exitWith {false};
 
   private _veh = vehicle _x;
   if (_veh != _x && {!simulationEnabled _veh}) then {
-    _x enableSimulationGlobal true;
+    _veh enableSimulationGlobal true;
     _veh hideObjectGlobal false;
   };
 } forEach _units;
