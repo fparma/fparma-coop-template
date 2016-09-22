@@ -21,4 +21,4 @@
   _btn ctrlSetText ("(FP) " + ctrlText _oldBtn);
   _oldBtn ctrlShow false;
   _btn ctrlCommit 0;
-}, _this] call ACE_common_fnc_execNextFrame;
+}, _this] call CBA_fnc_execNextFrame;
