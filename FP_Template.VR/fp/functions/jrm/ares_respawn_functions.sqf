@@ -65,7 +65,7 @@ switch (toUpper _mode) do {
         player assignAsCargo _this;
         player moveInCargo _this;
         ["FP_screen"] call BIS_fnc_blackIn;
-      }, _this select 0, 2 + random 2] call ACE_common_fnc_waitAndExecute;
+      }, _this select 0, 2 + random 2] call CBA_fnc_waitAndExecute;
     };
 
     [[_Xarg], _code] remoteExecCall ["BIS_fnc_call", _plrs];

@@ -113,7 +113,7 @@ if (count _radios > 0) then {
     {
         _export = _export + _x + _br;
     } forEach _radios;
-    // _export = _export + "}, 0.5 + random 1, []] call ACE_common_fnc_waitAndExecute;"
+    // _export = _export + "}, 0.5 + random 1, []] call CBA_fnc_waitAndExecute;"
 };
 
 /*

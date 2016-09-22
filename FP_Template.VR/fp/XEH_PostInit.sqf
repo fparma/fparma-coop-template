@@ -61,4 +61,4 @@ player addEventHandler ["Fired", {
   ) then {
     disableRemoteSensors true;
   };
-}, [], 0.2] call ACE_common_fnc_waitAndExecute;
+}, [], 0.2] call CBA_fnc_waitAndExecute;

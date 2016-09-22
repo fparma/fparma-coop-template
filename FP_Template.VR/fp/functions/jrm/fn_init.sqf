@@ -70,7 +70,7 @@ private _uid = getPlayerUID player;
     if (FP_JRM_lives == 0) then {
       [{time > 0.1}, {
         [true] call FP_fnc_spectate;
-      }, []] call ace_common_fnc_waitUntilAndExecute;
+      }, []] call CBA_fnc_waitUntilAndExecute;
     };
   };
 } forEach FP_JRM_savedState;
