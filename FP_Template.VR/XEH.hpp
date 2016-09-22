@@ -15,7 +15,7 @@ class Extended_PostInit_EventHandlers {
 // Disable all units speaking / giving orders vocally
 class Extended_InitPost_EventHandlers {
   class CAManBase {
-    init = "[_this select 0, 'fp_shutup'] call ace_common_fnc_muteUnit";
+    init = "if (local (_this select 0)) then {[(_this select 0), 'shut_up'] call ace_common_fnc_muteUnit}";
   };
 };
 

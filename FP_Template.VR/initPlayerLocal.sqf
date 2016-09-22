@@ -7,6 +7,7 @@
 
 // These below scripts are RECOMMENDED but not enabled by default
 // Remove the comments and change the needed strings to fit your mission (match the object names)
+
 /*
 // Cold start
 [

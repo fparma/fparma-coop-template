@@ -29,7 +29,7 @@ private _fnc_addMultiple = {
       private _rStr = _x splitString "_";
       private _radio = [_rStr select 0, _rStr select 1] joinString "_";
       if (_radio == "ACRE_PRC343") then {_radio = "ItemRadio"};
-        _radios pushBackUnique format ["%1 %2 ""%3"";",_var, _ex, _radio];
+        _radios pushBackUnique (format ["%1 %2 ""%3"";",_var, _ex, _radio]);
     } else {
       if !(_itemLower in _itemsUsed) then {
         _itemsUsed set [count _itemsUsed, _itemLower];
