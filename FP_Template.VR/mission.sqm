@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={908.96271,12.365231,1011.2626};
-		dir[]={0.72704279,-0.48536494,-0.48588178};
-		up[]={0.40410846,0.87385625,-0.27006552};
-		aside[]={-0.5556736,7.0115493e-007,-0.83147448};
+		pos[]={900.90955,24.094496,1024.6947};
+		dir[]={0.71969372,-0.50740868,-0.47415814};
+		up[]={0.42427498,0.86123574,-0.27952603};
+		aside[]={-0.55019903,7.4016862e-007,-0.83511174};
 	};
 };
 binarizationWanted=0;
@@ -33,12 +33,13 @@ addons[]=
 	"A3_Structures_F_EPA_Civ_Camping",
 	"A3_Structures_F_Furniture",
 	"ace_sitting",
+	"acex_sitting",
 	"CUP_Misc_e_Config",
 	"A3_Characters_F",
 	"A3_Modules_F_Curator_Curator",
 	"ace_explosives",
 	"ace_gforces",
-	"ACE_Parachute",
+	"ace_parachute",
 	"A3_Weapons_F_Ammoboxes"
 };
 class AddonsMetaData
@@ -56,7 +57,9 @@ class AddonsMetaData
 		class Item1
 		{
 			className="ace_map";
-			name="ace_map";
+			name="ACE3 - Map";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item2
 		{
@@ -68,7 +71,7 @@ class AddonsMetaData
 		class Item3
 		{
 			className="A3_Structures_F";
-			name="Arma 3 Alpha - Buildings and structures";
+			name="Arma 3 - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="http://www.arma3.com";
 		};
@@ -82,41 +85,49 @@ class AddonsMetaData
 		class Item5
 		{
 			className="ace_sitting";
-			name="ace_sitting";
+			name="ACE3 - Sitting";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item6
+		{
+			className="acex_sitting";
+			name="acex_sitting";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item7
 		{
 			className="CUP_Misc_e_Config";
 			name="CUP_Misc_e_Config";
 		};
-		class Item7
+		class Item8
 		{
 			className="A3_Characters_F";
 			name="Arma 3 Alpha - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="http://www.arma3.com";
 		};
-		class Item8
+		class Item9
 		{
 			className="A3_Modules_F_Curator";
-			name="Arma 3 Zeus Update - Scripted features";
+			name="Arma 3 Zeus Update - Scripted Modules";
 			author="Bohemia Interactive";
 			url="http://www.arma3.com";
 		};
-		class Item9
-		{
-			className="ace_explosives";
-			name="ace_explosives";
-		};
 		class Item10
 		{
-			className="ace_gforces";
-			name="ace_gforces";
+			className="ace_explosives";
+			name="ACE3 - Explosives";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item11
 		{
-			className="ACE_Parachute";
-			name="ACE_Parachute";
+			className="ace_parachute";
+			name="ACE3 - Parachute";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 		class Item12
 		{
