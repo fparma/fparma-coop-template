@@ -57,7 +57,7 @@ if (_id == "" || {count _units == 0}) exitWith {
   private _veh = vehicle _x;
   if (_veh != _x && {simulationEnabled _veh}) then {
     _veh enableSimulationGlobal false;
-    _x hideObjectGlobal true;
+    _veh hideObjectGlobal true;
   };
 } forEach (_units select {alive _x && {simulationEnabled _x} && {!isPlayer _x}});
 
