@@ -33,8 +33,6 @@ _unit createDiaryRecord
   To turn off ST Hud, press alt+shift+H<br /><br />
 "]];
 
-//  createdisplay "RscDisplayDebugPublic";
-
 [["<t color='#ff8a00'>\\ Open BIS Cam //</t>", {
   ["Init"] spawn BIS_fnc_camera;
 }, 0, -99, false, true, "", ""]] call CBA_fnc_addPlayerAction;
