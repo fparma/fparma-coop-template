@@ -6,7 +6,7 @@
     Also supports just "simply exporting" the players current gear, if called from editor
 
     Returns:
-    ARRAY - SQF code
+    STRING - SQF code
 */
 
 #define ADD_EXPORT(xArg) _export pushBack xArg
