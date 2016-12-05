@@ -160,7 +160,9 @@ if !(_savedRadios isEqualTo []) then {
 private _ret = _export joinString _br;
 
 /*
-if (getUnitLoadout player != getUnitLoadout ([player, ""] call compile _ret)) then {
+private _loadout = getUnitLoadout _center;
+[player, ""] call compile _ret;
+if !(getUnitLoadout player isEqualTo _loadout) then {
 	hint "loadout mismatch";
 };
 */
