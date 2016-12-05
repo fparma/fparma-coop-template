@@ -9,7 +9,8 @@
 	Parameters:
 	_posOrCode - A marker, object, position,  or code (can also be string code) (_this select 0 will be the unit for code)
 		If position, will be teleported there after exiting spectator
-		If nil, ace spectator will teleport the unti back to where he was when entering spectator (respawn pos)
+    If code, the code is assumed to handle turning spectator off (FP_fnc_spectate)
+		If nil, ace spectator will teleport the unit back to where he was when entering spectator (respawn pos)
 	_reset - Clear all previous dead units [Default: false]
 
     Example:
@@ -50,13 +51,20 @@ if (!isNil "_posOrCode") then {
   };
 };
 
-[false] call FP_fnc_spectate;
+
 if (!isNil "_pos") then {
-  player setPos _pos;
-  private _stuff = nearestObjects [player, ["All"], 100];
-  {player reveal [_x, 4]} forEach _stuff;
+  [false] call FP_fnc_spectate;
+  // avoid putting everyone at the same pos, make it random
+  player setPos ([_pos, 10] call CBA_fnc_randPos);
+  {player reveal [_x, 4]} forEach nearestObjects [player, ["All"], 100];
+
+  [player, true] call FP_fnc_disableWeapons;
+  [{[player, false] call FP_fnc_disableWeapons}, [], 3] call CBA_fnc_waitAndExecute;
 } else {
   if (!isNil "_function") then {
     [player] call _function;
+  } else {
+    // ace spectator handles the teleport
+    [false] call FP_fnc_spectate;
   };
 };
