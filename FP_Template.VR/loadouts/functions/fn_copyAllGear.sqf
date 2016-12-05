@@ -161,7 +161,7 @@ private _ret = _export joinString _br;
 
 /*
 private _loadout = getUnitLoadout _center;
-[player, ""] call compile _ret;
+[_center, ""] call compile _ret;
 if !(getUnitLoadout player isEqualTo _loadout) then {
 	hint "loadout mismatch";
 };
