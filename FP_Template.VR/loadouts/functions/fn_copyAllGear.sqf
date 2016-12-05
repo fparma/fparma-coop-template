@@ -38,7 +38,7 @@ private _fnc_addMultiple = {
 		private _radio = _itemLowerCase call _fnc_getRadio;
 		if (_radio != "") then {
 			private _cmd = _command splitString " ") select 1;
-			_savedRadios pushBack (format ['%1 %2 "%3"', _var, _cmd, _radio]);
+			_savedRadios pushBack (format ['%1 %2 "%3";', _var, _cmd, _radio]);
 		} else {
 			if !(_itemLowerCase in _itemsUsed) then {
 				_itemsUsed pushBack _itemLowerCase;
@@ -135,19 +135,19 @@ if (count _assignedItems > 0) then {
 // Magazines and misc items for containers
 if (!isNil "_uniformItems") then {
 	ADD_EXPORT("// Uniform items");
-	[_uniformItems, '%1 addItemToUniform "%2"'] call _fnc_addMultiple;
+	[_uniformItems, '%1 addItemToUniform "%2";'] call _fnc_addMultiple;
 	ADD_EMPTY_LINE;
 };
 
 if (!isNil "_vestItems") then {
 	ADD_EXPORT("// Vest items");
-	[_vestItems, '%1 addItemToVest "%2"'] call _fnc_addMultiple;
+	[_vestItems, '%1 addItemToVest "%2";'] call _fnc_addMultiple;
 	ADD_EMPTY_LINE;
 };
 
 if (!isNil "_backpackItems") then {
 	ADD_EXPORT("// Backpack items");
-	[_backpackItems, '%1 addItemToBackpack "%2"'] call _fnc_addMultiple;
+	[_backpackItems, '%1 addItemToBackpack "%2";'] call _fnc_addMultiple;
 	ADD_EMPTY_LINE;
 };
 
