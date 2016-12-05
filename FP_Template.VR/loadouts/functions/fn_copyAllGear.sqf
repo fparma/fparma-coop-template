@@ -44,11 +44,13 @@ private _fnc_addMultiple = {
 				_itemsUsed pushBack _itemLowerCase;
 				private _count = {_item == _x} count _items;
 				private _localCommand = _command;
+
 				if (_count > 1) then {
 					private _numberArray = [];
 					for "_i" from 1 to _itemCount do {_numberArray pushBack _i};
 					_localCommand = format ["{%1} count %2;", _command, _numberArray];
 				};
+
 				ADD_EXPORT_FORMAT([_localCommand, _var, _x]);
 			};
 		};
@@ -56,13 +58,13 @@ private _fnc_addMultiple = {
 };
 
 if (primaryWeapon _center != "" || {secondaryWeapon _center != ""} || {handgunWeapon _center != ""} || {binocular _center != ""}) then {
-	ADD_EXPORT("// Add fake bp with single mag and weapons");
 	private _aceBp = "ACE_FakeBackpack";
+  ADD_EXPORT("// Add fake bp with single mag and weapons");
 	ADD_EXPORT_FORMAT(['%1 addBackpack "%2;"', _var, _aceBp]);
-	
+  
 	private _primary = [primaryweapon _center,_center weaponaccessories primaryweapon _center,"addPrimaryWeaponItem", primaryWeaponMagazine _center],
-    private _secondary = [secondaryweapon _center,_center weaponaccessories secondaryweapon _center,"addSecondaryWeaponItem", secondaryWeaponMagazine _center],
-    private _handgun = [handgunweapon _center,_center weaponaccessories handgunweapon _center,"addHandgunItem", handgunMagazine _center],
+  private _secondary = [secondaryweapon _center,_center weaponaccessories secondaryweapon _center,"addSecondaryWeaponItem", secondaryWeaponMagazine _center],
+  private _handgun = [handgunweapon _center,_center weaponaccessories handgunweapon _center,"addHandgunItem", handgunMagazine _center],
 	private _binoc = [binocular _center, [_center call ace_common_fnc_binocularMagazine], "addMagazine"];
 	
 	{
