@@ -59,14 +59,17 @@ private _fnc_addMultiple = {
 
 if (primaryWeapon _center != "" || {secondaryWeapon _center != ""} || {handgunWeapon _center != ""} || {binocular _center != ""}) then {
 	private _aceBp = "ACE_FakeBackpack";
-  private _getAccessories = {(_center weaponAccessories _this) select {_x != ""}};
   ADD_EXPORT("// Add fake bp with single mag and weapons");
 	ADD_EXPORT_FORMAT(['%1 addBackpack "%2;"', _var, _aceBp]);
   
   private _pw = primaryWeapon _center;
   private _sw = secondaryWeapon _center;
   private _hw = handgunWeapon _center;
-  
+  private _getAccessories = {
+    params [["_wep", ""]];
+    ((_center weaponAccessories _wep) select {_x != ""})
+  };
+
 	private _primary = [_pw, _pw call _getAccessories, "addPrimaryWeaponItem", primaryWeaponMagazine _center],
   private _secondary = [_sw, _sw call _getAccessories, "addSecondaryWeaponItem", secondaryWeaponMagazine _center],
   private _handgun = [_hw, _hw call _getAccessories, "addHandgunItem", handgunMagazine _center],
