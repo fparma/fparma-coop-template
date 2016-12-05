@@ -1,128 +1,160 @@
 /*
     Author: Karel Moricky
         Edited by Cuel
-
     Description:
     Export current arsenal loadout, with some improvements
     Also supports just "simply exporting" the players current gear, if called from editor
 
     Returns:
-    STRING - SQF code
+    ARRAY - SQF code
 */
 
-private _tab = toString [09];
-private _br = toString [13, 10];
-private _center = (missionnamespace getvariable ["BIS_fnc_arsenal_center", player]);
-private _export = 'params ["_unit", "_type"];' + _br + _br;
-private _var = "_unit";
+#define ADD_EXPORT(xArg) _export pushBack xArg
+#define ADD_EXPORT_FORMAT(xArg) _export pushBack format xArg
+#define ADD_EMPTY_LINE _export pushBack _br
 
-private _radios = [];
+private _var = "_unit";
+private _savedRadios = [];
+private _br = toString [13, 10];
+private _export = ['params ["_unit", "_type"];' + _br];
+private _center = missionNameSpace getVariable ["BIS_fnc_arsenal_center", player];
+
+private _fnc_getRadio = {
+	params ["_item"];
+	if (_item select [0,8] != "acre_prc") exitWith {""};
+	private _split = _item splitString "_";
+	private _radio = [_split select 0, _split select 1] joinString "_";
+	if (_radio == "ACRE_PRC343") exitWith {"ItemRadio"};
+	(toUpper _radio)
+};
 
 private _fnc_addMultiple = {
-  params ["_items", "_expression"];
-  _itemsUsed = [];
-  {
-    _item = _x;
-    _itemLower = tolower _x;
-    if (_itemLower select [0, 8] == "acre_prc") then {
-      private _ex = (_expression splitString " ") select 1;
-      private _rStr = _x splitString "_";
-      private _radio = [_rStr select 0, _rStr select 1] joinString "_";
-      if (_radio == "ACRE_PRC343") then {_radio = "ItemRadio"};
-        _radios pushBackUnique (format ["%1 %2 ""%3"";",_var, _ex, _radio]);
-    } else {
-      if !(_itemLower in _itemsUsed) then {
-        _itemsUsed set [count _itemsUsed, _itemLower];
-        _itemCount = {_item == _x} count _items;
-        _expressionLocal = _expression;
-        if (_itemCount > 1) then {
-          _count = [];
-          for "_i" from 1 to _itemCount do {_count pushBack _i};
-          _expressionLocal = format ["{%2} count %1", _count, _expression];
-        };
-        _export = _export + _br + format [_expressionLocal,_var,_x] + ";";
-      };
-    }
-  } foreach _items;
+	params ["_items", "_command"];
+	private _itemsUsed = [];
+  
+	{
+		private _item = _x;
+		private _itemLowerCase = toLower _item;
+		private _radio = _itemLowerCase call _fnc_getRadio;
+		if (_radio != "") then {
+			private _cmd = _command splitString " ") select 1;
+			_savedRadios pushBack (format ['%1 %2 "%3"', _var, _cmd, _radio]);
+		} else {
+			if !(_itemLowerCase in _itemsUsed) then {
+				_itemsUsed pushBack _itemLowerCase;
+				private _count = {_item == _x} count _items;
+				private _localCommand = _command;
+				if (_count > 1) then {
+					private _numberArray = [];
+					for "_i" from 1 to _itemCount do {_numberArray pushBack _i};
+					_localCommand = format ["{%1} count %2;", _command, _numberArray];
+				};
+				ADD_EXPORT_FORMAT([_localCommand, _var, _x]);
+			};
+		};
+	}forEach _items;
 };
 
-if (primaryWeapon _center != "" || secondaryWeapon _center != "" || handgunWeapon _center != "" || binocular _center != "") then {
-  _export = _export + format ["%1 addBackpack ""ACE_FakeBackpack"";", _var] + _br;
-  {
-    _x params ["_weapon", "_weaponAccessories", "_weaponCommand", "_loadedAmmo"];
-    if (_weapon != "") then {
-      {_export = _export + format ["%1 addMagazine ""%2"";", _var, _x] + _br} forEach _loadedAmmo;
-      _export = _export + format ["%1 addWeapon ""%2"";",_var, _weapon] + _br;
-      private _filter = _weaponAccessories select {_x != ""};
-      {
-        _export = _export + format ["%1 %2 ""%3"";",_var, _weaponCommand, _x] + _br;
-      } foreach _filter;
-      if (count _filter >= 2) then {_export = _export + _br};
-    };
-  } foreach [
-    [primaryweapon _center,_center weaponaccessories primaryweapon _center,"addPrimaryWeaponItem", primaryWeaponMagazine _center],
-    [secondaryweapon _center,_center weaponaccessories secondaryweapon _center,"addSecondaryWeaponItem", secondaryWeaponMagazine _center],
-    [handgunweapon _center,_center weaponaccessories handgunweapon _center,"addHandgunItem", handgunMagazine _center],
-    [binocular _center,[_center call ace_common_fnc_binocularMagazine],"addMagazine"]
-  ];
-  _export = _export + format ["removeBackpack %1;", _var] + _br + _br;
+if (primaryWeapon _center != "" || {secondaryWeapon _center != ""} || {handgunWeapon _center != ""} || {binocular _center != ""}) then {
+	ADD_EXPORT("// Add fake bp with single mag and weapons");
+	private _aceBp = "ACE_FakeBackpack";
+	ADD_EXPORT_FORMAT(['%1 addBackpack "%2;"', _var, _aceBp]);
+	
+	private _primary = [primaryweapon _center,_center weaponaccessories primaryweapon _center,"addPrimaryWeaponItem", primaryWeaponMagazine _center],
+    private _secondary = [secondaryweapon _center,_center weaponaccessories secondaryweapon _center,"addSecondaryWeaponItem", secondaryWeaponMagazine _center],
+    private _handgun = [handgunweapon _center,_center weaponaccessories handgunweapon _center,"addHandgunItem", handgunMagazine _center],
+	private _binoc = [binocular _center, [_center call ace_common_fnc_binocularMagazine], "addMagazine"];
+	
+	{
+		_x params [["_weapon", ""], "_accessories", "_command", ["_loadedAmmo", []];
+		if (_weapon != "") then {
+			{ADD_EXPORT_FORMAT(['%1 addMagazine "%2";', _var, _x])} forEach _loadedAmmo;
+			ADD_EXPORT_FORMAT(['%1 addWeapon "%2";', _var, _weapon]);
+
+			private _accessoriesFiltered = _accessories select {_x != ""};
+			{
+				ADD_EXPORT_FORMAT(['%1 %2 "%3";', _var, _command, _x]);
+			} forEach _accessoriesFiltered;
+			if (count _accessoriesFiltered >= 3) then {ADD_EMPTY_LINE};
+		};
+	} forEach [_primary, _secondary, _handgun, _binoc];
+
+	ADD_EXPORT_FORMAT(['%1 removeBackpack "%2";', _aceBp]);
+	ADD_EMPTY_LINE;
 };
+
+// Containers / clothes
+private ["_uniformItems", "_vestItems", "_backpackItems"];
+private _containerCommentAdded = false;
+private _checkContainerComment = {
+	if (!_containerCommentAdded) then {ADD_EXPORT("// Add containers / clothes")};
+};
+
 if (headgear _center != "") then {
-  _export = _export +  format ["%1 addHeadgear ""%2"";",_var,headgear _center] + _br;
+	call _checkContainerComment;
+	ADD_EXPORT_FORMAT(['%1 addHeadgear "%2";', _var, headgear _center]);
 };
 
 if (uniform _center != "") then {
-  _export = _export +  format ["%1 forceAddUniform ""%2"";",_var, uniform _center] + _br;
+	call _checkContainerComment;
+	_uniformItems = uniformItems _center;
+	ADD_EXPORT_FORMAT(['%1 forceAddUniform "%2";', _var, uniform _center]);
 };
 
 if (vest _center != "") then {
-  _export = _export +  format ["%1 addVest ""%2"";",_var, vest _center] + _br;
+	call _checkContainerComment;
+	_vestItems = vestItems _center;
+	ADD_EXPORT_FORMAT(['%1 addVest "%2";', _var, vest _center]);
 };
 
-if (!isnull unitbackpack _center) then {
-  _export = _export +  format ["%1 addBackpack ""%2"";",_var,typeof unitbackpack _center] + _br;
-  _export = _export + format ["clearAllItemsFromBackpack %1;", _var] + _br;
+if (!isNull unitBackpack _center) then {
+	call _checkContainerComment;
+	_backpackItems = backpackItems _center;
+	ADD_EXPORT_FORMAT(['%1 addBackpack "%2";', _var, typeof unitbackpack _center]);
+	ADD_EXPORT_FORMAT(['clearAllItemsFromBackpack %1";', _var]);
 };
 
-//--- Assign items
-private _items = assigneditems _center - [binocular _center, "ItemRadioAcreFlagged"];
-if (count _items > 0) then {
-  _export = _export + (format ["{%1 linkItem _x} forEach %2;", _var, _items]) + _br;
-};
-//[_items, "%1 linkItem ""%2"""] call _fnc_addMultiple;
+if (_containerCommentAdded) then {ADD_EMPTY_LINE};
 
-// Magazines etc
-if (uniform _center != "") then {
-  [uniformitems _center,"%1 addItemToUniform ""%2"""] call _fnc_addMultiple;
-  _export = _export + _br;
+// Assigned items
+private _assignedItems = assignedItems _center - [binocular _center, "ItemRadioAcreFlagged"];
+if (count _assignedItems > 0) then {
+	ADD_EXPORT_FORMAT(['{%1 linkItem _x} forEach %2;', _var, _assignedItems]);
+	ADD_EMPTY_LINE;
 };
 
-if (vest _center != "") then {
-  [vestitems _center,"%1 addItemToVest ""%2"""] call _fnc_addMultiple;
-  _export = _export + _br;
+// Magazines and misc items for containers
+if (!isNil "_uniformItems") then {
+	ADD_EXPORT("// Uniform items");
+	[_uniformItems, '%1 addItemToUniform "%2"'] call _fnc_addMultiple;
+	ADD_EMPTY_LINE;
 };
 
-if (!isnull unitbackpack _center) then {
-  [backpackitems _center,"%1 addItemToBackpack ""%2"""] call _fnc_addMultiple;
-  _export = _export + _br;
+if (!isNil "_vestItems") then {
+	ADD_EXPORT("// Vest items");
+	[_vestItems, '%1 addItemToVest "%2"'] call _fnc_addMultiple;
+	ADD_EMPTY_LINE;
 };
 
-if (count _radios > 0) then {
-    _export = _export + _br;
-    // _export = _export + "[{" + _br;
-    {
-        _export = _export + _x + _br;
-    } forEach _radios;
-    // _export = _export + "}, 0.5 + random 1, []] call CBA_fnc_waitAndExecute;"
+if (!isNil "_backpackItems") then {
+	ADD_EXPORT("// Backpack items");
+	[_backpackItems, '%1 addItemToBackpack "%2"'] call _fnc_addMultiple;
+	ADD_EMPTY_LINE;
 };
+
+// Radios
+if !(_savedRadios isEqualTo []) then {
+	ADD_EMPTY_LINE;
+	{ADD_EXPORT(_x)} forEach _savedRadios;
+};
+
+private _ret = _export joinString _br;
 
 /*
-private _insignia = _center call bis_fnc_getUnitInsignia;
-if (_insignia != "") then {
-    _export = _export + _tab +  format ["[%1,""%2""] call bis_fnc_setUnitInsignia;", _var, _insignia] + _br;
+if (getUnitLoadout player != getUnitLoadout ([player, ""] call compile _ret)) then {
+	hint "loadout mismatch";
 };
 */
 
-//--- Export to clipboard
-copyToClipboard _export;
-_export
+copyToClipBoard _ret;
+_ret
