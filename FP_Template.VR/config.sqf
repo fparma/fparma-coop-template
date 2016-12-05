@@ -1,6 +1,3 @@
-// Only allow people with map tools to draw on briefing (true = everyone can draw)
-ACE_maptools_EveryoneCanDrawOnBriefing = false;
-
 FP_VD = 2000; // Regular view distance
 FP_OVD = 1800; // Regular object view distance
 FP_VD_AIR = 5000; // View distance when piloting or gunning air vehicles
