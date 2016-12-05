@@ -59,12 +59,17 @@ private _fnc_addMultiple = {
 
 if (primaryWeapon _center != "" || {secondaryWeapon _center != ""} || {handgunWeapon _center != ""} || {binocular _center != ""}) then {
 	private _aceBp = "ACE_FakeBackpack";
+  private _getAccessories = {(_center weaponAccessories _this) select {_x != ""}};
   ADD_EXPORT("// Add fake bp with single mag and weapons");
 	ADD_EXPORT_FORMAT(['%1 addBackpack "%2;"', _var, _aceBp]);
   
-	private _primary = [primaryweapon _center,_center weaponaccessories primaryweapon _center,"addPrimaryWeaponItem", primaryWeaponMagazine _center],
-  private _secondary = [secondaryweapon _center,_center weaponaccessories secondaryweapon _center,"addSecondaryWeaponItem", secondaryWeaponMagazine _center],
-  private _handgun = [handgunweapon _center,_center weaponaccessories handgunweapon _center,"addHandgunItem", handgunMagazine _center],
+  private _pw = primaryWeapon _center;
+  private _sw = secondaryWeapon _center;
+  private _hw = handgunWeapon _center;
+  
+	private _primary = [_pw, _pw call _getAccessories, "addPrimaryWeaponItem", primaryWeaponMagazine _center],
+  private _secondary = [_sw, _sw call _getAccessories, "addSecondaryWeaponItem", secondaryWeaponMagazine _center],
+  private _handgun = [_hw, _hw call _getAccessories, "addHandgunItem", handgunMagazine _center],
 	private _binoc = [binocular _center, [_center call ace_common_fnc_binocularMagazine], "addMagazine"];
 	
 	{
@@ -73,11 +78,10 @@ if (primaryWeapon _center != "" || {secondaryWeapon _center != ""} || {handgunWe
 			{ADD_EXPORT_FORMAT(['%1 addMagazine "%2";', _var, _x])} forEach _loadedAmmo;
 			ADD_EXPORT_FORMAT(['%1 addWeapon "%2";', _var, _weapon]);
 
-			private _accessoriesFiltered = _accessories select {_x != ""};
 			{
 				ADD_EXPORT_FORMAT(['%1 %2 "%3";', _var, _command, _x]);
-			} forEach _accessoriesFiltered;
-			if (count _accessoriesFiltered >= 3) then {ADD_EMPTY_LINE};
+			} forEach _accessories;
+			if (count _accessories >= 2) then {ADD_EMPTY_LINE};
 		};
 	} forEach [_primary, _secondary, _handgun, _binoc];
 
