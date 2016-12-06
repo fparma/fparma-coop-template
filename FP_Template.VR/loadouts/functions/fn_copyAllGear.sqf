@@ -1,6 +1,7 @@
 /*
     Author: Karel Moricky
-        Edited by Cuel
+        Rewritten by Cuel
+
     Description:
     Export current arsenal loadout, with some improvements
     Also supports just "simply exporting" the players current gear, if called from editor
@@ -59,7 +60,7 @@ private _fnc_addMultiple = {
 
 if (primaryWeapon _center != "" || {secondaryWeapon _center != ""} || {handgunWeapon _center != ""} || {binocular _center != ""}) then {
 	private _aceBp = "ACE_FakeBackpack";
-  ADD_EXPORT("// Add fake bp with single mag and weapons");
+  ADD_EXPORT("// Add fake bp with single mag and weapons. This ensures that weapons are loaded correctly");
 	ADD_EXPORT_FORMAT(['%1 addBackpack "%2;"', _var, _aceBp]);
   
   private _pw = primaryWeapon _center;
