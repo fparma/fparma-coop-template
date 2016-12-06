@@ -109,7 +109,6 @@ private _containerCommentAdded = false;
 ];
 
 if (!isNull unitBackpack _center) then {
-  call _checkContainerComment;
   _backpackItems = backpackItems _center;
   ADD_EXPORT_FORMAT(['%1 addBackpack "%2";', _var, typeof unitbackpack _center]);
   ADD_EXPORT_FORMAT(['clearAllItemsFromBackpack %1";', _var]);
