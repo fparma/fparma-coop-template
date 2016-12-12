@@ -27,8 +27,10 @@ if (!local _unit) exitWith {false};
 
 if (_disable) then {
   if (player == _unit) then {
-    fp_previousAceThrowing = ace_advanced_throwing_enabled;
-    ace_advanced_throwing_enabled = false;
+    if (isNil "fp_previousAceThrowing" then {
+      fp_previousAceThrowing = ace_advanced_throwing_enabled;
+      ace_advanced_throwing_enabled = false;
+    };
     _unit setVariable ["FP_disableID",
         [_unit, "DefaultAction", {true}, {}] call ace_common_fnc_addActionEventHandler
     ];
