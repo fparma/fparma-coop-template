@@ -5,14 +5,14 @@
 if (!hasInterface) exitWith {};
 
 // Add JIP players to zeus
-if (didJIP) then {[player] call FP_fnc_addToCurators};
+if (didJIP) then {[player] call FPA_common_fnc_addToCurators};
 
 // Initialize jip and respawn manager
 [] call FP_JRM_fnc_init;
 
 player addEventHandler ["Respawn", {
   // Add new unit to zeus
-  [_this select 0] call FP_fnc_addToCurators;
+  [_this select 0] call FPA_common_fnc_addToCurators;
 }];
 
 // Fix so player can't join "ENEMY" side
