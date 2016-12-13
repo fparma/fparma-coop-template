@@ -2,7 +2,6 @@ class FP {
   tag="FP";
   class functions {
     file = "fp\functions";
-    class addToCurators;
     class clearVehicle;
     class disableWeapons;
     class getPlayer;
