@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={933.32294,31.265879,1043.1224};
-		dir[]={0.011017558,-0.71141005,-0.70286351};
-		up[]={0.011158437,0.70219183,-0.71181059};
-		aside[]={-0.99993831,7.0449278e-007,-0.015676232};
+		pos[]={894.40619,15.107845,1020.5097};
+		dir[]={0.82277066,-0.34293175,-0.4535293};
+		up[]={0.30099711,0.93901187,-0.16591565};
+		aside[]={-0.4827688,1.5971018e-006,-0.87581885};
 	};
 };
 binarizationWanted=0;
@@ -32,7 +32,6 @@ addons[]=
 	"A3_Structures_F_Civ_InfoBoards",
 	"A3_Structures_F_EPA_Civ_Camping",
 	"A3_Structures_F_Furniture",
-	"ace_sitting",
 	"acex_sitting",
 	"CUP_Misc_e_Config",
 	"A3_Characters_F",
@@ -46,7 +45,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=13;
+		items=12;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -84,52 +83,45 @@ class AddonsMetaData
 		};
 		class Item5
 		{
-			className="ace_sitting";
-			name="ACE3 - Sitting";
+			className="acex_sitting";
+			name="ACEX - Sitting";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
 		class Item6
 		{
-			className="acex_sitting";
-			name="acex_sitting";
-			author="ACE-Team";
-			url="http://ace3mod.com/";
-		};
-		class Item7
-		{
 			className="CUP_Misc_e_Config";
 			name="CUP_Misc_e_Config";
 		};
-		class Item8
+		class Item7
 		{
 			className="A3_Characters_F";
 			name="Arma 3 Alpha - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="http://www.arma3.com";
 		};
-		class Item9
+		class Item8
 		{
 			className="A3_Modules_F_Curator";
 			name="Arma 3 Zeus Update - Scripted Modules";
 			author="Bohemia Interactive";
 			url="http://www.arma3.com";
 		};
-		class Item10
+		class Item9
 		{
 			className="ace_explosives";
 			name="ACE3 - Explosives";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item11
+		class Item10
 		{
 			className="ace_parachute";
 			name="ACE3 - Parachute";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item12
+		class Item11
 		{
 			className="A3_Weapons_F";
 			name="Arma 3 Alpha - Weapons and Accessories";
