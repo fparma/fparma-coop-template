@@ -18,9 +18,8 @@ private _center = missionNameSpace getVariable ["BIS_fnc_arsenal_center", player
 
 private _fnc_getRadio = {
   params ["_item"];
+  if (_item == "ItemRadio") exitWith {"ACRE_PRC343"};
   (_item splitString "_") params [["_prefix", ""], ["_suffix", ""]];
-  diag_log _prefix;
-  diag_log _suffix;
   if (_prefix != "acre" || {["prc", "sem"] find (_suffix select [0, 3]) < 0}) exitWith {""};
   (toUpper ([_prefix, _suffix] joinString "_"))
 };
