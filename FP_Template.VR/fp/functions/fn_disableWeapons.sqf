@@ -27,8 +27,10 @@ if (!local _unit) exitWith {false};
 
 if (_disable) then {
   if (player == _unit) then {
-    fp_previousAceThrowing = ace_advanced_throwing_enabled;
-    ace_advanced_throwing_enabled = false;
+    if (isNil "fp_previousAceThrowing" then {
+      fp_previousAceThrowing = ace_advanced_throwing_enabled;
+      ace_advanced_throwing_enabled = false;
+    };
     _unit setVariable ["FP_disableID",
         [_unit, "DefaultAction", {true}, {}] call ace_common_fnc_addActionEventHandler
     ];
@@ -44,8 +46,10 @@ if (_disable) then {
   ];
 } else {
   if (player == _unit) then {
-    ace_advanced_throwing_enabled = fp_previousAceThrowing;
-    fp_previousAceThrowing = nil;
+    if (!isNil "fp_previousAceThrowing") then {
+      ace_advanced_throwing_enabled = fp_previousAceThrowing;
+      fp_previousAceThrowing = nil;
+    };
     [_unit, "DefaultAction", _unit getVariable ["FP_disableID", -1]] call ACE_common_fnc_removeActionEventHandler;
   };
   _unit removeEventHandler ["Fired", _unit getVariable ["FP_firedID", -1]];
