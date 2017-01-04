@@ -27,7 +27,7 @@ if (!local _unit) exitWith {false};
 
 if (_disable) then {
   if (player == _unit) then {
-    if (isNil "fp_previousAceThrowing" then {
+    if (isNil "fp_previousAceThrowing") then {
       fp_previousAceThrowing = ace_advanced_throwing_enabled;
       ace_advanced_throwing_enabled = false;
     };
