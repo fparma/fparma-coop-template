@@ -17,9 +17,9 @@ class EditorData
 	class Camera
 	{
 		pos[]={894.40619,15.107845,1020.5097};
-		dir[]={0.82277066,-0.34293175,-0.4535293};
-		up[]={0.30099711,0.93901187,-0.16591565};
-		aside[]={-0.4827688,1.5971018e-006,-0.87581885};
+		dir[]={0.90782475,-0.37556338,-0.187213};
+		up[]={0.36855587,0.92642367,-0.076003604};
+		aside[]={-0.20198238,1.5386613e-006,-0.97945273};
 	};
 };
 binarizationWanted=0;
@@ -166,7 +166,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="FP Template v4.1.0";
+		briefingName="FP Template v4.2.0";
 		overviewText="Edit this please.";
 		startWeather=0;
 		startWind=0;
