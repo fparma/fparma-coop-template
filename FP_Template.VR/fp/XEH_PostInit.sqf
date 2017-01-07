@@ -36,7 +36,7 @@ player addEventHandler ["HandleRating", {
 }] call CBA_fnc_addPlayerEventHandler;
 
 // Delete grenades thrown in spawn
-player addEventHandler ["Fired", {
+["ace_firedPlayer", {
   if ((_this select 2) == "HandGrenadeMuzzle") then {
     private _proj = param [6, objNull];
     private _idx = [blufor, opfor, independent, civilian] find side player;
@@ -51,7 +51,7 @@ player addEventHandler ["Fired", {
         titleText ["G IS FOR GRENADES", "PLAIN", 2];
     };
   };
-}];
+}] call CBA_fnc_addEventHandler;
 
 [{
   // Lower weapon after mission start
