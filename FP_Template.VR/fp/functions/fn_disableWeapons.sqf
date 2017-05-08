@@ -25,6 +25,13 @@
 params [["_unit", player], ["_disable", false]];
 if (!local _unit) exitWith {false};
 
+if (isNil "fp_disableDetonation") then {
+  fp_disableDetonation = _disable;
+  [{fp_disableDetonation}] call ace_explosives_fnc_addDetonateHandler;
+};
+
+fp_disableDetonation = _disable;
+
 if (_disable) then {
   if (player == _unit) then {
     if (isNil "fp_previousAceThrowing") then {
