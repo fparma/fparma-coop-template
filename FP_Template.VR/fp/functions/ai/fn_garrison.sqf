@@ -183,12 +183,12 @@ if (count _unUsedUnits > 0) then {
 if (_lockUnits) then {
 
   {
-    _x disableAI "MOVE";
+    _x disableAI "PATH";
     _x addEventHandler ["Hit", {
       _unit = _this select 0;
       if (!alive _unit) exitWith {};
       _unit setVariable ["fp_enabled", true];
-      _unit enableAI "MOVE";
+      _unit enableAI "PATH";
       _unit doMove [(getPosATL _unit select 0)+1, (getPosATL _unit select 1) +1, getPosATL _unit select 2];
     }];
   }forEach units _grp;
@@ -203,7 +203,7 @@ if (_lockUnits) then {
       if (alive _x && {!(_x getVariable ["fp_enabled", false])} && {simulationEnabled _x}) then {
         if (_x distance (_x findNearestEnemy (getPosATL _x)) < 60 || {[_x,30] call CBA_fnc_nearPlayer}) then {
           _x setVariable ["fp_enabled", true];
-          _x enableAI "MOVE";
+          _x enableAI "PATH";
           _x doMove [(getPosATL _x select 0)+1, (getPosATL _x select 1) +1, getPosATL _x select 2];
         };
       };
