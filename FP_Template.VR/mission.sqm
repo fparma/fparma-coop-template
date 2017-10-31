@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1361;
+		nextID=1362;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={903.23926,14.660793,1024.6093};
-		dir[]={0.60653162,-0.43141577,-0.66800857};
-		up[]={0.29007164,0.90210545,-0.31947514};
-		aside[]={-0.74042797,1.1749216e-007,-0.67229515};
+		pos[]={930.06207,34.304832,1051.1392};
+		dir[]={0.2379318,-0.56212908,-0.79223973};
+		up[]={0.1617104,0.8269918,-0.53845388};
+		aside[]={-0.95783997,-1.0779331e-007,-0.28767383};
 	};
 };
 binarizationWanted=0;
@@ -53,7 +53,6 @@ addons[]=
 	"acex_sitting",
 	"A3_Structures_F_EPB_Items_Documents",
 	"A3_Structures_F_EPB_Civ_Camping",
-	"ace_optionsmenu",
 	"A3_Soft_F_Beta_Truck_01",
 	"A3_Soft_F_MRAP_01"
 };
@@ -61,7 +60,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=25;
+		items=24;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -216,19 +215,12 @@ class AddonsMetaData
 		};
 		class Item22
 		{
-			className="ace_optionsmenu";
-			name="ACE3 - Options Menu";
-			author="ACE-Team";
-			url="http://ace3mod.com/";
-		};
-		class Item23
-		{
 			className="A3_Soft_F_Beta";
 			name="Arma 3 Beta - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item24
+		class Item23
 		{
 			className="A3_Soft_F";
 			name="Arma 3 Alpha - Unarmored Land Vehicles";
@@ -4565,49 +4557,17 @@ class Mission
 		};
 		class Item48
 		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={934.83398,5,1008.357};
-			};
-			id=1339;
-			type="ACE_moduleAllowConfigExport";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ACE_moduleAllowConfigExport_allowconfigurationExport";
-					expression="_this setVariable ['allowconfigurationExport',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"BOOL"
-								};
-							};
-							value=1;
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item49
-		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={913.9505,7.2247906,985.9762};
+				position[]={913.97021,7.2247906,975.82043};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				init="call{[this, ""Victor 2""] call fpa_common_fnc_vehicleName}";
+				name="victor2";
 				reportRemoteTargets=1;
 				receiveRemoteTargets=1;
 				reportOwnPosition=1;
@@ -4638,18 +4598,19 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item50
+		class Item49
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={919.91998,7.2247906,985.888};
+				position[]={919.93921,7.2247906,975.73242};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				init="call{[this, ""Victor 3""] call fpa_common_fnc_vehicleName}";
+				name="victor3";
 				reportRemoteTargets=1;
 				receiveRemoteTargets=1;
 				reportOwnPosition=1;
@@ -4680,18 +4641,19 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item51
+		class Item50
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={913.92657,7.2247906,972.08746};
+				position[]={913.94623,7.2247906,961.9314};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				init="call{[this, ""Victor 4""] call fpa_common_fnc_vehicleName}";
+				name="victor4";
 				reportRemoteTargets=1;
 				receiveRemoteTargets=1;
 				reportOwnPosition=1;
@@ -4722,18 +4684,19 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item52
+		class Item51
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={919.91846,7.2247906,971.94958};
+				position[]={919.95563,7.2247906,962.01086};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				init="call{[this, ""Victor 5""] call fpa_common_fnc_vehicleName}";
+				name="victor5";
 				reportRemoteTargets=1;
 				receiveRemoteTargets=1;
 				reportOwnPosition=1;
@@ -4764,18 +4727,19 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item53
+		class Item52
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={913.52002,7.2059455,999.3584};
+				position[]={913.53925,7.2059455,989.20282};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				init="call{[this, ""Victor 1""] call fpa_common_fnc_vehicleName}";
+				name="victor1";
 				reportRemoteTargets=1;
 				receiveRemoteTargets=1;
 				reportOwnPosition=1;
@@ -4804,6 +4768,77 @@ class Mission
 					};
 				};
 				nAttributes=1;
+			};
+		};
+		class Item53
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={917.02222,5,969.27942};
+			};
+			id=1361;
+			type="ACE_moduleAddSpareParts";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ACE_moduleAddSpareParts_Part";
+					expression="_this setVariable ['Part',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="ACE_Wheel";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ACE_moduleAddSpareParts_List";
+					expression="_this setVariable ['List',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="victor1,victor2,victor3,victor4,victor5";
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ACE_moduleAddSpareParts_Amount";
+					expression="_this setVariable ['Amount',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=3;
+						};
+					};
+				};
+				nAttributes=3;
 			};
 		};
 	};

@@ -79,7 +79,7 @@ enableTargetDebug = 1;
 corpseManagerMode = 1;
 corpseLimit = 20;
 corpseRemovalMinTime = 300;
-corpseRemovalMaxTime = 800;
+corpseRemovalMaxTime = 600;
 
 wreckManagerMode = 1;
 wreckLimit = 10;

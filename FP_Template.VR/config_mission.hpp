@@ -3,7 +3,7 @@
 */
 #define CFG_ON_LOAD_TITLE "FPARMA Template v5" // displayed during mission load. keep it short
 #define CFG_ON_LOAD_TEXT "edit config_mission.hpp to change this!" // displayed during mission load
-#define CFG_LOBBY_TITLE "CO64 - FPARMA Template v5.0.1" // mission selection name. format: <TYPE><SLOTS> - <NAME> <version>
+#define CFG_LOBBY_TITLE "CO64 - FPARMA Template v5.0.0" // mission selection screen name. format: <TYPE><SLOTS> - <NAME> <version>
 #define CFG_AUTHOR "Cuel | 2017" // shown during load screen
 // shown in load screen, you can put a jpeg file in the mission folder and change this to "loading.jpg"
 // the default is fp logo in the modpack
@@ -14,7 +14,7 @@
 */
 // The amount of lives players have
 // -1 means infinite respawn, 0 means players go into spectator on first death. can be higher
-#define CFG_JRM_RESPAWNS 0
+#define CFG_JRM_RESPAWNS -1
 // The amount of time players spend in spectator between deaths, in seconds
 // -1 means disabled, no spectator unless no respawns. recommended minimum 20 seconds.
 #define CFG_JRM_SPECTATE_TIMER -1
