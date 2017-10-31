@@ -12,6 +12,7 @@
 
     Returns: BOOLEAN
 */
+
 params [
   ["_unit", objNull, [objNull]],
   ["_type", "", [""]]
@@ -19,7 +20,13 @@ params [
 
 if (!local _unit) exitWith {false};
 
+if (canSuspend) exitWith {
+  [FP_fnc_getLoadout, _this] call CBA_fnc_directCall;
+};
+
 private _conf = call compile preprocessFileLineNumbers "loadouts\_loadout_config.sqf";
+if (count _conf == 0) exitWith {false};
+
 private _ele = _conf select {(toLower (_x select 0)) == (toLower _type)};
 
 if (count _ele != 1) exitWith {
@@ -46,6 +53,7 @@ removeAllAssignedItems _unit;
 [{
   params ["_args", "_script"];
   _args call compile preprocessFileLineNumbers ("loadouts\" + _script);
+  if (player == (_args select 0)) then {[] call fpa_common_fnc_lowerPlayerWeapon};
 }, [[_unit, _type], (_ele select 0) select 1]] call CBA_fnc_execNextFrame;
 
 true

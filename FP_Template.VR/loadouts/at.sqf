@@ -21,20 +21,19 @@ _unit forceAddUniform "U_B_CombatUniform_mcam";
 _unit addVest "V_PlateCarrier1_rgr";
 _unit addBackpack "B_AssaultPack_mcamo_AT";
 clearAllItemsFromBackpack _unit;
-{_unit linkItem _x} forEach ["ItemMap","ItemCompass","ItemWatch","NVGoggles"];
+{_unit linkItem _x} forEach ["ItemMap","ItemCompass","ItemWatch"];
 
 // Uniform items
-_unit addItemToUniform "ACE_morphine";
-_unit addItemToUniform "30Rnd_65x39_caseless_mag";
-{_unit addItemToUniform "ACE_fieldDressing"} count [1,2];
+_unit addItemToUniform "16Rnd_9x21_Mag";
+{_unit addItemToUniform "ACE_epinephrine"} count [1,2];
+{_unit addItemToUniform "ACE_morphine"} count [1,2];
+{_unit addItemToUniform "ACE_fieldDressing"} count [1,2,3,4,5,6,7,8];
 // Vest items
-_unit addItemToVest "SmokeShell";
-_unit addItemToVest "16Rnd_9x21_Mag";
-_unit addItemToVest "SmokeShellGreen";
-{_unit addItemToVest "Chemlight_green"} count [1,2];
-{_unit addItemToVest "30Rnd_65x39_caseless_mag"} count [1,2,3];
+_unit addItemToVest "NVGoggles";
+_unit addItemToVest "ACE_Flashlight_MX991";
+{_unit addItemToVest "SmokeShellGreen"} count [1,2];
+{_unit addItemToVest "30Rnd_65x39_caseless_mag"} count [1,2,3,4];
 // Backpack items
-_unit addItemToBackpack "Titan_AT";
-_unit addItemToBackpack "Titan_AP";
-
+{_unit addItemToBackpack "Titan_AT"} count [1,2];
+// Radios
 _unit addItemToUniform "ACRE_PRC343";

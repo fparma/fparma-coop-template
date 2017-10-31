@@ -25,7 +25,7 @@ For example on how to reuse files, see rifleman_at.sqf, plt.sqf, and pilot.sqf. 
 If you DONT want to use loadouts, comment or remove **line 16** in `description.ext`
 It's safe to delete the `loadouts` folder after that
 
-The `scripts` folder have plenty of useful scripts to use in the the mission
+The `scripts` folder have useful scripts to use in the the mission. You can paste the folder into the mission and use them.
 Open them up and see how to use them!
 
 It's safe to delete the `scripts` folder if you're not using anything from there.
