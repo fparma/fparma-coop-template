@@ -2,6 +2,10 @@
 
 if (is3DEN) exitWith {};
 
+enableSaving [false, false];
+setViewDistance CFG_VIEWDISTANCE;
+setObjectViewDistance CFG_VIEWDISTANCE_OBJECT;
+
 [CFG_JRM_RESPAWNS] call fpa_jrm_fnc_init;
 
 if (!hasInterface) exitWith {};
