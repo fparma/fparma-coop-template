@@ -547,7 +547,7 @@ class Mission
 			position[]={902.14502,5,986.20099};
 			class Attributes
 			{
-				condition="call{ace_player in thisList}";
+				condition="call{vehicle ace_player in thisList}";
 				onActivation="call{[true] call fpa_common_fnc_safeZone;}";
 				onDeactivation="call{[false] call fpa_common_fnc_safeZone;}";
 				sizeA=5;
