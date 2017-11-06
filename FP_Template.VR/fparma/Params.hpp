@@ -9,6 +9,14 @@ class ace_medical_level {
     default = 1;
 };
 
+class ace_zeus_autoAddObjects {
+    title = "Auto add zeus objects";
+    ACE_setting = 1;
+    values[] = {1};
+    texts[] =  {"Yes"};
+    default = 1;
+};
+
 class ace_medical_preventInstaDeath {
     title = "Prevent INSTANT death (e.g headshots - can still die when down)";
     ACE_setting = 1;
