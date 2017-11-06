@@ -15,9 +15,6 @@
 // The amount of lives players have
 // -1 means infinite respawn, 0 means players go into spectator on first death. can be higher
 #define CFG_JRM_RESPAWNS -1
-// The amount of time players spend in spectator between deaths, in seconds
-// -1 means disabled, no spectator unless no respawns. recommended minimum 20 seconds.
-#define CFG_JRM_SPECTATE_TIMER -1
 
 /*
 * ACE settings
