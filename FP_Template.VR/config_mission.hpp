@@ -3,7 +3,7 @@
 */
 #define CFG_ON_LOAD_TITLE "FPARMA Template v5" // displayed during mission load. keep it short
 #define CFG_ON_LOAD_TEXT "edit config_mission.hpp to change this!" // displayed during mission load
-#define CFG_LOBBY_TITLE "CO64 - FPARMA Template v5.0.0" // mission selection screen name. format: <TYPE><SLOTS> - <NAME> <version>
+#define CFG_LOBBY_TITLE "CO64 - FPARMA Template v5.1.0" // mission selection screen name. format: <TYPE><SLOTS> - <NAME> <version>
 #define CFG_AUTHOR "Cuel | 2017" // shown during load screen
 // shown in load screen, you can put a jpeg file in the mission folder and change this to "loading.jpg"
 // the default is fp logo in the modpack
@@ -23,7 +23,7 @@
 // Prevent that players can instantly die from bullet impact. 0 = nope, 1 = yes, prevent it
 // Players CAN still die after going unconscious with either one of these.
 // if you want to never die - enter a high value for max time in ace revive module
-#define CFG_PREVENT_INSTANT_DEATH 1
+#define CFG_PREVENT_INSTANT_DEATH true
 // Damage treshold, magical armor added to unit when taking damage. 1 = ace default, 2 = fparma default
 // ONLY natural number / integer. No less than 1 and not higher than 8.
 #define CFG_PLAYER_DAMAGE_TRESHOLD 2

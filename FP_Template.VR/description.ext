@@ -53,13 +53,11 @@ respawnDialog = 0;
 respawnOnStart = 0;
 respawn = "BASE";
 
-class Params {
-  #include "fparma\Params.hpp"
-};
-
 class CfgDebriefing {
   #include "CfgDebriefing.hpp"
 };
+
+cba_settings_hasSettingsFile = 1;
 
 showGPS = 1;
 showMap = 1;
