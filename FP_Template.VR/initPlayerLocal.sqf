@@ -29,7 +29,7 @@ if (!isNil "FP_fnc_getLoadout") then {
 // Easier arsenal in editor, validate mission
 if (!isMultiplayer) then {
   // Make arsenal easier to enter
-  [["<t color='#ffff00'>[ Arsenal ]</t>", {["Open", true] spawn bis_fnc_arsenal}, 0, -85, false, true, "", ""]] call CBA_fnc_addPlayerAction;
+  [["<t color='#ffff00'>[ Arsenal ]</t>", {[ace_player, ace_player, true] call ace_arsenal_fnc_openBox}, 0, -85, false, true, "", ""]] call CBA_fnc_addPlayerAction;
   
   // Validate unit descriptions and callsigns. Can be removed (description.ext)
   private _cfg = getMissionConfig "MissionSQM";
