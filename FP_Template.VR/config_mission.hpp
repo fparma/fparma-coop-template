@@ -20,7 +20,7 @@
 * ACE settings
 * Be aware  that these settings override any modules in the mission (is also available as a mission parameter in lobby)
 */
-// Prevent that players can instantly die from bullet impact. 0 = nope, 1 = yes, prevent it
+// Prevent that players can instantly die from bullet impact. false/true. true means to prevent instant death.
 // Players CAN still die after going unconscious with either one of these.
 // if you want to never die - enter a high value for max time in ace revive module
 #define CFG_PREVENT_INSTANT_DEATH true
