@@ -1,12 +1,13 @@
 # FPARMA Coop Template
 
-This is a base to create any new missions. Check `config.sqf` for changing a few settings.
+This is a base to create any new missions for fparma.
+
+#### Check `config_mission.hpp` for changing a few settings for your missions.
 
 #### HOW TO USE LOADOUT SCRIPTS:
 The loadout scripts are exported from arsenal, we have a custom arsenal EXPORT function that will create proper loadout scripts, mainly to handle ACRE.
 
-
-Note that this only works in the GAME, **not** in EDEN arsenal editor.
+Note that this only works in the GAME, **not** in EDEN arsenal editor. BI and ACE Arsenal are supported.
 
 Edit `_loadout.config.sqf` in the folder `loadouts` after your needs.
 It works after the unit's classname, which you can see when hovering the unit in the EDEN Editor.
@@ -21,11 +22,3 @@ It means for units of type "B_officer_F", run the script "plt.sqf"
 Make sure that the last entry does not have a trailing comma, everyone before that must have it.
 
 For example on how to reuse files, see rifleman_at.sqf, plt.sqf, and pilot.sqf. `#include` means: take the file and paste it on this line
-
-If you DONT want to use loadouts, comment or remove **line 16** in `description.ext`
-It's safe to delete the `loadouts` folder after that
-
-The `scripts` folder have useful scripts to use in the the mission. You can paste the folder into the mission and use them.
-Open them up and see how to use them!
-
-It's safe to delete the `scripts` folder if you're not using anything from there.
