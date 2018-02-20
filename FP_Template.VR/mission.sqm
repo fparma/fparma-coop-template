@@ -575,7 +575,7 @@ class Mission
 				sizeB=5;
 				sizeC=8;
 				repeatable=1;
-				activationBy="ANYPLAYER";
+				activationBy="ANY";
 			};
 			id=404;
 			type="EmptyDetector";
