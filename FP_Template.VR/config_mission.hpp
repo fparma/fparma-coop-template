@@ -3,7 +3,7 @@
 */
 #define CFG_ON_LOAD_TITLE "FPARMA Template v5" // displayed during mission load. keep it short
 #define CFG_ON_LOAD_TEXT "edit config_mission.hpp to change this!" // displayed during mission load
-#define CFG_LOBBY_TITLE "CO64 - FPARMA Template v5.1.0" // mission selection screen name. format: <TYPE><SLOTS> - <NAME> <version>
+#define CFG_LOBBY_TITLE "CO64 - FPARMA Template v5.2.0" // mission selection screen name. format: <TYPE><SLOTS> - <NAME> <version>
 #define CFG_AUTHOR "Cuel | 2017" // shown during load screen
 // shown in load screen, you can put a jpeg file in the mission folder and change this to "loading.jpg"
 // the default is fp logo in the modpack
