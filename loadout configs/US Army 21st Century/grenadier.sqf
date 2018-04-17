@@ -1,23 +1,35 @@
+// ["rhsusf_army_ocp_grenadier", "example.sqf"]
 params ["_unit", "_type"];
 
+// Fake backpack to store magazines and then load them. This ensures that weapons are loaded
+_unit addBackpack "ACE_FakeBackpack";
+// Primary weapon
+_unit addMagazine "rhs_mag_30Rnd_556x45_M855A1_Stanag";
+_unit addMagazine "rhs_mag_M441_HE";
+_unit addWeapon "rhs_m4_m203_compm4";
+_unit addPrimaryWeaponItem "rhsusf_acc_anpeq15side";
+_unit addPrimaryWeaponItem "rhsusf_acc_compm4";
+removeBackpack _unit;
 
-_unit addHeadgear "CUP_H_USArmy_HelmetMICH_ESS";
-_unit forceAddUniform "CUP_U_B_USArmy_UBACS";
-_unit addVest "CUP_V_B_IOTV_gl";
+// Containers / clothes
+_unit addHeadgear "rhsusf_ach_helmet_ESS_ocp";
+_unit forceAddUniform "rhs_uniform_cu_ocp";
+_unit addVest "rhsusf_iotv_ocp_Grenadier";
+_unit addBackpack "rhsusf_falconii_gr";
+clearAllItemsFromBackpack _unit;
 {_unit linkItem _x} forEach ["ItemMap","ItemCompass","ItemWatch"];
 
-{_unit addItemToUniform "ACE_fieldDressing"} count [1,2];
+// Uniform items
 _unit addItemToUniform "ACE_morphine";
-{_unit addItemToUniform "hlc_30rnd_556x45_SPR"} count [1,2];
-
-{_unit addItemToVest "hlc_30rnd_556x45_SPR"} count [1,2,3,4,5];
-{_unit addItemToVest "CUP_1Rnd_HEDP_M203"} count [1,2,3,4,5,6];
-_unit addItemToVest "CUP_HandGrenade_M67";
-_unit addItemToVest "SmokeShell";
-_unit addItemToVest "SmokeShellGreen";
-{_unit addItemToVest "Chemlight_green"} count [1,2];
-
-_unit addWeapon "rhs_weap_m4a1_carryhandle_m203";
-_unit addPrimaryWeaponItem "rhsusf_acc_eotech_552";
-
-_unit addItemToUniform "ItemRadio";
+_unit addItemToUniform "rhsusf_ANPVS_14";
+_unit addItemToUniform "rhsusf_patrolcap_ocp";
+{_unit addItemToUniform "ACE_fieldDressing"} count [1,2];
+// Vest items
+_unit addItemToVest "rhs_mag_m67";
+{_unit addItemToVest "rhs_mag_M441_HE"} count [1,2,3,4,5];
+{_unit addItemToVest "rhs_mag_30Rnd_556x45_M855A1_Stanag"} count [1,2,3,4,5,6];
+// Backpack items
+{_unit addItemToBackpack "rhs_mag_M585_white"} count [1,2,3,4,5];
+{_unit addItemToBackpack "rhs_mag_M441_HE"} count [1,2,3,4,5,6,7,8,9,10];
+// Radios
+_unit addItemToUniform "ACRE_PRC343";

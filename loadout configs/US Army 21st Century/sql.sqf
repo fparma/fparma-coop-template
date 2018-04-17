@@ -1,37 +1,35 @@
+// ["rhsusf_army_ocp_squadleader", "example.sqf"]
 params ["_unit", "_type"];
 
-_unit addHeadgear "CUP_H_USArmy_HelmetMICH_headset_ess";
-_unit forceAddUniform "CUP_U_B_USArmy_TwoKnee";
-_unit addVest "CUP_V_B_IOTV_SL";
-_unit addBackpack "CUP_B_USPack_Coyote_SL";
-clearAllItemsFromBackpack _unit;
-{_unit linkItem _x} forEach ["ItemMap","ItemCompass","ItemWatch","ItemGPS"];
-
-{_unit addItemToUniform "ACE_fieldDressing"} count [0,1];
-_unit addItemToUniform "ACE_morphine";
-{_unit addItemToUniform "hlc_30rnd_556x45_SPR"} count [0,1];
-_unit addItemToUniform "ACE_MapTools";
-
-_unit addItemToVest "hlc_30rnd_556x45_SPR";
-{_unit addItemToVest "RH_15Rnd_9x19_M9"} count [0,1];
-{_unit addItemToVest "CUP_HandGrenade_M67"} count [0,1];
-{_unit addItemToVest "B_IR_Grenade"} count [0,1];
-_unit addItemToVest "SmokeShell";
-_unit addItemToVest "SmokeShellGreen";
-_unit addItemToVest "SmokeShellBlue";
-_unit addItemToVest "SmokeShellOrange";
-{_unit addItemToVest "Chemlight_green"} count [0,1];
-
-{_unit addItemToBackpack "hlc_30rnd_556x45_SPR"} count [0,1,2,3,4,5,6];
-
-_unit addWeapon "rhs_weap_m4a1_carryhandle";
-_unit addPrimaryWeaponItem "RH_ta01nsn";
-_unit addPrimaryWeaponItem "rhsusf_acc_grip3";
-
-_unit addWeapon "RH_m9";
+// Fake backpack to store magazines and then load them. This ensures that weapons are loaded
+_unit addBackpack "ACE_FakeBackpack";
+// Primary weapon
+_unit addMagazine "rhs_mag_30Rnd_556x45_M855A1_Stanag";
+_unit addWeapon "rhs_m4a1_acog3";
+_unit addPrimaryWeaponItem "rhsusf_acc_anpeq15_top";
+_unit addPrimaryWeaponItem "rhsusf_acc_ACOG3_3d";
+// Binoc
 _unit addWeapon "Binocular";
+removeBackpack _unit;
 
-_unit addItemToUniform "ItemRadio";
-if (_type != "B_Soldier_TL_F") then {
-  _unit addItemToUniform "ACRE_PRC148";
-};
+// Containers / clothes
+_unit addHeadgear "rhsusf_ach_helmet_headset_ocp";
+_unit forceAddUniform "rhs_uniform_cu_ocp";
+_unit addVest "rhsusf_iotv_ocp_Squadleader";
+{_unit linkItem _x} forEach ["ItemMap","ItemCompass","ItemWatch"];
+
+// Uniform items
+_unit addItemToUniform "ACE_morphine";
+_unit addItemToUniform "rhsusf_ANPVS_14";
+_unit addItemToUniform "rhsusf_patrolcap_ocp";
+{_unit addItemToUniform "ACE_fieldDressing"} count [1,2];
+// Vest items
+_unit addItemToVest "rhs_mag_m67";
+_unit addItemToVest "rhs_mag_m18_red";
+_unit addItemToVest "rhs_mag_m18_purple";
+_unit addItemToVest "rhs_mag_m18_yellow";
+{_unit addItemToVest "Chemlight_red"} count [1,2];
+{_unit addItemToVest "rhs_mag_30Rnd_556x45_M855A1_Stanag"} count [1,2,3,4,5,6];
+// Radios
+_unit addItemToUniform "ACRE_PRC343";
+_unit addItemToUniform "ACRE_PRC148";
