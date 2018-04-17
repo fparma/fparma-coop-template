@@ -1,22 +1,32 @@
+// ["rhsusf_army_ocp_crewman", "example.sqf"]
 params ["_unit", "_type"];
 
-_unit addHeadgear "CUP_H_USMC_Crew_Helmet";
-_unit forceAddUniform "CUP_U_B_USArmy_Base";
-_unit addVest "CUP_V_B_IOTV_Rifleman";
-{_unit linkItem _x} forEach ["ItemMap","ItemCompass","ItemWatch","ItemGPS"];
+// Fake backpack to store magazines and then load them. This ensures that weapons are loaded
+_unit addBackpack "ACE_FakeBackpack";
+// Primary weapon
+_unit addMagazine "rhs_mag_30Rnd_556x45_M855A1_Stanag";
+_unit addWeapon "rhs_weap_m4_carryhandle";
+// Handgun
+_unit addMagazine "rhsusf_mag_15Rnd_9x19_FMJ";
+_unit addWeapon "rhsusf_weap_m9";
+// Binoc
+_unit addWeapon "Binocular";
+removeBackpack _unit;
 
-{_unit addItemToUniform "ACE_fieldDressing"} count [0,1];
+// Containers / clothes
+_unit addHeadgear "rhsusf_cvc_helmet";
+_unit forceAddUniform "rhs_uniform_cu_ocp";
+_unit addVest "rhsusf_iotv_ocp";
+{_unit linkItem _x} forEach ["ItemMap","ItemCompass","ItemWatch"];
+
+// Uniform items
 _unit addItemToUniform "ACE_morphine";
-{_unit addItemToUniform "CUP_30Rnd_556x45_Stanag"} count [0,1];
-
-{_unit addItemToVest "CUP_30Rnd_556x45_Stanag"} count [0,1,2];
-{_unit addItemToVest "RH_15Rnd_9x19_M9"} count [0,1];
-{_unit addItemToVest "CUP_HandGrenade_M67"} count [0,1];
-_unit addItemToVest "SmokeShell";
-_unit addItemToVest "SmokeShellGreen";
-{_unit addItemToVest "Chemlight_green"} count [0,1];
-
-_unit addWeapon "rhs_weap_m4a1_carryhandle";
-_unit addWeapon "RH_m9";
-
-_unit addItemToUniform "ItemRadio";
+_unit addItemToUniform "rhsusf_ANPVS_14";
+_unit addItemToUniform "rhs_mag_an_m8hc";
+_unit addItemToUniform "rhsusf_mag_15Rnd_9x19_FMJ";
+{_unit addItemToUniform "ACE_fieldDressing"} count [1,2];
+// Vest items
+_unit addItemToVest "rhsusf_mag_15Rnd_9x19_FMJ";
+_unit addItemToVest "rhs_mag_30Rnd_556x45_M855A1_Stanag";
+// Radios
+_unit addItemToUniform "ACRE_PRC343";
