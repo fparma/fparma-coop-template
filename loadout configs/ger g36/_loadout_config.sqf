@@ -22,7 +22,6 @@
 
   ["B_Soldier_M_F", "marksman.sqf"],
   ["B_engineer_F", "engineer.sqf"],
-  ["B_Soldier_exp_F", "engineer_expl.sqf"],
 
   ["B_crew_F", "crew.sqf"],
   ["B_Fighter_Pilot_F", "pilot.sqf"],

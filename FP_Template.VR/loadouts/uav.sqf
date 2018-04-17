@@ -14,19 +14,20 @@ removeBackpack _unit;
 // Containers / clothes
 _unit addHeadgear "H_HelmetB";
 _unit forceAddUniform "U_B_CombatUniform_mcam";
-_unit addVest "V_PlateCarrier1_rgr";
-{_unit linkItem _x} forEach ["ItemMap","ItemCompass","ItemWatch"];
+_unit addVest "V_PlateCarrierSpec_rgr";
+_unit addBackpack "B_UAV_01_backpack_F";
+clearAllItemsFromBackpack _unit;
+{_unit linkItem _x} forEach ["ItemMap","ItemCompass","ItemWatch","B_UavTerminal"];
 
 // Uniform items
 _unit addItemToUniform "16Rnd_9x21_Mag";
-{_unit addItemToUniform "ACE_epinephrine"} count [1,2];
+_unit addItemToUniform "ACE_epinephrine";
 {_unit addItemToUniform "ACE_morphine"} count [1,2];
-{_unit addItemToUniform "ACE_fieldDressing"} count [1,2,3,4,5,6,7,8];
+{_unit addItemToUniform "ACE_fieldDressing"} count [1,2,3,4];
 // Vest items
 _unit addItemToVest "NVGoggles";
+_unit addItemToVest "SmokeShellGreen";
 _unit addItemToVest "ACE_Flashlight_MX991";
-{_unit addItemToVest "HandGrenade"} count [1,2];
-{_unit addItemToVest "SmokeShellGreen"} count [1,2];
-{_unit addItemToVest "30Rnd_65x39_caseless_mag"} count [1,2,3,4,5,6,7,8];
+{_unit addItemToVest "30Rnd_65x39_caseless_mag"} count [1,2,3,4,5,6,7];
 // Radios
 _unit addItemToUniform "ACRE_PRC343";
