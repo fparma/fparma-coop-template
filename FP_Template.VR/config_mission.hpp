@@ -23,7 +23,7 @@
 // Set when players can die. 0 = always, 1 = in cardiac arrest, 2 = never.
 #define CFG_FATAL_DAMAGE_SOURCE 1
 // Damage treshold, magical armor added to unit when taking damage. 1 = ace default, 3 = fparma default
-#define CFG_PLAYER_DAMAGE_TRESHOLD 2
+#define CFG_PLAYER_DAMAGE_TRESHOLD 3
 
 /*
 * Viewdistance settings
