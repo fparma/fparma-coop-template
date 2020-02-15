@@ -20,13 +20,13 @@
 * ACE settings
 * Be aware  that these settings override any modules in the mission (is also available as a mission parameter in lobby)
 */
-// Prevent that players can instantly die from bullet impact. false/true. true means to prevent instant death.
-// Players CAN still die after going unconscious with either one of these.
-// if you want to never die - enter a high value for max time in ace revive module
-#define CFG_PREVENT_INSTANT_DEATH true
-// Damage treshold, magical armor added to unit when taking damage. 1 = ace default, 2 = fparma default
-// ONLY natural number / integer. No less than 1 and not higher than 8.
-#define CFG_PLAYER_DAMAGE_TRESHOLD 2
+// Set when players can die. 0 = always, 1 = in cardiac arrest, 2 = never.
+#define CFG_FATAL_DAMAGE_SOURCE 1
+// Damage treshold, magical armor added to unit when taking damage. 1 = ace default, 3 = fparma default.
+#define CFG_PLAYER_DAMAGE_THRESHOLD 3
+// Same as above but for AI. 1 = default. (keep in mind that RHS vests are VERY tanky)
+#define CFG_AI_DAMAGE_THRESHOLD 1
+
 
 /*
 * Viewdistance settings
